@@ -9,5 +9,10 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ]
+  ],
+  "defaultUser": [
+  {"firstName": "John", "lastName":  "Foo", "username":  "johnfoo", "email":  "john@foo.com",
+  "password":  "changeme", "zipcode":  "96822", "transportation":  "electricity"}
+]
+
 }
