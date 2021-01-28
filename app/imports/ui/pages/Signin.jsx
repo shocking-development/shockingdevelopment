@@ -47,12 +47,15 @@ export default class Signin extends React.Component {
         <div className={'header-background'}>
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" color='white' textAlign="left">
+            <Image src = 'images/HEI.png' centered/>
+            <div className={'sign-header'}>
+            <Header as="h2" color='teal' textAlign="left">
               Sign In
             </Header>
-            <Form onSubmit={this.submit} inverted>
-              <Segment stacked>
-                <Form.Input
+            </div>
+            <Form onSubmit={this.submit}>
+              <Segment stacked inverted>
+                <Form.Input 
                   label="Email"
                   id="signin-form-email"
                   icon="user"

@@ -5,3 +5,11 @@
   padding: 18em;
   height: 100%;
 }
+.ui.inverted.segment{
+  background: #000000;
+  color: #00497bff
+}
+
+.sign-header {
+  color: white;
+}
