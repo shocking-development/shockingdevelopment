@@ -1,0 +1,7 @@
+
+.landing-header-background {
+  background: url('images/background.png') no-repeat center fixed;
+  background-size: cover;
+  padding: 18em;
+  height: 100%;
+}
