@@ -5,7 +5,6 @@ import LandingDataAddition from './LandingDataAddition';
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class Footer extends React.Component {
   render() {
-    const header = { fontSize: '14px', color: 'white', letterspacing: '3px' };
     const footercolor = {
       backgroundColor: '#052235',
       paddingLeft: '100px',

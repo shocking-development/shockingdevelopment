@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Statistic } from 'semantic-ui-react';
+import { Statistic } from 'semantic-ui-react';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class LandingDataAddition extends React.Component {
