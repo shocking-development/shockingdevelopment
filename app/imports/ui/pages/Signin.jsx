@@ -44,10 +44,10 @@ export default class Signin extends React.Component {
     // Otherwise return the Login form.
     return (
       <Container id="signin-page">
-        <div className={'header-background'}>
+        <div className='header-background'>
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Image src = 'images/HEI.png' centered/>
+            <Image src = 'images/HEI.png' size='small' centered/>
             <div className={'sign-header'}>
             <Header as="h2" color='teal' textAlign="left">
               Sign In
@@ -55,7 +55,7 @@ export default class Signin extends React.Component {
             </div>
             <Form onSubmit={this.submit}>
               <Segment stacked inverted>
-                <Form.Input 
+                <Form.Input
                   label="Email"
                   id="signin-form-email"
                   icon="user"
