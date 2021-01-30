@@ -43,8 +43,8 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
-      <Container id="signin-page">
         <div className='header-background'>
+      <Container id="signin-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
             <Image src = 'images/HEI.png' size='small' centered/>
@@ -90,8 +90,8 @@ export default class Signin extends React.Component {
             )}
           </Grid.Column>
         </Grid>
-        </div>
       </Container>
+        </div>
     );
   }
 }
