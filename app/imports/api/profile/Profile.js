@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
-import { Integer } from 'asn1';
+
 
 /** Define a Mongo collection to hold the data. */
 const Profiles = new Mongo.Collection('Profiles');
@@ -13,7 +13,7 @@ const ProfilesSchema = new SimpleSchema({
   userName: String,
 email: String,
     password: String,
-    zipcode: Integer,
+    zipcode: Number,
     transportation: String,
 }, { tracker: Tracker });
 
