@@ -11,9 +11,9 @@ const ProfilesSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
   userName: String,
-email: String,
+  email: String,
     password: String,
-    zipcode: Integer,
+    zipcode: Number,
     transportation: String,
 }, { tracker: Tracker });
 
