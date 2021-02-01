@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Header, Segment, Statistic } from 'semantic-ui-react';
+import { Menu, Dropdown, Header } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 
 
@@ -18,8 +18,9 @@ class ToolBar extends React.Component {
 
 
       <Menu style={menuStyle} attached = "top" borderless inverted>
-        <Menu.Item as={NavLink} activeClassName="" exact to="/">
+        <Menu.Item as={NavLink} activeClassName = "" exact to="/landing">
           <Header inverted as = 'h1'>HEI</Header>
+
         </Menu.Item>
 
 
