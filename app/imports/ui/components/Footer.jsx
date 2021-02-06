@@ -15,7 +15,6 @@ class Footer extends React.Component {
     const footercolor2 = { backgroundColor: '#052235', border: 'none', boxShadow: 'none' };
     return (
         <div>
-          <LandingDataAddition/>
           <Container textAlign="left" style={footercolor}>
             <Segment style={footercolor2}>
               <Grid columns={3} relaxed='very'>
