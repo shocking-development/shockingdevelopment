@@ -20,7 +20,7 @@ class Profile extends React.Component {
           <p>The size of your carbon footprint is: </p>
           <p>Below are the usual modes of transportation that you use: </p>
           <p>
-            Car (Ford Focus w/ Ecoboost)
+            Car (2018 Ford Focus w/ EcoBoost)
             Bicycle
             Walking/Jogging
             Bus
