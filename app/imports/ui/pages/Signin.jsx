@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -42,14 +43,18 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
+        <div className='header-background'>
       <Container id="signin-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
-              Login to your account
+            <Image src = 'images/HEI.png' size='small' centered/>
+            <div className={'sign-header'}>
+            <Header as="h2" color='teal' textAlign="left">
+              Sign In
             </Header>
+            </div>
             <Form onSubmit={this.submit}>
-              <Segment stacked>
+              <Segment stacked inverted>
                 <Form.Input
                   label="Email"
                   id="signin-form-email"
@@ -70,12 +75,10 @@ export default class Signin extends React.Component {
                   type="password"
                   onChange={this.handleChange}
                 />
-                <Form.Button id="signin-form-submit" content="Submit"/>
+                <Form.Button id="signin-form-submit" content="Log In"/>
+                <Link to="/signup">Click here to Sign Up</Link>
               </Segment>
             </Form>
-            <Message>
-              <Link to="/signup">Click here to Register</Link>
-            </Message>
             {this.state.error === '' ? (
               ''
             ) : (
@@ -88,6 +91,7 @@ export default class Signin extends React.Component {
           </Grid.Column>
         </Grid>
       </Container>
+        </div>
     );
   }
 }

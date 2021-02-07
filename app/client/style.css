@@ -38,3 +38,17 @@ padding-left: 10px!important;
   border-width: 0;
   background: #C4C4C4;
 }
+.header-background {
+  background: url('images/Hero-Image-New.jpg') no-repeat;
+  background-size: cover;
+  padding: 18em;
+  height: 100%;
+}
+.ui.inverted.segment{
+  background: #000000;
+  color: #00497bff
+}
+
+.sign-header {
+  color: white;
+}
