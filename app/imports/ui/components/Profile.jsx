@@ -9,7 +9,7 @@ class Profile extends React.Component {
       <Grid.Row columns={2}>
         <Grid.Column>
          <Image src='/images/wireframe/square-image.png' size='medium' circular/>
-         <Text>Edit Profile</Text>
+          <Text>Edit Profile</Text>
           <Text>User Name</Text>
           <Text>Real Name</Text>
           <Text>Current Location</Text>
@@ -25,6 +25,7 @@ class Profile extends React.Component {
             Walking/Jogging
             Bus
           </p>
+          <Text>Have a new car or want to change your mode of transportation? Click here to Edit</Text>
         </Grid.Column>
       </Grid.Row>
     </div>
