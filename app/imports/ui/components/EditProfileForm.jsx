@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid } from 'semantic-ui-react';
+import { Container, Grid, Button } from 'semantic-ui-react';
 
 class EditProfileForm extends Component {
     render() {
@@ -60,6 +60,8 @@ class EditProfileForm extends Component {
                       </Grid.Row>
 
                     </Grid>
+
+                    <Button inverted color="white">SAVE</Button>
                 </Container>
             </div>
         );
