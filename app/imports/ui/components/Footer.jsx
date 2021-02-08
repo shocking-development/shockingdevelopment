@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Grid, Image, Segment, Form, Button } from 'semantic-ui-react';
-import LandingDataAddition from './LandingDataAddition';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class Footer extends React.Component {
