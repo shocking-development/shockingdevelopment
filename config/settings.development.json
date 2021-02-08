@@ -12,5 +12,32 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultCars": [
+    {
+      "make": "Honda",
+      "model": "Accord",
+      "year": 2018,
+      "mpg": 30
+    },
+    {
+      "make": "Dodge",
+      "model": "Charger",
+      "year": 2009,
+      "mpg": 19
+    },
+    {
+      "make": "Ford",
+      "model": "Escape",
+      "year": 2011,
+      "mpg": 25
+    },
+    {
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2015,
+      "mpg": 36
+    }
   ]
 }
