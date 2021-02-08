@@ -11,10 +11,10 @@ const ProfilesSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
   userName: String,
-email: String,
-    password: String,
-    zipcode: Number,
-    transportation: String,
+  email: String,
+  password: String,
+  zipcode: Number,
+  transportation: String,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Item, Header, Loader, Button, Segment, Divider, Icon } from 'semantic-ui-react';
+import { Container, Item, Header, Grid, Loader, Button, Segment, Divider, Icon } from 'semantic-ui-react';
 import Text from 'uniforms-semantic/src/TextField';
 import { Profiles } from '../../api/profile/Profile';
 
@@ -10,32 +10,44 @@ class Profile extends React.Component {
   }
   renderPage() {
     return (
-        <div>
-          <Grid.Row columns={2}>
-            <Grid.Column>
-              <Image src='/images/wireframe/square-image.png' size='medium' circular/>
-              <Text>Edit Profile</Text>
-              <Text>User Name</Text>
-              <Text>Real Name</Text>
-              <Text>Current Location</Text>
-            </Grid.Column>
-            <Grid.Column>
-              <Image src='/images/wireframe/square-image.png' size='medium' circular/>
-              <p>Above is everything associated with your carbon footprint for the week</p>
-              <p>The size of your carbon footprint is: </p>
-              <p>Below are the usual modes of transportation that you use: </p>
-              <p>
-                Car (2018 Ford Focus w/ EcoBoost)
-                Bicycle
-                Walking/Jogging
-                Bus
-              </p>
-              <Text>Have a new car or want to change your mode of transportation? Click here to Edit</Text>
-            </Grid.Column>
-          </Grid.Row>
-        </div>
+        <Container>
+          <Grid divided='vertically'>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Item.Group>
+                  <Item.Image size='medium' src={this.props.Profiles.image}
+                      // eslint-disable-next-line
+                              onError={(i) => i.target.src='/images/default_image.png'}/>
+                </Item.Group>
+                <Item.Content>
+                  <Item.Header as='a'>{this.props.Profiles.firstName} {this.props.Profiles.lastName}</Item.Header>
+                </Item.Content>
+
+              </Grid.Column>
+
+            </Grid.Row>
+          </Grid>
+        </Container>
     );
   }
 }
+/** Require an array of UserInfo documents in the props. */
+Profile.propTypes = {
+  Profiles: PropTypes.object.isRequired,
+  ready: PropTypes.bool.isRequired,
+  currentUser: PropTypes.string,
+  currentId: PropTypes.string,
+}
 
-export default Profile;
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(({ match }) => {
+  const userAccount = Meteor.users.findOne(match.params._id);
+  const userName = userAccount ? userAccount.username : '';
+  const subscription = Meteor.subscribe('Profiles');
+  return {
+    Profiles: Profiles.findOne({ user: userName }) ? Profiles.findOne({ user: userName }) : {},
+    currentUser: Meteor.user() ? Meteor.user().username : '',
+    currentId: match.params._id,
+    ready: subscription.ready(),
+  };
+})(Profile);
