@@ -52,3 +52,15 @@ padding-left: 10px!important;
 .sign-header {
   color: white;
 }
+
+.signup-background {
+  background: url('images/Hero-Image-New.jpg') no-repeat;
+  background-size: cover;
+  padding: 18em;
+  height: 100%;
+}
+
+
+.sign-header2 {
+  color: white;
+}
