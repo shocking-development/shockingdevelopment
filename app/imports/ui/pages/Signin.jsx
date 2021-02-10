@@ -43,11 +43,11 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
-        <div className='header-background'>
+        <div className='landing-page-background'>
       <Container id="signin-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Image src = 'images/HEI.png' size='small' centered/>
+            <Image src = 'images/HEI.png' size='small' centered style={{ paddingTop: '12em' }}/>
             <div className={'sign-header'}>
             <Header as="h2" color='teal' textAlign="left">
               Sign In

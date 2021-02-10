@@ -10,7 +10,7 @@ class Home extends React.Component {
 
   render() {
     const square = { width: 285, height: 285 };
-    const pageStyle = { background: '#174060', paddingTop: '150px', paddingBottom: '135px' };
+    const pageStyle = { background: '#174060', paddingTop: '150px', paddingBottom: '135px', height: '47.9em', backgroundSize: 'cover', marginTop: '-10px' };
     return (
         <div style={pageStyle}>
           <Header inverted size='huge' textAlign={'center'}>Welcome back, {this.props.currentUser} </Header>

@@ -39,7 +39,7 @@ padding-left: 10px!important;
   background: #C4C4C4;
 }
 .header-background {
-  background: url('images/Hero-Image-New.jpg') no-repeat;
+  background: url('images/Hero-Image-New.jpg') no-repeat center;
   background-size: cover;
   padding: 18em;
   height: 100%;
