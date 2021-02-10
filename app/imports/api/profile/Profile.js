@@ -7,10 +7,10 @@ const Profiles = new Mongo.Collection('Profiles');
 
 /** Define a schema to specify the structure of each document in the collection. */
 const ProfilesSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
-  userName: String,
-email: String,
+    firstName: String,
+    lastName: String,
+    userName: String,
+    email: String,
     password: String,
     zipcode: Number,
     transportation: String,
