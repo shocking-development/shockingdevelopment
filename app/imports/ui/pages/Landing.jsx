@@ -2,7 +2,11 @@ import React from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 import LandingAddition from '../components/LandingAddition';
 import LandingDataAddition from '../components/LandingDataAddition';
-/** A simple static component to render some text for the landing page. */
+
+/**
+ * A simple static component to render some text for the landing page.
+ * @memberOf ui/pages
+ */
 class Landing extends React.Component {
   render() {
     return (
