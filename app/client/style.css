@@ -52,3 +52,9 @@ padding-left: 10px!important;
 .sign-header {
   color: white;
 }
+
+.ui.circular.segment {
+  background: linear-gradient(to bottom, #3CAEA3 0%, #20639B 50%) !important;
+  border: 12px solid #FFFFFF;
+}
+
