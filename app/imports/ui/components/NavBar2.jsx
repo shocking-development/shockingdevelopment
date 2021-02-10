@@ -12,9 +12,15 @@ class NavBar2 extends React.Component {
     const menuStyle = { backgroundColor: 'transparent', height: '10px', paddingTop: '10px', paddingLeft: '55px' };
     return (
         <div style={menuStyle}>
-          <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image src='/images/HEI-LOGO.png' style={{ width: '10%', marginTop: '25px' }}/>
-          </Menu.Item>
+          {this.props.currentUser ? (
+              <Menu.Item as={NavLink} activeClassName="" exact to="/home">
+                <Image src='/images/HEI-LOGO.png' style={{ width: '10%', marginTop: '25px' }}/>
+              </Menu.Item>
+          ) : (
+              <Menu.Item as={NavLink} activeClassName="" exact to="/">
+                <Image src='/images/HEI-LOGO.png' style={{ width: '10%', marginTop: '25px' }}/>
+              </Menu.Item>
+          )}
           {this.props.currentUser ? (
               [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>]
