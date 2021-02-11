@@ -5,7 +5,6 @@ import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
-import ToolBar from '../components/ToolBar';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Home from '../pages/Home';
@@ -26,7 +25,6 @@ class App extends React.Component {
     return (
         <Router>
           <div>
-            <ToolBar/>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
