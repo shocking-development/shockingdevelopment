@@ -21,8 +21,6 @@ class ToolBarAdmin extends React.Component {
           </Menu.Item>
         </Menu.Item>
 
-
-
         {this.props.currentUser ? (
             [ <Menu.Item  position = "right" as={NavLink} activeClassName = "active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
 
