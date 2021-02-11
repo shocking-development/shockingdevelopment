@@ -15,8 +15,10 @@ class ToolBar extends React.Component {
 
       <Menu style={menuStyle} attached = "top" borderless inverted>
         <Menu.Item as={NavLink} activeClassName = "" exact to="/landing">
-          <Header inverted as = 'h1'>HEI</Header>
-
+          <Header inverted as = 'h1'>Landing</Header>
+        </Menu.Item>
+        <Menu.Item as={NavLink} activeClassName = "" exact to="/home">
+          <Header inverted as = 'h1'>Home Page</Header>
         </Menu.Item>
 
         {this.props.currentUser ? (
