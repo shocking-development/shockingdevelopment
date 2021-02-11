@@ -73,23 +73,19 @@ class NavBarHome extends React.Component {
             </Menu.Item>
           </div>
           <div style={navbarVerticle}>
-          {this.props.currentUser ? (
-              [<Menu inverted pointing vertical>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add
-                  Stuff</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List
-                  Stuff</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='data'>Go To
-                  Data</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='savings'>Go
-                  To
-                  Savings</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map
-                  your
-                  route</Menu.Item>
-              </Menu>,
-              ]
-          ) : ''}
+            {this.props.currentUser ? (
+                [<Menu inverted pointing vertical>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='data'>Go To
+                    Data</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='savings'>Go
+                    To
+                    Savings</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map
+                    your
+                    route</Menu.Item>
+                </Menu>,
+                ]
+            ) : ''}
           </div>
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
