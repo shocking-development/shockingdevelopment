@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import ToolBar from '../components/ToolBar';
+import ToolBarAdmin from '../components/ToolBarAdmin';
 // eslint-disable-next-line no-unused-vars
 import NavBar from '../components/NavBar';
 import NavBar2 from '../components/NavBar2';
@@ -26,6 +28,7 @@ class App extends React.Component {
         <Router>
           <div>
             <NavBar2/>
+            <ToolBar/>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
