@@ -1,9 +1,12 @@
 import React from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Segment, Icon } from 'semantic-ui-react';
 import LandingAddition from '../components/LandingAddition';
 import NavBar2 from '../components/NavBar2';
 
-/** A simple static component to render some text for the landing page. */
+/**
+ * A simple static component to render some text for the landing page.
+ * @memberOf ui/pages
+ */
 class Landing extends React.Component {
   render() {
     return (
@@ -13,8 +16,8 @@ class Landing extends React.Component {
           <Grid className='menu-boxes' columns='equal' id='landing-page'>
             <Grid.Column className="column">
               <Segment className="zoom" style={{ background: 'rgba(0, 73, 122, 0.57)', borderRadius: '0px' }}>
-                <i style={{ color: '#0047cc', fontSize: '2.2em', paddingTop: '8px' }}
-                   className="money bill alternate icon"></i>
+                <Icon style={{ color: '#0047cc', fontSize: '2.2em', paddingTop: '8px' }}
+                      className="money bill alternate icon"></Icon>
                 <p style={{
                   color: 'white',
                   fontSize: '25px',
@@ -32,7 +35,7 @@ class Landing extends React.Component {
 
             <Grid.Column className="column">
               <Segment className="zoom" style={{ background: 'rgba(0, 73, 122, 0.57)', borderRadius: '0px' }}>
-                <i style={{ color: '#0047cc', fontSize: '2.2em', paddingTop: '8px' }} className="blind icon"></i>
+                <Icon style={{ color: '#0047cc', fontSize: '2.2em', paddingTop: '8px' }} className="line graph"></Icon>
                 <p style={{
                   color: 'white',
                   fontSize: '25px',
@@ -50,7 +53,8 @@ class Landing extends React.Component {
 
             <Grid.Column className="column">
               <Segment className="zoom" style={{ background: 'rgba(0, 73, 122, 0.57)', borderRadius: '0px' }}>
-                <i style={{ color: '#0047cc', fontSize: '2.2em', paddingTop: '8px' }} className="check circle icon"></i>
+                <Icon style={{ color: '#0047cc', fontSize: '2.2em', paddingTop: '8px' }}
+                      className="check circle icon"></Icon>
                 <p style={{
                   color: 'white',
                   fontSize: '25px',

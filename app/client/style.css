@@ -57,4 +57,9 @@ padding-left: 10px!important;
   background: linear-gradient(to bottom, #3CAEA3 0%, #20639B 50%) !important;
   border: 12px solid #FFFFFF;
 }
-
+.Home-page-background {
+  background: #174060;
+  background-size: cover;
+  height: 47.9em;
+  margin-top: -10px;
+}

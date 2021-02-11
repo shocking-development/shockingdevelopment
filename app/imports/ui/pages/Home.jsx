@@ -4,15 +4,18 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import NavBarHome from '../components/NavBarHome';
 
 /** A simple static component to render the home page when users are logged in. */
 class Home extends React.Component {
 
   render() {
     const square = { width: 285, height: 285 };
-    const pageStyle = { background: '#174060', paddingTop: '150px', paddingBottom: '135px', height: '47.9em', backgroundSize: 'cover', marginTop: '-10px' };
+    const pageStyle = { marginLeft: '20em', paddingTop: '8em', paddingBottom: '135px', height: '47.9em', backgroundSize: 'cover', marginTop: '-10px', marginRight: '6em' };
     return (
-        <div style={pageStyle}>
+        <div className='Home-page-background'>
+          <NavBarHome/>
+          <div style={pageStyle}>
           <Header inverted size='huge' textAlign={'center'}>Welcome back, {this.props.currentUser} </Header>
           <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
             paddingBottom: '50px',
@@ -57,6 +60,7 @@ class Home extends React.Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
+          </div>
         </div>
     );
   }

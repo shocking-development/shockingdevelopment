@@ -14,7 +14,7 @@ class NavBar2 extends React.Component {
         <div style={menuStyle}>
 
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image src='/images/HEI-LOGO.png' style={{ width: '10%', marginTop: '25px' }}/>
+            <Image src='/images/HEI-LOGO.png' style={{ width: '10%', marginTop: '25px', paddingLeft: '20px' }}/>
           </Menu.Item>
           <Menu.Item>
             {this.props.currentUser === '' ? (
@@ -52,23 +52,7 @@ class NavBar2 extends React.Component {
                 </Dropdown>
             )}
           </Menu.Item>
-          {this.props.currentUser ? (
-              [<Menu inverted pointing vertical>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add
-                  Stuff</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List
-                  Stuff</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='data'>Go To
-                  Data</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='savings'>Go
-                  To
-                  Savings</Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map
-                  your
-                  route</Menu.Item>
-              </Menu>,
-              ]
-          ) : ''}
+
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
           ) : ''}
