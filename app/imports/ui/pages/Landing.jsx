@@ -1,16 +1,14 @@
 import React from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 import LandingAddition from '../components/LandingAddition';
-import LandingDataAddition from '../components/LandingDataAddition';
+import NavBar2 from '../components/NavBar2';
 
-/**
- * A simple static component to render some text for the landing page.
- * @memberOf ui/pages
- */
+/** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
     return (
         <div className='landing-page-background'>
+          <NavBar2/>
           <LandingAddition/>
           <Grid className='menu-boxes' columns='equal' id='landing-page'>
             <Grid.Column className="column">
@@ -87,9 +85,7 @@ class Landing extends React.Component {
               </Segment>
             </Grid.Column>
           </Grid>
-          <LandingDataAddition/>
         </div>
-
     );
   }
 }
