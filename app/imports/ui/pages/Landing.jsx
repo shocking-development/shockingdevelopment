@@ -1,12 +1,14 @@
 import React from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
 import LandingAddition from '../components/LandingAddition';
+import NavBar2 from '../components/NavBar2';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
     return (
         <div className='landing-page-background'>
+          <NavBar2/>
           <LandingAddition/>
           <Grid className='menu-boxes' columns='equal' id='landing-page'>
             <Grid.Column className="column">

@@ -7,6 +7,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
 import NavBar from '../components/NavBar';
 import NavBar2 from '../components/NavBar2';
+import ToolBar from '../components/ToolBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
@@ -24,7 +25,6 @@ class App extends React.Component {
     return (
         <Router>
           <div>
-            <NavBar2/>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
