@@ -39,7 +39,7 @@ padding-left: 10px!important;
   background: #C4C4C4;
 }
 .header-background {
-  background: url('images/Hero-Image-New.jpg') no-repeat;
+  background: url('images/Hero-Image-New.jpg') no-repeat center;
   background-size: cover;
   padding: 18em;
   height: 100%;
@@ -53,6 +53,7 @@ padding-left: 10px!important;
   color: white;
 }
 
+<<<<<<< HEAD
 .signup-background {
   background: url('images/Hero-Image-New.jpg') no-repeat;
   background-size: cover;
@@ -64,3 +65,15 @@ padding-left: 10px!important;
 .sign-header2 {
   color: white;
 }
+=======
+.ui.circular.segment {
+  background: linear-gradient(to bottom, #3CAEA3 0%, #20639B 50%) !important;
+  border: 12px solid #FFFFFF;
+}
+.Home-page-background {
+  background: #174060;
+  background-size: cover;
+  height: 47.9em;
+  margin-top: -10px;
+}
+>>>>>>> master
