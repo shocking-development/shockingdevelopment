@@ -13,16 +13,12 @@ class ToolBar extends React.Component {
     const menuStyle = { marginBottom: '10px', background: '#001947' };
     return (
 
-      <Menu style={menuStyle} attached = "top" borderless inverted>
-        <Menu.Item as={NavLink} activeClassName = "" exact to="/landing">
-          <Header inverted as = 'h1'>Landing</Header>
-        </Menu.Item>
-        <Menu.Item as={NavLink} activeClassName = "" exact to="/home">
-          <Header inverted as = 'h1'>Home Page</Header>
-        </Menu.Item>
+        <Menu style={menuStyle} attached = "top" borderless inverted>
 
         {this.props.currentUser ? (
-            [ <Menu.Item as={NavLink} position = "right" activeClassName = "active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
+            [ <Menu.Item as={NavLink} position = "right" activeClassName = "active" exact to="/landing" key='landing'>Landing</Menu.Item>,
+              <Menu.Item as={NavLink} activeClassName = "active" exact to="/home" key='home'>Home Page</Menu.Item>,
+              <Menu.Item as={NavLink} position = "right" activeClassName = "active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
               <Menu.Item as={NavLink} activeClassName = "active" exact to="/list" key='list'>List Stuff</Menu.Item>,
               <Menu.Item as={NavLink} activeClassName = "active" exact to="/notfound" key='data'>Go To Data</Menu.Item>,
               <Menu.Item as={NavLink} activeClassName = "active" exact to="/notfound" key='savings'>Go To Savings</Menu.Item>,
