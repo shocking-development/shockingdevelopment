@@ -72,10 +72,20 @@ class Signup extends React.Component {
                         type="password"
                         onChange={this.handleChange}
                     />
+                    <Form.Input
+                        label="Confirm Password"
+                        id="signup-form-password"
+                        icon="lock"
+                        iconPosition="left"
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        onChange={this.handleChange}
+                    />
                     <Form.Button id="signup-form-submit" content="Submit"/>
                   </Segment>
                 </Form>
-                <Message>
+                <Message color='black'>
                   Already have an account? Login <Link to="/signin">here</Link>
                 </Message>
                 {this.state.error === '' ? (
