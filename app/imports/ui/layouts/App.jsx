@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Footer from '../components/Footer';
+import ToolBar from '../components/ToolBar';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
@@ -23,6 +24,7 @@ class App extends React.Component {
     return (
         <Router>
           <div>
+            <ToolBar/>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
