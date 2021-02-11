@@ -87,10 +87,12 @@ class NavBarHome extends React.Component {
                 </Menu>,
                 ]
             ) : ''}
+
+            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'
+                           style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
+            ) : ''}
           </div>
-          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-          ) : ''}
           <Menu.Item position="right">
 
           </Menu.Item>
