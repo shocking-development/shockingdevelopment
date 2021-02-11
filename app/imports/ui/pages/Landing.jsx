@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Segment, Icon } from 'semantic-ui-react';
 import LandingAddition from '../components/LandingAddition';
-import NavBar2 from '../components/NavBar2';
+import NavBar2 from '../components/NavBarLanding';
 
 /**
  * A simple static component to render some text for the landing page.

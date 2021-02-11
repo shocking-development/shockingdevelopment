@@ -28,12 +28,12 @@ class NavBarHome extends React.Component {
       flexDirection: 'column',
       flexGrow: '1',
       background: '#1f2326',
-      height: '73.5%',
+      height: '73.45%',
     };
     return (
         <div style={menuStyle}>
           <div style={navbarStyle}>
-            <Menu.Item as={NavLink} activeClassName="" exact to="/">
+            <Menu.Item as={NavLink} activeClassName="" exact to="/home">
               <Image src='/images/HEI-LOGO.png'
                      style={{ width: '8%', marginTop: '25px', paddingLeft: '20px', marginBottom: '2%' }}/>
             </Menu.Item>

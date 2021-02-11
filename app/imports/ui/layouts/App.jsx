@@ -6,8 +6,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import NavBar from '../components/NavBar';
-import NavBar2 from '../components/NavBar2';
-import ToolBar from '../components/ToolBar';
 import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
