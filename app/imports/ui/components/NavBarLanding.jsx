@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
-import { Roles } from 'meteor/alanning:roles';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBarLanding extends React.Component {
@@ -51,13 +50,6 @@ class NavBarLanding extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
             )}
-          </Menu.Item>
-
-          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-          ) : ''}
-          <Menu.Item position="right">
-
           </Menu.Item>
 
         </div>

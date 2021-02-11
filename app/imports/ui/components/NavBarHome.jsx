@@ -28,7 +28,7 @@ class NavBarHome extends React.Component {
       flexDirection: 'column',
       flexGrow: '1',
       background: '#1f2326',
-      height: '78.45%',
+      height: '73.45%',
     };
     return (
         <div style={menuStyle}>
