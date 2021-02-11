@@ -19,7 +19,6 @@ class ToolBar extends React.Component {
 
           </Menu.Item>
 
-
           {this.props.currentUser ? (
               [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>,
@@ -27,7 +26,7 @@ class ToolBar extends React.Component {
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='savings'>Go To
                   Savings</Menu.Item>,
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map your
-                  route</Menu.Item>,]
+                  route</Menu.Item>]
           ) : ''}
           {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
