@@ -18,9 +18,9 @@ class ListofUsersAdmin extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-
-        <Container>
-          <NavBarHome/>
+        <div>
+        <NavBarHome/>
+        <Container style={{ margin: '120px', paddingLeft: '191px' }}>
           <Header as="h2" textAlign="center">List of Users (Admin)</Header>
           <Table celled>
             <Table.Header>
@@ -65,6 +65,8 @@ class ListofUsersAdmin extends React.Component {
             </Table.Body>
           </Table>
         </Container>
+        </div>
+
     );
   }
 }

@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
+import ListofUsersAdmin from '../pages/ListofUsersAdmin';
 import EditProfile from '../pages/EditProfile';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -34,7 +34,7 @@ class App extends React.Component {
               <ProtectedRoute path="/editprofile" component={EditProfile}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
               <ProtectedRoute path="/data" component={Datapage}/>
-              <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+              <AdminProtectedRoute path="/admin" component={ListofUsersAdmin}/>
               <Route component={NotFound}/>
             </Switch>
             <Footer/>
