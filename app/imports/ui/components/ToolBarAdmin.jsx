@@ -24,9 +24,9 @@ class ToolBarAdmin extends React.Component {
 
 
         {this.props.currentUser ? (
-            [ <Menu.Item as={NavLink} activeClassName = "active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
+            [ <Menu.Item  position = "right" as={NavLink} activeClassName = "active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
 
-              <Menu.Item position = "right">
+              <Menu.Item>
                 <Dropdown id="list-dropdown" text="List Stuff">
                   <Dropdown.Menu>
                     <Dropdown.Item id="list" key = "list" text="User List" as={NavLink} exact to="/list"/>
