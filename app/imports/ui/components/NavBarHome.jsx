@@ -78,9 +78,8 @@ class NavBarHome extends React.Component {
                 [<Menu inverted pointing vertical>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/data" key='data'>Go To
                     Data</Menu.Item>
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='savings'>Go
-                    To
-                    Savings</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='adddata'>Add
+                    Data</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map
                     your
                     route</Menu.Item>

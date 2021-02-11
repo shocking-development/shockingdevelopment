@@ -7,34 +7,35 @@ function WeeklyUpdate() {
         {
             key: 'Telework',
             text: 'Telework',
-            value: 'Telework'
+            value: 'Telework',
         },
         {
             key: 'Public Transportation',
             text: 'Public Transportation',
-            value: 'Public Transportation'
+            value: 'Public Transportation',
         },
         {
             key: 'Biking',
             text: 'Biking',
-            value: 'Biking'
+            value: 'Biking',
         },
         {
             key: 'Walk',
             text: 'Walk',
-            value: 'Walk'
+            value: 'Walk',
         },
         {
             key: 'Carpool',
             text: 'Carpool',
-            value: 'Carpool'
+            value: 'Carpool',
         },
         {
             key: 'Electric Vehicle',
             text: 'Electric Vehicle',
-            value: 'Electric Vehicle'
-        }
-    ]
+            value: 'Electric Vehicle',
+        },
+    ];
+
     return (
         <div style={{ paddingTop: '5rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Table celled style={{ width: '60%', textAlign: 'center' }} column={5}>
