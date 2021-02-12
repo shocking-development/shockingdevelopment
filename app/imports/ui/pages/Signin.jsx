@@ -53,7 +53,7 @@ export default class Signin extends React.Component {
                   <Segment stacked inverted
                            style={{ background: 'transparent', borderRadius: '0.5px' }}>
                     <div className={'sign-header'}>
-                      <Header as="h2" inverted textAlign="left"
+                      <Header as="h1" inverted textAlign="left"
                               style={{ fontWeight: 'lighter', paddingBottom: '10px', paddingTop: '15px' }}>
                         Welcome Back!
                       </Header>
@@ -82,9 +82,10 @@ export default class Signin extends React.Component {
                         onChange={this.handleChange}
                     />
                     <Form.Button
-                        color='linkedin'
+                        color='teal'
                         style={{ borderRadius: '20px' }}
-                        fluid id="signin-form-submit"
+                        fluid
+                        id="signin-form-submit"
                         content="Log In"
                     />
                     <p>Don&apos;t have an account?<Link to="/signup"> Click here to sign up.</Link></p>
