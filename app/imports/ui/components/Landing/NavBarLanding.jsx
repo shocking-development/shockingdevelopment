@@ -25,7 +25,7 @@ class NavBarLanding extends React.Component {
       width: '100%',
       marginTop: '25px',
       paddingLeft: '45px',
-      heigt: 'auto',
+      height: 'auto',
       maxWidth: '155px',
       left: '6%',
     };

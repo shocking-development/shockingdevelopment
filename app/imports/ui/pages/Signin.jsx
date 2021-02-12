@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, NavLink, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
+import NavBarLogin from '../components/NavBarLogin';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -43,36 +43,33 @@ export default class Signin extends React.Component {
     }
     // Otherwise return the Login form.
     return (
-        <div className='landing-page-background'>
-          <Container id="signin-page">
+        <div id="signin-page-div" className='landing-page-background'>
+          <NavBarLogin/>
+          <Container id="signin-page" style={{ paddingTop: '13%', paddingBottom: '10%' }}>
             <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
               <Grid.Column>
-                <div style={{ width: '26%', margin: 'auto' }}>
-                  <Image
-                      as={NavLink}
-                      activeClassName=""
-                      exact to="/"
-                      src='images/HEI-LOGO.png'
-                      size='small'
-                      style={{ paddingTop: '12em' }}/>
-                </div>
 
                 <Form onSubmit={this.submit}>
-                  <Segment stacked inverted style={{ background: 'rgba(0, 73, 122, 0.57)', borderRadius: '0.5px' }}>
+                  <Segment stacked inverted
+                           style={{ background: 'transparent', borderRadius: '0.5px' }}>
                     <div className={'sign-header'}>
-                      <Header as="h2" inverted textAlign="left" style={{ paddingBottom: '10px', paddingTop: '15px' }}>
-                        SIGN IN
+                      <Header as="h2" inverted textAlign="left"
+                              style={{ fontWeight: 'lighter', paddingBottom: '10px', paddingTop: '15px' }}>
+                        Welcome Back!
                       </Header>
                     </div>
-                    <Form.Input
-                        label="Email"
-                        id="signin-form-email"
-                        icon="user"
-                        iconPosition="left"
-                        name="email"
-                        type="email"
-                        placeholder="E-mail address"
-                        onChange={this.handleChange}
+
+                    <Form.Input className={'type1'}
+
+                                label="Email"
+                                id="signin-form-email"
+                                icon="user"
+                                iconPosition="left"
+                                name="email"
+                                type="email"
+                                placeholder="E-mail address"
+                                onChange={this.handleChange}
+
                     />
                     <Form.Input
                         label="Password"
@@ -84,8 +81,13 @@ export default class Signin extends React.Component {
                         type="password"
                         onChange={this.handleChange}
                     />
-                    <Form.Button id="signin-form-submit" content="Log In"/>
-                    <Link to="/signup">Don&apos;t have an account? Click here to sign up.</Link>
+                    <Form.Button
+                        color='linkedin'
+                        style={{ borderRadius: '20px' }}
+                        fluid id="signin-form-submit"
+                        content="Log In"
+                    />
+                    <p>Don&apos;t have an account?<Link to="/signup"> Click here to sign up.</Link></p>
                   </Segment>
                 </Form>
                 {this.state.error === '' ? (
