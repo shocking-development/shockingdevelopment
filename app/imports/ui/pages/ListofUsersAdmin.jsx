@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader, Rating } from 'semantic-ui-react';
+import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
+// eslint-disable-next-line no-unused-vars
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import NavBarHome from '../components/NavBarHome';
 
