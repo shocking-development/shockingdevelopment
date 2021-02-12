@@ -82,6 +82,7 @@ class NavBarHome extends React.Component {
             {this.props.currentUser ? (
                 // eslint-disable-next-line react/jsx-key
                 [<Menu inverted pointing vertical>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Home</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/data" key='data'>Go To
                     Data</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='adddata'>Add
