@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Segment, Icon, Container } from 'semantic-ui-react';
+import { Grid, Segment, Icon, Container, Dropdown } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 /** A simple static component to render some boxes for the landing page. */
 
@@ -35,7 +36,8 @@ class LandingSection1Boxes extends React.Component {
         <div id='landing-section-1-boxes'>
           <Container id='landing-boxes-container' style={containerStyling}>
             <Grid stackable className='menu-boxes' columns='equal' id='landing-page'>
-              <Grid.Column className="column">
+              <Grid.Column className="column" as={NavLink} exact
+                           to="/notfound">
                 <Segment className="zoom" style={infoBoxColoring}>
                   <Icon style={iconStyling}
                         className="money bill alternate icon"></Icon>
@@ -46,7 +48,8 @@ class LandingSection1Boxes extends React.Component {
                 </Segment>
               </Grid.Column>
 
-              <Grid.Column className="column">
+              <Grid.Column className="column" as={NavLink} exact
+                           to="/notfound">
                 <Segment className="zoom" style={infoBoxColoring}>
                   <Icon style={iconStyling} className="line graph"></Icon>
                   <p style={infoBoxesStyling}>Data</p>
@@ -56,7 +59,8 @@ class LandingSection1Boxes extends React.Component {
                 </Segment>
               </Grid.Column>
 
-              <Grid.Column className="column">
+              <Grid.Column className="column" as={NavLink} exact
+                           to="/notfound">
                 <Segment className="zoom" style={infoBoxColoring}>
                   <Icon style={iconStyling}
                         className="check circle icon"></Icon>
@@ -67,7 +71,8 @@ class LandingSection1Boxes extends React.Component {
                 </Segment>
               </Grid.Column>
 
-              <Grid.Column className="column">
+              <Grid.Column className="column" as={NavLink} exact
+                           to="/notfound">
                 <Segment className="zoom" style={infoBoxColoring}>
                   <i style={iconStyling}
                      className="map marker alternate icon"></i>
