@@ -66,7 +66,7 @@ class NavBarHome extends React.Component {
                               fontWeight: '100',
                               zIndex: 'auto',
                               position: 'absolute',
-                              top: '0.7em',
+                              top: '25%',
                               left: '87%',
                               paddingRight: '1em',
                             }}>
