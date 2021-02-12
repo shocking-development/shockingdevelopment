@@ -11,21 +11,23 @@ class Footer extends React.Component {
       paddingBottom: '50px',
       width: 'auto',
     };
+    const footerLogo = { width: '190px', marginTop: '-25px' };
     const footercolor2 = { backgroundColor: '#052235', border: 'none', boxShadow: 'none' };
+    const footertext = { paddingLeft: '12px', marginBottom: '6px', color: 'white' };
     return (
-        <div>
+        <div style={{ backgroundColor: '#052235' }}>
           <Container textAlign="left" style={footercolor}>
             <Segment style={footercolor2}>
               <Grid columns={3} relaxed='very'>
                 <Grid.Column>
                   <p>
-                    <Image style={{ width: '190px', marginTop: '-25px' }} src="/images/HEI-WHOLE-LOGO.png"/>
+                    <Image style={footerLogo} src="/images/HEI-WHOLE-LOGO.png"/>
                   </p>
-                  <p style={{ paddingLeft: '12px', marginBottom: '6px', color: 'white' }}> Corporate Headquarters </p>
-                  <p style={{ paddingLeft: '12px', marginBottom: '6px', color: 'white' }}> 1001 Bishop Street, Suite
+                  <p style={footertext}> Corporate Headquarters </p>
+                  <p style={footertext}> 1001 Bishop Street, Suite
                     2900 </p>
-                  <p style={{ paddingLeft: '12px', marginBottom: '6px', color: 'white' }}> Honolulu, HI 96813 </p>
-                  <p style={{ paddingLeft: '12px', marginBottom: '6px', color: 'white' }}> Telephone: (808)543-5662 </p>
+                  <p style={footertext}> Honolulu, HI 96813 </p>
+                  <p style={footertext}> Telephone: (808)543-5662 </p>
                 </Grid.Column>
                 <Grid.Column>
                   <p style={{ paddingTop: '135px', marginBottom: '6px', color: 'white' }}>Mailing Address </p>

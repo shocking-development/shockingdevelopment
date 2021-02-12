@@ -2,7 +2,7 @@ import React from 'react';
 import { Statistic } from 'semantic-ui-react';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
-class LandingDataAddition extends React.Component {
+class LandingSection2 extends React.Component {
   render() {
 
     return (
@@ -26,4 +26,4 @@ class LandingDataAddition extends React.Component {
   }
 }
 
-export default LandingDataAddition;
+export default LandingSection2;

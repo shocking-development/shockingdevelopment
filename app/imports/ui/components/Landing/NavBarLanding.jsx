@@ -9,23 +9,35 @@ import { Menu, Dropdown, Image } from 'semantic-ui-react';
 class NavBarLanding extends React.Component {
   render() {
     const menuStyle = { height: '10px', paddingTop: '10px' };
-    return (
-        <div style={menuStyle}>
+    const loginButton = {
+      color: '#3CAEA3',
+      fontSize: '1.2375em',
+      letterSpacing: '2px',
+      fontWeight: 'bold',
+      zIndex: 'auto',
+      position: 'absolute',
+      top: '1.7em',
+      left: '85%',
+      paddingRight: '1em',
 
+    };
+    const logo = {
+      width: '100%',
+      marginTop: '25px',
+      paddingLeft: '45px',
+      heigt: 'auto',
+      maxWidth: '155px',
+      left: '6%',
+    };
+
+    return (
+        <div id='navbar-landing' style={menuStyle}>
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
-            <Image src='/images/HEI-LOGO.png' style={{ width: '10%', marginTop: '25px', paddingLeft: '20px' }}/>
+            <Image src='/images/HEI-LOGO.png' style={logo}/>
           </Menu.Item>
           <Menu.Item>
             {this.props.currentUser === '' ? (
-                <Dropdown id="login-dropdown" text="LOGIN" pointing="top right" style={{
-                  paddingLeft: '92%',
-                  color: '#3CAEA3',
-                  fontSize: '15px',
-                  letterSpacing: '2px',
-                  fontWeight: 'bold',
-                  zIndex: 'auto',
-                  top: '-2.3em',
-                }}>
+                <Dropdown id="login-dropdown" text="LOGIN" pointing="top right" style={loginButton}>
                   <Dropdown.Menu>
                     <Dropdown.Item id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact
                                    to="/signin"/>
@@ -35,15 +47,7 @@ class NavBarLanding extends React.Component {
                 </Dropdown>
             ) : (
                 <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}
-                          style={{
-                            paddingLeft: '92%',
-                            color: '#3CAEA3',
-                            fontSize: '15px',
-                            letterSpacing: '2px',
-                            fontWeight: 'bold',
-                            zIndex: 'auto',
-                            top: '-2.3em',
-                          }}>
+                          style={loginButton}>
                   <Dropdown.Menu>
                     <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact
                                    to="/signout"/>
