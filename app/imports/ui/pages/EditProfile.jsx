@@ -1,6 +1,6 @@
 import React from 'react';
 import EditProfileForm from '../components/EditProfileForm';
-import NavBarHome from '../components/NavBarHome';
+import NavBarHome from '../components/home/NavBarHome';
 
 function EditProfile() {
     return (
