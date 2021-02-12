@@ -28,7 +28,7 @@ class NavBarHome extends React.Component {
       flexDirection: 'column',
       flexGrow: '1',
       background: '#1f2326',
-      height: '73.45%',
+      height: '100%',
     };
     return (
         <div style={menuStyle}>
@@ -40,13 +40,15 @@ class NavBarHome extends React.Component {
             <Menu.Item>
               {this.props.currentUser === '' ? (
                   <Dropdown id="login-dropdown" text="LOGIN" pointing="top right" style={{
-                    paddingLeft: '92%',
                     color: '#3CAEA3',
-                    fontSize: '15px',
+                    fontSize: '1.2375em',
                     letterSpacing: '2px',
-                    fontWeight: 'bold',
+                    fontWeight: '100',
                     zIndex: 'auto',
-                    top: '-2.3em',
+                    position: 'absolute',
+                    top: '1.7em',
+                    left: '85%',
+                    paddingRight: '1em',
                   }}>
                     <Dropdown.Menu>
                       <Dropdown.Item id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact
@@ -59,10 +61,14 @@ class NavBarHome extends React.Component {
                   <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}
                             style={{
                               color: '#3CAEA3',
-                              fontSize: '15px',
+                              fontSize: '1.2em',
                               letterSpacing: '2px',
-                              fontWeight: 'bold',
+                              fontWeight: '100',
                               zIndex: 'auto',
+                              position: 'absolute',
+                              top: '0.7em',
+                              left: '87%',
+                              paddingRight: '1em',
                             }}>
                     <Dropdown.Menu>
                       <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact

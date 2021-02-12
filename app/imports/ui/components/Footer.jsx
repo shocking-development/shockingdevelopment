@@ -15,7 +15,7 @@ class Footer extends React.Component {
     const footercolor2 = { backgroundColor: '#052235', border: 'none', boxShadow: 'none' };
     const footertext = { paddingLeft: '12px', marginBottom: '6px', color: 'white' };
     return (
-        <div style={{ backgroundColor: '#052235' }}>
+        <div id="footer-container" style={{ backgroundColor: '#052235' }}>
           <Container textAlign="left" style={footercolor}>
             <Segment style={footercolor2}>
               <Grid columns={3} relaxed='very'>
