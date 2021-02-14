@@ -9,13 +9,17 @@ import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListofUsersAdmin from '../pages/ListofUsersAdmin';
-import EditProfile from '../pages/EditProfile';
+import EditProfile from '../pages/profile/EditProfile';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Datapage from '../pages/Datapage';
 import AddData from '../pages/AddData';
+import AddProfile from '../pages/profile/AddProfile';
+import ListProfile from '../pages/profile/ListProfile';
+import AddStuff from '../pages/AddStuff';
+import EditStuff from '../pages/EditStuff';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -31,8 +35,9 @@ class App extends React.Component {
               <Route path="/landing" component={Landing}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/add" component={AddData}/>
-              <ProtectedRoute path="/editprofile" component={EditProfile}/>
-              <ProtectedRoute path="/list" component={ListStuff}/>
+              <ProtectedRoute path="/addprofile" component={AddStuff}/>
+              <ProtectedRoute path="/editprofile" component={EditStuff}/>
+              <ProtectedRoute path="/list" component={ListProfile}/>
               <ProtectedRoute path="/data" component={Datapage}/>
               <AdminProtectedRoute path="/admin" component={ListofUsersAdmin}/>
               <Route component={NotFound}/>

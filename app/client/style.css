@@ -71,13 +71,5 @@
   margin-top: -10px;
 }
 
-.ui.input > input {
-  border-radius: 20px !important;
-  background-color: #91a9ff33 !important;
-}
 
-.ui.input > input:focus  {
-  color: rgba(238, 238, 238, .9) !important;
-  transition: all .1s ease-in;
-}
 
