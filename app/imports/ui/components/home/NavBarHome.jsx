@@ -90,6 +90,7 @@ class NavBarHome extends React.Component {
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map
                     your
                     route</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/gotosavings" key='route'>See Savings</Menu.Item>
                 </Menu>,
                 ]
             ) : ''}
