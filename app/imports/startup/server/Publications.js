@@ -23,16 +23,16 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 });
 
 // Publish the User info
-Meteor.publish('UserInfo', function publish(){
+Meteor.publish('UserInfo', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return UserInfo.find({owner: username});
+    return UserInfo.find({ owner: username });
   }
   return this.ready();
 });
 
 // Admin Level publication for the user info
-Meteor.publish(UserInfo.adminPublicationName, function() {
+Meteor.publish(UserInfo.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return UserInfo.collection.find();
   }
