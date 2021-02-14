@@ -15,5 +15,3 @@ if (Stuffs.collection.find().count() === 0) {
     Meteor.settings.defaultData.map(data => addData(data));
   }
 }
-
-
