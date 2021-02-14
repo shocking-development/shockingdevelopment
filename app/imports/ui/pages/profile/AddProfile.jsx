@@ -3,9 +3,9 @@ import { Grid, Segment, Header, Container } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SimpleSchema from 'simpl-schema';
-import { userInfos } from '../../../api/userInfo/userInfo';
+import { userInfoDefineMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/home/NavBarHome';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -19,8 +19,6 @@ const formSchema = new SimpleSchema({
   transportation: String,
 });
 
-const bridge = new SimpleSchema2Bridge(formSchema);
-
 /** Renders the Page for adding a document. */
 class AddProfile extends React.Component {
 
@@ -28,13 +26,15 @@ class AddProfile extends React.Component {
   submit(data, formRef) {
     const { firstName, lastName, userName, email, password, zipcode, transportation } = data;
     const owner = Meteor.user().username;
-    userInfos.collection.insert({ firstName, lastName, userName, email, password, zipcode, transportation, owner },
+    userInfoDefineMethod.call({ firstName, lastName, userName, email, password, zipcode, transportation, owner },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
+            // console.error(error.message);
           } else {
             swal('Success', 'Item added successfully', 'success');
             formRef.reset();
+            // console.log('Success');
           }
         });
   }
@@ -49,9 +49,7 @@ class AddProfile extends React.Component {
             <Grid container>
               <Grid.Column>
                 <Header as="h2" textAlign="center">Add Stuff</Header>
-                <AutoForm ref={ref => {
-                  fRef = ref;
-                }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+                <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
                   <Segment>
                     <TextField name='firstName'/>
                     <TextField name='lastName'/>

@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { userInfos } from '../../../api/userInfo/userInfo';
+import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import ProfileItem from '../../components/profile/ProfileItem';
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListProfile extends React.Component {
@@ -49,9 +49,9 @@ ListProfile.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(userInfos.userPublicationName);
+  const subscription = Meteor.subscribe(UserInfos.userPublicationName);
   return {
-    profiles: userInfos.collection.find({}).fetch(),
+    profiles: UserInfos.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(ListProfile);
