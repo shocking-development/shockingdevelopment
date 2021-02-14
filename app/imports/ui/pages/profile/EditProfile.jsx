@@ -50,6 +50,7 @@ class EditProfile extends React.Component {
                 <Header as="h2" textAlign="center">Edit Profile</Header>
                 <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
                   <Segment>
+                    <HiddenField name='owner'/>
                     <TextField name='firstName'/>
                     <TextField name='lastName'/>
                     <TextField name='userName'/>
@@ -59,9 +60,8 @@ class EditProfile extends React.Component {
 
                     <NumField name='zipcode' decimal={false}/>
 
-                    <SubmitField value='Submit'/>
+                    <SubmitField value='Update'/>
                     <ErrorsField/>
-                    <HiddenField name='owner'/>
                   </Segment>
                 </AutoForm>
               </Grid.Column>
