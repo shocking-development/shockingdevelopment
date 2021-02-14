@@ -60,7 +60,7 @@ class AddProfile extends React.Component {
                     <TextField name='password'/>
                     <TextField name='transportation'/>
                     <NumField name='zipcode' decimal={false}/>
-                    <SubmitField value='Submit'/>
+                    <SubmitField value='Update'/>
                     <ErrorsField/>
                   </Segment>
                 </AutoForm>
