@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { UserInfo } from '../../api/userInfo/userInfo';
 // eslint-disable-next-line no-unused-vars
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import NavBarHome from '../components/home/NavBarHome';
@@ -74,16 +74,16 @@ class ListofUsersAdmin extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 ListofUsersAdmin.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+  userinfo: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.adminPublicationName);
+  const subscription = Meteor.subscribe(UserInfo.adminPublicationName);
   return {
-    stuffs: Stuffs.collection.find({}).fetch(),
+    userinfo: UserInfo.collection.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(ListofUsersAdmin);
