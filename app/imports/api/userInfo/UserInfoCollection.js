@@ -68,16 +68,16 @@ class UserInfoCollection extends BaseCollection {
       updateData.firstName = firstName;
     }
     if (lastName) {
-      updateData.firstName = lastName;
+      updateData.lastName = lastName;
     }
     if (userName) {
-      updateData.firstName = userName;
+      updateData.userName = userName;
     }
     if (email) {
-      updateData.firstName = email;
+      updateData.email = email;
     }
     if (password) {
-      updateData.firstName = password;
+      updateData.password = password;
     }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(zipcode)) {

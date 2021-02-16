@@ -3,8 +3,8 @@ import { Grid, Segment, Header, Container } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
-import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SimpleSchema from 'simpl-schema';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { userInfoDefineMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/home/NavBarHome';
 
@@ -30,7 +30,7 @@ class AddProfile extends React.Component {
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
-            // console.error(error.message);
+             console.error(error.message);
           } else {
             swal('Success', 'Item added successfully', 'success');
             formRef.reset();
@@ -42,6 +42,7 @@ class AddProfile extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
+    const bridge = new SimpleSchema2Bridge(formSchema);
     return (
         <div className='Home-page-background'>
           <NavBarHome/>
@@ -49,7 +50,7 @@ class AddProfile extends React.Component {
             <Grid container>
               <Grid.Column>
                 <Header as="h2" textAlign="center">Add Stuff</Header>
-                <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
+                <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
                   <Segment>
                     <TextField name='firstName'/>
                     <TextField name='lastName'/>
