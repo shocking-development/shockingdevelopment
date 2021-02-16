@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Image, Feed, Button } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter, Link, NavLink } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { UserInfo } from '../../api/userInfo/userInfo';
 
 class UserInfoAdmin extends React.Component {
@@ -31,7 +31,7 @@ class UserInfoAdmin extends React.Component {
 }
 /** Require a document to be passed to this component* */
 UserInfoAdmin.propTypes = {
-  userinfo: PropTypes.object.isRequired
+  userinfo: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
