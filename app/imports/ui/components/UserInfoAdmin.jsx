@@ -20,7 +20,7 @@ class UserInfoAdmin extends React.Component {
           </Card.Meta>
         </Card.Content>
         <Card.Content extra>
-          <Button as={NavLink} exact to='/list' floated='right'
+          <Button as={NavLink} exact to='/admin' floated='right'
                   onClick={() => this.removeUser(this.props.userinfo._id)} color='red'>
             Delete
           </Button>
