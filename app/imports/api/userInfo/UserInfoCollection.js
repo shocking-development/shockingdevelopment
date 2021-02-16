@@ -6,8 +6,6 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 
 /** Encapsulates state and variable values for this collection. */
-
-export const stuffConditions = ['excellent', 'good', 'fair', 'poor'];
 export const userInfoPublications = {
   userInfo: 'UserInfor',
   userInfoAdmin: 'UserInfoAdmin',
@@ -29,10 +27,14 @@ class UserInfoCollection extends BaseCollection {
 
   /**
    * Defines a new Stuff item.
-   * @param name the name of the item.
-   * @param quantity how many.
+   * @param firstName the first name of the person.
+   * @param lastName the last name of the person.
+   * @param userName the user name of the person.
    * @param owner the owner of the item.
-   * @param condition the condition of the item.
+   * @param email the email of the person.
+   * @param password the password of the person.
+   * @param zipcode the zipcode of the person.
+   * @param transportation, the transportation, of the person.
    * @return {String} the docID of the new document.
    */
   define({ firstName, lastName, userName, owner, email, password, zipcode, transportation }) {
@@ -52,9 +54,13 @@ class UserInfoCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
-   * @param name the new name (optional).
-   * @param quantity the new quantity (optional).
-   * @param condition the new condition (optional).
+   * @param firstName the first name of the person (optional).
+   * @param lastName the last name of the person (optional).
+   * @param userName the user name of the person (optional).
+   * @param email the email of the person (optional).
+   * @param password the password of the person (optional).
+   * @param zipcode the zipcode of the person (optional).
+   * @param transportation, the transportation, of the person.
    */
   update(docID, { firstName, lastName, userName, email, password, zipcode, transportation }) {
     const updateData = {};
