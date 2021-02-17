@@ -1,14 +1,15 @@
 import React from 'react';
-import { Input, Form, Segment } from 'semantic-ui-react';
+import { Form, Segment } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../components/home/NavBarHome';
 
-/** A simple static component to render the home page when users are logged in. */
+/** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
 class GHGEmissionsCalculator extends React.Component {
 
+  /** Initialize component state with properties for input */
   constructor(props) {
     super(props);
     this.state = {
@@ -16,28 +17,36 @@ class GHGEmissionsCalculator extends React.Component {
     };
   }
 
+  /** This function calculates the CO2 created by user inputted gallons. */
   calculateCO2 = function () {
     const mutltifactor = 10 ** -3;
     return (this.state.input * (8.887 * mutltifactor)).toFixed(2);
   };
 
+  /** This function calculates the GHG emissions equivalency. */
   calculateGHG = function () {
     const mutltifactor = 0.00043;
     return (4.63 * (this.state.input * mutltifactor)).toFixed(3);
   };
 
+  /** Handle submission by outputing the values to the console. */
   handleFormSubmit = () => {
+    // eslint-disable-next-line no-console
     console.log('input:', this.state.input);
+    // eslint-disable-next-line no-console
     console.log('input CO2:', this.calculateCO2());
+    // eslint-disable-next-line no-console
     console.log('input GHG:', this.calculateGHG());
   }
 
+  /** Update the form controls each time the user interacts with them. */
   handleInputChange = (e) => {
     this.setState({
       input: e.target.value,
     });
   }
 
+  /** Render the calculation page. */
   render() {
     const pageStyle = {
       marginLeft: '20em',
