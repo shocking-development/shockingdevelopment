@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Stuffs } from '../../api/stuff/Stuff';
 // eslint-disable-next-line no-unused-vars
 import StuffItemAdmin from '../components/StuffItemAdmin';
-import NavBarHome from '../components/MainNavBar/NavBarHome';
+import NavBarHome from '../components/navbar/NavBarHome';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListofUsersAdmin extends React.Component {

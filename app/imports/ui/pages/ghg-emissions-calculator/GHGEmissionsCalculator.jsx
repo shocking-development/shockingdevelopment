@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import NavBarHome from '../../components/MainNavBar/NavBarHome';
+import NavBarHome from '../../components/navbar/NavBarHome';
 
 /** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
 class GHGEmissionsCalculator extends React.Component {
