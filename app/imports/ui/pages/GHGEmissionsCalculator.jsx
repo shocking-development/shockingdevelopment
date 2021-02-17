@@ -17,7 +17,8 @@ class GHGEmissionsCalculator extends React.Component {
   }
 
   calculateGHG = function () {
-    return (8887 / this.state.input).toFixed(2);
+    const mutltifactor = 10 ** -3;
+    return (this.state.input * (8.887 * mutltifactor)).toFixed(2);
   };
 
   handleFormSubmit = () => {
