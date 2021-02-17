@@ -3,9 +3,10 @@ import { Grid, Loader, Header, Segment, Container } from 'semantic-ui-react';
 import swal from 'sweetalert';
 // eslint-disable-next-line no-unused-vars
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
-import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import SimpleSchema from 'simpl-schema';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import { userInfoUpdateMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/home/NavBarHome';
@@ -38,6 +39,7 @@ class EditProfile extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
+    const bridge = new SimpleSchema2Bridge(UserInfos.getSchema());
     return (
 
         <div className='Home-page-background'>
@@ -46,7 +48,7 @@ class EditProfile extends React.Component {
             <Grid container>
               <Grid.Column>
                 <Header as="h2" textAlign="center">Edit Profile</Header>
-                <AutoForm schema={UserInfos.getSchema()} onSubmit={data => this.submit(data)} model={this.props.doc}>
+                <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
                   <Segment>
                     <TextField name='firstName'/>
                     <TextField name='lastName'/>
@@ -82,7 +84,7 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(UserInfos.userPublicationName);
+  const subscription = UserInfos.subscribeUserInfo();
   return {
     doc: UserInfos.findOne(documentId),
     ready: subscription.ready(),

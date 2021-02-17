@@ -7,7 +7,6 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
 import ListofUsersAdmin from '../pages/ListofUsersAdmin';
 import EditProfile from '../pages/profile/EditProfile';
 import NotFound from '../pages/NotFound';
@@ -18,8 +17,6 @@ import Datapage from '../pages/Datapage';
 import AddData from '../pages/AddData';
 import AddProfile from '../pages/profile/AddProfile';
 import ListProfile from '../pages/profile/ListProfile';
-import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -36,7 +33,7 @@ class App extends React.Component {
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/add" component={AddData}/>
               <ProtectedRoute path="/addprofile" component={AddProfile}/>
-              <ProtectedRoute path="/editprofile" component={EditProfile}/>
+              <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
               <ProtectedRoute path="/list" component={ListProfile}/>
               <ProtectedRoute path="/data" component={Datapage}/>
               <AdminProtectedRoute path="/admin" component={ListofUsersAdmin}/>

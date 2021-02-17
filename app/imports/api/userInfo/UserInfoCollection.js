@@ -7,7 +7,7 @@ import BaseCollection from '../base/BaseCollection';
 
 /** Encapsulates state and variable values for this collection. */
 export const userInfoPublications = {
-  userInfo: 'UserInfor',
+  userInfo: 'UserInfo',
   userInfoAdmin: 'UserInfoAdmin',
 };
 

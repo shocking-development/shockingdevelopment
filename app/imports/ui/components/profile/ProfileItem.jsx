@@ -16,7 +16,7 @@ class ProfileItem extends React.Component {
           <Table.Cell>{this.props.profile.transportation}</Table.Cell>
           <Table.Cell>{this.props.profile.zipcode}</Table.Cell>
           <Table.Cell>
-            <Link to={`/editprofile/${this.props.profile._id}`}>Edit</Link>
+            <Link to={`/edit/${this.props.profile._id}`}>Edit</Link>
           </Table.Cell>
         </Table.Row>
     );
