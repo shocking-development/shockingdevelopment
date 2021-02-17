@@ -17,7 +17,7 @@ import Datapage from '../pages/Datapage';
 import AddData from '../pages/AddData';
 import AddProfile from '../pages/profile/AddProfile';
 import ListProfile from '../pages/profile/ListProfile';
-import GHGEmissionsCalculator from '../pages/GHGEmissionsCalculator';
+import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
