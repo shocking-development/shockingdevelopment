@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import { userInfoUpdateMethod } from '../../../api/userInfo/UserInfoCollection.methods';
-import NavBarHome from '../../components/navbar/NavBarHome';
+import NavBarHome from '../../components/main-navbar/NavBarHome';
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
