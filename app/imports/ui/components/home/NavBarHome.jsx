@@ -89,8 +89,6 @@ class NavBarHome extends React.Component {
                     Data</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='addprof'>Add
                     Profile</Menu.Item>
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/editprofile" key='editprof'>Edit
-                    Profile</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='listprof'>List
                     Profile</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map
