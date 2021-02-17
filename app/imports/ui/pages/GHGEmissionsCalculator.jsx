@@ -16,13 +16,20 @@ class GHGEmissionsCalculator extends React.Component {
     };
   }
 
-  calculateGHG = function () {
+  calculateCO2 = function () {
     const mutltifactor = 10 ** -3;
     return (this.state.input * (8.887 * mutltifactor)).toFixed(2);
   };
 
+  calculateGHG = function () {
+    const mutltifactor = 0.00043;
+    return (4.63 * (this.state.input * mutltifactor)).toFixed(3);
+  };
+
   handleFormSubmit = () => {
     console.log('input:', this.state.input);
+    console.log('input CO2:', this.calculateCO2());
+    console.log('input GHG:', this.calculateGHG());
   }
 
   handleInputChange = (e) => {
@@ -46,7 +53,12 @@ class GHGEmissionsCalculator extends React.Component {
           <NavBarHome/>
           <div style={pageStyle}>
             <Form onSubmit={this.handleFormSubmit}>
-              <Form.Input placeholder='Gallons of gas...' value={this.state.input} onChange={this.handleInputChange}/>
+              <Form.Input
+                  placeholder='Enter gallons...'
+                  value={this.state.input}
+                  onChange={this.handleInputChange}
+                  label={{ basic: true, content: 'gal' }}
+              />
               <Form.Button
                   color='teal'
                   style={{ borderRadius: '20px' }}
@@ -55,7 +67,12 @@ class GHGEmissionsCalculator extends React.Component {
                   content="calculate"
               />
             </Form>
-            <Segment><p> {this.calculateGHG()} tons of GHG emissions generated </p></Segment>
+            <Segment>
+              <p> {this.calculateCO2()} Metric tons of CO2 emissions is generated from {this.state.input} gallon(s) of
+                gas </p>
+              <p> This is equivalent to the GHG emissions from {this.calculateGHG()} passenger vehicles driven for one
+                year.</p>
+            </Segment>
 
           </div>
         </div>
