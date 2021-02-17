@@ -45,6 +45,7 @@ class NavBarMain extends React.Component {
     return (
         <div style={menuStyle}>
           <div style={navbarStyle}>
+
             <Menu.Item as={NavLink} activeClassName="" exact to="/home">
               <Image src='/images/HEI-LOGO.png'
                      style={{ width: '8%', marginTop: '25px', paddingLeft: '20px', marginBottom: '2%' }}/>
@@ -69,7 +70,9 @@ class NavBarMain extends React.Component {
                   </Dropdown>
               )}
             </Menu.Item>
+
           </div>
+
           <div style={navbarVerticle}>
             {this.props.currentUser ? (
                 // eslint-disable-next-line react/jsx-key
@@ -80,15 +83,13 @@ class NavBarMain extends React.Component {
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='key3'>Add Data</Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key4'>Add
-                    Profile</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key4'>Add Profile</Menu.Item>
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='key5'>List Profile</Menu.Item>
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key6'>ghg cal</Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your
-                    route</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your route</Menu.Item>
                 </Menu>,
                 ]
             ) : ''}
@@ -98,9 +99,6 @@ class NavBarMain extends React.Component {
                            style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
             ) : ''}
           </div>
-          <Menu.Item position="right">
-
-          </Menu.Item>
 
         </div>
     );
