@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from 'semantic-ui-react';
+import { Input, Form, Segment } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -9,24 +9,25 @@ import NavBarHome from '../components/home/NavBarHome';
 /** A simple static component to render the home page when users are logged in. */
 class GHGEmissionsCalculator extends React.Component {
 
-
-
-  /** Initialize component state with properties for login and redirection. */
   constructor(props) {
     super(props);
-    this.state = { input: '' };
+    this.state = {
+      input: '',
+    };
   }
 
-  /** Update the form controls each time the user interacts with them. */
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value });
-    console.log(e.target.value);
+  calculateGHG = function () {
+    return (8887 / this.state.input).toFixed(2);
+  };
+
+  handleFormSubmit = () => {
+    console.log('input:', this.state.input);
   }
 
-  /** Handle Signin submission using Meteor's account mechanism. */
-  submit() {
-    const input = this.state;
-    console.log("this works");
+  handleInputChange = (e) => {
+    this.setState({
+      input: e.target.value,
+    });
   }
 
   render() {
@@ -43,19 +44,18 @@ class GHGEmissionsCalculator extends React.Component {
         <div className='Home-page-background'>
           <NavBarHome/>
           <div style={pageStyle}>
-            <Input
-                label={{ basic: true, content: 'gal' }}
-                labelPosition='right'
-                placeholder='Enter gallons of gasoline...'
-                name="GHG"
-                onChange={this.handleChange.bind(this)}
-            />
-            <Button
-                attached='bottom'
-                content='Click'
-                onClick={this.submit}
-                onKeyPress={this.submit}
-            />
+            <Form onSubmit={this.handleFormSubmit}>
+              <Form.Input placeholder='Gallons of gas...' value={this.state.input} onChange={this.handleInputChange}/>
+              <Form.Button
+                  color='teal'
+                  style={{ borderRadius: '20px' }}
+                  fluid
+                  id="calculator-submit"
+                  content="calculate"
+              />
+            </Form>
+            <Segment><p> {this.calculateGHG()} tons of GHG emissions generated </p></Segment>
+
           </div>
         </div>
     );
