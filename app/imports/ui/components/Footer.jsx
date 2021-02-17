@@ -1,18 +1,9 @@
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { Container, Grid, Image, Segment, Form, Button } from 'semantic-ui-react';
+import { Grid, Image, Segment, Form, Button } from 'semantic-ui-react';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class Footer extends React.Component {
   render() {
-    // eslint-disable-next-line no-unused-vars
-    const footercolor = {
-      backgroundColor: '#052235',
-      paddingLeft: '100px',
-      paddingTop: '50px',
-      paddingBottom: '50px',
-      width: 'auto',
-    };
     const footerLogo = { width: '190px', marginTop: '-25px' };
     const footercolor2 = {
       backgroundColor: '#052235',
@@ -24,6 +15,16 @@ class Footer extends React.Component {
       paddingRight: '10%',
     };
     const footertext = { paddingLeft: '12px', marginBottom: '6px', color: 'white' };
+    const mailingAdressstyling = { paddingTop: '135px', marginBottom: '6px', color: 'white' };
+    const footercolumn2text = { marginBottom: '6px', color: 'white' };
+    const footercolumn3text = {
+      color: 'white',
+      fontSize: '25px',
+      marginBottom: '2px',
+      fontWeight: 'lighter',
+      letterSpacing: '1px',
+    };
+
     return (
         <div id="footer-container" style={{ backgroundColor: '#052235' }}>
 
@@ -40,26 +41,14 @@ class Footer extends React.Component {
                 <p style={footertext}> Telephone: (808)543-5662 </p>
               </Grid.Column>
               <Grid.Column>
-                <p style={{ paddingTop: '135px', marginBottom: '6px', color: 'white' }}>Mailing Address </p>
-                <p style={{ marginBottom: '6px', color: 'white' }}>P.O. Box 730</p>
-                <p style={{ marginBottom: '6px', color: 'white' }}>Honolulu, HI 96808-0730 </p>
-                <p style={{ marginBottom: '6px', color: 'white' }}>Email: info@hei.com </p>
+                <p style={mailingAdressstyling}>Mailing Address </p>
+                <p style={footercolumn2text}>P.O. Box 730</p>
+                <p style={footercolumn2text}>Honolulu, HI 96808-0730 </p>
+                <p style={footercolumn2text}>Email: info@hei.com </p>
               </Grid.Column>
               <Grid.Column>
-                <p style={{
-                  color: 'white',
-                  fontSize: '25px',
-                  marginBottom: '2px',
-                  fontWeight: 'lighter',
-                  letterSpacing: '1px',
-                }}>SIGN UP FOR</p>
-                <p style={{
-                  color: 'white',
-                  fontSize: '25px',
-                  marginBottom: '18px',
-                  fontWeight: 'bolder',
-                  letterSpacig: '1px',
-                }}>EMAIL ALERTS</p>
+                <p style={footercolumn3text}>SIGN UP FOR</p>
+                <p style={footercolumn3text}>EMAIL ALERTS</p>
                 <Form success>
                   <Form.Input iconPosition='left' icon='mail' placeholder='Enter Your Email Address'
                               style={{ width: '85%' }}/>

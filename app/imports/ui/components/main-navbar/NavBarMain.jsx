@@ -6,7 +6,10 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 
-/** The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ... */
+/**
+ * The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ...
+ *  * @memberOf ui/components/main-navbar
+ */
 class NavBarMain extends React.Component {
   render() {
     const menuStyle = { height: '10px', paddingTop: '10px' };
@@ -83,13 +86,15 @@ class NavBarMain extends React.Component {
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='key3'>Add Data</Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key4'>Add Profile</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key4'>Add
+                    Profile</Menu.Item>
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='key5'>List Profile</Menu.Item>
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key6'>ghg cal</Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your route</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your
+                    route</Menu.Item>
                 </Menu>,
                 ]
             ) : ''}

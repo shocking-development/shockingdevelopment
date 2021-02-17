@@ -5,7 +5,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
 
-/** The NavBar appears at the top of every page. Rendered by the App Layout component. */
+/**
+ * The NavBar appears at the top of the Landing page. Rendered by the Landing page.
+ * @memberOf ui/components/landing
+ */
 class NavBarLanding extends React.Component {
   render() {
     const menuStyle = { height: '10px', paddingTop: '10px' };
@@ -32,9 +35,11 @@ class NavBarLanding extends React.Component {
 
     return (
         <div id='navbar-landing' style={menuStyle}>
+
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
             <Image src='/images/HEI-LOGO.png' style={logo}/>
           </Menu.Item>
+
           <Menu.Item>
             {this.props.currentUser === '' ? (
                 <Dropdown id="login-dropdown" text="LOGIN" pointing="top right" style={loginButton}>
