@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBarHome from '../components/main-navbar/NavBarHome';
+import NavBarHome from '../components/main-navbar/NavBarMain';
 import StaticData from '../components/StaticData';
 import WeeklyUpdate from '../components/WeeklyUpdate';
 

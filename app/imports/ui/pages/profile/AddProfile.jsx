@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { userInfoDefineMethod } from '../../../api/userInfo/UserInfoCollection.methods';
-import NavBarHome from '../../components/main-navbar/NavBarHome';
+import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
