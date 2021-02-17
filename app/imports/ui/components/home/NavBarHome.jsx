@@ -91,6 +91,7 @@ class NavBarHome extends React.Component {
                     Profile</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='listprof'>List
                     Profile</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='ghgCal'>ghg cal</Menu.Item>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map
                     your
                     route</Menu.Item>

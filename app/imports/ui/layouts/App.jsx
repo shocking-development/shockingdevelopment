@@ -17,6 +17,7 @@ import Datapage from '../pages/Datapage';
 import AddData from '../pages/AddData';
 import AddProfile from '../pages/profile/AddProfile';
 import ListProfile from '../pages/profile/ListProfile';
+import GHGEmissionsCalculator from '../pages/GHGEmissionsCalculator';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -36,6 +37,7 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
               <ProtectedRoute path="/list" component={ListProfile}/>
               <ProtectedRoute path="/data" component={Datapage}/>
+              <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
               <AdminProtectedRoute path="/admin" component={ListofUsersAdmin}/>
               <Route component={NotFound}/>
             </Switch>

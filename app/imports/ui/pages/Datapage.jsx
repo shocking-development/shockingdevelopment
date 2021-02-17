@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import NavBarHome from '../components/home/NavBarHome';
 
 /** A simple static component to render the home page when users are logged in. */
-class Home extends React.Component {
+class Datapage extends React.Component {
 
   render() {
     const pageStyle = { marginLeft: '20em', paddingTop: '8em', paddingBottom: '135px', height: '47.9em', backgroundSize: 'cover', marginTop: '-10px', marginRight: '6em' };
@@ -27,14 +27,14 @@ class Home extends React.Component {
 }
 
 /** Declare the types of all properties. */
-Home.propTypes = {
+Datapage.propTypes = {
   currentUser: PropTypes.string,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-const HomeContainer = withTracker(() => ({
+const DatapageContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
-}))(Home);
+}))(Datapage);
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
-export default withRouter(HomeContainer);
+export default withRouter(DatapageContainer);
