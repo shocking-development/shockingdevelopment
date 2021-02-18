@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Image } from 'semantic-ui-react';
 import NavBarHome from '../components/main-navbar/NavBarMain';
 import StaticData from '../components/StaticData';
-import WeeklyUpdate from '../components/WeeklyUpdate';
+import UpdateData from '../components/UpdateData';
 
 function AddData() {
 
@@ -15,7 +15,7 @@ function AddData() {
               paddingBottom: '50px',
             }}/>
           <StaticData/>
-          <WeeklyUpdate/>
+          <UpdateData/>
         </div>
       </div>
   );

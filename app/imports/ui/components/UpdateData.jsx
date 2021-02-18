@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dropdown, Card, Button } from 'semantic-ui-react';
 
-function WeeklyUpdate() {
+function UpdateData() {
 
     const currentDate = new Date();
     let cMonth = currentDate.getMonth() + 1;
@@ -82,4 +82,4 @@ function WeeklyUpdate() {
     );
 }
 
-export default WeeklyUpdate;
+export default UpdateData;
