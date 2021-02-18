@@ -4,7 +4,7 @@ import { Grid, Button } from 'semantic-ui-react';
 function StaticData() {
 
     const dataInput = { width: '4rem', height: '3rem', borderRadius: '5px', borderWidth: '0', background: '#C4C4C4' };
-    const centerText = { textAlign: 'center' };
+    const centerText = { textAlign: 'center', color: 'white' };
     const rowPadding = { paddingTop: '0' };
 
     return (
