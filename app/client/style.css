@@ -71,5 +71,10 @@
   margin-top: -10px;
 }
 
+.signinInput input {
+  background: #2b4c7782 !important;
+  border-radius: 20px !important;
+  color: #adaeb1!important;
+}
 
 

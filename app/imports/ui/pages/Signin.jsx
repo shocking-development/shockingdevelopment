@@ -59,7 +59,7 @@ export default class Signin extends React.Component {
                       </Header>
                     </div>
 
-                    <Form.Input className={'type1'}
+                    <Form.Input className={'signinInput'}
 
                                 label="Email"
                                 id="signin-form-email"
@@ -71,7 +71,7 @@ export default class Signin extends React.Component {
                                 onChange={this.handleChange}
 
                     />
-                    <Form.Input
+                    <Form.Input className={'signinInput'}
                         label="Password"
                         id="signin-form-password"
                         icon="lock"
