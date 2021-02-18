@@ -54,9 +54,7 @@ function WeeklyUpdate() {
     const changeDate = (e) => {
         setDateState({
             date: e.target.value,
-            transportation: null,
         });
-        console.log(dateState.date);
     };
 
     const changeTransportation = (e) => {
