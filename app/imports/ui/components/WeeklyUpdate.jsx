@@ -1,7 +1,14 @@
-import React from 'react';
-import { Table, Dropdown } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Dropdown, Card, Button } from 'semantic-ui-react';
 
 function WeeklyUpdate() {
+
+    const currentDate = new Date();
+    let cMonth = currentDate.getMonth() + 1;
+    if (cMonth.toString().length === 1) {
+        cMonth = `0${cMonth}`;
+    }
+    const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${currentDate.getDate().toString()}`;
 
     const transportationOptions = [
         {
@@ -36,29 +43,43 @@ function WeeklyUpdate() {
         },
     ];
 
+    const [dateState, setDateState] = useState({
+        date: fullDate,
+    });
+
+    const [transportationState, setTransportationState] = useState({
+        transportation: null,
+    });
+
+    const changeDate = (e) => {
+        setDateState({
+            date: e.target.value,
+            transportation: null,
+        });
+        console.log(dateState.date);
+    };
+
+    const changeTransportation = (e) => {
+        setTransportationState({
+            transportation: e.target.value,
+        });
+    };
+
     return (
         <div style={{ paddingTop: '5rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Table celled style={{ width: '60%', textAlign: 'center' }} column={5}>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell width={3}>Monday</Table.HeaderCell>
-                        <Table.HeaderCell width={3}>Tuesday</Table.HeaderCell>
-                        <Table.HeaderCell width={3}>Wednesday</Table.HeaderCell>
-                        <Table.HeaderCell width={3}>Thursday</Table.HeaderCell>
-                        <Table.HeaderCell width={3}>Friday</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
-
-                <Table.Body>
-                    <Table.Row>
-                        <Table.Cell><Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} /></Table.Cell>
-                        <Table.Cell><Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} /></Table.Cell>
-                        <Table.Cell><Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} /></Table.Cell>
-                        <Table.Cell><Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} /></Table.Cell>
-                        <Table.Cell><Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} /></Table.Cell>
-                    </Table.Row>
-                </Table.Body>
-            </Table>
+            <Card style={{ padding: '1rem' }}>
+                <Card.Content>
+                    <Card.Header>Add</Card.Header>
+                </Card.Content>
+                <Card.Content>
+                    <input type="date" value={dateState.date} onChange={changeDate}/>
+                    <br/>
+                    <br/>
+                    <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} value={transportationState.transportation} onChange={changeTransportation}/>
+                    <br/>
+                    <Button basic color='black'>Add</Button>
+                </Card.Content>
+            </Card>
         </div>
     );
 }
