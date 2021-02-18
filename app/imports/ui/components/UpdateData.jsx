@@ -65,9 +65,9 @@ function UpdateData() {
 
     return (
         <div style={{ paddingTop: '5rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Card style={{ padding: '1rem' }}>
+            <Card style={{ padding: '1rem', background: '#4282AF' }}>
                 <Card.Content>
-                    <Card.Header>Add</Card.Header>
+                    <Card.Header style={{ color: 'white' }}>Add</Card.Header>
                 </Card.Content>
                 <Card.Content>
                     <input type="date" value={dateState.date} onChange={changeDate}/>
@@ -75,7 +75,7 @@ function UpdateData() {
                     <br/>
                     <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} value={transportationState.transportation} onChange={changeTransportation}/>
                     <br/>
-                    <Button basic color='black'>Add</Button>
+                    <Button inverted>Add</Button>
                 </Card.Content>
             </Card>
         </div>
