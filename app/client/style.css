@@ -74,17 +74,49 @@
 .signinInput input {
   background: #2b4c7782 !important;
   border-radius: 20px !important;
-  color: #adaeb1!important;
+  color: #adaeb1 !important;
 }
 
 .signoutInput input {
   background: #3d598ea3 !important;
   border-radius: 20px !important;
-  color: #adaeb1!important;
+  color: #adaeb1 !important;
 }
 
-.body{
+.body {
   font-family: "Roboto" !important;
 }
+
+.highcharts-background {
+  fill: #011947;
+}
+
+.highcharts-title {
+  fill: #fff;
+  font-weight: 300;
+}
+
+.highcharts-legend-item text {
+  fill: #ccc!important;
+  font-weight: 300!important;
+}
+
+.highcharts-legend-item:hover text {
+  fill: #fff !important;
+  font-weight: 400 !important;
+}
+
+/* AXES & GRID */
+.highcharts-xaxis path {
+  stroke: #444;
+}
+
+.highcharts-grid path {
+  stroke: #444;
+  stroke-dasharray: 1 1;
+}
+
+
+
 
 

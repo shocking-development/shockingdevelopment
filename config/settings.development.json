@@ -2,7 +2,6 @@
   "defaultAccounts": [
     {"firstName": "John", "lastName":  "Foo", "username":  "johnfoo", "email":  "john@foo.com",
       "password":  "changeme", "zipcode":  "96822", "transportation":  "electricity"},
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     {"firstName": "Admin", "lastName":  "Foo", "username":  "admin", "email":  "admin@foo.com",
       "password":  "changeme", "zipcode":  "96822", "transportation":  "electricity", "role":  "admin"}
   ],
