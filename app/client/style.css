@@ -67,7 +67,7 @@
 .Home-page-background {
   background: #174060;
   background-size: cover;
-  height: 47.9em;
+  height: 48.9em;
   margin-top: -10px;
 }
 
@@ -77,7 +77,7 @@
   color: #adaeb1 !important;
 }
 
-.signoutInput input {
+.signupInput input {
   background: #3d598ea3 !important;
   border-radius: 20px !important;
   color: #adaeb1 !important;
@@ -97,8 +97,8 @@
 }
 
 .highcharts-legend-item text {
-  fill: white!important;
-  font-weight: 300!important;
+  fill: white !important;
+  font-weight: 300 !important;
 }
 
 .highcharts-legend-item:hover text {
@@ -116,6 +116,15 @@
   stroke-dasharray: 1 1;
 }
 
+.signupcontainer {
+  background: #00b9ff17 !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbarfordata::-webkit-scrollbar {
+  display: none;
+}
 
 
 

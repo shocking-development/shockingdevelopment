@@ -46,7 +46,7 @@ class Signup extends React.Component {
               <Grid.Column>
 
                 <Form onSubmit={this.submit}>
-                  <Segment stacked inverted style={{ background: 'rgba(0, 73, 122, 0.57)', borderRadius: '0.5px' }}>
+                  <Segment className='signupcontainer' stacked inverted>
                     <Image as={NavLink} activeClassName="" exact to="/" src='images/HEI-LOGO.png' size='small'
                            style={{
                              top: '50%',
@@ -54,42 +54,54 @@ class Signup extends React.Component {
                              transform: 'translate(-50%, -50%)',
                            }}/>
                     <div className={'sign-header2'}>
-                      <Header as="h1" inverted textAlign="center" style={{ fontWeight: '100' }}>
-                        Start tracking your emissions.
+                      <Header
+                          as="h1"
+                          textAlign="center"
+                          style={{
+                            fontFamily: 'Roboto',
+                            fontWeight: '400',
+                            color: 'rgb(4 204 194)',
+                            letterSpacing: '2px',
+                          }}>
+                        Start tracking your emissions
                       </Header>
-                      <Header as="h2" inverted textAlign="center" style={{ fontWeight: '50' }}>
+                      <Header
+                          as="h2"
+                          inverted
+                          textAlign="center"
+                          style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
                         Register your account
                       </Header>
                     </div>
-                    <Form.Input className={'signoutInput'}
-                        label="Email"
-                        id="signup-form-email"
-                        icon="user"
-                        iconPosition="left"
-                        name="email"
-                        type="email"
-                        placeholder="E-mail address"
-                        onChange={this.handleChange}
+                    <Form.Input className={'signupInput'}
+                                label="Email"
+                                id="signup-form-email"
+                                icon="user"
+                                iconPosition="left"
+                                name="email"
+                                type="email"
+                                placeholder="E-mail address"
+                                onChange={this.handleChange}
                     />
-                    <Form.Input className={'signoutInput'}
-                        label="Password"
-                        id="signup-form-password"
-                        icon="lock"
-                        iconPosition="left"
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                        onChange={this.handleChange}
+                    <Form.Input className={'signupInput'}
+                                label="Password"
+                                id="signup-form-password"
+                                icon="lock"
+                                iconPosition="left"
+                                name="password"
+                                placeholder="Password"
+                                type="password"
+                                onChange={this.handleChange}
                     />
-                    <Form.Input className={'signoutInput'}
-                        label="Confirm Password"
-                        id="signup-form-password"
-                        icon="lock"
-                        iconPosition="left"
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                        onChange={this.handleChange}
+                    <Form.Input className={'signupInput'}
+                                label="Confirm Password"
+                                id="signup-form-password"
+                                icon="lock"
+                                iconPosition="left"
+                                name="password"
+                                placeholder="Password"
+                                type="password"
+                                onChange={this.handleChange}
                     />
                     <Form.Button
                         id="signup-form-submit"
@@ -98,7 +110,10 @@ class Signup extends React.Component {
                         color='linkedin'
                         style={{ borderRadius: '20px' }}
                     />
-                    <p>Already have an account?<Link to="/signin"> Login here.</Link></p>
+                    <p style={{ paddingTop: '1em', paddingBottom: '1em' }}>
+                      Already have an account?
+                      <Link to="/signin"> Login here.</Link>
+                    </p>
                   </Segment>
 
                 </Form>

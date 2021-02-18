@@ -32,7 +32,13 @@ class LandingSection2 extends React.Component {
             }}>
               <div style={{ color: 'white', margin: 'auto' }}>
                 <Header className='body' as='h1' style={{ color: 'white' }}> Track your GHG emissions </Header>
-                <p className='body' style={{ color: 'white' }}>
+                <p className='body'
+                   style={{
+                     fontFamily: 'sans-serif',
+                     color: 'white',
+                     fontSize: '20px',
+                     fontWeight: 'lighter',
+                   }}>
                   Find out how much GHG emisions you generate and learn of efficient alternatives.
                 </p>
                 <Button className="ui blue circular button"
