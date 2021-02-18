@@ -77,7 +77,7 @@ class GHGEmissionsCalculator extends React.Component {
               />
             </Form>
             <Segment>
-              <p> {this.calculateCO2()} Metric tons of CO2 emissions is generated from {this.state.input} gallon(s) of
+              <p> {this.calculateCO2()} tons of CO2 emissions is generated from {this.state.input} gallon(s) of
                 gas </p>
               <p> This is equivalent to the GHG emissions from {this.calculateGHG()} passenger vehicles driven for one
                 year.</p>
