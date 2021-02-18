@@ -18,7 +18,7 @@ class Datapage extends React.Component {
       marginLeft: '20em',
       paddingTop: '8em',
       paddingBottom: '10em',
-      height: '47.9em',
+      height: '60.9em',
       backgroundSize: 'cover',
       marginTop: '-10px',
       marginRight: '6em',
@@ -34,125 +34,127 @@ class Datapage extends React.Component {
           <NavBarHome/>
 
           <div style={pageStyle} className={'scrollbarfordata'}>
-            <Grid stackable columns='equal'>
-              <Grid.Column>
-                <div style={{
-                  background: 'rgb(66 130 175)',
-                  borderRadius: '6px',
-                  boxShadow: '-41px -1px 44px -3px #0E324C',
-                  paddingTop: '10px',
-                }}>
-                  <DataPagePieChart/>
-                </div>
-              </Grid.Column>
-              <Grid.Column>
-                <div style={{
-                  background: 'rgb(66 130 175)',
-                  borderRadius: '6px',
-                  boxShadow: ' 28px 5px 44px -3px #0E324C',
-                  paddingTop: '10px',
-                  paddingRight: '10px',
-                }}>
-                  <DataPageBarGraph/>
-                </div>
-              </Grid.Column>
-              <Grid.Row>
-                <div style={{
-                  background: 'rgb(66 130 175)',
-                  borderRadius: '6px',
-                  boxShadow: ' 28px 5px 44px -3px #0E324C',
-                  paddingTop: '10px',
-                  paddingRight: '10px',
-                  position: 'relative',
-                  left: '10px',
-                  height: '100%',
-                  width: '24%',
-                }}>
-                  <DataPageDonutChart1/>
-                </div>
-                <div style={{
-                  background: 'rgb(66 130 175)',
-                  borderRadius: '6px',
-                  boxShadow: ' 28px 5px 44px -3px #0E324C',
-                  paddingTop: '10px',
-                  paddingRight: '10px',
-                  position: 'relative',
-                  left: '1em',
-                  height: '100%',
-                  width: '24%',
-                }}>
-                  <DataPageDonutChart2/>
-                </div>
-                <div style={{
-                  background: 'white',
-                  borderRadius: '6px',
-                  boxShadow: ' 28px 5px 44px -3px #0E324C',
-                  paddingTop: '10px',
-                  paddingRight: '10px',
-                  position: 'relative',
-                  left: '1.29em',
-                  height: '100%',
-                  width: '51%',
-                }}>
-                  <Table style={{
+            <div style={{ width: '90%', margin: 'auto' }}>
+              <Grid stackable columns='equal'>
+                <Grid.Column>
+                  <div style={{
+                    background: 'rgb(66 130 175)',
+                    borderRadius: '6px',
+                    boxShadow: '-41px -1px 44px -3px #0E324C',
+                    paddingTop: '10px',
+                  }}>
+                    <DataPagePieChart/>
+                  </div>
+                </Grid.Column>
+                <Grid.Column>
+                  <div style={{
+                    background: 'rgb(66 130 175)',
+                    borderRadius: '6px',
+                    boxShadow: ' 28px 5px 44px -3px #0E324C',
+                    paddingTop: '10px',
+                    paddingRight: '10px',
+                  }}>
+                    <DataPageBarGraph/>
+                  </div>
+                </Grid.Column>
+                <Grid.Row>
+                  <div style={{
+                    background: 'rgb(66 130 175)',
+                    borderRadius: '6px',
+                    boxShadow: ' 28px 5px 44px -3px #0E324C',
+                    paddingTop: '10px',
+                    paddingRight: '10px',
+                    position: 'relative',
+                    left: '10px',
+                    height: '100%',
+                    width: '24%',
+                  }}>
+                    <DataPageDonutChart1/>
+                  </div>
+                  <div style={{
+                    background: 'rgb(66 130 175)',
+                    borderRadius: '6px',
+                    boxShadow: ' 28px 5px 44px -3px #0E324C',
+                    paddingTop: '10px',
+                    paddingRight: '10px',
+                    position: 'relative',
+                    left: '1em',
+                    height: '100%',
+                    width: '24%',
+                  }}>
+                    <DataPageDonutChart2/>
+                  </div>
+                  <div style={{
                     background: 'white',
+                    borderRadius: '6px',
+                    boxShadow: ' 28px 5px 44px -3px #0E324C',
+                    paddingTop: '10px',
+                    paddingRight: '10px',
                     position: 'relative',
                     left: '1.29em',
                     height: '100%',
-                    width: '94%',
-                    color: 'black',
-                    border: 'none',
-                  }} celled>
-                    <Table.Header className={'headerdataPage'}>
-                      <Table.Row>
-                        <Table.HeaderCell>Week</Table.HeaderCell>
-                        <Table.HeaderCell>Emissions</Table.HeaderCell>
-                        <Table.HeaderCell>Transportation</Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
+                    width: '51%',
+                  }}>
+                    <Table style={{
+                      background: 'white',
+                      position: 'relative',
+                      left: '1.29em',
+                      height: '100%',
+                      width: '94%',
+                      color: 'black',
+                      border: 'none',
+                    }} celled>
+                      <Table.Header className={'headerdataPage'}>
+                        <Table.Row>
+                          <Table.HeaderCell>Week</Table.HeaderCell>
+                          <Table.HeaderCell>Emissions</Table.HeaderCell>
+                          <Table.HeaderCell>Transportation</Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
 
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>
-                          <Label ribbon>This Week</Label>
-                        </Table.Cell>
-                        <Table.Cell>.01</Table.Cell>
-                        <Table.Cell>Public Transportation</Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell> Last Week </Table.Cell>
-                        <Table.Cell>.02 tons</Table.Cell>
-                        <Table.Cell>Car</Table.Cell>
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell> 2 weeks Ago</Table.Cell>
-                        <Table.Cell>.002 tons</Table.Cell>
-                        <Table.Cell>Bike</Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
+                      <Table.Body>
+                        <Table.Row>
+                          <Table.Cell>
+                            <Label ribbon>This Week</Label>
+                          </Table.Cell>
+                          <Table.Cell>.01</Table.Cell>
+                          <Table.Cell>Public Transportation</Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                          <Table.Cell> Last Week </Table.Cell>
+                          <Table.Cell>.02 tons</Table.Cell>
+                          <Table.Cell>Car</Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                          <Table.Cell> 2 weeks Ago</Table.Cell>
+                          <Table.Cell>.002 tons</Table.Cell>
+                          <Table.Cell>Bike</Table.Cell>
+                        </Table.Row>
+                      </Table.Body>
 
-                    <Table.Footer>
-                      <Table.Row>
-                        <Table.HeaderCell colSpan='3'>
-                          <Menu floated='right' pagination>
-                            <Menu.Item as='a' icon>
-                              <Icon name='chevron left'/>
-                            </Menu.Item>
-                            <Menu.Item as='a'>1</Menu.Item>
-                            <Menu.Item as='a'>2</Menu.Item>
-                            <Menu.Item as='a'>3</Menu.Item>
-                            <Menu.Item as='a'>4</Menu.Item>
-                            <Menu.Item as='a' icon>
-                              <Icon name='chevron right'/>
-                            </Menu.Item>
-                          </Menu>
-                        </Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Footer>
-                  </Table>
-                </div>
-              </Grid.Row>
-            </Grid>
+                      <Table.Footer>
+                        <Table.Row>
+                          <Table.HeaderCell colSpan='3'>
+                            <Menu floated='right' pagination>
+                              <Menu.Item as='a' icon>
+                                <Icon name='chevron left'/>
+                              </Menu.Item>
+                              <Menu.Item as='a'>1</Menu.Item>
+                              <Menu.Item as='a'>2</Menu.Item>
+                              <Menu.Item as='a'>3</Menu.Item>
+                              <Menu.Item as='a'>4</Menu.Item>
+                              <Menu.Item as='a' icon>
+                                <Icon name='chevron right'/>
+                              </Menu.Item>
+                            </Menu>
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Footer>
+                    </Table>
+                  </div>
+                </Grid.Row>
+              </Grid>
+            </div>
           </div>
         </div>
     );
