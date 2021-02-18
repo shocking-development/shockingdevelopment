@@ -42,7 +42,7 @@ class NavBarLanding extends React.Component {
 
           <Menu.Item>
             {this.props.currentUser === '' ? (
-                <Dropdown id="login-dropdown" text="LOGIN" pointing="top right" style={loginButton}>
+                <Dropdown className='body' id="login-dropdown" text="LOGIN" pointing="top right" style={loginButton}>
                   <Dropdown.Menu>
                     <Dropdown.Item id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact
                                    to="/signin"/>
@@ -51,7 +51,8 @@ class NavBarLanding extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
             ) : (
-                <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}
+                <Dropdown className='body' id="navbar-current-user" text={this.props.currentUser} pointing="top right"
+                          icon={'user'}
                           style={loginButton}>
                   <Dropdown.Menu>
                     <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact

@@ -54,14 +54,14 @@ class Signup extends React.Component {
                              transform: 'translate(-50%, -50%)',
                            }}/>
                     <div className={'sign-header2'}>
-                      <Header as="h1" inverted textAlign="center" style={{ fontWeight: '50' }}>
+                      <Header as="h1" inverted textAlign="center" style={{ fontWeight: '100' }}>
                         Start tracking your emissions.
                       </Header>
                       <Header as="h2" inverted textAlign="center" style={{ fontWeight: '50' }}>
                         Register your account
                       </Header>
                     </div>
-                    <Form.Input
+                    <Form.Input className={'signoutInput'}
                         label="Email"
                         id="signup-form-email"
                         icon="user"
@@ -71,7 +71,7 @@ class Signup extends React.Component {
                         placeholder="E-mail address"
                         onChange={this.handleChange}
                     />
-                    <Form.Input
+                    <Form.Input className={'signoutInput'}
                         label="Password"
                         id="signup-form-password"
                         icon="lock"
@@ -81,7 +81,7 @@ class Signup extends React.Component {
                         type="password"
                         onChange={this.handleChange}
                     />
-                    <Form.Input
+                    <Form.Input className={'signoutInput'}
                         label="Confirm Password"
                         id="signup-form-password"
                         icon="lock"

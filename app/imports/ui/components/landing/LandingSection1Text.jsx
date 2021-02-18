@@ -22,15 +22,15 @@ class LandingSection1Text extends React.Component {
     return (
         <div id='center-info'>
 
-          <Container textAlign="center" style={header1}>
+          <Container className='body' textAlign="center" style={header1}>
             Monitor your greenhouse gas emissions.
           </Container>
 
-          <Container textAlign="center" style={header2}>
+          <Container className='body' textAlign="center" style={header2}>
             Find out how much GHG emissions are generated from your mode of transportation.
           </Container>
 
-          <Container textAlign="center" style={header2}>
+          <Container className='body' textAlign="center" style={header2}>
             <Button className="ui teal circular button"
                     style={{ fontSize: '16px' }}
                     as={NavLink} exact

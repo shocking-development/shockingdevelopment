@@ -77,4 +77,14 @@
   color: #adaeb1!important;
 }
 
+.signoutInput input {
+  background: #3d598ea3 !important;
+  border-radius: 20px !important;
+  color: #adaeb1!important;
+}
+
+.body{
+  font-family: "Roboto";
+}
+
 
