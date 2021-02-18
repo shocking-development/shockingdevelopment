@@ -40,7 +40,7 @@ class NavBarMain extends React.Component {
       fontWeight: '100',
       zIndex: 'auto',
       position: 'absolute',
-      top: '1.7em',
+      top: '.9em',
       left: '85%',
       paddingRight: '1em',
     };
@@ -86,12 +86,8 @@ class NavBarMain extends React.Component {
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='key3'>Add Data</Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key4'>Add
-                    Profile</Menu.Item>
-
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='key5'>List Profile</Menu.Item>
-
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key6'>ghg cal</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key6'>GHG
+                    calculator</Menu.Item>
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your
                     route</Menu.Item>

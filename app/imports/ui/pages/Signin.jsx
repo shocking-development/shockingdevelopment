@@ -53,7 +53,7 @@ export default class Signin extends React.Component {
                   <Segment stacked inverted
                            style={{ background: 'transparent', borderRadius: '0.5px' }}>
                     <div className={'sign-header'}>
-                      <Header as="h1" inverted textAlign="left"
+                      <Header as="h1" inverted textAlign="left" className='body'
                               style={{ fontWeight: 'lighter', paddingBottom: '10px', paddingTop: '15px' }}>
                         Welcome Back!
                       </Header>

@@ -67,24 +67,65 @@
 .Home-page-background {
   background: #174060;
   background-size: cover;
-  height: 47.9em;
+  height: 48.9em;
   margin-top: -10px;
 }
 
 .signinInput input {
   background: #2b4c7782 !important;
   border-radius: 20px !important;
-  color: #adaeb1!important;
+  color: #adaeb1 !important;
 }
 
-.signoutInput input {
+.signupInput input {
   background: #3d598ea3 !important;
   border-radius: 20px !important;
-  color: #adaeb1!important;
+  color: #adaeb1 !important;
 }
 
-.body{
-  font-family: "Roboto";
+.body {
+  font-family: "Roboto" !important;
 }
+
+.highcharts-background {
+  fill: transparent;
+}
+
+.highcharts-title {
+  fill: #fff;
+  font-weight: 300;
+}
+
+.highcharts-legend-item text {
+  fill: white !important;
+  font-weight: 300 !important;
+}
+
+.highcharts-legend-item:hover text {
+  fill: #fff !important;
+  font-weight: 400 !important;
+}
+
+/* AXES & GRID */
+.highcharts-xaxis path {
+  stroke: #ccc;
+}
+
+.highcharts-grid path {
+  stroke: #ccc;
+  stroke-dasharray: 1 1;
+}
+
+.signupcontainer {
+  background: #00b9ff17 !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbarfordata::-webkit-scrollbar {
+  display: none;
+}
+
+
 
 

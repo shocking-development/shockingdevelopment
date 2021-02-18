@@ -7,6 +7,14 @@ import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
+
+/* <Form.Button
+    color='teal'
+    style={{ borderRadius: '20px' }}
+    fluid
+    id="calculator-submit"
+    content="calculate"
+/> */
 class GHGEmissionsCalculator extends React.Component {
 
   /** Initialize component state with properties for input */
@@ -67,13 +75,6 @@ class GHGEmissionsCalculator extends React.Component {
                   value={this.state.input}
                   onChange={this.handleInputChange}
                   label={{ basic: true, content: 'gal' }}
-              />
-              <Form.Button
-                  color='teal'
-                  style={{ borderRadius: '20px' }}
-                  fluid
-                  id="calculator-submit"
-                  content="calculate"
               />
             </Form>
             <Segment>
