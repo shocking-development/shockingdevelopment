@@ -50,14 +50,19 @@ class LandingPageLineChart extends React.Component {
         },
         colors: ['#6AF9C4'],
         yAxis: {
-          gridLineColor: '#444',
+          gridLineColor: '#ccc',
           floor: 0,
           ceiling: 100,
           title: {
             text: 'Emissions (tons)',
             style: {
-              color: '#aaa',
+              color: '#ccc',
               fontFamily: 'Roboto',
+            },
+          },
+          labels: {
+            style: {
+              color: '#ccc',
             },
           },
         },
@@ -85,7 +90,7 @@ class LandingPageLineChart extends React.Component {
   render() {
 
     return (
-        <div>
+        <div id="linechart">
           <HighchartsReact
               highcharts={Highcharts}
               options={this.state.chartOptions}

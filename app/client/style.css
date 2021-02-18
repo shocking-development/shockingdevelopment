@@ -88,7 +88,7 @@
 }
 
 .highcharts-background {
-  fill: #011947;
+  fill: transparent;
 }
 
 .highcharts-title {
@@ -97,7 +97,7 @@
 }
 
 .highcharts-legend-item text {
-  fill: #ccc!important;
+  fill: white!important;
   font-weight: 300!important;
 }
 
@@ -108,11 +108,11 @@
 
 /* AXES & GRID */
 .highcharts-xaxis path {
-  stroke: #444;
+  stroke: #ccc;
 }
 
 .highcharts-grid path {
-  stroke: #444;
+  stroke: #ccc;
   stroke-dasharray: 1 1;
 }
 
