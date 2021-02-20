@@ -65,6 +65,13 @@
 }
 
 .Home-page-background {
+   background: #174060;
+   background-size: cover;
+   height: 47.9em;
+   margin-top: -10px;
+ }
+
+.Go-to-Saves-page-background {
   background: #174060;
   background-size: cover;
   height: 47.9em;
