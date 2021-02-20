@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Header, Statistic, Image, Container, Menu } from 'semantic-ui-react';
+import { Grid, Segment, Header, Statistic, Image, Container, Menu, Button, Card, Dropdown, } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -10,11 +10,27 @@ import NavBarHome from '../components/home/NavBarHome';
 class GoToSavings extends React.Component {
 
   render() {
-    const square = { width: 285, height: 285 };
+    const inCardStyle = {
+      /**width: 50,
+      height: 20,
+      textAlignment: 'center',
+      marginLeft: '0em',
+      paddingTop: '3em',
+      backgroundColor: 'green',**/
+      textSize: 50,
+    };
+
+    const cardStyle = {
+      marginLeft: '20em',
+      marginRight: '5em',
+      paddingTop: '10em',
+      alignment: 'left',
+    };
+
     const pageStyle = {
       marginLeft: '20em',
-      paddingTop: '8em',
-      paddingBottom: '135px',
+      paddingTop: '10em',
+      paddingBottom: '150px',
       height: '47.9em',
       backgroundSize: 'cover',
       marginTop: '-10px',
@@ -23,57 +39,79 @@ class GoToSavings extends React.Component {
     return (
         <div className='Home-page-background'>
           <NavBarHome/>
-          <div style={pageStyle}>
-            <Header inverted size='huge' textAlign={'center'}>Welcome back, {this.props.currentUser} </Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
-            <Grid stackable centered columns={3}>
-              <Grid.Row centered>
-                <Grid.Column>
-                  <div align="center">
-                    <Segment circular style={square}>
-                      <Statistic inverted>
-                        {this.props.currentUser ? (
-                            [<Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='data'>For Car</Menu.Item>,
-                              <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='savings'>Go To
-                                Savings</Menu.Item>,
-                              <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map your
-                                route</Menu.Item>,
-                            ]
-                        ) : ''}
-                      </Statistic>
-                    </Segment>
-                  </div>
-                </Grid.Column>
 
-                <Grid.Column>
-                  <div align="center">
-                    <Segment circular style={square}>
-                      <Statistic inverted>
-                        {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>5 lbs</Statistic.Value>
-                        <Statistic.Label>GHG reduced</Statistic.Label>
-                      </Statistic>
-                    </Segment>
-                  </div>
-                </Grid.Column>
+          <Card.Group style = {cardStyle}>
+            <Card>
+              <Card.Content>
+                <Image
+                    floated='right'
+                    size='mini'
+                    src='images/HEI-WAVE-LOGO.png'
+                />
+                <Card.Header>Your Car</Card.Header>
+                <Card.Meta>Car(s)' make and modole</Card.Meta>
+                <Card.Description>See what your car's out put is</Card.Description>
+              </Card.Content>
 
-                <Grid.Column>
-                  <div align="center">
-                    <Segment circular style={square}>
-                      <Statistic inverted>
-                        {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>1 gal</Statistic.Value>
-                        <Statistic.Label>gas saved</Statistic.Label>
-                      </Statistic>
-                    </Segment>
-                  </div>
+              <Card.Content extra color='green'>
+                <div className='ui four buttons'>
+                  <Button color='green' as={NavLink} exact to="/notfound">Add Usage</Button>
+                  <Button color='blue' as={NavLink} exact to="/notfound">Add Car</Button>
+                  <Button color='red' as={NavLink} exact to="/notfound">Delete Car</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>Daily Use</Button>
 
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </div>
+                </div>
+        </Card.Content>
+        </Card>
+    <Card>
+      <Card.Content>
+        <Image
+            floated='right'
+            size='mini'
+            src='images/HEI-WAVE-LOGO.png'
+        />
+        <Card.Header>Molly Thomas</Card.Header>
+        <Card.Meta>New User</Card.Meta>
+        <Card.Description>
+          Molly wants to add you to the group <strong>musicians</strong>
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <div className='ui two buttons'>
+          <Button basic color='green'>
+            Approve
+          </Button>
+          <Button basic color='red'>
+            Decline
+          </Button>
+        </div>
+      </Card.Content>
+    </Card>
+    <Card>
+    <Card.Content>
+    <Image
+    floated='right'
+    size='mini'
+    src='images/HEI-WAVE-LOGO.png'
+        />
+        <Card.Header>Jenny Lawrence</Card.Header>
+    <Card.Meta>New User</Card.Meta>
+    <Card.Description>
+    Jenny requested permission to view your contact details
+    </Card.Description>
+  </Card.Content>
+  <Card.Content extra>
+  <div className='ui two buttons'>
+  <Button basic color='green'>
+  Approve
+  </Button>
+  <Button basic color='red'>
+  Decline
+  </Button>
+  </div>
+  </Card.Content>
+  </Card>
+  </Card.Group>
         </div>
     );
   }
