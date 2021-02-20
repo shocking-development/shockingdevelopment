@@ -1,8 +1,8 @@
 import React from 'react';
-import { Grid, Segment, Header, Statistic, Image, Container } from 'semantic-ui-react';
+import { Grid, Segment, Header, Statistic, Image, Container, Menu } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../components/home/NavBarHome';
 
@@ -34,9 +34,14 @@ class GoToSavings extends React.Component {
                   <div align="center">
                     <Segment circular style={square}>
                       <Statistic inverted>
-                        {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>$20</Statistic.Value>
-                        <Statistic.Label>saved</Statistic.Label>
+                        {this.props.currentUser ? (
+                            [<Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='data'>For Car</Menu.Item>,
+                              <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='savings'>Go To
+                                Savings</Menu.Item>,
+                              <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='route'>Map your
+                                route</Menu.Item>,
+                            ]
+                        ) : ''}
                       </Statistic>
                     </Segment>
                   </div>
