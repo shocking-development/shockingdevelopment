@@ -49,16 +49,15 @@ class GoToSavings extends React.Component {
                     src='images/HEI-WAVE-LOGO.png'
                 />
                 <Card.Header>Your Car</Card.Header>
-                <Card.Meta>Car(s)' make and modole</Card.Meta>
-                <Card.Description>See what your car's out put is</Card.Description>
+                <Card.Meta>How much are you saving by using a carpool</Card.Meta>
+                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
               </Card.Content>
 
               <Card.Content extra color='green'>
-                <div className='ui four buttons'>
-                  <Button color='green' as={NavLink} exact to="/notfound">Add Usage</Button>
-                  <Button color='blue' as={NavLink} exact to="/notfound">Add Car</Button>
-                  <Button color='red' as={NavLink} exact to="/notfound">Delete Car</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>Daily Use</Button>
+                <div className='ui three buttons'>
+                  <Button color='green' as={NavLink} exact to="/notfound">Input Usage</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
 
                 </div>
         </Card.Content>
@@ -70,20 +69,16 @@ class GoToSavings extends React.Component {
             size='mini'
             src='images/HEI-WAVE-LOGO.png'
         />
-        <Card.Header>Molly Thomas</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Molly wants to add you to the group <strong>musicians</strong>
-        </Card.Description>
+        <Card.Header>Your Car Pool</Card.Header>
+        <Card.Meta>How much are you saving by using a carpool</Card.Meta>
+        <Card.Description>{this.props.currentUser.transportation}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-          </Button>
-          <Button basic color='red'>
-            Decline
-          </Button>
+        <div className='ui four buttons'>
+          <Button color='green' as={NavLink} exact to="/notfound">Input Usage</Button>
+          <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
+          <Button color='green' as={NavLink} exact to="/notfound">Input Members</Button>
+          <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
         </div>
       </Card.Content>
     </Card>
@@ -94,20 +89,14 @@ class GoToSavings extends React.Component {
     size='mini'
     src='images/HEI-WAVE-LOGO.png'
         />
-        <Card.Header>Jenny Lawrence</Card.Header>
-    <Card.Meta>New User</Card.Meta>
-    <Card.Description>
-    Jenny requested permission to view your contact details
-    </Card.Description>
+        <Card.Header>Your Bikeing</Card.Header>
+    <Card.Meta>How much are you saving by not using a car</Card.Meta>
+      <Card.Description>{this.props.currentUser.transportation}</Card.Description>
   </Card.Content>
   <Card.Content extra>
   <div className='ui two buttons'>
-  <Button basic color='green'>
-  Approve
-  </Button>
-  <Button basic color='red'>
-  Decline
-  </Button>
+    <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>Input Usage</Button>
+    <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
   </div>
   </Card.Content>
   </Card>
