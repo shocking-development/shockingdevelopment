@@ -4,8 +4,8 @@ import { Container, Grid, Button } from 'semantic-ui-react';
 function EditProfileForm() {
 
   return (
-      <div>
-        <Container>
+      <div className='Home-page-background'>
+        <Container >
             <Grid stackable columns={2} style={{ paddingLeft: '20px', paddingRight: '20px', paddingBottom: '20px' }}>
                 <Grid.Row>
                     <Grid.Column width={4} className="edit-profile-col">

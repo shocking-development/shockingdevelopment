@@ -5,7 +5,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Image } from 'semantic-ui-react';
 
-/** The NavBar appears at the top of every page. Rendered by the App Layout component. */
+/**
+ * The NavBar appears at the top of the Landing page. Rendered by the Landing page.
+ * @memberOf ui/components/landing
+ */
 class NavBarLanding extends React.Component {
   render() {
     const menuStyle = { height: '10px', paddingTop: '10px' };
@@ -32,12 +35,14 @@ class NavBarLanding extends React.Component {
 
     return (
         <div id='navbar-landing' style={menuStyle}>
+
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
             <Image src='/images/HEI-LOGO.png' style={logo}/>
           </Menu.Item>
+
           <Menu.Item>
             {this.props.currentUser === '' ? (
-                <Dropdown id="login-dropdown" text="LOGIN" pointing="top right" style={loginButton}>
+                <Dropdown className='body' id="login-dropdown" text="LOGIN" pointing="top right" style={loginButton}>
                   <Dropdown.Menu>
                     <Dropdown.Item id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact
                                    to="/signin"/>
@@ -46,7 +51,8 @@ class NavBarLanding extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
             ) : (
-                <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}
+                <Dropdown className='body' id="navbar-current-user" text={this.props.currentUser} pointing="top right"
+                          icon={'user'}
                           style={loginButton}>
                   <Dropdown.Menu>
                     <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact

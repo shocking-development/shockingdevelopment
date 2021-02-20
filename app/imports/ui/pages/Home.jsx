@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Segment, Header, Statistic, Image, Container } from 'semantic-ui-react';
+import { Grid, Segment, Header, Statistic, Image } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import NavBarHome from '../components/home/NavBarHome';
+import NavBarHome from '../components/main-navbar/NavBarMain';
 
 /** A simple static component to render the home page when users are logged in. */
 class Home extends React.Component {

@@ -1,18 +1,21 @@
 import React from 'react';
-import NavBarHome from '../components/home/NavBarHome';
+import { Header, Image } from 'semantic-ui-react';
+import NavBarHome from '../components/main-navbar/NavBarMain';
 import StaticData from '../components/StaticData';
-import WeeklyUpdate from '../components/WeeklyUpdate';
+import UpdateData from '../components/UpdateData';
 
 function AddData() {
 
   return (
       <div style={{ marginTop: '-10px' }}>
         <NavBarHome/>
-        <div style={{ textAlign: 'center', background: '#174060', minHeight: '80vh', minWidth: '100%' }}>
-          <h1 style={{ color: 'white', paddingTop: '10vh', paddingBottom: '2rem', fontSize: '36px' }}><u>ADD DATA</u>
-          </h1>
+        <div style={{ textAlign: 'center', background: '#174060', minHeight: '80vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+        <Header inverted size='huge' textAlign={'center'}>Add Data</Header>
+        <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
           <StaticData/>
-          <WeeklyUpdate/>
+          <UpdateData/>
         </div>
       </div>
   );

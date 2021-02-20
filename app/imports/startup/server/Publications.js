@@ -1,8 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
-import { Profiles } from '../../api/profile/Profile';
-import { UserInfo } from '../../api/userInfo/userInfo';
+import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -22,30 +21,9 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
   }
   return this.ready();
 });
-/** This subscription publishes only the documents associated with the logged in user */
-Meteor.publish('Profile', function publish() {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Profiles.find({ owner: username });
-  }
-  return this.ready();
-});
-// Publish the User info
-Meteor.publish('UserInfo', function publish() {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return UserInfo.find({ owner: username });
-  }
-  return this.ready();
-});
 
-// Admin Level publication for the user info
-Meteor.publish(UserInfo.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return UserInfo.collection.find();
-  }
-  return this.ready();
-});
+/** Publish all the collections you need. */
+UserInfos.publish();
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.

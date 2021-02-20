@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader } from 'semantic-ui-react';
+import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { UserInfo } from '../../api/userInfo/userInfo';
-import UserInfoAdmin from '../components/UserInfoAdmin';
+import { Stuffs } from '../../api/stuff/Stuff';
 // eslint-disable-next-line no-unused-vars
-import NavBarHome from '../components/home/NavBarHome';
+import StuffItemAdmin from '../components/StuffItemAdmin';
+import NavBarHome from '../components/main-navbar/NavBarMain';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListofUsersAdmin extends React.Component {
@@ -19,13 +19,54 @@ class ListofUsersAdmin extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-      <Container>
+        <div>
         <NavBarHome/>
-        <Header as="h2" textAlign="center"> LIST OF USERS</Header>
-        <Card.Group>
-          {this.props.userinfos.map((userinfo) => <UserInfoAdmin key={userinfo._id} userinfo={userinfo} />)}
-        </Card.Group>
-      </Container>
+        <Container style={{ margin: '120px', paddingLeft: '191px' }}>
+          <Header as="h2" textAlign="center">List of Users (Admin)</Header>
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Main Transportation</Table.HeaderCell>
+                <Table.HeaderCell>Savings</Table.HeaderCell>
+                <Table.HeaderCell>Type of car</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>
+                  <Header as='h2' textAlign='center'>
+                    A
+                  </Header>
+                </Table.Cell>
+                <Table.Cell singleLine>Biking</Table.Cell>
+                <Table.Cell>
+                  $100
+                </Table.Cell>
+                <Table.Cell textAlign='right'>
+                  N/A <br/>
+
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  <Header as='h2' textAlign='center'>
+                    B
+                  </Header>
+                </Table.Cell>
+                <Table.Cell singleLine> Car </Table.Cell>
+                <Table.Cell>
+                  $20
+                </Table.Cell>
+                <Table.Cell textAlign='right'>
+                  Honda Accord 2018 <br/>
+
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+        </Container>
+        </div>
 
     );
   }
@@ -33,16 +74,16 @@ class ListofUsersAdmin extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 ListofUsersAdmin.propTypes = {
-  userinfos: PropTypes.array.isRequired,
+  stuffs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(UserInfo.adminPublicationName);
+  const subscription = Meteor.subscribe(Stuffs.adminPublicationName);
   return {
-    userinfos: UserInfo.collection.find({}).fetch(),
+    stuffs: Stuffs.collection.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(ListofUsersAdmin);
