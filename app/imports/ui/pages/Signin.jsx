@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
+import NavBarLogin from '../components/NavBarLogin';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -36,61 +36,73 @@ export default class Signin extends React.Component {
 
   /** Render the signin form. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { from } = this.props.location.state || { from: { pathname: '/home' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
     // Otherwise return the Login form.
     return (
-        <div className='header-background'>
-      <Container id="signin-page">
-        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
-          <Grid.Column>
-            <Image src = 'images/HEI.png' size='small' centered/>
-            <div className={'sign-header'}>
-            <Header as="h2" color='teal' textAlign="left">
-              Sign In
-            </Header>
-            </div>
-            <Form onSubmit={this.submit}>
-              <Segment stacked inverted>
-                <Form.Input
-                  label="Email"
-                  id="signin-form-email"
-                  icon="user"
-                  iconPosition="left"
-                  name="email"
-                  type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Password"
-                  id="signin-form-password"
-                  icon="lock"
-                  iconPosition="left"
-                  name="password"
-                  placeholder="Password"
-                  type="password"
-                  onChange={this.handleChange}
-                />
-                <Form.Button id="signin-form-submit" content="Log In"/>
-                <Link to="/signup">Click here to Sign Up</Link>
-              </Segment>
-            </Form>
-            {this.state.error === '' ? (
-              ''
-            ) : (
-              <Message
-                error
-                header="Login was not successful"
-                content={this.state.error}
-              />
-            )}
-          </Grid.Column>
-        </Grid>
-      </Container>
+        <div id="signin-page-div" className='landing-page-background'>
+          <NavBarLogin/>
+          <Container id="signin-page" style={{ paddingTop: '13%', paddingBottom: '10%' }}>
+            <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
+              <Grid.Column>
+
+                <Form onSubmit={this.submit}>
+                  <Segment stacked inverted
+                           style={{ background: 'transparent', borderRadius: '0.5px' }}>
+                    <div className={'sign-header'}>
+                      <Header as="h1" inverted textAlign="left" className='body'
+                              style={{ fontWeight: 'lighter', paddingBottom: '10px', paddingTop: '15px' }}>
+                        Welcome Back!
+                      </Header>
+                    </div>
+
+                    <Form.Input className={'signinInput'}
+
+                                label="Email"
+                                id="signin-form-email"
+                                icon="user"
+                                iconPosition="left"
+                                name="email"
+                                type="email"
+                                placeholder="E-mail address"
+                                onChange={this.handleChange}
+
+                    />
+                    <Form.Input className={'signinInput'}
+                        label="Password"
+                        id="signin-form-password"
+                        icon="lock"
+                        iconPosition="left"
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        onChange={this.handleChange}
+                    />
+                    <Form.Button
+                        color='teal'
+                        style={{ borderRadius: '20px' }}
+                        fluid
+                        id="signin-form-submit"
+                        content="Log In"
+                    />
+                    <p>Don&apos;t have an account?<Link to="/signup"> Click here to sign up.</Link></p>
+                  </Segment>
+                </Form>
+                {this.state.error === '' ? (
+                    ''
+                ) : (
+                    <Message
+                        error
+                        header="Login was not successful"
+                        content={this.state.error}
+                    />
+                )}
+              </Grid.Column>
+            </Grid>
+          </Container>
         </div>
     );
   }

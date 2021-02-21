@@ -1,19 +1,17 @@
 .landing-page-background {
   background: url('images/Hero-Image-New.jpg') no-repeat center;
   background-size: cover;
-  height: 47.9em;
+  height: 100%;
   margin-top: -10px;
 }
 
-.menu-boxes
-{
-padding-top: 10.4em !important;
+.menu-boxes {
+  padding-top: 10.4em !important;
 }
 
-.column
-{
-padding-right: 0!important;
-padding-left: 10px!important;
+.column {
+  padding-right: 0 !important;
+  padding-left: 10px !important;
 }
 
 .zoom {
@@ -24,13 +22,30 @@ padding-left: 10px!important;
   transform: scale(1.03); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
+
+.edit-profile-col {
+  text-align: left;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.edit-profile-input {
+  width: 100%;
+  height: 25px;
+  border-radius: 5px;
+  border-width: 0;
+  background: #C4C4C4;
+}
+
 .header-background {
-  background: url('images/Hero-Image-New.jpg') no-repeat;
+  background: url('images/Hero-Image-New.jpg') no-repeat center;
   background-size: cover;
   padding: 18em;
   height: 100%;
 }
-.ui.inverted.segment{
+
+.ui.inverted.segment {
   background: #000000;
   color: #00497bff
 }
@@ -38,3 +53,79 @@ padding-left: 10px!important;
 .sign-header {
   color: white;
 }
+
+
+.sign-header2 {
+  color: white;
+}
+
+.ui.circular.segment {
+  background: linear-gradient(to bottom, #3CAEA3 0%, #20639B 50%) !important;
+  border: 12px solid #FFFFFF;
+}
+
+.Home-page-background {
+  background: #174060;
+  background-size: cover;
+  height: 48.9em;
+  margin-top: -10px;
+}
+
+.signinInput input {
+  background: #2b4c7782 !important;
+  border-radius: 20px !important;
+  color: #adaeb1 !important;
+}
+
+.signupInput input {
+  background: #3d598ea3 !important;
+  border-radius: 20px !important;
+  color: #adaeb1 !important;
+}
+
+.body {
+  font-family: "Roboto" !important;
+}
+
+.highcharts-background {
+  fill: transparent;
+}
+
+.highcharts-title {
+  fill: #fff;
+  font-weight: 300;
+}
+
+.highcharts-legend-item text {
+  fill: white !important;
+  font-weight: 300 !important;
+}
+
+.highcharts-legend-item:hover text {
+  fill: #fff !important;
+  font-weight: 400 !important;
+}
+
+/* AXES & GRID */
+.highcharts-xaxis path {
+  stroke: #ccc;
+}
+
+.highcharts-grid path {
+  stroke: #ccc;
+  stroke-dasharray: 1 1;
+}
+
+.signupcontainer {
+  background: #00b9ff17 !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbarfordata::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+

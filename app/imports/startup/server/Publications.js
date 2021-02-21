@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -20,6 +21,9 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
   }
   return this.ready();
 });
+
+/** Publish all the collections you need. */
+UserInfos.publish();
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.
