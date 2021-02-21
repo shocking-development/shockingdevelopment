@@ -20,52 +20,52 @@ class ListofUsersAdmin extends React.Component {
   renderPage() {
     return (
         <div>
-        <NavBarHome/>
-        <Container style={{ margin: '120px', paddingLeft: '191px' }}>
-          <Header as="h2" textAlign="center">List of Users (Admin)</Header>
-          <Table celled>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Main Transportation</Table.HeaderCell>
-                <Table.HeaderCell>Savings</Table.HeaderCell>
-                <Table.HeaderCell>Type of car</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h2' textAlign='center'>
-                    A
-                  </Header>
-                </Table.Cell>
-                <Table.Cell singleLine>Biking</Table.Cell>
-                <Table.Cell>
-                  $100
-                </Table.Cell>
-                <Table.Cell textAlign='right'>
-                  N/A <br/>
+          <NavBarHome/>
+          <Container style={{ margin: '120px', paddingLeft: '191px' }}>
+            <Header as="h2" textAlign="center">List of Users (Admin)</Header>
+            <Table celled>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>Main Transportation</Table.HeaderCell>
+                  <Table.HeaderCell>Savings</Table.HeaderCell>
+                  <Table.HeaderCell>Type of car</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>
+                    <Header as='h2' textAlign='center'>
+                      A
+                    </Header>
+                  </Table.Cell>
+                  <Table.Cell singleLine>Biking</Table.Cell>
+                  <Table.Cell>
+                    $100
+                  </Table.Cell>
+                  <Table.Cell textAlign='right'>
+                    N/A <br/>
 
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h2' textAlign='center'>
-                    B
-                  </Header>
-                </Table.Cell>
-                <Table.Cell singleLine> Car </Table.Cell>
-                <Table.Cell>
-                  $20
-                </Table.Cell>
-                <Table.Cell textAlign='right'>
-                  Honda Accord 2018 <br/>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <Header as='h2' textAlign='center'>
+                      B
+                    </Header>
+                  </Table.Cell>
+                  <Table.Cell singleLine> Car </Table.Cell>
+                  <Table.Cell>
+                    $20
+                  </Table.Cell>
+                  <Table.Cell textAlign='right'>
+                    Honda Accord 2018 <br/>
 
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-        </Container>
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+          </Container>
         </div>
 
     );
