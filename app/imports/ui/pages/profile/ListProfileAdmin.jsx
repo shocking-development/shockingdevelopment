@@ -20,7 +20,7 @@ class ListProfileAdmin extends React.Component {
         <div className='Home-page-background'>
           <NavBarMain/>
           <Container style={{ padding: '6em' }}>
-            <Header as="h2" textAlign="center">List Profiles (Admin)</Header>
+            <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
             <Table celled>
               <Table.Header>
                 <Table.Row>
