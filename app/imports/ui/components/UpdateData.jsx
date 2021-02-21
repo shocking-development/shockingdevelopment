@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, Card, Button, Input } from 'semantic-ui-react';
+import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
 
 function UpdateData() {
 
@@ -125,7 +125,7 @@ function UpdateData() {
     };
 
     return (
-        <div style={{ paddingTop: '5rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Card style={{ padding: '1rem', background: '#4282AF' }}>
                 <Card.Content>
                     <Card.Header style={{ color: 'white' }}>Add</Card.Header>
@@ -141,8 +141,11 @@ function UpdateData() {
                     <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
                     {tripState.custom ?
                         <div>
-                            <Input placeholder='Trip Name' onChange={changeTripName}/>
-                            <Input placeholder='Roundtrip Miles' onChange={changeTripMiles}/>
+                            <br/>
+                            <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
+                            <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} placeholder='Miles' onChange={changeTripMiles}/>}/>
+                            <br/>
+                            <br/>
                         </div> : null
                     }
                     <br/>
