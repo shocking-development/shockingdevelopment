@@ -26,10 +26,12 @@ class ListofUsersAdmin extends React.Component {
             <Table celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Main Transportation</Table.HeaderCell>
-                  <Table.HeaderCell>Savings</Table.HeaderCell>
-                  <Table.HeaderCell>Type of car</Table.HeaderCell>
+                  <Table.HeaderCell>First Name</Table.HeaderCell>
+                  <Table.HeaderCell>Last Name</Table.HeaderCell>
+                  <Table.HeaderCell>Email</Table.HeaderCell>
+                  <Table.HeaderCell>Zip Code</Table.HeaderCell>
+                  <Table.HeaderCell>Previously Logged In</Table.HeaderCell>
+                  <Table.HeaderCell>To Delete</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
