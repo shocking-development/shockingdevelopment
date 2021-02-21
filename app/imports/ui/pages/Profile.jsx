@@ -8,6 +8,7 @@ class Profile extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
+
   renderPage() {
     return (
         <Container>
@@ -37,7 +38,7 @@ Profile.propTypes = {
   ready: PropTypes.bool.isRequired,
   currentUser: PropTypes.string,
   currentId: PropTypes.string,
-}
+};
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
