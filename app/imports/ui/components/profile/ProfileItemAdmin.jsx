@@ -18,6 +18,8 @@ class ProfileItemAdmin extends React.Component {
           <Table.Cell>{this.props.profile.firstName}</Table.Cell>
           <Table.Cell>{this.props.profile.lastName}</Table.Cell>
           <Table.Cell>{this.props.profile.email}</Table.Cell>
+          <Table.Cell>{this.props.profile.password}</Table.Cell>
+          <Table.Cell>{this.props.profile.transportation}</Table.Cell>
           <Table.Cell>{this.props.profile.zipcode}</Table.Cell>
           <Table.Cell>{this.props.profile.owner}</Table.Cell>
           <Table.Cell>

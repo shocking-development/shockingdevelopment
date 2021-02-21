@@ -28,7 +28,9 @@ class ListProfileAdmin extends React.Component {
                   <Table.HeaderCell>firstName</Table.HeaderCell>
                   <Table.HeaderCell>lastName</Table.HeaderCell>
                   <Table.HeaderCell>email</Table.HeaderCell>
-                  <Table.HeaderCell>Zipcode</Table.HeaderCell>
+                  <Table.HeaderCell>password</Table.HeaderCell>
+                  <Table.HeaderCell>transportation</Table.HeaderCell>
+                  <Table.HeaderCell>zipcode</Table.HeaderCell>
                   <Table.HeaderCell>owner</Table.HeaderCell>
                   <Table.HeaderCell>remove</Table.HeaderCell>
                 </Table.Row>
