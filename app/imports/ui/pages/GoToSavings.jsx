@@ -55,7 +55,7 @@ class GoToSavings extends React.Component {
 
               <Card.Content extra color='green'>
                 <div className='ui three buttons'>
-                  <Button color='green' as={NavLink} exact to="/notfound">Input Usage</Button>
+                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
                   <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
                   <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
 
@@ -75,8 +75,8 @@ class GoToSavings extends React.Component {
       </Card.Content>
       <Card.Content extra>
         <div className='ui four buttons'>
-          <Button color='green' as={NavLink} exact to="/notfound">Input Usage</Button>
-          <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
+          <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
+          <Button color='green' as={NavLink} exact to="/add">Input Car</Button>
           <Button color='green' as={NavLink} exact to="/notfound">Input Members</Button>
           <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
         </div>
@@ -95,7 +95,7 @@ class GoToSavings extends React.Component {
   </Card.Content>
   <Card.Content extra>
   <div className='ui two buttons'>
-    <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>Input Usage</Button>
+    <Button color='green' as={NavLink} exact to="/add" style = {inCardStyle}>Input Usage</Button>
     <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
   </div>
   </Card.Content>
