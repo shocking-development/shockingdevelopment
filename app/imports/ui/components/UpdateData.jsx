@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
@@ -6,6 +7,7 @@ import { Data } from '../../api/data/DataCollection';
 
 function UpdateData() {
 
+    const user = useTracker(() => Meteor.user());
     const trips = useTracker(() => TripsCollection.find({}).fetch());
 
     const currentDate = new Date();
@@ -133,15 +135,15 @@ function UpdateData() {
       e.preventDefault();
 
       if (tripState.custom) {
-        TripsCollection.insert({
-            owner: 'currentuser',
+        Meteor.call('trips.insert', {
+            owner: user.username,
             name: tripState.trip,
             miles: tripState.miles,
         });
       }
 
       Data.collection.insert({
-        owner: 'currentuser',
+        owner: user.username,
         date: dateState.date,
         transportation: transportationState.transportation,
         miles: tripState.miles,
