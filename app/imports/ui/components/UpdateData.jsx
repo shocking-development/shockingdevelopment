@@ -7,8 +7,11 @@ import { Data } from '../../api/data/DataCollection';
 
 function UpdateData() {
 
-    const user = useTracker(() => Meteor.user());
-    const trips = useTracker(() => TripsCollection.find({}).fetch());
+    const user = useTracker(() => Meteor.userId());
+    const trips = useTracker(() => {
+    Meteor.subscribe('trips');
+    return TripsCollection.find({ owner: user }).fetch();
+    });
 
     const currentDate = new Date();
     let cMonth = currentDate.getMonth() + 1;
@@ -16,6 +19,22 @@ function UpdateData() {
         cMonth = `0${cMonth}`;
     }
     const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${currentDate.getDate().toString()}`;
+
+    const tripOptions = [];
+
+    trips.forEach(trip => {
+        tripOptions.push({
+            key: trip.name,
+            text: trip.name,
+            value: trip.miles,
+        });
+    });
+
+    tripOptions.push({
+        key: 'Custom',
+        text: 'Custom',
+        value: 'Custom',
+    });
 
     const transportationOptions = [
         {
@@ -55,59 +74,47 @@ function UpdateData() {
         },
     ];
 
-    const tripOptions = [
-        {
-            key: 'Work',
-            text: 'Work',
-            value: 20,
-        },
-        {
-            key: 'Grocery Store',
-            text: 'Grocery Store',
-            value: 10,
-        },
-        {
-            key: 'Custom',
-            text: 'Custom',
-            value: 'Custom',
-        },
-    ];
-
-    const [dateState, setDateState] = useState({
+    const [tripDetails, setTripDetails] = useState({
         date: fullDate,
-    });
-
-    const [transportationState, setTransportationState] = useState({
         transportation: null,
-    });
-
-    const [tripState, setTripState] = useState({
         custom: false,
         trip: null,
         miles: null,
     });
 
     const changeDate = (e) => {
-        setDateState({
+        setTripDetails({
             date: e.target.value,
+            transportation: tripDetails.transportation,
+            custom: tripDetails.custom,
+            trip: tripDetails.trip,
+            miles: tripDetails.miles,
         });
     };
 
     const changeTransportation = (e, data) => {
-        setTransportationState({
+        setTripDetails({
+            date: tripDetails.date,
             transportation: data.value,
+            custom: tripDetails.custom,
+            trip: tripDetails.trip,
+            miles: tripDetails.miles,
         });
     };
 
     const changeTrip = (e, data) => {
         if (data.value === 'Custom') {
-            setTripState({
+            setTripDetails({
+                date: tripDetails.date,
+                transportation: tripDetails.transportation,
                 custom: true,
                 trip: null,
                 miles: null,
             });
         } else {
-            setTripState({
+            setTripDetails({
+                date: tripDetails.date,
+                transportation: tripDetails.transportation,
                 custom: false,
                 trip: data.key,
                 miles: data.value,
@@ -116,17 +123,21 @@ function UpdateData() {
     };
 
     const changeTripName = (e) => {
-        setTripState({
+        setTripDetails({
+            date: tripDetails.date,
+            transportation: tripDetails.transportation,
             custom: true,
             trip: e.target.value,
-            miles: tripState.miles,
+            miles: tripDetails.miles,
         });
     };
 
     const changeTripMiles = (e) => {
-        setTripState({
+        setTripDetails({
+            date: tripDetails.date,
+            transportation: tripDetails.transportation,
             custom: true,
-            trip: tripState.trip,
+            trip: tripDetails.trip,
             miles: e.target.value,
         });
     };
@@ -134,19 +145,19 @@ function UpdateData() {
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      if (tripState.custom) {
+      if (tripDetails.custom) {
         Meteor.call('trips.insert', {
-            owner: user.username,
-            name: tripState.trip,
-            miles: tripState.miles,
+            owner: user,
+            name: tripDetails.trip,
+            miles: tripDetails.miles,
         });
       }
 
       Data.collection.insert({
-        owner: user.username,
-        date: dateState.date,
-        transportation: transportationState.transportation,
-        miles: tripState.miles,
+        owner: user,
+        date: tripDetails.date,
+        transportation: tripDetails.transportation,
+        miles: tripDetails.miles,
       });
     };
 
@@ -160,7 +171,7 @@ function UpdateData() {
                     <Form onSubmit={handleSubmit}>
                         <Form.Field required>
                         <label style={{ color: 'white' }}>Date</label>
-                        <input type="date" value={dateState.date} onChange={changeDate}/>
+                        <input type="date" value={tripDetails.date} onChange={changeDate}/>
                         </Form.Field>
                         <Form.Field required>
                         <label style={{ color: 'white' }}>Transportation</label>
@@ -170,7 +181,7 @@ function UpdateData() {
                         <label style={{ color: 'white' }}>Trip</label>
                         <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
                         </Form.Field>
-                        {tripState.custom ?
+                        {tripDetails.custom ?
                             <div>
                                 <br/>
                                 <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
