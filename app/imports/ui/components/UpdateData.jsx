@@ -70,6 +70,7 @@ function UpdateData() {
         date: fullDate,
     });
 
+  // eslint-disable-next-line no-unused-vars
     const [transportationState, setTransportationState] = useState({
         transportation: null,
     });
