@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, Card, Button } from 'semantic-ui-react';
+import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
 
 function UpdateData() {
 
@@ -11,6 +11,11 @@ function UpdateData() {
     const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${currentDate.getDate().toString()}`;
 
     const transportationOptions = [
+        {
+            key: 'Drove',
+            text: 'Drove',
+            value: 'Drove',
+        },
         {
             key: 'Telework',
             text: 'Telework',
@@ -43,6 +48,24 @@ function UpdateData() {
         },
     ];
 
+    const tripOptions = [
+        {
+            key: 'Work',
+            text: 'Work',
+            value: 20,
+        },
+        {
+            key: 'Grocery Store',
+            text: 'Grocery Store',
+            value: 10,
+        },
+        {
+            key: 'Custom',
+            text: 'Custom',
+            value: 'Custom',
+        },
+    ];
+
     const [dateState, setDateState] = useState({
         date: fullDate,
     });
@@ -51,20 +74,58 @@ function UpdateData() {
         transportation: null,
     });
 
+    const [tripState, setTripState] = useState({
+        custom: false,
+        trip: null,
+        miles: null,
+    });
+
     const changeDate = (e) => {
         setDateState({
             date: e.target.value,
         });
     };
 
-    const changeTransportation = (e) => {
+    const changeTransportation = (e, data) => {
         setTransportationState({
-            transportation: e.target.value,
+            transportation: data.value,
+        });
+    };
+
+    const changeTrip = (e, data) => {
+        if (data.value === 'Custom') {
+            setTripState({
+                custom: true,
+                trip: null,
+                miles: null,
+            });
+        } else {
+            setTripState({
+                custom: false,
+                trip: data.key,
+                miles: data.value,
+            });
+        }
+    };
+
+    const changeTripName = (e) => {
+        setTripState({
+            custom: true,
+            trip: e.target.value,
+            miles: tripState.miles,
+        });
+    };
+
+    const changeTripMiles = (e) => {
+        setTripState({
+            custom: true,
+            trip: tripState.trip,
+            miles: e.target.value,
         });
     };
 
     return (
-        <div style={{ paddingTop: '5rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Card style={{ padding: '1rem', background: '#4282AF' }}>
                 <Card.Content>
                     <Card.Header style={{ color: 'white' }}>Add</Card.Header>
@@ -73,7 +134,20 @@ function UpdateData() {
                     <input type="date" value={dateState.date} onChange={changeDate}/>
                     <br/>
                     <br/>
-                    <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} value={transportationState.transportation} onChange={changeTransportation}/>
+                    <Card.Header style={{ color: 'white' }}>Transportation</Card.Header>
+                    <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
+                    <br/>
+                    <Card.Header style={{ color: 'white' }}>Trip</Card.Header>
+                    <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
+                    {tripState.custom ?
+                        <div>
+                            <br/>
+                            <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
+                            <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} placeholder='Miles' onChange={changeTripMiles}/>}/>
+                            <br/>
+                            <br/>
+                        </div> : null
+                    }
                     <br/>
                     <Button inverted>Add</Button>
                 </Card.Content>
