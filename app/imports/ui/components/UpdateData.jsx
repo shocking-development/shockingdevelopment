@@ -147,8 +147,6 @@ function UpdateData() {
         transportation: transportationState.transportation,
         miles: tripState.miles,
       });
-
-      console.log("it worked!");
     };
 
     return (
