@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { TripsCollection } from '../../api/data/TripsCollection.js';
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
@@ -14,4 +15,12 @@ if (Stuffs.collection.find().count() === 0) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.map(data => addData(data));
   }
+
+if (TripsCollection.find().count() === 0) {
+  TripsCollection.insert({
+    owner: 'defaultuser',
+    name: 'school',
+    miles: 20,
+  });
+}
 }

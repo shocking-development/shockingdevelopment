@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
-import { Trip } from '../../api/data/TripCollection';
+import { TripsCollection } from '../../api/data/TripsCollection';
 import { Data } from '../../api/data/DataCollection';
 
 function UpdateData() {
 
-    const trips = useTracker(() => Trip.collection.find({ owner: 'currentuser' }).fetch());
-    console.log(trips);
+    const trips = useTracker(() => TripsCollection.find({}).fetch());
 
     const currentDate = new Date();
     let cMonth = currentDate.getMonth() + 1;
@@ -134,7 +133,7 @@ function UpdateData() {
       e.preventDefault();
 
       if (tripState.custom) {
-        Trip.collection.insert({
+        TripsCollection.insert({
             owner: 'currentuser',
             name: tripState.trip,
             miles: tripState.miles,
