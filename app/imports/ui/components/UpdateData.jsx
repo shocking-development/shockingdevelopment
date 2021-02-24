@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
-import { Data } from '../../api/data/DataCollection';
+import { DataCollection } from '../../api/data/DataCollection';
 
 function UpdateData() {
 
@@ -153,7 +153,7 @@ function UpdateData() {
         });
       }
 
-      Data.collection.insert({
+      Meteor.call('data.insert', {
         owner: user,
         date: tripDetails.date,
         transportation: tripDetails.transportation,
