@@ -69,6 +69,8 @@ class NavBarMain extends React.Component {
                     <Dropdown.Menu>
                       <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact
                                      to="/signout"/>
+                      <Dropdown.Item id="navbar-profile" icon="user" text="View Profile" as={NavLink} exact
+                                     to="/profile"/>
                     </Dropdown.Menu>
                   </Dropdown>
               )}
@@ -86,12 +88,16 @@ class NavBarMain extends React.Component {
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='key3'>Add Data</Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key6'>GHG
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key5'>GHG
                     calculator</Menu.Item>
 
+<<<<<<< HEAD
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key8'>Addprofile</Menu.Item>
 
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your
+=======
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key6'>Map your
+>>>>>>> issue-09
                     route</Menu.Item>
                 </Menu>,
                 ]

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Container } from 'semantic-ui-react';
+import { Loader, Header, Segment, Container, Card, Image } from 'semantic-ui-react';
 import swal from 'sweetalert';
 // eslint-disable-next-line no-unused-vars
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
@@ -15,12 +15,12 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, userName, email, password, zipcode, transportation, _id } = data;
+    const { firstName, lastName, user, email, password, zipcode, transportation, _id } = data;
     const updateData = {
       id: _id,
       firstName,
       lastName,
-      userName,
+      user,
       email,
       password,
       zipcode,
@@ -39,32 +39,51 @@ class EditProfile extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     const bridge = new SimpleSchema2Bridge(UserInfos.getSchema());
+    const pageStyle = {
+      marginLeft: '20em',
+      paddingTop: '6em',
+      paddingBottom: '10em',
+      height: '60.9em',
+      backgroundSize: 'cover',
+      marginTop: '-10px',
+      marginRight: '6em',
+      overflow: 'scroll',
+    };
     return (
 
-        <div className='Home-page-background'>
+        <div style={{
+          background: '#174060',
+          backgroundSize: 'cover',
+          height: '100%',
+          marginTop: '-10px',
+        }}>
           <NavBarHome/>
-          <Container>
-            <Grid container>
-              <Grid.Column>
-                <Header as="h2" textAlign="center">Edit Profile</Header>
-                <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
-                  <Segment>
-                    <TextField name='firstName'/>
-                    <TextField name='lastName'/>
-                    <TextField name='userName'/>
-                    <TextField name='email'/>
-                    <TextField name='password'/>
-                    <TextField name='transportation'/>
+          <Container style={pageStyle}>
+            <Header inverted as="h2" textAlign="center">Edit Profile</Header>
+            <Card style={{ margin: 'auto' }}>
+              <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium'/>
+              <AutoForm
+                  schema={bridge}
+                  onSubmit={data => {
+                    // eslint-disable-next-line no-undef
+                    if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
+                  }} model={this.props.doc}>
+                <Segment>
+                  <TextField name='firstName'/>
+                  <TextField name='lastName'/>
+                  <TextField name='user'/>
+                  <TextField name='email'/>
+                  <TextField name='password'/>
+                  <TextField name='transportation'/>
 
-                    <NumField name='zipcode' decimal={false}/>
+                  <NumField name='zipcode' decimal={false}/>
 
-                    <SubmitField value='Update'/>
-                    <ErrorsField/>
-                    <HiddenField name='owner'/>
-                  </Segment>
-                </AutoForm>
-              </Grid.Column>
-            </Grid>
+                  <SubmitField value='Update'/>
+                  <ErrorsField/>
+                  <HiddenField name='owner'/>
+                </Segment>
+              </AutoForm>
+            </Card>
           </Container>
         </div>
     );

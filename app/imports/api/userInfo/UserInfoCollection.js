@@ -16,7 +16,7 @@ class UserInfoCollection extends BaseCollection {
     super('UserInfos', new SimpleSchema({
       firstName: String,
       lastName: String,
-      userName: String,
+      user: String,
       owner: String,
       email: String,
       password: String,
@@ -29,7 +29,7 @@ class UserInfoCollection extends BaseCollection {
    * Defines a new Stuff item.
    * @param firstName the first name of the person.
    * @param lastName the last name of the person.
-   * @param userName the user name of the person.
+   * @param user the user name of the person.
    * @param owner the owner of the item.
    * @param email the email of the person.
    * @param password the password of the person.
@@ -37,11 +37,11 @@ class UserInfoCollection extends BaseCollection {
    * @param transportation, the transportation, of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, userName, owner, email, password, zipcode, transportation }) {
+  define({ firstName, lastName, user, owner, email, password, zipcode, transportation }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
-      userName,
+      user,
       owner,
       email,
       password,
@@ -56,13 +56,13 @@ class UserInfoCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param firstName the first name of the person (optional).
    * @param lastName the last name of the person (optional).
-   * @param userName the user name of the person (optional).
+   * @param user the user name of the person (optional).
    * @param email the email of the person (optional).
    * @param password the password of the person (optional).
    * @param zipcode the zipcode of the person (optional).
    * @param transportation, the transportation, of the person.
    */
-  update(docID, { firstName, lastName, userName, email, password, zipcode, transportation }) {
+  update(docID, { firstName, lastName, user, email, password, zipcode, transportation }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -70,8 +70,8 @@ class UserInfoCollection extends BaseCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    if (userName) {
-      updateData.userName = userName;
+    if (user) {
+      updateData.user = user;
     }
     if (email) {
       updateData.email = email;

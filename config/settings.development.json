@@ -1,18 +1,38 @@
 {
   "defaultAccounts": [
-    {"firstName": "John", "lastName":  "Foo", "username":  "johnfoo", "email":  "john@foo.com",
-      "password":  "changeme", "zipcode":  "96822", "transportation":  "electricity"},
-    {"firstName": "Admin", "lastName":  "Foo", "username":  "admin", "email":  "admin@foo.com",
-      "password":  "changeme", "zipcode":  "96822", "transportation":  "electricity", "role":  "admin"}
+    {
+      "email": "john@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin"
+    }
   ],
-
   "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+    {
+      "firstName": "John",
+      "lastName": "Foo",
+      "user": "johnfoo",
+      "email": "john@foo.com",
+      "password": "changeme",
+      "zipcode": "96822",
+      "transportation": "electricity",
+      "owner": "john@foo.com"
+    },
+    {
+      "firstName": "Admin",
+      "lastName": "Foo",
+      "user": "admin",
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "zipcode": "96822",
+      "transportation": "electricity",
+      "role": "admin",
+      "owner": "admin@foo.com"
+    }
   ],
-
   "defaultCars": [
     {
       "make": "Honda",

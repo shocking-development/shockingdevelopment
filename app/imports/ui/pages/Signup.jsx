@@ -4,6 +4,8 @@ import { Link, NavLink, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
+import swal from 'sweetalert';
+import { userInfoDefineMethod } from '../../api/userInfo/UserInfoCollection.methods';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -12,7 +14,16 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = {
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      error: '',
+      zipcode: '',
+      transportation: '',
+      redirectToReferer: false,
+    };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -22,7 +33,8 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password } = this.state;
+    const { email, password, firstName, lastName, zipcode, transportation } = this.state;
+    const user = email;
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
@@ -30,6 +42,25 @@ class Signup extends React.Component {
         this.setState({ error: '', redirectToReferer: true });
       }
     });
+    userInfoDefineMethod.call({
+          firstName,
+          lastName,
+          user,
+          email,
+          password,
+          zipcode,
+          transportation,
+          owner: user,
+        },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+            // eslint-disable-next-line no-console
+            console.error(error.message);
+          } else {
+            swal('Success', 'Profile added successfully', 'success');
+          }
+        });
   }
 
   /** Display the signup form. Redirect to add page after successful registration and login. */
@@ -101,6 +132,42 @@ class Signup extends React.Component {
                                 name="password"
                                 placeholder="Password"
                                 type="password"
+                                onChange={this.handleChange}
+                    />
+                    <Form.Input className={'signupInput'}
+                                label="First Name"
+                                id="signup-form-firstName"
+                                icon="lock"
+                                iconPosition="left"
+                                name="firstName"
+                                placeholder="firstName"
+                                type="firstName"
+                                onChange={this.handleChange}
+                    />
+                    <Form.Input className={'signupInput'}
+                                label="Last Name"
+                                id="signup-form-lastName"
+                                icon="lock"
+                                iconPosition="left"
+                                name="lastName"
+                                placeholder="lastName"
+                                type="lastName"
+                                onChange={this.handleChange}
+                    />
+                    <Form.Input className={'signupInput'}
+                                label="Zipcode"
+                                id="signup-form-zipcode"
+                                name="zipcode"
+                                placeholder="zipcode"
+                                type="zipcode"
+                                onChange={this.handleChange}
+                    />
+                    <Form.Input className={'signupInput'}
+                                label="Transportation"
+                                id="signup-form-transportation"
+                                name="transportation"
+                                placeholder="transportation"
+                                type="transportation"
                                 onChange={this.handleChange}
                     />
                     <Form.Button
