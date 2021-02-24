@@ -91,13 +91,8 @@ class NavBarMain extends React.Component {
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key5'>GHG
                     calculator</Menu.Item>
 
-<<<<<<< HEAD
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key8'>Addprofile</Menu.Item>
-
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your
-=======
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key6'>Map your
->>>>>>> issue-09
+
                     route</Menu.Item>
                 </Menu>,
                 ]
