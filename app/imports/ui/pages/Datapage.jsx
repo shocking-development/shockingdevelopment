@@ -16,27 +16,24 @@ class Datapage extends React.Component {
   render() {
     /** Some styling components */
     const pageStyle = {
-      marginLeft: '20em',
-      paddingTop: '8em',
+      paddingTop: '5em',
       paddingBottom: '10em',
-      height: '60.9em',
+      height: '100%',
       backgroundSize: 'cover',
-      marginTop: '-10px',
-      marginRight: '6em',
-      overflow: 'scroll',
     };
     const outer_div_pagestyle = {
-      background: '#174060',
+      background: 'rgb(21 51 62)',
       backgroundSize: 'cover',
       height: '100%',
-      marginTop: '-10px',
     };
+
     const dataPagePieChartstyling = {
       background: 'rgb(66 130 175)',
       borderRadius: '6px',
       boxShadow: '-41px -1px 44px -3px #0E324C',
       paddingTop: '10px',
     };
+
     const dataPagebarGraphstyling = {
       background: 'rgb(66 130 175)',
       borderRadius: '6px',
@@ -44,6 +41,7 @@ class Datapage extends React.Component {
       paddingTop: '10px',
       paddingRight: '10px',
     };
+
     const dataPageDonutChart1styling = {
       background: 'rgb(66 130 175)',
       borderRadius: '6px',
@@ -55,6 +53,7 @@ class Datapage extends React.Component {
       height: '100%',
       width: '24%',
     };
+
     const dataPageDonutChart2styling = {
       background: 'rgb(66 130 175)',
       borderRadius: '6px',
@@ -91,8 +90,7 @@ class Datapage extends React.Component {
     return (
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
-
-          <div style={pageStyle} className={'scrollbarfordata'}>
+          <div style={pageStyle}>
             <div style={{ width: '90%', margin: 'auto' }}>
               <Grid stackable columns='equal'>
                 <Grid.Column>

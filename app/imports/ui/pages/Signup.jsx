@@ -6,6 +6,7 @@ import { Accounts } from 'meteor/accounts-base';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 import swal from 'sweetalert';
 import { userInfoDefineMethod } from '../../api/userInfo/UserInfoCollection.methods';
+import Footer from '../components/Footer';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -197,6 +198,7 @@ class Signup extends React.Component {
               </Grid.Column>
             </Grid>
           </Container>
+          <Footer/>
         </div>
     );
   }

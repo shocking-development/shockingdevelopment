@@ -8,6 +8,7 @@ import LandingPagePieChart from '../defaultcharts/LandingPagePieChart';
 /** A simple static component to render some statistics for the landing page. */
 class LandingSection2 extends React.Component {
   render() {
+    /** Some styling components */
     const trackYourGHGemissionsStyling = {
       background: 'linear-gradient(' +
           '-225deg, rgba(8,0,96,1) 0%, rgba(4,62,107,1) 37%, rgba(0,124,118,1) 100%)',

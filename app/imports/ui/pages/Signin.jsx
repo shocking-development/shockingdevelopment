@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import NavBarLogin from '../components/NavBarLogin';
+import Footer from '../components/Footer';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -103,6 +104,7 @@ export default class Signin extends React.Component {
               </Grid.Column>
             </Grid>
           </Container>
+          <Footer/>
         </div>
     );
   }

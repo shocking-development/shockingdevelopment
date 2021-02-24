@@ -12,52 +12,64 @@ class ProfileCard extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.ready) ? this.renderPage() :
+        <Loader active inverted>Getting data</Loader>
+    ;
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    return (
-        <div className='Home-page-background'>
-          <NavBarHome/>
-          <Container style={{ paddingTop: '5em' }}>
-            <Header inverted as="h2" textAlign="center">The User Profile</Header>
 
-            <Card style={{ margin: 'auto' }}>
-              <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium'/>
-              <Card.Content>
-                <Card.Header>
-                  {this.props.profiles.user}
-                </Card.Header>
-                <Card.Meta>
+    const pageStyle = {
+      display: 'flex',
+      background: 'rgb(21 51 62)',
+    };
+    const divstyle = {
+      height: '100vh',
+      paddingTop: '2em',
+    };
+
+    return (
+        <div style={pageStyle}>
+          <NavBarHome/>
+          <div style={divstyle}>
+            <Container style={{ paddingTop: '5em' }}>
+              <Header inverted as="h2" textAlign="center">The User Profile</Header>
+
+              <Card style={{ margin: 'auto' }}>
+                <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium'/>
+                <Card.Content>
+                  <Card.Header>
+                    {this.props.profiles.user}
+                  </Card.Header>
+                  <Card.Meta>
                         <span className='date'>
                           Joined in 2015
                         </span>
-                </Card.Meta>
-                <Card.Description>
-                  <p>
-                    First name: {this.props.profiles.firstName}
-                    <br/>
-                    Last name: {this.props.profiles.lastName}
-                    <br/>
-                    Email: {this.props.profiles.email}
-                    <br/>
-                    Password: {this.props.profiles.password}
-                    <br/>
-                    Transportation: {this.props.profiles.transportation}
-                    <br/>
-                    Zipcode: {this.props.profiles.zipcode}
-                  </p>
+                  </Card.Meta>
+                  <Card.Description>
+                    <p>
+                      First name: {this.props.profiles.firstName}
+                      <br/>
+                      Last name: {this.props.profiles.lastName}
+                      <br/>
+                      Email: {this.props.profiles.email}
+                      <br/>
+                      Password: {this.props.profiles.password}
+                      <br/>
+                      Transportation: {this.props.profiles.transportation}
+                      <br/>
+                      Zipcode: {this.props.profiles.zipcode}
+                    </p>
 
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <a>
+                  </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
                   <Link to={`/edit/${this.props.profiles._id}`}>Edit Information</Link>
-                </a>
-              </Card.Content>
-            </Card>
-          </Container>
+                </Card.Content>
+              </Card>
+            </Container>
+          </div>
         </div>
     );
   }

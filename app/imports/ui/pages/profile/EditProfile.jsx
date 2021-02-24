@@ -42,17 +42,14 @@ class EditProfile extends React.Component {
     const pageStyle = {
       marginLeft: '20em',
       paddingTop: '6em',
-      paddingBottom: '10em',
-      height: '60.9em',
+      height: '90em',
       backgroundSize: 'cover',
-      marginTop: '-10px',
       marginRight: '6em',
-      overflow: 'scroll',
     };
     return (
 
         <div style={{
-          background: '#174060',
+          background: 'rgb(21 51 62)',
           backgroundSize: 'cover',
           height: '100%',
           marginTop: '-10px',
