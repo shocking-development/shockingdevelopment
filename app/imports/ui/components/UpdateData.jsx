@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
-import { DataCollection } from '../../api/data/DataCollection';
 
 function UpdateData() {
 
@@ -145,20 +144,21 @@ function UpdateData() {
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      if (tripDetails.custom) {
+    if (tripDetails.custom) {
         Meteor.call('trips.insert', {
             owner: user,
             name: tripDetails.trip,
             miles: tripDetails.miles,
         });
-      }
+        }
 
-      Meteor.call('data.insert', {
+        Meteor.call('data.insert', {
         owner: user,
         date: tripDetails.date,
         transportation: tripDetails.transportation,
         miles: tripDetails.miles,
-      });
+        });
+
     };
 
     return (
