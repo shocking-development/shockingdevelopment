@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
+import { useTracker } from 'meteor/react-meteor-data';
+import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
+import { Trip } from '../../api/data/TripCollection';
+import { Data } from '../../api/data/DataCollection';
 
 function UpdateData() {
+
+    const trips = useTracker(() => Trip.collection.find({ owner: 'currentuser' }).fetch());
+    console.log(trips);
 
     const currentDate = new Date();
     let cMonth = currentDate.getMonth() + 1;
@@ -124,6 +130,27 @@ function UpdateData() {
         });
     };
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+
+      if (tripState.custom) {
+        Trip.collection.insert({
+            owner: 'currentuser',
+            name: tripState.trip,
+            miles: tripState.miles,
+        });
+      }
+
+      Data.collection.insert({
+        owner: 'currentuser',
+        date: dateState.date,
+        transportation: transportationState.transportation,
+        miles: tripState.miles,
+      });
+
+      console.log("it worked!");
+    };
+
     return (
         <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Card style={{ padding: '1rem', background: '#4282AF' }}>
@@ -131,25 +158,31 @@ function UpdateData() {
                     <Card.Header style={{ color: 'white' }}>Add</Card.Header>
                 </Card.Content>
                 <Card.Content>
-                    <input type="date" value={dateState.date} onChange={changeDate}/>
-                    <br/>
-                    <br/>
-                    <Card.Header style={{ color: 'white' }}>Transportation</Card.Header>
-                    <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
-                    <br/>
-                    <Card.Header style={{ color: 'white' }}>Trip</Card.Header>
-                    <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
-                    {tripState.custom ?
-                        <div>
-                            <br/>
-                            <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
-                            <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} placeholder='Miles' onChange={changeTripMiles}/>}/>
-                            <br/>
-                            <br/>
-                        </div> : null
-                    }
-                    <br/>
-                    <Button inverted>Add</Button>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Field required>
+                        <label style={{ color: 'white' }}>Date</label>
+                        <input type="date" value={dateState.date} onChange={changeDate}/>
+                        </Form.Field>
+                        <Form.Field required>
+                        <label style={{ color: 'white' }}>Transportation</label>
+                        <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
+                        </Form.Field>
+                        <Form.Field required>
+                        <label style={{ color: 'white' }}>Trip</label>
+                        <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
+                        </Form.Field>
+                        {tripState.custom ?
+                            <div>
+                                <br/>
+                                <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
+                                <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} placeholder='Miles' onChange={changeTripMiles}/>}/>
+                                <br/>
+                                <br/>
+                            </div> : null
+                        }
+                        <br/>
+                        <Button inverted type='submit'>Add</Button>
+                    </Form>
                 </Card.Content>
             </Card>
         </div>
