@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
-import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
+import swal from 'sweetalert';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
+import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
+import { TripsCollection } from '../../api/data/TripsCollection';
 
 function UpdateData() {
+
+    const user = useTracker(() => Meteor.userId());
+    const trips = useTracker(() => {
+    Meteor.subscribe('trips');
+    return TripsCollection.find({ owner: user }).fetch();
+    });
 
     const currentDate = new Date();
     let cMonth = currentDate.getMonth() + 1;
@@ -9,6 +19,22 @@ function UpdateData() {
         cMonth = `0${cMonth}`;
     }
     const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${currentDate.getDate().toString()}`;
+
+    const tripOptions = [];
+
+    trips.forEach(trip => {
+        tripOptions.push({
+            key: trip.name,
+            text: trip.name,
+            value: Number(trip.miles),
+        });
+    });
+
+    tripOptions.push({
+        key: 'Custom',
+        text: 'Custom',
+        value: 'Custom',
+    });
 
     const transportationOptions = [
         {
@@ -48,60 +74,47 @@ function UpdateData() {
         },
     ];
 
-    const tripOptions = [
-        {
-            key: 'Work',
-            text: 'Work',
-            value: 20,
-        },
-        {
-            key: 'Grocery Store',
-            text: 'Grocery Store',
-            value: 10,
-        },
-        {
-            key: 'Custom',
-            text: 'Custom',
-            value: 'Custom',
-        },
-    ];
-
-    const [dateState, setDateState] = useState({
+    const [tripDetails, setTripDetails] = useState({
         date: fullDate,
-    });
-
-  // eslint-disable-next-line no-unused-vars
-    const [transportationState, setTransportationState] = useState({
         transportation: null,
-    });
-
-    const [tripState, setTripState] = useState({
         custom: false,
         trip: null,
         miles: null,
     });
 
     const changeDate = (e) => {
-        setDateState({
+        setTripDetails({
             date: e.target.value,
+            transportation: tripDetails.transportation,
+            custom: tripDetails.custom,
+            trip: tripDetails.trip,
+            miles: tripDetails.miles,
         });
     };
 
     const changeTransportation = (e, data) => {
-        setTransportationState({
+        setTripDetails({
+            date: tripDetails.date,
             transportation: data.value,
+            custom: tripDetails.custom,
+            trip: tripDetails.trip,
+            miles: tripDetails.miles,
         });
     };
 
     const changeTrip = (e, data) => {
         if (data.value === 'Custom') {
-            setTripState({
+            setTripDetails({
+                date: tripDetails.date,
+                transportation: tripDetails.transportation,
                 custom: true,
                 trip: null,
                 miles: null,
             });
         } else {
-            setTripState({
+            setTripDetails({
+                date: tripDetails.date,
+                transportation: tripDetails.transportation,
                 custom: false,
                 trip: data.key,
                 miles: data.value,
@@ -110,19 +123,62 @@ function UpdateData() {
     };
 
     const changeTripName = (e) => {
-        setTripState({
+        setTripDetails({
+            date: tripDetails.date,
+            transportation: tripDetails.transportation,
             custom: true,
             trip: e.target.value,
-            miles: tripState.miles,
+            miles: tripDetails.miles,
         });
     };
 
     const changeTripMiles = (e) => {
-        setTripState({
+        setTripDetails({
+            date: tripDetails.date,
+            transportation: tripDetails.transportation,
             custom: true,
-            trip: tripState.trip,
-            miles: e.target.value,
+            trip: tripDetails.trip,
+            miles: Number(e.target.value),
         });
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (tripDetails.transportation === null) {
+        swal('Error', 'Please select transportation', 'error');
+      } else if (tripDetails.trip === null) {
+        swal('Error', 'Please select a trip', 'error');
+      } else if (typeof tripDetails.miles !== 'number' || tripDetails.miles === null) {
+        swal('Error', 'Please enter a number in the miles input', 'error');
+      } else {
+          try {
+              if (tripDetails.custom) {
+                Meteor.call('trips.insert', {
+                    owner: user,
+                    name: tripDetails.trip,
+                    miles: tripDetails.miles,
+                });
+              }
+
+            Meteor.call('data.insert', {
+                owner: user,
+                date: tripDetails.date,
+                transportation: tripDetails.transportation,
+                miles: tripDetails.miles,
+            });
+
+            swal('Success', 'Added successfully', 'success').then(() => {
+                // eslint-disable-next-line no-undef
+                window.location.reload();
+            });
+          } catch {
+              swal('Error', 'Failed to add, please try again.', 'error').then(() => {
+                // eslint-disable-next-line no-undef
+                window.location.reload();
+            });
+          }
+      }
+
     };
 
     return (
@@ -132,25 +188,31 @@ function UpdateData() {
                     <Card.Header style={{ color: 'white' }}>Add</Card.Header>
                 </Card.Content>
                 <Card.Content>
-                    <input type="date" value={dateState.date} onChange={changeDate}/>
-                    <br/>
-                    <br/>
-                    <Card.Header style={{ color: 'white' }}>Transportation</Card.Header>
-                    <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
-                    <br/>
-                    <Card.Header style={{ color: 'white' }}>Trip</Card.Header>
-                    <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
-                    {tripState.custom ?
-                        <div>
-                            <br/>
-                            <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
-                            <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} placeholder='Miles' onChange={changeTripMiles}/>}/>
-                            <br/>
-                            <br/>
-                        </div> : null
-                    }
-                    <br/>
-                    <Button inverted>Add</Button>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Field required>
+                        <label style={{ color: 'white' }}>Date</label>
+                        <input type="date" value={tripDetails.date} onChange={changeDate}/>
+                        </Form.Field>
+                        <Form.Field required>
+                        <label style={{ color: 'white' }}>Transportation</label>
+                        <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
+                        </Form.Field>
+                        <Form.Field required>
+                        <label style={{ color: 'white' }}>Trip</label>
+                        <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
+                        </Form.Field>
+                        {tripDetails.custom ?
+                            <div>
+                                <br/>
+                                <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
+                                <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} placeholder='Miles' onChange={changeTripMiles}/>}/>
+                                <br/>
+                                <br/>
+                            </div> : null
+                        }
+                        <br/>
+                        <Button inverted type='submit'>Add</Button>
+                    </Form>
                 </Card.Content>
             </Card>
         </div>

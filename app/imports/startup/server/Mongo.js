@@ -16,4 +16,5 @@ if (UserInfos.count() === 0) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.map(data => addData(data));
   }
+
 }
