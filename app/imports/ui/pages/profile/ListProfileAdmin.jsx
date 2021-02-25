@@ -21,10 +21,6 @@ class ListProfileAdmin extends React.Component {
       height: '60em',
       backgroundSize: 'cover',
     };
-    const divstyle = {
-      paddingLeft: '20%',
-      paddingTop: '3%',
-    };
     return (
         <div style={pageStyle}>
           <NavBarMain/>
