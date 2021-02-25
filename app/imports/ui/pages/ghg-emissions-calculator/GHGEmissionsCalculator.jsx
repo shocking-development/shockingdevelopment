@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Segment } from 'semantic-ui-react';
+import { Form, Segment, Header, Container, Button } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -22,7 +22,15 @@ class GHGEmissionsCalculator extends React.Component {
     super(props);
     this.state = {
       input: '',
+      show: false,
     };
+  }
+
+  /** Toggle segment that shows the calculation result */
+  showResult = () => {
+    this.setState({
+      show: true,
+    });
   }
 
   /** This function calculates the CO2 created by user inputted gallons. */
@@ -65,32 +73,44 @@ class GHGEmissionsCalculator extends React.Component {
       width: '66%',
 
     };
+
     const outer_div_pagestyle = {
       background: 'rgb(21 51 62)',
       backgroundSize: 'cover',
       height: '100%',
     };
 
+    const containerStyle = {
+      paddingTop: '10em',
+      paddingLeft: '5em',
+      paddingRight: '5em',
+      paddingBottom: '10em',
+      backgroundColor: 'white',
+    };
+
     return (
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
           <div style={pageStyle}>
-            <Form onSubmit={this.handleFormSubmit}>
-              <Form.Input
-                  placeholder='Enter gallons...'
-                  value={this.state.input}
-                  onChange={this.handleInputChange}
-                  label={{ basic: true, content: 'gal' }}
-              />
-            </Form>
-            <Segment>
-              <p> {this.calculateCO2()} tons of CO2 emissions is generated from {this.state.input} gallon(s) of
-                gas </p>
-              <p> This is equivalent to the GHG emissions from {this.calculateGHG()} passenger vehicles driven for one
-                year.</p>
-            </Segment>
+            <Container style={containerStyle} className='signupcontainer'>
+              <Header inverted size={'huge'}>Greenhouse Gas Calculator</Header>
+              <Form size='small' onSubmit={this.handleFormSubmit}>
+                <Form.Input
+                    placeholder='Enter gallons of gas'
+                    value={this.state.input}
+                    onChange={this.handleInputChange}
+                />
+                <Button color='blue' onClick={this.showResult}>Calculate</Button>
+              </Form>
+              {this.state.show &&
+              (<Segment>
+                <p> {this.calculateCO2()} tons of CO2 emissions is generated from {this.state.input} gallon(s) of
+                  gas </p>
+                <p> This is equivalent to the GHG emissions from {this.calculateGHG()} passenger vehicles driven for one
+                  year.</p>
+              </Segment>)}
+            </Container>
           </div>
-
         </div>
     );
   }
