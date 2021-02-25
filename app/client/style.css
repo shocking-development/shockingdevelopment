@@ -14,6 +14,12 @@
     padding-top: 10.4em !important;
   }
 
+  /* the padding for the menu boxes column */
+  .menu-boxes-column {
+    padding-right: 0 !important;
+    padding-left: 10px !important;
+  }
+
   /* The hover animation for the landing page*/
   .zoom {
     transition: transform .2s; /* Animation */
