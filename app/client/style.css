@@ -138,7 +138,7 @@
 
 /* the font styling */
 .body {
-  font-family: "Roboto" !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 /* CHARTS, Graphs, pie-charts ...  styling */
@@ -178,7 +178,7 @@
 
 /* The Syling for NavBarMain*/
 .css-selector {
-  background: linear-gradient(334deg, #00fece, #053D54, #053d54, #02bdab);
+  background: linear-gradient(334deg, #00fece, #053D54, #053d54, #02bdab); /* the gradient colors */
   background-size: 800% 800%;
 
   -webkit-animation: AnimationName 37s ease infinite;
@@ -188,19 +188,19 @@
 
   /* THE ANIMATIONS */
   @-webkit-keyframes AnimationName {
-    0%{background-position:23% 0%}
+    0%{background-position:23% 0}
     50%{background-position:78% 100%}
-    100%{background-position:23% 0%}
+    100%{background-position:23% 0}
   }
   @-moz-keyframes AnimationName {
-    0%{background-position:23% 0%}
+    0%{background-position:23% 0}
     50%{background-position:78% 100%}
-    100%{background-position:23% 0%}
+    100%{background-position:23% 0}
   }
   @keyframes AnimationName {
-    0%{background-position:23% 0%}
+    0%{background-position:23% 0}
     50%{background-position:78% 100%}
-    100%{background-position:23% 0%}
+    100%{background-position:23% 0}
   }
 
 
