@@ -19,11 +19,6 @@ class Home extends React.Component {
       paddingLeft: '14%',
       paddingTop: '3%',
     };
-    const fontHeader1 = {
-      fontFamily: 'sans-serif',
-      fontWeight: 'lighter',
-      fontSize: 'calc(0.9vw + 0.5vh + 3vmin)',
-    };
 
     return (
         <div style={pageStyle}>

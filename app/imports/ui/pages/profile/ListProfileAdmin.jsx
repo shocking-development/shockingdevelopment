@@ -16,10 +16,19 @@ class ListProfileAdmin extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const pageStyle = {
+      background: 'rgb(21 51 62)',
+      height: '60em',
+      backgroundSize: 'cover',
+    };
+    const divstyle = {
+      paddingLeft: '20%',
+      paddingTop: '3%',
+    };
     return (
-        <div className='Home-page-background'>
+        <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ padding: '6em' }}>
+          <Container style={{ padding: '10em' }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
             <Table celled>
               <Table.Header>

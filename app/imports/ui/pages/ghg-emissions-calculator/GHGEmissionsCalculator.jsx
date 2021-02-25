@@ -57,9 +57,9 @@ class GHGEmissionsCalculator extends React.Component {
   /** Render the calculation page. */
   render() {
     const pageStyle = {
-      paddingTop: '15em',
+      paddingTop: '20em',
       paddingBottom: '10em',
-      height: '40em',
+      height: '59em',
       backgroundSize: 'cover',
       margin: 'auto',
       width: '66%',
