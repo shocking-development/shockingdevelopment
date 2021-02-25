@@ -9,11 +9,6 @@
   padding-top: 10.4em !important;
 }
 
-.column {
-  padding-right: 0 !important;
-  padding-left: 10px !important;
-}
-
 .zoom {
   transition: transform .2s; /* Animation */
 }
