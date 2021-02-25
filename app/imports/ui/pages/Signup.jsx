@@ -36,13 +36,6 @@ class Signup extends React.Component {
   submit = () => {
     const { email, password, firstName, lastName, zipcode, transportation } = this.state;
     const user = email;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        this.setState({ error: '', redirectToReferer: true });
-      }
-    });
     userInfoDefineMethod.call({
           firstName,
           lastName,
@@ -59,6 +52,13 @@ class Signup extends React.Component {
             // eslint-disable-next-line no-console
             console.error(error.message);
           } else {
+            Accounts.createUser({ email, username: email, password, firstName, lastName, zipcode, transportation }, (err) => {
+              if (err) {
+                this.setState({ error: err.reason });
+              } else {
+                this.setState({ error: '', redirectToReferer: true });
+              }
+            });
             swal('Success', 'Profile added successfully', 'success');
           }
         });
