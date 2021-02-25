@@ -3,6 +3,7 @@ import { Header, Image } from 'semantic-ui-react';
 import NavBarHome from '../components/main-navbar/NavBarMain';
 import StaticData from '../components/StaticData';
 import UpdateData from '../components/UpdateData';
+import RecentlyAdded from '../components/RecentlyAdded';
 
 function AddData() {
 
@@ -16,6 +17,7 @@ function AddData() {
             }}/>
           <StaticData/>
           <UpdateData/>
+          <RecentlyAdded/>
         </div>
       </div>
   );

@@ -15,6 +15,7 @@ Meteor.methods({
               date: dataObject.date,
               transportation: dataObject.transportation,
               miles: dataObject.miles,
+              createdAt: new Date(),
           });
 
     },

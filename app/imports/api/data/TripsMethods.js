@@ -14,6 +14,7 @@ Meteor.methods({
               owner: tripsObject.owner,
               name: tripsObject.name,
               miles: tripsObject.miles,
+              createdAt: new Date(),
           });
 
     },

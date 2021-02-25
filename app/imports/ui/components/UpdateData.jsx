@@ -138,7 +138,7 @@ function UpdateData() {
             transportation: tripDetails.transportation,
             custom: true,
             trip: tripDetails.trip,
-            miles: e.target.value,
+            miles: Number(e.target.value),
         });
     };
 
