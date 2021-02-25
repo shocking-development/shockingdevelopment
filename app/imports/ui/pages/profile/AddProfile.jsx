@@ -13,6 +13,7 @@ const formSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
   userName: String,
+  image: String,
   email: String,
   password: String,
   zipcode: Number,
@@ -24,13 +25,13 @@ class AddProfile extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { firstName, lastName, userName, email, password, zipcode, transportation } = data;
+    const { firstName, lastName, userName, image, email, password, zipcode, transportation } = data;
     const owner = Meteor.user().username;
-    userInfoDefineMethod.call({ firstName, lastName, userName, email, password, zipcode, transportation, owner },
+    userInfoDefineMethod.call({ firstName, lastName, userName, image, email, password, zipcode, transportation, owner },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
-             console.error(error.message);
+            console.error(error.message);
           } else {
             swal('Success', 'Item added successfully', 'success');
             formRef.reset();
@@ -50,7 +51,9 @@ class AddProfile extends React.Component {
             <Grid container>
               <Grid.Column>
                 <Header as="h2" textAlign="center">Add Stuff</Header>
-                <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+                <AutoForm ref={ref => {
+                  fRef = ref;
+                }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
                   <Segment>
                     <TextField name='firstName'/>
                     <TextField name='lastName'/>

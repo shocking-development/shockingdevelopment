@@ -1,10 +1,11 @@
 import React from 'react';
-import { Grid, Segment, Header, Statistic, Image } from 'semantic-ui-react';
+import { Grid, Segment, Statistic } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../components/main-navbar/NavBarMain';
+import Datapage from './Datapage';
 
 /** A simple static component to render the home page when users are logged in. */
 class Home extends React.Component {
@@ -12,27 +13,22 @@ class Home extends React.Component {
   render() {
     const square = { width: 285, height: 285 };
     const pageStyle = {
-      marginLeft: '20em',
-      paddingTop: '8em',
-      paddingBottom: '135px',
-      height: '47.9em',
-      backgroundSize: 'cover',
-      marginTop: '-10px',
-      marginRight: '6em',
+      background: 'rgb(21 51 62)',
     };
+    const divstyle = {
+      paddingLeft: '14%',
+      paddingTop: '3%',
+    };
+
     return (
-        <div className='Home-page-background'>
+        <div style={pageStyle}>
           <NavBarHome/>
-          <div style={pageStyle}>
-            <Header inverted size='huge' textAlign={'center'}>Welcome back, {this.props.currentUser} </Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
+          <div style={divstyle}>
             <Grid stackable centered columns={3}>
               <Grid.Row centered>
-                <Grid.Column>
+                <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
-                    <Segment circular style={square}>
+                    <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
                         <Statistic.Value>$20</Statistic.Value>
@@ -42,9 +38,9 @@ class Home extends React.Component {
                   </div>
                 </Grid.Column>
 
-                <Grid.Column>
+                <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
-                    <Segment circular style={square}>
+                    <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
                         <Statistic.Value>5 lbs</Statistic.Value>
@@ -54,9 +50,9 @@ class Home extends React.Component {
                   </div>
                 </Grid.Column>
 
-                <Grid.Column>
+                <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
-                    <Segment circular style={square}>
+                    <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
                         <Statistic.Value>1 gal</Statistic.Value>
@@ -68,6 +64,7 @@ class Home extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
+            <Datapage/>
           </div>
         </div>
     );

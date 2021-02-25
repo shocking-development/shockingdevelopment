@@ -57,16 +57,22 @@ class GHGEmissionsCalculator extends React.Component {
   /** Render the calculation page. */
   render() {
     const pageStyle = {
-      marginLeft: '20em',
-      paddingTop: '8em',
-      paddingBottom: '135px',
-      height: '47.9em',
+      paddingTop: '20em',
+      paddingBottom: '10em',
+      height: '59em',
       backgroundSize: 'cover',
-      marginTop: '-10px',
-      marginRight: '6em',
+      margin: 'auto',
+      width: '66%',
+
     };
+    const outer_div_pagestyle = {
+      background: 'rgb(21 51 62)',
+      backgroundSize: 'cover',
+      height: '100%',
+    };
+
     return (
-        <div className='Home-page-background'>
+        <div style={outer_div_pagestyle}>
           <NavBarHome/>
           <div style={pageStyle}>
             <Form onSubmit={this.handleFormSubmit}>
@@ -83,8 +89,8 @@ class GHGEmissionsCalculator extends React.Component {
               <p> This is equivalent to the GHG emissions from {this.calculateGHG()} passenger vehicles driven for one
                 year.</p>
             </Segment>
-
           </div>
+
         </div>
     );
   }

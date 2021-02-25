@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image } from 'semantic-ui-react';
+import { Menu, Image, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 
 /**
@@ -12,98 +12,76 @@ import { Roles } from 'meteor/alanning:roles';
  */
 class NavBarMain extends React.Component {
   render() {
-    const menuStyle = { height: '10px', paddingTop: '10px' };
-    const navbarStyle = {
-      position: 'relative',
-      zIndex: '1000',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      flexDirection: 'row',
-      flexGrow: '1',
-      width: '100%',
-      height: '60px',
-      background: '#1f2326',
-    };
+    /** Some styling components */
     const navbarVerticle = {
-      position: 'absolute',
-      overflow: 'hidden',
-      flexDirection: 'column',
-      flexGrow: '1',
-      background: '#1f2326',
-      height: '100%',
+      height: '100%', /* Full-height: remove this if you want "auto" height */
+      width: 'auto', /* Set the width of the sidebar */
+      position: 'fixed', /* Fixed Sidebar (stay in place on scroll) */
+      zIndex: '1', /* Stay on top */
+      top: '0', /* Stay at the top */
+      left: '0',
+      overflowX: 'hidden', /* Disable horizontal scroll */
+      paddingTop: '20px',
     };
-    const loginDropdown = {
-      color: '#3CAEA3',
-      fontSize: '1.2375em',
-      letterSpacing: '2px',
-      fontWeight: '100',
-      zIndex: 'auto',
-      position: 'absolute',
-      top: '.9em',
-      left: '85%',
-      paddingRight: '1em',
+
+    const userstyling = {
+      margin: 'auto',
+      width: '86%',
+      fontSize: 'large',
+      fontWeight: 'lighter',
     };
 
     return (
-        <div style={menuStyle}>
-          <div style={navbarStyle}>
 
-            <Menu.Item as={NavLink} activeClassName="" exact to="/home">
-              <Image src='/images/HEI-LOGO.png'
-                     style={{ width: '8%', marginTop: '25px', paddingLeft: '20px', marginBottom: '2%' }}/>
-            </Menu.Item>
-            <Menu.Item>
-              {this.props.currentUser === '' ? (
-                  <Dropdown id="login-dropdown" text="LOGIN" pointing="top right" style={loginDropdown}>
-                    <Dropdown.Menu>
-                      <Dropdown.Item id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact
-                                     to="/signin"/>
-                      <Dropdown.Item id="login-dropdown-sign-up" icon="add user" text="Sign Up" as={NavLink} exact
-                                     to="/signup"/>
-                    </Dropdown.Menu>
-                  </Dropdown>
-              ) : (
-                  <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}
-                            style={loginDropdown}>
-                    <Dropdown.Menu>
-                      <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact
-                                     to="/signout"/>
-                    </Dropdown.Menu>
-                  </Dropdown>
-              )}
-            </Menu.Item>
+        <div className={'css-selector'} style={navbarVerticle}>
+          {this.props.currentUser ? (
+              // eslint-disable-next-line react/jsx-key
+              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}>
+                <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
+                  <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular/>
+                </Menu.Item>
+                <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 
-          </div>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='key8'>
+                  <Icon name='user' size='large'/>
+                  View Profile
+                </Menu.Item>
 
-          <div style={navbarVerticle}>
-            {this.props.currentUser ? (
-                // eslint-disable-next-line react/jsx-key
-                [<Menu inverted pointing secondary vertical>
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='key1'>Home</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='key1'>
+                  <Icon name='home' size='large'/>
+                  Home
+                </Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/data" key='key2'>Go To Data</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='key3'>
+                  <Icon name='cloud' size='large'/>
+                  Add Today&apos;s Emissions
+                </Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='key3'>Add Data</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key5'>
+                  <Icon name='calculator' size='large'/>
+                  GHG calculator
+                </Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key6'>GHG
-                    calculator</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key6'>
+                  <Icon name='map' size='large'/>
+                  Map your route
+                </Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addprofile" key='key8'>Addprofile</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key9'>
+                  <Icon name='sign-out' size='large'/>
+                  Sign Out
+                </Menu.Item>
 
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key7'>Map your
-                    route</Menu.Item>
-                </Menu>,
-                ]
-            ) : ''}
+              </Menu>,
+              ]
+          ) : ''}
 
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'
-                           style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
-            ) : ''}
-          </div>
-
+          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'
+                         style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
+          ) : ''}
         </div>
+
     );
   }
 }
