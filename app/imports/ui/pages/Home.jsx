@@ -29,10 +29,6 @@ class Home extends React.Component {
         <div style={pageStyle}>
           <NavBarHome/>
           <div style={divstyle}>
-            <Header style={fontHeader1} inverted size='huge' textAlign={'center'}>YOUR STATS</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
             <Grid stackable centered columns={3}>
               <Grid.Row centered>
                 <Grid.Column className={'jello-horizontal'}>

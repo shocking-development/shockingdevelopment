@@ -28,14 +28,14 @@ class Datapage extends React.Component {
     };
 
     const dataPagePieChartstyling = {
-      background: '#29a6e6',
+      background: 'rgb(13, 163, 203)',
       borderRadius: '6px',
       boxShadow: '-41px -1px 44px -3px #0E324C',
       paddingTop: '10px',
     };
 
     const dataPagebarGraphstyling = {
-      background: '#29a6e6',
+      background: 'rgb(13, 163, 203)',
       borderRadius: '6px',
       boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
@@ -43,7 +43,7 @@ class Datapage extends React.Component {
     };
 
     const dataPageDonutChart1styling = {
-      background: '#29a6e6',
+      background: 'rgb(13, 163, 203)',
       borderRadius: '6px',
       boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
@@ -55,7 +55,7 @@ class Datapage extends React.Component {
     };
 
     const dataPageDonutChart2styling = {
-      background: '#29a6e6',
+      background: 'rgb(13, 163, 203)',
       borderRadius: '6px',
       boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
