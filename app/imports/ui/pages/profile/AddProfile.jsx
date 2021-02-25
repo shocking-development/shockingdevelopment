@@ -45,7 +45,7 @@ class AddProfile extends React.Component {
     let fRef = null;
     const bridge = new SimpleSchema2Bridge(formSchema);
     return (
-        <div className='Home-page-background'>
+        <div>
           <NavBarHome/>
           <Container>
             <Grid container>
