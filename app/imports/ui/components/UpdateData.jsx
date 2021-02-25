@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
@@ -25,7 +26,7 @@ function UpdateData() {
         tripOptions.push({
             key: trip.name,
             text: trip.name,
-            value: trip.miles,
+            value: Number(trip.miles),
         });
     });
 
@@ -143,21 +144,40 @@ function UpdateData() {
 
     const handleSubmit = (e) => {
       e.preventDefault();
+      if (tripDetails.transportation === null) {
+        swal('Error', 'Please select transportation', 'error');
+      } else if (tripDetails.trip === null) {
+        swal('Error', 'Please select a trip', 'error');
+      } else if (typeof tripDetails.miles !== 'number' || tripDetails.miles === null) {
+        swal('Error', 'Please enter a number in the miles input', 'error');
+      } else {
+          try {
+              if (tripDetails.custom) {
+                Meteor.call('trips.insert', {
+                    owner: user,
+                    name: tripDetails.trip,
+                    miles: tripDetails.miles,
+                });
+              }
 
-    if (tripDetails.custom) {
-        Meteor.call('trips.insert', {
-            owner: user,
-            name: tripDetails.trip,
-            miles: tripDetails.miles,
-        });
-        }
+            Meteor.call('data.insert', {
+                owner: user,
+                date: tripDetails.date,
+                transportation: tripDetails.transportation,
+                miles: tripDetails.miles,
+            });
 
-        Meteor.call('data.insert', {
-        owner: user,
-        date: tripDetails.date,
-        transportation: tripDetails.transportation,
-        miles: tripDetails.miles,
-        });
+            swal('Success', 'Added successfully', 'success').then(() => {
+                // eslint-disable-next-line no-undef
+                window.location.reload();
+            });
+          } catch {
+              swal('Error', 'Failed to add, please try again.', 'error').then(() => {
+                // eslint-disable-next-line no-undef
+                window.location.reload();
+            });
+          }
+      }
 
     };
 
