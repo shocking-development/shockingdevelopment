@@ -29,14 +29,8 @@
     transform: scale(1.03); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 
-
-.ui.inverted.segment {
-  background: #000000;
-  color: #00497bff
-}
-
 /* The styling of the circles of data on the Home page */
-.ui.circular.segment {
+.ui.circular.segment { /* restyles the semantic ui segment */
   background: rgb(13, 163, 203);
   border: 1px solid #20639B;
 }
