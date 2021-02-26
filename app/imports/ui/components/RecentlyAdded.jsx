@@ -20,7 +20,7 @@ function RecentlyAdded() {
                 <Grid>
                     <Grid.Row columns={3}>
                         {data.map(recentData => <Grid.Column key={toString(recentData.createdAt) + recentData.transportation + recentData.miles}>
-                        <Card style={{ padding: '1rem', background: '#4282AF' }}>
+                        <Card style={{ padding: '1rem', background: '#4282AF', width: '25em', height: '10em' }}>
                         <Card.Content>
                         <Card.Header style={{ color: 'white' }}>{recentData.date}</Card.Header>
                         </Card.Content>
