@@ -33,7 +33,7 @@
       "owner": "admin@foo.com"
     }
   ],
-  "defaultCars": [
+  "defaultCarsData": [
     {
       "make": "Honda",
       "model": "Accord",
