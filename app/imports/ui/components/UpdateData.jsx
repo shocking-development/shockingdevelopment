@@ -22,14 +22,16 @@ function UpdateData() {
 
     const tripOptions = [];
 
+    const deleteTrip = ({ _id }) => Meteor.call('trips.remove', _id);
+
     trips.forEach(trip => {
         tripOptions.push({
-            key: trip.name,
+            key: trip._id,
             text: `${trip.name} (${trip.miles})`,
             value: Number(trip.miles),
             content: (
                 <div>
-                {`${trip.name} (${trip.miles})`}<Button icon='remove' size='small' color='red'/>
+                {`${trip.name} (${trip.miles})`}<Button icon='remove' size='small' color='red' onClick={() => deleteTrip(trip)} />
                 </div>
             ),
         });
@@ -193,19 +195,13 @@ function UpdateData() {
                     <Card.Header style={{ color: 'white' }}>Add</Card.Header>
                 </Card.Content>
                 <Card.Content>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Field required>
                         <label style={{ color: 'white' }}>Date</label>
+                        <br/>
                         <input type="date" value={tripDetails.date} onChange={changeDate}/>
-                        </Form.Field>
-                        <Form.Field required>
                         <label style={{ color: 'white' }}>Transportation</label>
                         <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
-                        </Form.Field>
-                        <Form.Field required>
                         <label style={{ color: 'white' }}>Trip</label>
                         <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
-                        </Form.Field>
                         {tripDetails.custom ?
                             <div>
                                 <br/>
@@ -216,8 +212,7 @@ function UpdateData() {
                             </div> : null
                         }
                         <br/>
-                        <Button inverted type='submit'>Add</Button>
-                    </Form>
+                        <Button inverted onClick={handleSubmit}>Add</Button>
                 </Card.Content>
             </Card>
         </div>
