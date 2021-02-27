@@ -192,15 +192,11 @@ function UpdateData() {
         <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Card style={{ padding: '1rem', background: '#4282AF' }}>
                 <Card.Content>
-                    <Card.Header style={{ color: 'white' }}>Add</Card.Header>
-                </Card.Content>
-                <Card.Content>
-                        <label style={{ color: 'white' }}>Date</label>
-                        <br/>
+                    <Card.Header style={{ color: 'white' }}>Date</Card.Header>
                         <input type="date" value={tripDetails.date} onChange={changeDate}/>
-                        <label style={{ color: 'white' }}>Transportation</label>
+                        <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
                         <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
-                        <label style={{ color: 'white' }}>Trip</label>
+                        <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
                         <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
                         {tripDetails.custom ?
                             <div>
