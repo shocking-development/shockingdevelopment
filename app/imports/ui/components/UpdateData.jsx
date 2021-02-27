@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Dropdown, Card, Button, Input, Popup, Form, Icon } from 'semantic-ui-react';
+import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
 
 function UpdateData() {
