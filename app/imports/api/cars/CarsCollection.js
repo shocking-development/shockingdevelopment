@@ -23,7 +23,7 @@ class CarsCollection extends BaseCollection {
 
   /**
    * Defines a new Cars item.
-   * @param makee the make of the car.
+   * @param make the make of the car.
    * @param model the model the car.
    * @param year the year of the car.
    * @param mpg the mpg of the car.
@@ -109,7 +109,7 @@ class CarsCollection extends BaseCollection {
    */
   subscribeCars() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(carsPublications.cars);
+      return Meteor.subscribe(carsPublications.car);
     }
     return null;
   }
