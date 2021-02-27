@@ -202,7 +202,7 @@ function UpdateData() {
                             <div>
                                 <br/>
                                 <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
-                                <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} placeholder='Miles' onChange={changeTripMiles}/>}/>
+                                <Popup content='Insert Roundtrip Miles' trigger={<Input style={{ width: '30%', float: 'right' }} type="number" placeholder='Miles' onChange={changeTripMiles}/>}/>
                                 <br/>
                                 <br/>
                             </div> : null
