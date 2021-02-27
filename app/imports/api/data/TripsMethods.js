@@ -16,7 +16,16 @@ Meteor.methods({
               miles: tripsObject.miles,
               createdAt: new Date(),
           });
+    },
 
+    'trips.remove'(tripId) {
+        check(tripId, String);
+
+        if (!this.userId) {
+            throw new Meteor.Error('Not authorized.');
+          }
+
+        TripsCollection.remove(tripId);
     },
 
 });

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
+import { Dropdown, Card, Button, Input, Popup, Form, Icon } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
 
 function UpdateData() {
@@ -25,8 +25,13 @@ function UpdateData() {
     trips.forEach(trip => {
         tripOptions.push({
             key: trip.name,
-            text: trip.name,
+            text: `${trip.name} (${trip.miles})`,
             value: Number(trip.miles),
+            content: (
+                <div>
+                {`${trip.name} (${trip.miles})`}<Button icon='remove' size='small' color='red'/>
+                </div>
+            ),
         });
     });
 
