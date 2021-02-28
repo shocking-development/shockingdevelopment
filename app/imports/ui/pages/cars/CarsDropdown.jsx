@@ -22,7 +22,7 @@ class CarsDropdown extends React.Component {
       backgroundSize: 'cover',
     };
     const options = [
-      { key: this.props.cars.make, text: this.props.cars.make, value: this.props.cars.make },
+      this.props.cars.map(({ make }) => ({ value: make, text: make })),
     ];
     return (
         <div style={pageStyle}>
