@@ -155,7 +155,7 @@ function UpdateData() {
         swal('Error', 'Please select transportation', 'error');
       } else if (tripDetails.trip === null) {
         swal('Error', 'Please select a trip', 'error');
-      } else if (typeof tripDetails.miles !== 'number' || tripDetails.miles === null) {
+      } else if (typeof tripDetails.miles !== 'number') {
         swal('Error', 'Please enter a number in the miles input', 'error');
       } else {
           try {
