@@ -203,13 +203,7 @@
     100%{background-position:23% 0}
   }
 
-.Home-page-background {
-  background: #174060;
-  background-size: cover;
-  height: 47.9em;
-  margin-top: -10px;
-}
-
+/* Go to savings Page currently this style is not being used but will be later*/
 .Go-to-Saves-page-background {
   background: #174060;
   background-size: cover;

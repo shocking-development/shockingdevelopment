@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import NavBarHome from '../components/home/NavBarHome';
+import NavBarMain from '../components/main-navbar/NavBarMain';
 
 /** A simple static component to render the home page when users are logged in. */
 class GoToSavings extends React.Component {
@@ -21,9 +21,14 @@ class GoToSavings extends React.Component {
       alignment: 'left',
     };
 
+    const pageStyle = {
+      background: 'rgb(21 51 62)',
+      height: '60em',
+    };
+
     return (
-        <div className='Home-page-background'>
-          <NavBarHome/>
+        <div style={pageStyle}>
+          <NavBarMain/>
 
           <Card.Group style={cardStyle}>
             <Card>
