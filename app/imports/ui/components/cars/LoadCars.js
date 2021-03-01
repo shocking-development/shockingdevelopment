@@ -30,11 +30,12 @@ class LoadCars {
   };
 
   #processCarsData = (carDefintions) => {
-    const carOptions = _.map(carDefintions.make, (make, index) => ({
-      key: carDefintions.make[index],
-      text: make,
-      value: carDefintions.make[index],
+    const carOptions = _.map(carDefintions.highwayE, (highwayE, index) => ({
+      key: carDefintions.highwayE[index],
+      text: highwayE,
+      value: carDefintions.highwayE[index],
     }));
+    console.log(JSON.stringify(carOptions));
     const DropdownExampleSearchSelectionTwo = () => (
         // eslint-disable-next-line react/react-in-jsx-scope
         <Dropdown placeholder='State' search selection options={carOptions}/>

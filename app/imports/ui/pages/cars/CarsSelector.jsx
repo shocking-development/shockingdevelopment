@@ -21,7 +21,7 @@ const CarsSelector = () => {
       /** If the cars csv has been loaded, render the page, otherwise show a loading icon. */
       <div>
         {setCars.length === 0 ? <Loader active>Getting data</Loader> : <div>
-          
+
         </div>
         }
       </div>
