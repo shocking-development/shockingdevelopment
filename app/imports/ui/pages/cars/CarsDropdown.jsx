@@ -1,9 +1,10 @@
 import React from 'react';
-import { Container, Table, Header, Loader, Dropdown } from 'semantic-ui-react';
+import { Container, Header, Loader } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import SimpleSchema from 'simpl-schema';
 import { Cars } from '../../../api/cars/CarsCollection';
-import CarItem from '../../components/cars/CarItem';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -21,20 +22,18 @@ class CarsDropdown extends React.Component {
       height: '60em',
       backgroundSize: 'cover',
     };
-    const options = [
-      this.props.cars.map(({ make }) => ({ value: make, text: make })),
-    ];
+    const carDocs = Cars.find({}).fetch();
+    const carNames = carDocs.map((doc) => doc.name);
+    const schema = new SimpleSchema({ name: { type: String, allowedValues: carNames } });
+
     return (
         <div style={pageStyle}>
           <NavBarMain/>
           <Container style={{ padding: '10em' }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
-            <Dropdown
-                placeholder='Select the make of your car'
-                fluid
-                selection
-                options={options}
-            />
+            <AutoForm schema={schema}>
+              <SelectField name='carNames'/>
+            </AutoForm>
           </Container>
         </div>
     );
