@@ -1,32 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { Loader, Dropdown } from 'semantic-ui-react';
-import LoadCars from './LoadCars';
+import React, { useState } from 'react';
+import swal from 'sweetalert';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
+import { Dropdown, Card, Button, Input, Popup, Form } from 'semantic-ui-react';
+import papa from 'papaparse';
+import { _ } from 'meteor/underscore';
 
-/**
- * A simple component which puts together all the components to create the Car selector/ dropdown.
- * @memberOf ui/components/cars
- */
-const CarsDropDown1 = () => {
+function CarsDropDown1() {
+  /* the csv url */
+  const carsCSVfile = 'https://raw.githubusercontent.com/CalianaFortin/vehicledata/main/vehicles.csv';
+  const carOptions = [];
 
-  const setCars = useState([]); /* initially setCars has no state */
+  const processCarsData = (carDefintions) => {
+    console.log(carDefintions[0].make);
 
-  /* the loading task which creates a new LoadCars and loads them */
-  const load = () => {
-    const loadCarsTask = new LoadCars();
-    loadCarsTask.load(setCars); /* we set the cars state here */
+    carDefintions.forEach((car) => {
+      if (!carOptions.includes(car)) {
+        carOptions.push({
+          key: car.Id,
+          text: car.make,
+          value: car.make,
+        });
+      }
+    });
   };
-  useEffect(load, []); /* page load we tell it that it will track [] similar to componentDidMount */
+
+  papa.parse(carsCSVfile, {
+    download: true,
+    dynamicTyping: true,
+    header: true,
+    complete: (result) => {
+      console.log('This is the data: ');
+      console.log(result);
+      processCarsData(result.data); // read datas collection
+    },
+  });
 
   return (
-      /** If the cars csv has been loaded, render the page, otherwise show a loading icon. */
-      <div>
-        {setCars.length === 0 ? <Loader active>Getting data</Loader> : <div>
-          <LoadCars/>
-        </div>
-        }
-      </div>
+      <Dropdown placeholder='State' search selection options={carOptions}/>
   );
-
-};
+}
 
 export default CarsDropDown1;
