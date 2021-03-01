@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Button, Card, Icon } from 'semantic-ui-react';
+import { Button, Card, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -21,23 +21,14 @@ class GoToSavings extends React.Component {
       alignment: 'left',
     };
 
-    const pageStyle = {
-      marginLeft: '20em',
-      paddingTop: '10em',
-      paddingBottom: '150px',
-      height: '47.9em',
-      backgroundSize: 'cover',
-      marginTop: '-10px',
-      marginRight: '6em',
-    };
     return (
         <div className='Home-page-background'>
           <NavBarHome/>
 
-          <Card.Group style = {cardStyle}>
+          <Card.Group style={cardStyle}>
             <Card>
               <Card.Content>
-                <div align="right"><Icon name='car' /></div>
+                <div align="right"><Icon name='car'/></div>
                 <Card.Header>Car</Card.Header>
                 <Card.Meta>How much would you save by using this car.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
@@ -47,15 +38,15 @@ class GoToSavings extends React.Component {
                 <div className='ui three buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
                   <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
                 </div>
-        </Card.Content>
-        </Card>
+              </Card.Content>
+            </Card>
 
             <Card>
               <Card.Content>
-                <div align="right"><Icon name='battery three' /></div>
+                <div align="right"><Icon name='battery three'/></div>
                 <Card.Header>Electric Car</Card.Header>
                 <Card.Meta>How much would you save by using this electric car.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
@@ -65,35 +56,33 @@ class GoToSavings extends React.Component {
                 <div className='ui three buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
                   <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
                 </div>
               </Card.Content>
             </Card>
 
-
-    <Card>
-      <Card.Content>
-        <div align="right"><Icon align="right" name='truck'/></div>
-        <Card.Header>Car Pool</Card.Header>
-        <Card.Meta>How much would you save by using this carpool.</Card.Meta>
-        <Card.Description>{this.props.currentUser.transportation}</Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui four buttons'>
-          <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
-          <Button color='green' as={NavLink} exact to="/add">Input Car</Button>
-          <Button color='green' as={NavLink} exact to="/notfound">Input Members</Button>
-          <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
-        </div>
-      </Card.Content>
-    </Card>
-
+            <Card>
+              <Card.Content>
+                <div align="right"><Icon align="right" name='truck'/></div>
+                <Card.Header>Car Pool</Card.Header>
+                <Card.Meta>How much would you save by using this carpool.</Card.Meta>
+                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <div className='ui four buttons'>
+                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
+                  <Button color='green' as={NavLink} exact to="/add">Input Car</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound">Input Members</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
+                </div>
+              </Card.Content>
+            </Card>
 
             <Card>
               <Card.Content>
-                <div align="right"><Icon name='bus' />
-                  <Icon name='train' /></div>
+                <div align="right"><Icon name='bus'/>
+                  <Icon name='train'/></div>
                 <Card.Header>Public Transport</Card.Header>
                 <Card.Meta>How much would you save by using this public transport system.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
@@ -102,26 +91,26 @@ class GoToSavings extends React.Component {
                 <div className='ui three buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
                   <Button color='green' as={NavLink} exact to="/add">Input type</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
                 </div>
               </Card.Content>
             </Card>
 
-    <Card>
-    <Card.Content>
-      <div align="right"><Icon name='bicycle' /></div>
-        <Card.Header>Bikeing</Card.Header>
-    <Card.Meta>How much would you save by Bikeing</Card.Meta>
-      <Card.Description>{this.props.currentUser.transportation}</Card.Description>
-  </Card.Content>
-  <Card.Content extra>
-  <div className='ui two buttons'>
-    <Button color='green' as={NavLink} exact to="/add" style = {inCardStyle}>Input Usage</Button>
-    <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
-  </div>
-  </Card.Content>
-  </Card>
-  </Card.Group>
+            <Card>
+              <Card.Content>
+                <div align="right"><Icon name='bicycle'/></div>
+                <Card.Header>Bikeing</Card.Header>
+                <Card.Meta>How much would you save by Bikeing</Card.Meta>
+                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <div className='ui two buttons'>
+                  <Button color='green' as={NavLink} exact to="/add" style={inCardStyle}>Input Usage</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
+                </div>
+              </Card.Content>
+            </Card>
+          </Card.Group>
         </div>
     );
   }
@@ -139,4 +128,3 @@ const GoToSavingsContainer = withTracker(() => ({
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
 export default withRouter(GoToSavingsContainer);
-
