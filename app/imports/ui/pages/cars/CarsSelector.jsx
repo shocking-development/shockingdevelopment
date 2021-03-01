@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 import LoadCars from '../../components/cars/LoadCars';
 
+/**
+ * A simple component which puts together all the components to create the Car selector/ dropdown.
+ * @memberOf ui/components/cars
+ */
 const CarsSelector = () => {
 
   const [cars, setCars] = useState([]);
 
-  const load = () => { // have to change this line
+  /* the loading task which creates a new LoadCars and loads them */
+  const load = () => {
     const loadCarsTask = new LoadCars();
     loadCarsTask.load(setCars);
   };
