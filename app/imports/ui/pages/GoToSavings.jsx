@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Header, Statistic, Image, Container, Menu, Button, Card, Dropdown, } from 'semantic-ui-react';
+import { Image, Button, Card, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -11,12 +11,6 @@ class GoToSavings extends React.Component {
 
   render() {
     const inCardStyle = {
-      /**width: 50,
-      height: 20,
-      textAlignment: 'center',
-      marginLeft: '0em',
-      paddingTop: '3em',
-      backgroundColor: 'green',**/
       textSize: 50,
     };
 
@@ -43,13 +37,9 @@ class GoToSavings extends React.Component {
           <Card.Group style = {cardStyle}>
             <Card>
               <Card.Content>
-                <Image
-                    floated='right'
-                    size='mini'
-                    src='images/HEI-WAVE-LOGO.png'
-                />
-                <Card.Header>Your Car</Card.Header>
-                <Card.Meta>How much are you saving by using a carpool</Card.Meta>
+                <Icon name='car' />
+                <Card.Header>Car</Card.Header>
+                <Card.Meta>How much would you save by using this car.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
               </Card.Content>
 
@@ -62,15 +52,31 @@ class GoToSavings extends React.Component {
                 </div>
         </Card.Content>
         </Card>
+
+            <Card>
+              <Card.Content>
+                <Icon name='battery three' />
+                <Card.Header>Electric Car</Card.Header>
+                <Card.Meta>How much would you save by using this electric car.</Card.Meta>
+                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
+              </Card.Content>
+
+              <Card.Content extra color='green'>
+                <div className='ui three buttons'>
+                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
+
+                </div>
+              </Card.Content>
+            </Card>
+
+
     <Card>
       <Card.Content>
-        <Image
-            floated='right'
-            size='mini'
-            src='images/HEI-WAVE-LOGO.png'
-        />
-        <Card.Header>Your Car Pool</Card.Header>
-        <Card.Meta>How much are you saving by using a carpool</Card.Meta>
+        <Icon name='truck' />
+        <Card.Header>Car Pool</Card.Header>
+        <Card.Meta>How much would you save by using this carpool.</Card.Meta>
         <Card.Description>{this.props.currentUser.transportation}</Card.Description>
       </Card.Content>
       <Card.Content extra>
@@ -82,15 +88,30 @@ class GoToSavings extends React.Component {
         </div>
       </Card.Content>
     </Card>
+
+
+            <Card>
+              <Card.Content>
+                <Icon name='bus' />
+                <Icon name='train' />
+                <Card.Header>Public Transport</Card.Header>
+                <Card.Meta>How much would you save by using this public transport system.</Card.Meta>
+                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <div className='ui three buttons'>
+                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
+                  <Button color='green' as={NavLink} exact to="/add">Input Car</Button>
+                  <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
+                </div>
+              </Card.Content>
+            </Card>
+
     <Card>
     <Card.Content>
-    <Image
-    floated='right'
-    size='mini'
-    src='images/HEI-WAVE-LOGO.png'
-        />
-        <Card.Header>Your Bikeing</Card.Header>
-    <Card.Meta>How much are you saving by not using a car</Card.Meta>
+      <Icon name='bicycle' />
+        <Card.Header>Bikeing</Card.Header>
+    <Card.Meta>How much would you save by Bikeing</Card.Meta>
       <Card.Description>{this.props.currentUser.transportation}</Card.Description>
   </Card.Content>
   <Card.Content extra>
