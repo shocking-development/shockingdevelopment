@@ -68,7 +68,7 @@ class NavBarMain extends React.Component {
                 </Menu.Item>
 
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/gotosavings" key='key6'>
-                  <Icon name='map' size='large'/>
+                  <Icon name='money bill alternate' size='large'/>
                   Go to savings
                 </Menu.Item>
 
