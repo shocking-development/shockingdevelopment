@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import NavBarLogin from '../components/NavBarLogin';
+import Footer from '../components/Footer';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -53,13 +54,13 @@ export default class Signin extends React.Component {
                   <Segment stacked inverted
                            style={{ background: 'transparent', borderRadius: '0.5px' }}>
                     <div className={'sign-header'}>
-                      <Header as="h1" inverted textAlign="left"
+                      <Header as="h1" inverted textAlign="left" className='body'
                               style={{ fontWeight: 'lighter', paddingBottom: '10px', paddingTop: '15px' }}>
                         Welcome Back!
                       </Header>
                     </div>
 
-                    <Form.Input className={'type1'}
+                    <Form.Input className={'signinInput'}
 
                                 label="Email"
                                 id="signin-form-email"
@@ -71,7 +72,7 @@ export default class Signin extends React.Component {
                                 onChange={this.handleChange}
 
                     />
-                    <Form.Input
+                    <Form.Input className={'signinInput'}
                         label="Password"
                         id="signin-form-password"
                         icon="lock"
@@ -103,6 +104,7 @@ export default class Signin extends React.Component {
               </Grid.Column>
             </Grid>
           </Container>
+          <Footer/>
         </div>
     );
   }

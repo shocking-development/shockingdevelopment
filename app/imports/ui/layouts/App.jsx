@@ -4,12 +4,10 @@ import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Footer from '../components/Footer';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
-import ListofUsersAdmin from '../pages/ListofUsersAdmin';
-import EditProfile from '../pages/EditProfile';
+import ListProfileAdmin from '../pages/profile/ListProfileAdmin';
+import EditProfile from '../pages/profile/EditProfile';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -17,6 +15,9 @@ import Signout from '../pages/Signout';
 import Datapage from '../pages/Datapage';
 import GoToSavings from '../pages/GoToSavings';
 import AddData from '../pages/AddData';
+import AddProfile from '../pages/profile/AddProfile';
+import ProfileCard from '../pages/profile/ProfileCard';
+import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -33,14 +34,15 @@ class App extends React.Component {
               <Route path="/gotosavings" component={GoToSavings}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/add" component={AddData}/>
-              <ProtectedRoute path="/editprofile" component={EditProfile}/>
-              <ProtectedRoute path="/list" component={ListStuff}/>
+              <ProtectedRoute path="/addprofile" component={AddProfile}/>
+              <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
+              <ProtectedRoute path="/profile" component={ProfileCard}/>
               <ProtectedRoute path="/data" component={Datapage}/>
-              <AdminProtectedRoute path="/admin" component={ListofUsersAdmin}/>
+              <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
+              <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <Route component={NotFound}/>
             </Switch>
           </div>
-          <Footer/>
         </Router>
     );
   }
