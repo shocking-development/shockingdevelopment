@@ -37,7 +37,7 @@ class GoToSavings extends React.Component {
           <Card.Group style = {cardStyle}>
             <Card>
               <Card.Content>
-                <Icon name='car' />
+                <div align="right"><Icon name='car' /></div>
                 <Card.Header>Car</Card.Header>
                 <Card.Meta>How much would you save by using this car.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
@@ -55,7 +55,7 @@ class GoToSavings extends React.Component {
 
             <Card>
               <Card.Content>
-                <Icon name='battery three' />
+                <div align="right"><Icon name='battery three' /></div>
                 <Card.Header>Electric Car</Card.Header>
                 <Card.Meta>How much would you save by using this electric car.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
@@ -74,7 +74,7 @@ class GoToSavings extends React.Component {
 
     <Card>
       <Card.Content>
-        <Icon name='truck' />
+        <div align="right"><Icon align="right" name='truck'/></div>
         <Card.Header>Car Pool</Card.Header>
         <Card.Meta>How much would you save by using this carpool.</Card.Meta>
         <Card.Description>{this.props.currentUser.transportation}</Card.Description>
@@ -92,8 +92,8 @@ class GoToSavings extends React.Component {
 
             <Card>
               <Card.Content>
-                <Icon name='bus' />
-                <Icon name='train' />
+                <div align="right"><Icon name='bus' />
+                  <Icon name='train' /></div>
                 <Card.Header>Public Transport</Card.Header>
                 <Card.Meta>How much would you save by using this public transport system.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
@@ -101,7 +101,7 @@ class GoToSavings extends React.Component {
               <Card.Content extra>
                 <div className='ui three buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
-                  <Button color='green' as={NavLink} exact to="/add">Input Car</Button>
+                  <Button color='green' as={NavLink} exact to="/add">Input type</Button>
                   <Button color='green' as={NavLink} exact to="/notfound" style = {inCardStyle}>See results</Button>
                 </div>
               </Card.Content>
@@ -109,7 +109,7 @@ class GoToSavings extends React.Component {
 
     <Card>
     <Card.Content>
-      <Icon name='bicycle' />
+      <div align="right"><Icon name='bicycle' /></div>
         <Card.Header>Bikeing</Card.Header>
     <Card.Meta>How much would you save by Bikeing</Card.Meta>
       <Card.Description>{this.props.currentUser.transportation}</Card.Description>
