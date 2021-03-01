@@ -1,6 +1,6 @@
 import papa from 'papaparse';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** This file */
 class LoadCars {
   carsCSVfile = 'https://raw.githubusercontent.com/CalianaFortin/vehicledata/main/vehicles.csv';
 
@@ -21,5 +21,4 @@ class LoadCars {
 
 }
 
-/** Wrap this component in withRouter since we use the <Link> React Router element. */
 export default (LoadCars);
