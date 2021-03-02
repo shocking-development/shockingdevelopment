@@ -62,7 +62,7 @@ class EditProfile extends React.Component {
               <AutoForm
                   schema={bridge}
                   onSubmit={data => {
-                    // eslint-disable-next-line no-undef
+                    // eslint-disable-next-line no-undef,no-alert
                     if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
                   }} model={this.props.doc}>
                 <Segment>
@@ -72,9 +72,8 @@ class EditProfile extends React.Component {
                   <TextField name='email'/>
                   <TextField name='password'/>
                   <TextField name='transportation'/>
-
+                  <TextField name='transportation'/>
                   <NumField name='zipcode' decimal={false}/>
-
                   <SubmitField value='Update'/>
                   <ErrorsField/>
                   <HiddenField name='owner'/>
