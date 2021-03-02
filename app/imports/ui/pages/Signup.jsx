@@ -9,7 +9,7 @@ import { userInfoDefineMethod } from '../../api/userInfo/UserInfoCollection.meth
 import Footer from '../components/Footer';
 
 /**
- * Signup component is similar to signin component, but we create a new user instead.
+ * Signup component is similar to signIn component, but we create a new user instead.
  */
 class Signup extends React.Component {
   /** Initialize state fields. */
