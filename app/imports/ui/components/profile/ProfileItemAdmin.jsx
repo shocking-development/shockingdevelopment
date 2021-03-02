@@ -22,9 +22,7 @@ class ProfileItemAdmin extends React.Component {
           <Table.Cell>{this.props.profile.zipcode}</Table.Cell>
           <Table.Cell>{this.props.profile.owner}</Table.Cell>
           <Table.Cell>
-            <Button as={NavLink} exact to='/admin' floated='right'
-                    data={this.props.profile._id}
-                    onClick={() => this.removeUser(this.props.profile._id)} color='red'
+            <Button onClick={() => this.removeUser(this.props.profile._id)} color='red'
             ><Icon name = 'trash'/></Button>
           </Table.Cell>
         </Table.Row>
