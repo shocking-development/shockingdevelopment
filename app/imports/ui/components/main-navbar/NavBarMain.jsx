@@ -42,12 +42,12 @@ class NavBarMain extends React.Component {
                 </Menu.Item>
                 <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='key8'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='key1'>
                   <Icon name='user' size='large'/>
                   View Profile
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='key1'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='key2'>
                   <Icon name='home' size='large'/>
                   Home
                 </Menu.Item>
@@ -57,12 +57,12 @@ class NavBarMain extends React.Component {
                   Add Today&apos;s Emissions
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key5'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key4'>
                   <Icon name='calculator' size='large'/>
                   GHG calculator
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key6'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
                   <Icon name='map' size='large'/>
                   Map your route
                 </Menu.Item>
@@ -72,7 +72,7 @@ class NavBarMain extends React.Component {
                   Go to savings
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key9'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
                 </Menu.Item>
