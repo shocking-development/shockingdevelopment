@@ -36,7 +36,9 @@ class ProfileCard extends React.Component {
               <Header inverted as="h2" textAlign="center">The User Profile</Header>
 
               <Card style={{ margin: 'auto' }}>
-                <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium'/>
+                <Image size='medium' src ={this.props.profiles.userImage}
+                    // eslint-disable-next-line
+                       onError={(i) => i.target.src='/images/default_image.png'}/>
                 <Card.Content>
                   <Card.Header>
                     {this.props.profiles.user}
