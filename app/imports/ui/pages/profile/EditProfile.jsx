@@ -99,6 +99,7 @@ export default withTracker(({ match }) => {
   // Get access to Stuff documents.
   const subscription = UserInfos.subscribeUserInfo();
   return {
+    // eslint-disable-next-line no-undef,no-alert
     doc: UserInfos.findOne(documentId),
     ready: subscription.ready(),
   };
