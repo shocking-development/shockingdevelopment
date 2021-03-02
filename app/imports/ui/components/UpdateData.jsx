@@ -23,7 +23,11 @@ function UpdateData() {
     if (cMonth.toString().length === 1) {
         cMonth = `0${cMonth}`;
     }
-    const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${currentDate.getDate().toString()}`;
+    let cDay = currentDate.getDate();
+    if (cDay.toString().length === 1) {
+        cDay = `0${cDay}`;
+    }
+    const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
 
     /** Transportation options for the dropdown input */
     const transportationOptions = [
@@ -199,7 +203,6 @@ function UpdateData() {
             });
           }
       }
-
     };
 
     /** Return function rendering the component */
