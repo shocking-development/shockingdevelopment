@@ -1,14 +1,13 @@
 import React from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Icon, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { Meteor } from 'meteor/meteor';
 import { NavLink } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListProfileAdmin.jsx. */
 class ProfileItemAdmin extends React.Component {
 
   removeUser(docID) {
-    Meteor.users.remove(docID);
+    this.props.UserInfos.remove(docID);
   }
 
   render() {
@@ -25,10 +24,8 @@ class ProfileItemAdmin extends React.Component {
           <Table.Cell>
             <Button as={NavLink} exact to='/admin' floated='right'
                     data={this.props.profile._id}
-                    onClick={(data) => this.removeUser(data)} color='red'
-            >
-              Delete
-            </Button>
+                    onClick={() => this.removeUser(this.props.profile._id)} color='red'
+            ><Icon name = 'trash'/></Button>
           </Table.Cell>
         </Table.Row>
     );
@@ -38,6 +35,7 @@ class ProfileItemAdmin extends React.Component {
 /** Require a document to be passed to this component. */
 ProfileItemAdmin.propTypes = {
   profile: PropTypes.object.isRequired,
+  UserInfos: PropTypes.object.isRequired,
 };
 
 export default ProfileItemAdmin;
