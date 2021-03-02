@@ -23,7 +23,7 @@ class Signup extends React.Component {
       error: '',
       zipcode: '',
       transportation: '',
-      userImage:'',
+      userImage: '',
       redirectToReferer: false,
     };
   }
