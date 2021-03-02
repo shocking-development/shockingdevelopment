@@ -5,19 +5,19 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
 
-/** This component is rendered by the Add Data page and allows users to add trips */
+/* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateData() {
 
-    /** Gets the current user */
+    /* Gets the current user */
     const user = useTracker(() => Meteor.userId());
 
-    /** Gets the users saved preset trips */
+    /* Gets the users saved preset trips */
     const trips = useTracker(() => {
     Meteor.subscribe('trips');
     return TripsCollection.find({ owner: user }).fetch();
     });
 
-    /** Gets the current date and puts it in the correct format for the date input */
+    /* Gets the current date and puts it in the correct format for the date input */
     const currentDate = new Date();
     let cMonth = currentDate.getMonth() + 1;
     if (cMonth.toString().length === 1) {
@@ -29,7 +29,7 @@ function UpdateData() {
     }
     const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
 
-    /** Transportation options for the dropdown input */
+    /* Transportation options for the dropdown input */
     const transportationOptions = [
         {
             key: 'Drove',
@@ -68,10 +68,10 @@ function UpdateData() {
         },
     ];
 
-    /** DeleteTrip function allows users to delete preset trips */
+    /* DeleteTrip function allows users to delete preset trips */
     const deleteTrip = ({ _id }) => Meteor.call('trips.remove', _id);
 
-    /** Adds the users preset trips along with the custom option to an array that holds the dropdown options */
+    /* Adds the users preset trips along with the custom option to an array that holds the dropdown options */
     const tripOptions = [];
     trips.forEach(trip => {
         tripOptions.push({
@@ -92,7 +92,7 @@ function UpdateData() {
         value: 'Custom',
     });
 
-    /** Initializing the trip state */
+    /* Initializing the trip state */
     const [TripState, setTripState] = useState({
         date: fullDate,
         transportation: null,
@@ -101,7 +101,7 @@ function UpdateData() {
         miles: null,
     });
 
-    /** Changes the date state */
+    /* Changes the date state */
     const changeDate = (e) => {
         setTripState({
             date: e.target.value,
@@ -112,7 +112,7 @@ function UpdateData() {
         });
     };
 
-    /** Changes the transportation state */
+    /* Changes the transportation state */
     const changeTransportation = (e, data) => {
         setTripState({
             date: TripState.date,
@@ -123,7 +123,7 @@ function UpdateData() {
         });
     };
 
-    /** Changes the trip state, sets custom to true if custom trip is chosen */
+    /* Changes the trip state, sets custom to true if custom trip is chosen */
     const changeTrip = (e, data) => {
         if (data.value === 'Custom') {
             setTripState({
@@ -144,7 +144,7 @@ function UpdateData() {
         }
     };
 
-    /** Changes the trip state to the trip name the user inputs for a custom trip */
+    /* Changes the trip state to the trip name the user inputs for a custom trip */
     const changeTripName = (e) => {
         setTripState({
             date: TripState.date,
@@ -155,7 +155,7 @@ function UpdateData() {
         });
     };
 
-    /** Changes the miles state that the user inputs for a custom trip */
+    /* Changes the miles state that the user inputs for a custom trip */
     const changeTripMiles = (e) => {
         setTripState({
             date: TripState.date,
@@ -166,7 +166,7 @@ function UpdateData() {
         });
     };
 
-    /** Handles the submission and checks for errors, also adds to the trip collection if a custom trip was made */
+    /* Handles the submission and checks for errors, also adds to the trip collection if a custom trip was made */
     const handleSubmit = (e) => {
       e.preventDefault();
       if (TripState.transportation === null) {
@@ -205,7 +205,7 @@ function UpdateData() {
       }
     };
 
-    /** Return function rendering the component */
+    /* Return function rendering the component */
     return (
         <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Card style={{ padding: '1rem', background: '#4282AF' }}>
