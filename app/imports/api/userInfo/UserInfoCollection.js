@@ -20,6 +20,7 @@ class UserInfoCollection extends BaseCollection {
       owner: String,
       email: String,
       password: String,
+      userImage: String,
       zipcode: Number,
       transportation: String,
     }));
@@ -37,7 +38,7 @@ class UserInfoCollection extends BaseCollection {
    * @param transportation, the transportation, of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, user, owner, email, password, zipcode, transportation }) {
+  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
@@ -46,6 +47,7 @@ class UserInfoCollection extends BaseCollection {
       email,
       password,
       zipcode,
+      userImage,
       transportation,
     });
     return docID;
@@ -62,7 +64,7 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person (optional).
    * @param transportation, the transportation, of the person.
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, transportation }) {
+  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -82,6 +84,9 @@ class UserInfoCollection extends BaseCollection {
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(zipcode)) {
       updateData.zipcode = zipcode;
+    }
+    if (userImage) {
+      updateData.userImage = userImage;
     }
     if (transportation) {
       updateData.transportation = transportation;
