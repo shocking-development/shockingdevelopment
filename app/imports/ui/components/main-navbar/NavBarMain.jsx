@@ -8,11 +8,11 @@ import { Roles } from 'meteor/alanning:roles';
 
 /**
  * The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ...
- *  * @memberOf ui/components/main-navbar
+ * @memberOf ui/components/main-navbar
  */
 class NavBarMain extends React.Component {
   render() {
-    /** Some styling components */
+    /* Some styling components */
     const navbarVerticle = {
       height: '100%', /* Full-height: remove this if you want "auto" height */
       width: 'auto', /* Set the width of the sidebar */
@@ -35,8 +35,8 @@ class NavBarMain extends React.Component {
 
         <div className={'css-selector'} style={navbarVerticle}>
           {this.props.currentUser ? (
-              // eslint-disable-next-line react/jsx-key
-              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}>
+
+              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }} key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
                   <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular/>
                 </Menu.Item>
