@@ -13,6 +13,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Datapage from '../pages/Datapage';
+import GoToSavings from '../pages/GoToSavings';
 import AddData from '../pages/AddData';
 import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
@@ -30,6 +31,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route path="/signout" component={Signout}/>
               <Route path="/landing" component={Landing}/>
+              <Route path="/gotosavings" component={GoToSavings}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/add" component={AddData}/>
               <ProtectedRoute path="/addprofile" component={AddProfile}/>
