@@ -9,8 +9,9 @@ import { Menu, Dropdown, Image } from 'semantic-ui-react';
  * The NavBar appears at the top of the Landing page. Rendered by the Landing page.
  * @memberOf ui/components/landing
  */
-class NavBarLanding extends React.Component {
+class NavBarLanding extends React.Component { // implement function and have boolean for user/admin
   render() {
+    /* Some styling components */
     const menuStyle = { height: '10px', paddingTop: '10px' };
     const loginButton = {
       color: '#3CAEA3',
@@ -73,9 +74,9 @@ NavBarLanding.propTypes = {
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-const NavBar2Container = withTracker(() => ({
+const NavBarLandingContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
 }))(NavBarLanding);
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
-export default withRouter(NavBar2Container);
+export default withRouter(NavBarLandingContainer);
