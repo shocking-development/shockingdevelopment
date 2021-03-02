@@ -5,14 +5,19 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
 
+/** This component is rendered by the Add Data page and allows users to add trips */
 function UpdateData() {
 
+    /** Gets the current user */
     const user = useTracker(() => Meteor.userId());
+
+    /** Gets the users saved preset trips */
     const trips = useTracker(() => {
     Meteor.subscribe('trips');
     return TripsCollection.find({ owner: user }).fetch();
     });
 
+    /** Gets the current date and puts it in the correct format for the date input */
     const currentDate = new Date();
     let cMonth = currentDate.getMonth() + 1;
     if (cMonth.toString().length === 1) {
@@ -20,29 +25,7 @@ function UpdateData() {
     }
     const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${currentDate.getDate().toString()}`;
 
-    const tripOptions = [];
-
-    const deleteTrip = ({ _id }) => Meteor.call('trips.remove', _id);
-
-    trips.forEach(trip => {
-        tripOptions.push({
-            key: trip._id,
-            text: `${trip.name} (${trip.miles})`,
-            value: Number(trip.miles),
-            content: (
-                <div>
-                {`${trip.name} (${trip.miles})`}<Button icon='remove' size='small' color='red' onClick={() => deleteTrip(trip)} />
-                </div>
-            ),
-        });
-    });
-
-    tripOptions.push({
-        key: 'Custom',
-        text: 'Custom',
-        value: 'Custom',
-    });
-
+    /** Transportation options for the dropdown input */
     const transportationOptions = [
         {
             key: 'Drove',
@@ -81,7 +64,32 @@ function UpdateData() {
         },
     ];
 
-    const [tripDetails, setTripDetails] = useState({
+    /** DeleteTrip function allows users to delete preset trips */
+    const deleteTrip = ({ _id }) => Meteor.call('trips.remove', _id);
+
+    /** Adds the users preset trips along with the custom option to an array that holds the dropdown options */
+    const tripOptions = [];
+    trips.forEach(trip => {
+        tripOptions.push({
+            key: trip._id,
+            text: `${trip.name} (${trip.miles})`,
+            value: Number(trip.miles),
+            content: (
+                <div>
+                {`${trip.name} (${trip.miles})`}<Button icon='remove' size='small' color='red' onClick={() => deleteTrip(trip)} />
+                </div>
+            ),
+        });
+    });
+
+    tripOptions.push({
+        key: 'Custom',
+        text: 'Custom',
+        value: 'Custom',
+    });
+
+    /** Initializing the trip state */
+    const [TripState, setTripState] = useState({
         date: fullDate,
         transportation: null,
         custom: false,
@@ -89,39 +97,42 @@ function UpdateData() {
         miles: null,
     });
 
+    /** Changes the date state */
     const changeDate = (e) => {
-        setTripDetails({
+        setTripState({
             date: e.target.value,
-            transportation: tripDetails.transportation,
-            custom: tripDetails.custom,
-            trip: tripDetails.trip,
-            miles: tripDetails.miles,
+            transportation: TripState.transportation,
+            custom: TripState.custom,
+            trip: TripState.trip,
+            miles: TripState.miles,
         });
     };
 
+    /** Changes the transportation state */
     const changeTransportation = (e, data) => {
-        setTripDetails({
-            date: tripDetails.date,
+        setTripState({
+            date: TripState.date,
             transportation: data.value,
-            custom: tripDetails.custom,
-            trip: tripDetails.trip,
-            miles: tripDetails.miles,
+            custom: TripState.custom,
+            trip: TripState.trip,
+            miles: TripState.miles,
         });
     };
 
+    /** Changes the trip state, sets custom to true if custom trip is chosen */
     const changeTrip = (e, data) => {
         if (data.value === 'Custom') {
-            setTripDetails({
-                date: tripDetails.date,
-                transportation: tripDetails.transportation,
+            setTripState({
+                date: TripState.date,
+                transportation: TripState.transportation,
                 custom: true,
                 trip: null,
                 miles: null,
             });
         } else {
-            setTripDetails({
-                date: tripDetails.date,
-                transportation: tripDetails.transportation,
+            setTripState({
+                date: TripState.date,
+                transportation: TripState.transportation,
                 custom: false,
                 trip: data.key,
                 miles: data.value,
@@ -129,49 +140,52 @@ function UpdateData() {
         }
     };
 
+    /** Changes the trip state to the trip name the user inputs for a custom trip */
     const changeTripName = (e) => {
-        setTripDetails({
-            date: tripDetails.date,
-            transportation: tripDetails.transportation,
+        setTripState({
+            date: TripState.date,
+            transportation: TripState.transportation,
             custom: true,
             trip: e.target.value,
-            miles: tripDetails.miles,
+            miles: TripState.miles,
         });
     };
 
+    /** Changes the miles state that the user inputs for a custom trip */
     const changeTripMiles = (e) => {
-        setTripDetails({
-            date: tripDetails.date,
-            transportation: tripDetails.transportation,
+        setTripState({
+            date: TripState.date,
+            transportation: TripState.transportation,
             custom: true,
-            trip: tripDetails.trip,
+            trip: TripState.trip,
             miles: Number(e.target.value),
         });
     };
 
+    /** Handles the submission and checks for errors, also adds to the trip collection if a custom trip was made */
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (tripDetails.transportation === null) {
+      if (TripState.transportation === null) {
         swal('Error', 'Please select transportation', 'error');
-      } else if (tripDetails.trip === null) {
+      } else if (TripState.trip === null) {
         swal('Error', 'Please select a trip', 'error');
-      } else if (typeof tripDetails.miles !== 'number') {
+      } else if (typeof TripState.miles !== 'number') {
         swal('Error', 'Please enter a number in the miles input', 'error');
       } else {
           try {
-              if (tripDetails.custom) {
+              if (TripState.custom) {
                 Meteor.call('trips.insert', {
                     owner: user,
-                    name: tripDetails.trip,
-                    miles: tripDetails.miles,
+                    name: TripState.trip,
+                    miles: TripState.miles,
                 });
               }
 
             Meteor.call('data.insert', {
                 owner: user,
-                date: tripDetails.date,
-                transportation: tripDetails.transportation,
-                miles: tripDetails.miles,
+                date: TripState.date,
+                transportation: TripState.transportation,
+                miles: TripState.miles,
             });
 
             swal('Success', 'Added successfully', 'success').then(() => {
@@ -188,17 +202,18 @@ function UpdateData() {
 
     };
 
+    /** Return function rendering the component */
     return (
         <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Card style={{ padding: '1rem', background: '#4282AF' }}>
                 <Card.Content>
                     <Card.Header style={{ color: 'white' }}>Date</Card.Header>
-                        <input type="date" value={tripDetails.date} onChange={changeDate}/>
+                        <input type="date" value={TripState.date} onChange={changeDate}/>
                         <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
                         <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
                         <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
                         <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
-                        {tripDetails.custom ?
+                        {TripState.custom ?
                             <div>
                                 <br/>
                                 <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
