@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
+import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
 
@@ -33,26 +34,14 @@ class GHGEmissionsCalculator extends React.Component {
     });
   }
 
-  /** This function calculates the CO2 created by user inputted gallons. */
-  calculateCO2 = function () {
-    const mutltifactor = 10 ** -3;
-    return (this.state.input * (8.887 * mutltifactor)).toFixed(2);
-  };
-
-  /** This function calculates the GHG emissions equivalency. */
-  calculateGHG = function () {
-    const mutltifactor = 0.00043;
-    return (4.63 * (this.state.input * mutltifactor)).toFixed(3);
-  };
-
   /** Handle submission by outputing the values to the console. */
   handleFormSubmit = () => {
     // eslint-disable-next-line no-console
     console.log('input:', this.state.input);
     // eslint-disable-next-line no-console
-    console.log('input CO2:', this.calculateCO2());
+    console.log('input CO2:', calculateCO2(this.state.input));
     // eslint-disable-next-line no-console
-    console.log('input GHG:', this.calculateGHG());
+    console.log('input GHG:', calculateGHG(this.state.input));
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -104,9 +93,11 @@ class GHGEmissionsCalculator extends React.Component {
               </Form>
               {this.state.show &&
               (<Segment>
-                <p> {this.calculateCO2()} tons of CO2 emissions is generated from {this.state.input} gallon(s) of
+                <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
+                  from {this.state.input} gallon(s) of
                   gas </p>
-                <p> This is equivalent to the GHG emissions from {this.calculateGHG()} passenger vehicles driven for one
+                <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger vehicles
+                  driven for one
                   year.</p>
               </Segment>)}
             </Container>

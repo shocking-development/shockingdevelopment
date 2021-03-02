@@ -4,6 +4,7 @@ import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField,
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import SimpleSchema from 'simpl-schema';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 
@@ -23,8 +24,14 @@ class CarsDropdown extends React.Component {
       backgroundSize: 'cover',
     };
     const carDocs = Cars.find({}).fetch();
-    const carNames = carDocs.map((doc) => doc.name);
-    const schema = new SimpleSchema2Bridge({ name: { type: String, allowedValues: carNames } });
+    // const filtered by year
+    // const filtered by model
+    // const filtered by make
+    // create a set state
+    const carNames = carDocs.map((doc) => `${doc.model} ${doc.make} ${doc.year}`);
+    const sch = new SimpleSchema({ name: { type: String, allowedValues: carNames } });
+    const schema = new SimpleSchema2Bridge(sch);
+    console.log(carNames);
 
     return (
         <div style={pageStyle}>
@@ -32,7 +39,8 @@ class CarsDropdown extends React.Component {
           <Container style={{ padding: '10em' }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
             <AutoForm schema={schema}>
-              <SelectField name='make'/>
+              <SelectField name='name'/>
+              {/*multiple select fields*/}
             </AutoForm>
           </Container>
         </div>

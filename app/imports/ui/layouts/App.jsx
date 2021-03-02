@@ -39,7 +39,7 @@ class App extends React.Component {
               <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
               <ProtectedRoute path="/profile" component={ProfileCard}/>
               <ProtectedRoute path="/data" component={Datapage}/>
-              <ProtectedRoute path="/cars" component={CarsDropDown1}/>
+              <ProtectedRoute path="/cars" component={CarsDropdown}/>
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <Route component={NotFound}/>
