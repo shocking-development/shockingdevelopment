@@ -72,7 +72,7 @@ class EditProfile extends React.Component {
                   <TextField name='email'/>
                   <TextField name='password'/>
                   <TextField name='transportation'/>
-                  <TextField name='transportation'/>
+                  <TextField name='userImage'/>
                   <NumField name='zipcode' decimal={false}/>
                   <SubmitField value='Update'/>
                   <ErrorsField/>
