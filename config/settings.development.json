@@ -57,6 +57,12 @@
       "model": "Optima",
       "year": 2015,
       "mpg": 36
+    },
+    {
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2016,
+      "mpg": 39
     }
   ]
 }

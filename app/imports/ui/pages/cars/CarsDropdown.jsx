@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Form, Header, Loader } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { Container, Header, Loader } from 'semantic-ui-react';
+import { AutoForm, SelectField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -15,20 +15,11 @@ class CarsDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      make: '',
-      model: '',
-      years: '',
-
+      make: [],
+      model: [],
+      years: [],
     };
   }
-
-  /** Update the form controls each time the user interacts with them. */
-  handleChange = (e) => {
-    this.setState({
-      make: e.target,
-    });
-    console.log(`selected ${e}`);
-  };
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -44,13 +35,12 @@ class CarsDropdown extends React.Component {
     };
 
     const carDocs = Cars.find({}).fetch();
-    // const filtered by year
-    // const filtered by model
-    // const filtered by make
-    // create a set state
     const carYears = carDocs.map((doc) => `${doc.year}`);
-    const carModel = carDocs.map((doc) => `${doc.model}`);
-    const carMake = carDocs.map((doc) => `${doc.make}`);
+    const carModel = carDocs.map((doc) => `${doc.model}-${doc._id}`);
+    const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`);
+
+    // an example of how to filter the cars
+    /* const filteredMake = carDocs.filter((doc) => carMake.indexOf(doc.make) === carModel.indexOf(doc.model)); */
 
     const sch = new SimpleSchema({
       make: { type: String, allowedValues: carMake },
@@ -60,26 +50,55 @@ class CarsDropdown extends React.Component {
 
     const schema = new SimpleSchema2Bridge(sch);
 
+    // console.log(carYears);
+    // console.log(carModel);
     // console.log(carMake);
+    // console.log(filteredMake);
+
+    /** Update the form filters the selector each time the user interacts with them. */
+    const handleChange = (key, value) => {
+      console.log(key, value);
+      if (key === 'years') {
+        this.setState({
+          years: value,
+        });
+        // console.log(carMake[carYears.indexOf(value)]);
+        console.log(carYears.indexOf(value));
+      } else
+        if (key === 'make') {
+          console.log(carMake.indexOf(value));
+          this.setState({
+            make: value,
+          });
+
+        } else {
+          // console.log(carModel.indexOf(value));
+          this.setState({
+            model: value,
+          });
+
+        }
+    };
 
     return (
         <div style={pageStyle}>
           <NavBarMain/>
           <Container style={{ padding: '10em' }}>
             <Header as="h2" textAlign="center" inverted>Cars</Header>
-            <AutoForm schema={schema} onChange={(key, value) => {
-              console.log(key, value);
-            }}>
-              <SelectField
-                  name='make'
-              />
-              <SelectField
-                  name='model'
-              />
+            <AutoForm schema={schema} onChange={handleChange}>
+              {/* multiple select fields which renders the car options */}
               <SelectField
                   name='years'
               />
-              {/* multiple select fields */}
+              <SelectField
+                  name='make'
+                  allowedValues={carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make))}
+              />
+              <SelectField
+                  name='model'
+                  allowedValues={carModel.filter((model) => carYears.indexOf(this.state.years) === carModel.indexOf(model))}
+              />
+
             </AutoForm>
           </Container>
         </div>

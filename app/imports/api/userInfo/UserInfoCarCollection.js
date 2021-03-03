@@ -1,34 +1,30 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
+import { Cars } from '../cars/CarsCollection';
+import { UserInfos } from './UserInfoCollection';
 
 /** Encapsulates state and variable values for this collection. */
-export const userInfoPublications = {
-  userInfo: 'UserInfo',
-  userInfoAdmin: 'UserInfoAdmin',
+export const userInfoCarsPublications = {
+  userInfoCar: 'UserInfoCar',
+  userInfoCarAdmin: 'UserInfoCarAdmin',
 };
 
-class UserInfoCollection extends BaseCollection {
+class UserInfoCarCollection extends BaseCollection {
   constructor() {
-    super('UserInfos', new SimpleSchema({
+    super('UserInfosCars', new SimpleSchema({
       userId: String,
       carId: String,
     }));
   }
 
   /**
-   * Defines a new Stuff item.
-   * @param firstName the first name of the person.
-   * @param lastName the last name of the person.
-   * @param user the user name of the person.
-   * @param owner the owner of the item.
-   * @param email the email of the person.
-   * @param password the password of the person.
-   * @param zipcode the zipcode of the person.
-   * @param transportation, the transportation, of the person.
+   * Defines a new Car and User Info item.
+   * @param userId the userId of the user.
+   * @param carId the carId of the car.
+   * @param docID the docId name of the doc.
    * @return {String} the docID of the new document.
    */
   define({ user, make, model, year }) {
@@ -44,38 +40,18 @@ class UserInfoCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
-   * @param firstName the first name of the person (optional).
-   * @param lastName the last name of the person (optional).
-   * @param user the user name of the person (optional).
-   * @param email the email of the person (optional).
-   * @param password the password of the person (optional).
-   * @param zipcode the zipcode of the person (optional).
-   * @param transportation, the transportation, of the person.
+   * @param carId the carId of the car.
+   * @param docID the docId name of the doc.
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, transportation }) {
+  update(docID, { userId, carId }) {
     const updateData = {};
-    if (firstName) {
-      updateData.firstName = firstName;
+    if (userId) {
+      updateData.userId = userId;
     }
-    if (lastName) {
-      updateData.lastName = lastName;
+    if (carId) {
+      updateData.carId = carId;
     }
-    if (user) {
-      updateData.user = user;
-    }
-    if (email) {
-      updateData.email = email;
-    }
-    if (password) {
-      updateData.password = password;
-    }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(zipcode)) {
-      updateData.zipcode = zipcode;
-    }
-    if (transportation) {
-      updateData.transportation = transportation;
-    }
+
     this._collection.update(docID, { $set: updateData });
   }
 
@@ -100,7 +76,7 @@ class UserInfoCollection extends BaseCollection {
       // get the StuffCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(userInfoPublications.userInfo, function publish() {
+      Meteor.publish(userInfoCarsPublications.userInfoCar, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -109,7 +85,7 @@ class UserInfoCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(userInfoPublications.userInfoAdmin, function publish() {
+      Meteor.publish(userInfoCarsPublications.userInfoCarAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
           return instance._collection.find();
         }
@@ -119,11 +95,11 @@ class UserInfoCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for stuff owned by the current user.
+   * Subscription method for UserInfoCar owned by the current user.
    */
   subscribeUserInfo() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(userInfoPublications.userInfo);
+      return Meteor.subscribe(userInfoCarsPublications.userInfoCar);
     }
     return null;
   }
@@ -134,7 +110,7 @@ class UserInfoCollection extends BaseCollection {
    */
   subscribeUserInfoAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(userInfoPublications.userInfoAdmin);
+      return Meteor.subscribe(userInfoCarsPublications.userInfoCarAdmin);
     }
     return null;
   }
@@ -144,4 +120,4 @@ class UserInfoCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const UserInfos = new UserInfoCollection();
+export const UserInfosCars = new UserInfoCarCollection();

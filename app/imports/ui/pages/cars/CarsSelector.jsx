@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, Dropdown } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 import LoadCars from '../../components/cars/LoadCars';
 
 /**

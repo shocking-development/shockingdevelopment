@@ -18,8 +18,6 @@ import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
 import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
 import CarsDropdown from '../pages/cars/CarsDropdown';
-import CarsSelector from '../pages/cars/CarsSelector';
-import CarsDropDown1 from '../components/cars/CarsDropDown1';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {

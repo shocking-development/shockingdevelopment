@@ -15,14 +15,14 @@ class LoadCars {
 
   load = (setState) => {
     this.setState = setState;
-    console.log(setState);
+    // console.log(setState);
     papa.parse(this.carsCSVfile, {
       download: true,
       dynamicTyping: true,
       header: true,
       complete: (result) => {
-        console.log('This is the data: ');
-        console.log(result);
+        // console.log('This is the data: ');
+        // console.log(result);
         this.#processCarsData(result.data); // read datas collection
       },
     });
@@ -35,7 +35,8 @@ class LoadCars {
       text: highwayE,
       value: carDefintions.highwayE[index],
     }));
-    console.log(JSON.stringify(carOptions));
+    // console.log(JSON.stringify(carOptions));
+    // eslint-disable-next-line no-unused-vars
     const DropdownExampleSearchSelectionTwo = () => (
         // eslint-disable-next-line react/react-in-jsx-scope
         <Dropdown placeholder='State' search selection options={carOptions}/>

@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
-import swal from 'sweetalert';
-import { Dropdown } from 'semantic-ui-react';
 import papa from 'papaparse';
-import { _ } from 'meteor/underscore';
 
 function CarsDropDown1() {
   /* the csv url */
   const carsCSVfile = 'https://raw.githubusercontent.com/CalianaFortin/vehicledata/main/vehicles.csv';
   const carOptions = [];
-  let uniqCaroptions = [];
 
   const processCarsData = (carDefintions) => {
-    console.log(carDefintions[0].make);
+    // console.log(carDefintions[0].make);
 
     carDefintions.forEach((car) => { // loop for the first 50, populate the database with some
       carOptions.push({
@@ -31,14 +26,15 @@ function CarsDropDown1() {
     dynamicTyping: true,
     header: true,
     complete: (result) => {
-      console.log('This is the data: ');
-      console.log(result);
+      // console.log('This is the data: ');
+      // console.log(result);
       processCarsData(result.data); // read datas collection
     },
   });
 
   return (
-      <Dropdown placeholder='State' search selection options={carOptions}/>
+      // eslint-disable-next-line react/react-in-jsx-scope
+      <div> NOTHING </div>
   );
 }
 
