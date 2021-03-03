@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Loader } from 'semantic-ui-react';
+import { Container, Form, Header, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -10,6 +10,25 @@ import NavBarMain from '../../components/main-navbar/NavBarMain';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class CarsDropdown extends React.Component {
+
+  /** Initialize state fields. */
+  constructor(props) {
+    super(props);
+    this.state = {
+      make: '',
+      model: '',
+      years: '',
+
+    };
+  }
+
+  /** Update the form controls each time the user interacts with them. */
+  handleChange = (e) => {
+    this.setState({
+      make: e.target,
+    });
+    console.log(`selected ${e}`);
+  };
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -23,24 +42,44 @@ class CarsDropdown extends React.Component {
       height: '60em',
       backgroundSize: 'cover',
     };
+
     const carDocs = Cars.find({}).fetch();
     // const filtered by year
     // const filtered by model
     // const filtered by make
     // create a set state
-    const carNames = carDocs.map((doc) => `${doc.model} ${doc.make} ${doc.year}`);
-    const sch = new SimpleSchema({ name: { type: String, allowedValues: carNames } });
+    const carYears = carDocs.map((doc) => `${doc.year}`);
+    const carModel = carDocs.map((doc) => `${doc.model}`);
+    const carMake = carDocs.map((doc) => `${doc.make}`);
+
+    const sch = new SimpleSchema({
+      make: { type: String, allowedValues: carMake },
+      model: { type: String, allowedValues: carModel },
+      years: { type: String, allowedValues: carYears },
+    });
+
     const schema = new SimpleSchema2Bridge(sch);
-    console.log(carNames);
+
+    // console.log(carMake);
 
     return (
         <div style={pageStyle}>
           <NavBarMain/>
           <Container style={{ padding: '10em' }}>
-            <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
-            <AutoForm schema={schema}>
-              <SelectField name='name'/>
-              {/*multiple select fields*/}
+            <Header as="h2" textAlign="center" inverted>Cars</Header>
+            <AutoForm schema={schema} onChange={(key, value) => {
+              console.log(key, value);
+            }}>
+              <SelectField
+                  name='make'
+              />
+              <SelectField
+                  name='model'
+              />
+              <SelectField
+                  name='years'
+              />
+              {/* multiple select fields */}
             </AutoForm>
           </Container>
         </div>
