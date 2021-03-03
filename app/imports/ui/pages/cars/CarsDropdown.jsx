@@ -40,12 +40,13 @@ class CarsDropdown extends React.Component {
     const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`);
 
     // an example of how to filter the cars
-    /* const filteredMake = carDocs.filter((doc) => carMake.indexOf(doc.make) === carModel.indexOf(doc.model)); */
+    const filteredMake = carDocs.filter((doc) => carMake.indexOf(doc.make) === carModel.indexOf(doc.model));
+    const carYears2 = carYears.filter((v, i, a) => a.indexOf(v) === i);
 
     const sch = new SimpleSchema({
       make: { type: String, allowedValues: carMake },
       model: { type: String, allowedValues: carModel },
-      years: { type: String, allowedValues: carYears },
+      years: { type: String, allowedValues: carYears2 },
     });
 
     const schema = new SimpleSchema2Bridge(sch);
@@ -53,7 +54,7 @@ class CarsDropdown extends React.Component {
     // console.log(carYears);
     // console.log(carModel);
     // console.log(carMake);
-    // console.log(filteredMake);
+    console.log(filteredMake);
 
     /** Update the form filters the selector each time the user interacts with them. */
     const handleChange = (key, value) => {

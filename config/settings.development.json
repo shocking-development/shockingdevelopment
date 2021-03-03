@@ -65,6 +65,12 @@
       "mpg": 25
     },
     {
+      "make": "Ford",
+      "model": "Car",
+      "year": 2019,
+      "mpg": 25
+    },
+    {
       "make": "Kia",
       "model": "Optima",
       "year": 2015,
