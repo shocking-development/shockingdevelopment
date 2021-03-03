@@ -73,14 +73,14 @@ export default class Signin extends React.Component {
 
                     />
                     <Form.Input className={'signinInput'}
-                        label="Password"
-                        id="signin-form-password"
-                        icon="lock"
-                        iconPosition="left"
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                        onChange={this.handleChange}
+                                label="Password"
+                                id="signin-form-password"
+                                icon="lock"
+                                iconPosition="left"
+                                name="password"
+                                placeholder="Password"
+                                type="password"
+                                onChange={this.handleChange}
                     />
                     <Form.Button
                         color='teal'
