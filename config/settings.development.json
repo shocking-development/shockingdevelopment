@@ -47,9 +47,21 @@
       "mpg": 19
     },
     {
+      "make": "Dodge",
+      "model": "Charger",
+      "year": 2010,
+      "mpg": 19
+    },
+    {
       "make": "Ford",
       "model": "Escape",
       "year": 2011,
+      "mpg": 25
+    },
+    {
+      "make": "Ford",
+      "model": "Escape",
+      "year": 2019,
       "mpg": 25
     },
     {

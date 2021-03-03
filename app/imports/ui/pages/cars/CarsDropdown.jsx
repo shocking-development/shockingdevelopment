@@ -57,21 +57,23 @@ class CarsDropdown extends React.Component {
 
     /** Update the form filters the selector each time the user interacts with them. */
     const handleChange = (key, value) => {
-      console.log(key, value);
+      // console.log(key, value);
       if (key === 'years') {
         this.setState({
           years: value,
         });
         // console.log(carMake[carYears.indexOf(value)]);
-        console.log(carYears.indexOf(value));
+        // console.log(carYears.indexOf(value));
       } else
         if (key === 'make') {
-          console.log(carMake.indexOf(value));
+          // console.log(value);
+          // console.log(carMake.indexOf(value));
           this.setState({
             make: value,
           });
 
         } else {
+          // console.log(value);
           // console.log(carModel.indexOf(value));
           this.setState({
             model: value,
