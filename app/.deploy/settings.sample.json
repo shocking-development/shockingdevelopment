@@ -11,6 +11,33 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
+  "defaultCarsData": [
+    {
+      "make": "Honda",
+      "model": "Accord",
+      "year": 2018,
+      "mpg": 30
+    },
+    {
+      "make": "Dodge",
+      "model": "Charger",
+      "year": 2009,
+      "mpg": 19
+    },
+    {
+      "make": "Ford",
+      "model": "Escape",
+      "year": 2011,
+      "mpg": 25
+    },
+    {
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2015,
+      "mpg": 36
+    }
+  ],
+
   "monti": {
     "appId": "changeme",
     "appSecret": "changeme"

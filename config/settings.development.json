@@ -35,7 +35,7 @@
       "owner": "admin@foo.com"
     }
   ],
-  "defaultCars": [
+  "defaultCarsData": [
     {
       "make": "Honda",
       "model": "Accord",
@@ -49,9 +49,21 @@
       "mpg": 19
     },
     {
+      "make": "Dodge",
+      "model": "Charger",
+      "year": 2010,
+      "mpg": 19
+    },
+    {
       "make": "Ford",
       "model": "Escape",
       "year": 2011,
+      "mpg": 25
+    },
+    {
+      "make": "Ford",
+      "model": "Car",
+      "year": 2019,
       "mpg": 25
     },
     {
@@ -59,6 +71,12 @@
       "model": "Optima",
       "year": 2015,
       "mpg": 36
+    },
+    {
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2016,
+      "mpg": 39
     }
   ]
 }
