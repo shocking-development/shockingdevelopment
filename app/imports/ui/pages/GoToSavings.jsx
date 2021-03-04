@@ -5,11 +5,21 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../components/main-navbar/NavBarMain';
+import SavingsPageBarGraph from '../components/defaultcharts/SavingsPageBarGraph';
 
 /** A simple static component to render the home page when users are logged in. */
 class GoToSavings extends React.Component {
 
   render() {
+
+    const dataPageBarGraphstyling = {
+      background: 'rgb(200, 200, 200)',
+      borderRadius: '5px',
+      paddingTop: '5px',
+      paddingRight: '5px',
+      color: 'black',
+    };
+
     const inCardStyle = {
       textSize: 50,
     };
@@ -23,7 +33,7 @@ class GoToSavings extends React.Component {
 
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '60em',
+      height: '70em',
     };
 
     return (
@@ -38,7 +48,11 @@ class GoToSavings extends React.Component {
                 <Card.Meta>How much would you save by using this car.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
               </Card.Content>
-
+              <Card.Content>
+                <div style={dataPageBarGraphstyling}>
+                  <SavingsPageBarGraph/>
+                </div>
+              </Card.Content>
               <Card.Content extra color='green'>
                 <div className='ui three buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
@@ -56,7 +70,11 @@ class GoToSavings extends React.Component {
                 <Card.Meta>How much would you save by using this electric car.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
               </Card.Content>
-
+              <Card.Content>
+                <div style={dataPageBarGraphstyling}>
+                  <SavingsPageBarGraph/>
+                </div>
+              </Card.Content>
               <Card.Content extra color='green'>
                 <div className='ui three buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
@@ -74,6 +92,13 @@ class GoToSavings extends React.Component {
                 <Card.Meta>How much would you save by using this carpool.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
               </Card.Content>
+
+              <Card.Content>
+                <div style={dataPageBarGraphstyling}>
+                  <SavingsPageBarGraph/>
+                </div>
+              </Card.Content>
+
               <Card.Content extra>
                 <div className='ui four buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
@@ -92,6 +117,13 @@ class GoToSavings extends React.Component {
                 <Card.Meta>How much would you save by using this public transport system.</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
               </Card.Content>
+
+              <Card.Content>
+                <div style={dataPageBarGraphstyling}>
+                  <SavingsPageBarGraph/>
+                </div>
+              </Card.Content>
+
               <Card.Content extra>
                 <div className='ui three buttons'>
                   <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
@@ -107,6 +139,11 @@ class GoToSavings extends React.Component {
                 <Card.Header>Bikeing</Card.Header>
                 <Card.Meta>How much would you save by Bikeing</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
+              </Card.Content>
+              <Card.Content>
+                <div style={dataPageBarGraphstyling}>
+                  <SavingsPageBarGraph/>
+                </div>
               </Card.Content>
               <Card.Content extra>
                 <div className='ui two buttons'>
