@@ -8,24 +8,28 @@ class SavingsPageBarGraph extends React.Component {
   render() {
     const options = {
       title: {
-        text: 'Your 2021 Environmental Benefits Cummulative Total',
+        text: 'Your current car vs input',
         style: {
-          color: 'white',
+          color: 'black',
           fontWeight: '300',
           fontFamily: 'sans-serif',
         },
       },
       series: [{
-        name: 'VMT saved (Miles)',
-        data: [49.9, 71.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        color: 'blue',
+        name: 'Price (Thousands of Dollars)',
+        data: [25, 63.6],
 
       }, {
-        name: 'Fuel Gallons Saved (Gallons)',
-        data: [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        color: 'yellow',
+        name: 'Full Saved (Gallons)',
+        data: [80, 60],
 
       }, {
+        color: 'red',
         name: 'CO2 reduced (Pounds)',
-        data: [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        textColor: 'red',
+        data: [30, 80],
 
       }],
       chart: {
@@ -33,46 +37,37 @@ class SavingsPageBarGraph extends React.Component {
         styledMode: false,
       },
       xAxis: {
-        gridLineColor: '#444',
-        lineColor: '#444',
+        gridLineColor: 'black',
+        lineColor: 'black',
         labels: {
           style: {
-            color: '#ccc',
+            color: 'black',
           },
         },
         legend: {
           itemStyle: {
-            color: '#ccc',
+            color: 'black',
             fontWeight: 'bold',
           },
         },
         categories: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sep',
-          'Oct',
-          'Nov',
-          'Dec',
+          'Current Car',
+          'Input',
         ],
         crosshair: true,
       },
       yAxis: {
         min: 0,
-        gridLineColor: 'white',
+        gridLineColor: 'yellow',
         title: {
           style: {
-            color: 'white',
+            color: 'black',
           },
         },
         labels: {
           style: {
-            color: '#ccc',
+
+            color: 'black',
           },
         },
       },
