@@ -22,7 +22,7 @@ class UserInfoCollection extends BaseCollection {
       password: String,
       userImage: String,
       zipcode: Number,
-      transportation: String,
+      // transportation: String,
     }));
   }
 
@@ -38,7 +38,7 @@ class UserInfoCollection extends BaseCollection {
    * @param transportation, the transportation, of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation }) {
+  define({ firstName, lastName, user, owner, email, password, zipcode, userImage }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
@@ -48,7 +48,7 @@ class UserInfoCollection extends BaseCollection {
       password,
       zipcode,
       userImage,
-      transportation,
+      // transportation,
     });
     return docID;
   }
@@ -64,7 +64,7 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person (optional).
    * @param transportation, the transportation, of the person.
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation }) {
+  update(docID, { firstName, lastName, user, email, password, zipcode, userImage }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -88,9 +88,9 @@ class UserInfoCollection extends BaseCollection {
     if (userImage) {
       updateData.userImage = userImage;
     }
-    if (transportation) {
-      updateData.transportation = transportation;
-    }
+    // if (transportation) {
+    //   updateData.transportation = transportation;
+    // }
     this._collection.update(docID, { $set: updateData });
   }
 

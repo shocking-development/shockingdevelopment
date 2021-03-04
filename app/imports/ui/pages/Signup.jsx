@@ -22,8 +22,6 @@ class Signup extends React.Component {
       lastName: '',
       error: '',
       zipcode: '',
-      transportation: '',
-      userImage: '',
       redirectToReferer: false,
     };
   }
@@ -35,7 +33,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password, firstName, lastName, zipcode, userImage, transportation } = this.state;
+    const { email, password, firstName, lastName, zipcode } = this.state;
     const user = email;
     userInfoDefineMethod.call({
           firstName,
@@ -44,8 +42,7 @@ class Signup extends React.Component {
           email,
           password,
           zipcode,
-          transportation,
-          userImage,
+          userImage: 'images/default-image.jpg',
           owner: user,
         },
         (error) => {
@@ -54,7 +51,7 @@ class Signup extends React.Component {
             // eslint-disable-next-line no-console
             console.error(error.message);
           } else {
-            Accounts.createUser({ email, username: email, password, firstName, lastName, zipcode, userImage, transportation }, (err) => {
+            Accounts.createUser({ email, username: email, password, firstName, lastName, zipcode, userImage: '' }, (err) => {
               if (err) {
                 this.setState({ error: err.reason });
               } else {
@@ -165,22 +162,7 @@ class Signup extends React.Component {
                                 type="zipcode"
                                 onChange={this.handleChange}
                     />
-                    <Form.Input className={'signupInput'}
-                                label="User Image"
-                                id="signup-form-userImage"
-                                name="userImage"
-                                placeholder="userImage"
-                                type="userImage"
-                                onChange={this.handleChange}
-                    />
-                    <Form.Input className={'signupInput'}
-                                label="Transportation"
-                                id="signup-form-transportation"
-                                name="transportation"
-                                placeholder="transportation"
-                                type="transportation"
-                                onChange={this.handleChange}
-                    />
+
                     <Form.Button
                         id="signup-form-submit"
                         content="Submit"
