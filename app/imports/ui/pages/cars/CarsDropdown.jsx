@@ -40,21 +40,34 @@ class CarsDropdown extends React.Component {
     const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`);
 
     // an example of how to filter the cars
-    const filteredMake = carDocs.filter((doc) => carMake.indexOf(doc.make) === carModel.indexOf(doc.model));
-    const carYears2 = carYears.filter((v, i, a) => a.indexOf(v) === i);
+     const filteredMake = carDocs.filter((doc) => carMake.indexOf(doc.make) === carModel.indexOf(doc.model));
+    /* console.log(filteredMake);
+
+    const carModel1 = filteredMake.map(({ model, _id }) => ({ model, _id }));
+    console.log(carModel1);
+    const carModel2 = carModel1.map((doc) => `${doc.model}-${doc._id}`);
+    console.log(carModel2);
+
+    const carMake1 = filteredMake.map(({ make, _id, year }) => ({ make, _id, year }));
+    console.log(carMake1);
+    const carMake2 = carMake1.map((doc) => `${doc.make}-${doc._id}-${doc.year}`);
+    console.log(carMake2); */
+
+    // const test1 = filteredMake.filter((obj) => Object.keys(obj).reduce((acc, curr) => acc || obj[curr].includes(2019), false));
+    // console.log(test1);
 
     const sch = new SimpleSchema({
       make: { type: String, allowedValues: carMake },
       model: { type: String, allowedValues: carModel },
-      years: { type: String, allowedValues: carYears2 },
+      years: { type: String, allowedValues: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019] },
     });
 
     const schema = new SimpleSchema2Bridge(sch);
 
     // console.log(carYears);
-    // console.log(carModel);
-    // console.log(carMake);
-    console.log(filteredMake);
+     console.log(carModel);
+     console.log(carMake);
+     console.log(filteredMake);
 
     /** Update the form filters the selector each time the user interacts with them. */
     const handleChange = (key, value) => {
@@ -81,6 +94,12 @@ class CarsDropdown extends React.Component {
           });
 
         }
+    };
+    const makeNames = Object.entries(carDocs);
+    console.log(makeNames);
+    /* carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make)) */
+    const allowedMakeValues = () => {
+      carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make));
     };
 
     return (

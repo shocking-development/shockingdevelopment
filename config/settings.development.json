@@ -60,12 +60,6 @@
     },
     {
       "make": "Ford",
-      "model": "Escape",
-      "year": 2019,
-      "mpg": 25
-    },
-    {
-      "make": "Ford",
       "model": "Car",
       "year": 2019,
       "mpg": 25
