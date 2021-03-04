@@ -98,6 +98,7 @@ class CarsDropdown extends React.Component {
     const makeNames = Object.entries(carDocs);
     console.log(makeNames);
     /* carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make)) */
+    // eslint-disable-next-line no-unused-vars
     const allowedMakeValues = () => {
       carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make));
     };
