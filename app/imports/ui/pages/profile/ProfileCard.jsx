@@ -26,6 +26,8 @@ class ProfileCard extends React.Component {
     const divstyle = {
       height: '100vh',
       paddingTop: '2em',
+      marginLeft: 'auto',
+      marginRight: 'auto',
     };
 
     return (
@@ -55,8 +57,6 @@ class ProfileCard extends React.Component {
                       Last name: {this.props.profiles.lastName}
                       <br/>
                       Email: {this.props.profiles.email}
-                      <br/>
-                      Password: {this.props.profiles.password}
                       <br/>
                       Transportation: {this.props.profiles.transportation}
                       <br/>
