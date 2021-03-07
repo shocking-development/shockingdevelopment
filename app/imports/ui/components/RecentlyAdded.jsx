@@ -2,14 +2,14 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Card, Header, Grid } from 'semantic-ui-react';
-import { EmissionsCollection } from '../../api/emissions/EmissionsCollection';
+import { Emissions } from '../../api/emissions/EmissionsCollection';
 
 function RecentlyAdded() {
 
     const user = useTracker(() => Meteor.userId());
     const emissions = useTracker(() => {
-    Meteor.subscribe('emissions');
-    return EmissionsCollection.find({ owner: user }, { sort: { createdAt: -1 }, limit: 3 }).fetch();
+    Meteor.subscribe(Emissions.emissionsPublicationName);
+    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 }, limit: 3 }).fetch();
     });
 
     return (
@@ -22,7 +22,7 @@ function RecentlyAdded() {
                         {emissions.map(recentEmissions => <Grid.Column key={toString(recentEmissions.createdAt) + recentEmissions.transportation + recentEmissions.miles}>
                         <Card style={{ padding: '1rem', background: '#4282AF', width: '25em', height: '10em' }}>
                         <Card.Content>
-                        <Card.Header style={{ color: 'white' }}>{recentEmissions.date}</Card.Header>
+                        <Card.Header style={{ color: 'white' }}>{`${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`}</Card.Header>
                         </Card.Content>
                         <Card.Content style={{ color: 'white' }}>
                         <b>Transportation: {recentEmissions.transportation}</b>

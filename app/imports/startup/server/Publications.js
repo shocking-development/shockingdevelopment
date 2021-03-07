@@ -3,7 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 import { Cars } from '../../api/cars/CarsCollection';
-import { EmissionsCollection } from '../../api/emissions/EmissionsCollection';
+import { Emissions } from '../../api/emissions/EmissionsCollection';
 import { TripsCollection } from '../../api/emissions/TripsCollection';
 
 // User-level publication.
@@ -40,8 +40,11 @@ Meteor.publish(null, function () {
   return this.ready();
 });
 
-Meteor.publish('emissions', function publishEmissions() {
-  return EmissionsCollection.find({ owner: this.userId });
+Meteor.publish(Emissions.emissionPublicationName, function () {
+  if (this.userId) {
+    return Emissions.collection.find({ owner: this.userId });
+  }
+  return this.ready();
 });
 
 Meteor.publish('trips', function publishTrips() {

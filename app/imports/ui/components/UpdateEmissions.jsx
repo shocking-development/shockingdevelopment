@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/emissions/TripsCollection';
+import { EmissionsDefineMethod } from '../../api/emissions/EmissionsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
@@ -185,17 +186,24 @@ function UpdateEmissions() {
                 });
               }
 
-            Meteor.call('data.insert', {
+              EmissionsDefineMethod.call({
                 owner: user,
                 date: TripState.date,
                 transportation: TripState.transportation,
                 miles: TripState.miles,
-            });
+                createdAt: new Date(),
+            },
+            (error) => {
+                if (error) {
+                  swal('Error', error.message, 'error');
+                } else {
+                    swal('Success', 'Added successfully', 'success').then(() => {
+                        // eslint-disable-next-line no-undef
+                        window.location.reload();
+                    });
+                }
+              });
 
-            swal('Success', 'Added successfully', 'success').then(() => {
-                // eslint-disable-next-line no-undef
-                window.location.reload();
-            });
           } catch {
               swal('Error', 'Failed to add, please try again.', 'error').then(() => {
                 // eslint-disable-next-line no-undef
