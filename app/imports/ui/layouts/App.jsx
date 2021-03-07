@@ -14,7 +14,7 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Datapage from '../pages/Datapage';
 import GoToSavings from '../pages/GoToSavings';
-import AddData from '../pages/AddData';
+import AddEmissions from '../pages/AddEmissions';
 import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
 import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
@@ -34,7 +34,7 @@ class App extends React.Component {
               <Route path="/landing" component={Landing}/>
               <Route path="/gotosavings" component={GoToSavings}/>
               <ProtectedRoute path="/home" component={Home}/>
-              <ProtectedRoute path="/add" component={AddData}/>
+              <ProtectedRoute path="/add" component={AddEmissions}/>
               <ProtectedRoute path="/addprofile" component={AddProfile}/>
               <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
               <ProtectedRoute path="/profile" component={ProfileCard}/>

@@ -6,7 +6,7 @@ import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
 import { TripsCollection } from '../../api/data/TripsCollection';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
-function UpdateData() {
+function UpdateEmissions() {
 
     /* Gets the current user */
     const user = useTracker(() => Meteor.userId());
@@ -235,4 +235,4 @@ function UpdateData() {
     );
 }
 
-export default UpdateData;
+export default UpdateEmissions;

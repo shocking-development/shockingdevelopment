@@ -15,7 +15,7 @@ function RecentlyAdded() {
     return (
         <div style={{ paddingTop: '3rem' }}>
             <Header inverted size='huge' textAlign={'center'}>Recently Added</Header>
-
+            {data.length !== 0 ?
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <Grid>
                     <Grid.Row columns={3}>
@@ -33,6 +33,7 @@ function RecentlyAdded() {
                     </Grid.Row>
                 </Grid>
             </div>
+            : <h1>You have not added any emissions</h1>}
         </div>
     );
 }
