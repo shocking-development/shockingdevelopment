@@ -47,10 +47,6 @@ class ProfileCard extends React.Component {
                   </Card.Meta>
                   <Card.Description>
                     <p>
-                      Password: {this.props.profiles.password}
-                      <br/>
-                      Transportation: {this.props.profiles.transportation}
-                      <br/>
                       Zipcode: {this.props.profiles.zipcode}
                     </p>
 
