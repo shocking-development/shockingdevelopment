@@ -1,9 +1,8 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Image, Card } from 'semantic-ui-react';
+import { Container, Header, Loader, Image, Card, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 
@@ -66,7 +65,7 @@ class ProfileCard extends React.Component {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Link to={`/edit/${this.props.profiles._id}`}>Edit Information</Link>
+                  <Button variant='primary' to={`/edit/${this.props.profiles._id}`}>Edit Information</Button>
                 </Card.Content>
               </Card>
             </Container>
