@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { DataCollection } from './DataCollection';
+import { EmissionsCollection } from './EmissionsCollection';
 
 Meteor.methods({
     'data.insert'(dataObject) {
@@ -10,7 +10,7 @@ Meteor.methods({
             throw new Meteor.Error('Not authorized.');
           }
 
-          DataCollection.insert({
+          EmissionsCollection.insert({
               owner: dataObject.owner,
               date: dataObject.date,
               transportation: dataObject.transportation,

@@ -3,7 +3,7 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
-import { TripsCollection } from '../../api/data/TripsCollection';
+import { TripsCollection } from '../../api/emissions/TripsCollection';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {

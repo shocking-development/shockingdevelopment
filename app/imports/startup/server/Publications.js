@@ -3,6 +3,8 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 import { Cars } from '../../api/cars/CarsCollection';
+import { EmissionsCollection } from '../../api/emissions/EmissionsCollection';
+import { TripsCollection } from '../../api/emissions/TripsCollection';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -36,4 +38,12 @@ Meteor.publish(null, function () {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
   }
   return this.ready();
+});
+
+Meteor.publish('emissions', function publishEmissions() {
+  return EmissionsCollection.find({ owner: this.userId });
+});
+
+Meteor.publish('trips', function publishTrips() {
+  return TripsCollection.find({ owner: this.userId });
 });
