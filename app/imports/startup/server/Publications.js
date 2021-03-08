@@ -2,11 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
-<<<<<<< Updated upstream
 import { Cars } from '../../api/cars/CarsCollection';
-=======
-import { Cars } from '../../api/cars/Cars';
->>>>>>> Stashed changes
+
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -30,11 +27,8 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 /** Publish all the collections you need. */
 UserInfos.publish();
 
-<<<<<<< Updated upstream
-/** Publish all the collections you need. */
-=======
+
 /** Publish the Cars collection. */
->>>>>>> Stashed changes
 Cars.publish();
 
 // alanning:roles publication
