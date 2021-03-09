@@ -2,10 +2,9 @@ import React from 'react';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
-import ProfileItemAdmin from '../../components/profile/ProfileItemAdmin';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
-import { Cars} from '../../../api/cars/CarsCollection';
+import CarItem  from '../../components/cars/CarItem';
+import { Cars } from '../../../api/cars/CarsCollection';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListCars extends React.Component {
@@ -17,11 +16,17 @@ class ListCars extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    {/**const carDocs = Cars.find({}).fetch();
+    const carYears = carDocs.map((doc) => `${doc.year}`);
+    const carModel = carDocs.map((doc) => `${doc.model}-${doc._id}`);
+    const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`); */ }
     const pageStyle = {
       background: 'rgb(21 51 62)',
       height: '60em',
       backgroundSize: 'cover',
     };
+    console.log(this.props.Car);
+
     return (
         <div style={pageStyle}>
           <NavBarMain/>
@@ -37,7 +42,7 @@ class ListCars extends React.Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.Car.map((Car) => <ProfileItemAdmin key={Car._id} profile={Car}/>)}
+                {this.props.Car.map((Car) => <CarItem key={Car._id} Car={Car}/>)}
               </Table.Body>
             </Table>
           </Container>
@@ -48,14 +53,14 @@ class ListCars extends React.Component {
 
 /** Require an array of Stuff documents in the props. */
 ListCars.propTypes = {
-  Car: PropTypes.array.isRequired,
+  Car: PropTypes.array,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Cars.subscribeUserInfoAdmin();
+  const subscription = Cars.subscribeCars();
   return {
     Car: Cars.find({}).fetch(),
     ready: subscription.ready(),
