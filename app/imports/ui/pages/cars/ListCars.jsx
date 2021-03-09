@@ -42,7 +42,7 @@ class ListCars extends React.Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.Car.map((Car) => <CarItem key={Car._id} Car={Car}/>)}
+                {this.props.Car.map((car) => <CarItem key={car._id} car={car}/>)}
               </Table.Body>
             </Table>
           </Container>

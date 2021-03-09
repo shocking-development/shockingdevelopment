@@ -8,7 +8,7 @@ class CarItem extends React.Component {
   render() {
     return (
         <Table.Row>
-          {/**<Table.Cell>{this.props.car.make}</Table.Cell> */}
+          <Table.Cell>{this.props.car.make}</Table.Cell>
           <Table.Cell>{this.props.car.model}</Table.Cell>
           <Table.Cell>{this.props.car.year}</Table.Cell>
           <Table.Cell>{this.props.car.mpg}</Table.Cell>
