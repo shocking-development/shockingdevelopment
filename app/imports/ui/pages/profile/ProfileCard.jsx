@@ -34,26 +34,19 @@ class ProfileCard extends React.Component {
           <div style={divstyle}>
             <Container style={{ paddingTop: '5em' }}>
               <Header inverted as="h2" textAlign="center">The User Profile</Header>
-
               <Card style={{ margin: 'auto' }}>
                 <Image size='medium' src ={this.props.profiles.userImage}
                     // eslint-disable-next-line
                        onError={(i) => i.target.src='/images/default_image.png'}/>
                 <Card.Content>
                   <Card.Header>
-                    {this.props.profiles.user}
+                    {this.props.profiles.firstName}  {this.props.profiles.lastName}
                   </Card.Header>
                   <Card.Meta>
-                    {this.props.profiles.firstName} {this.props.profiles.lastName}
+                   {this.props.profiles.user}
                   </Card.Meta>
                   <Card.Description>
                     <p>
-                      Email: {this.props.profiles.email}
-                      <br/>
-                      Password: {this.props.profiles.password}
-                      <br/>
-                      Transportation: {this.props.profiles.transportation}
-                      <br/>
                       Zipcode: {this.props.profiles.zipcode}
                     </p>
 
