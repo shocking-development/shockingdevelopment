@@ -20,7 +20,7 @@ class DataPagePieChart extends React.Component {
         },
       },
       series: [{
-        name: dataOne[0],
+        name: 'Modes of Travel',
         colorByPoint: true,
         data: [{
           name: dataOne[1],
