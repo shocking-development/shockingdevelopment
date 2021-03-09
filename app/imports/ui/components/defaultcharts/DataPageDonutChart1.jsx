@@ -1,11 +1,13 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { DonutGraph } from '../../../api/graphData/DonutGraph';
 
 /** A simple static component to render some boxes for the landing page. */
 
 class DataPageDonutChart1 extends React.Component {
   render() {
+    let data = DonutGraph.data;
     const options = {
       title: {
         text: 'Today&apos;s Choice of Travel',
@@ -17,7 +19,8 @@ class DataPageDonutChart1 extends React.Component {
       },
       series: [{
         name: 'Transportation',
-        data: [['Bike', 6], ['Car', 2], ['Public Transportation', 3]],
+        //data: [['Bike', 6], ['Car', 2], ['Public Transportation', 3]],
+        data: data,
         size: '60%',
         innerSize: '20%',
         showInLegend: true,

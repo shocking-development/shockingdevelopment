@@ -1,6 +1,7 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { BarGraph } from '../../../api/graphData/BarGraph';
 
 /** A simple static component to render some boxes for the landing page. */
 
@@ -78,11 +79,90 @@ class DataPageBarGraph extends React.Component {
       },
     };
 
+
+    let dataOne = BarGraph.dataOne;
+    let dataTwo = BarGraph.dataTwo;
+    let dataThree = BarGraph.dataThree;
+
+    let optionsLet = {
+
+      title: {
+        text: 'Your 2021 Environmental Benefits Cummulative Total',
+        style: {
+          color: 'white',
+          fontWeight: '300',
+          fontFamily: 'sans-serif',
+        },
+      },
+      series: [{
+        name: 'VMT saved (Miles)',
+        data: dataOne,
+
+      }, {
+        name: 'Fuel Gallons Saved (Gallons)',
+        data: dataTwo,
+
+      }, {
+        name: 'CO2 reduced (Pounds)',
+        data: dataThree,
+
+      }],
+      chart: {
+        type: 'column',
+        styledMode: false,
+      },
+      xAxis: {
+        gridLineColor: '#444',
+        lineColor: '#444',
+        labels: {
+          style: {
+            color: '#ccc',
+          },
+        },
+        legend: {
+          itemStyle: {
+            color: '#ccc',
+            fontWeight: 'bold',
+          },
+        },
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+        crosshair: true,
+      },
+      yAxis: {
+        min: 0,
+        gridLineColor: 'white',
+        title: {
+          style: {
+            color: 'white',
+          },
+        },
+        labels: {
+          style: {
+            color: '#ccc',
+          },
+        },
+      },
+    };
+
     return (
+
         <div>
           <HighchartsReact
               highcharts={Highcharts}
-              options={options}
+              options={optionsLet}
           />
         </div>
     );
