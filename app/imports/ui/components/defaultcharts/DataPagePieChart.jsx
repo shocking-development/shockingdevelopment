@@ -23,26 +23,26 @@ class DataPagePieChart extends React.Component {
         name: 'Modes of Travel',
         colorByPoint: true,
         data: [{
-          name: dataOne[1],
+          name: dataOne[0],
           y: dataTwo[0],
           sliced: true,
           selected: true,
         }, {
-          name: dataOne[2],
+          name: dataOne[1],
           y: dataTwo[1],
         }, {
-          name: dataOne[3],
+          name: dataOne[2],
           y: dataTwo[2],
         }, {
-          name: dataOne[4],
+          name: dataOne[3],
           y: dataTwo[3],
         },
           {
-            name: dataOne[5],
+            name: dataOne[4],
             y: dataTwo[4],
           },
           {
-            name: dataOne[0],
+            name: dataOne[5],
             y: dataTwo[5],
           },
         ],
