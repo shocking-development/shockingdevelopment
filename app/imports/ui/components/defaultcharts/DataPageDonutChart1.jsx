@@ -7,7 +7,7 @@ import { DonutGraph } from '../../../api/graphData/DonutGraph';
 
 class DataPageDonutChart1 extends React.Component {
   render() {
-    let data = DonutGraph.data;
+    let data = DonutGraph.dataOne;
     const options = {
       title: {
         text: 'Today&apos;s Choice of Travel',

@@ -7,6 +7,7 @@ import { DonutGraph } from '../../../api/graphData/DonutGraph';
 
 class DataPageDonutChart1 extends React.Component {
   render() {
+    let data = DonutGraph.dataTwo;
     const options = {
       title: {
         text: 'This Week&apos;s Emissions',
@@ -19,7 +20,7 @@ class DataPageDonutChart1 extends React.Component {
       colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
       series: [{
         name: 'GHG emisions',
-        data: [['Tuesday', 6], ['Monday', 2], ['Wednesday', 3]],
+        data: data,
         size: '60%',
         innerSize: '20%',
         showInLegend: true,

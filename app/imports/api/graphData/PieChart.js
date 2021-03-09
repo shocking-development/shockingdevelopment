@@ -3,13 +3,13 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /** Encapsulates state and variable values for this collection. */
-class DonutGraphCollection {
+class PieChartCollection {
 
   constructor() {
     // The name of this collection.
-    this.name = 'DonutGraphCollection';
-    this.dataOne = [['Bike', 6], ['Car', 2], ['Public Transportation', 3]];
-    this.dataTwo = [['Tuesday', 6], ['Monday', 2], ['Wednesday', 3]];
+    this.name = 'PieChartCollection';
+    this.dataOne = ['TeleWork', 'Carpool', 'Electrical Vehical', 'Public Transportation', 'Biking', 'Walking', 'Walking'];
+    this.dataTwo = [61, 11, 10, 4.67, 2.67, 2.67];
 
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
@@ -17,7 +17,7 @@ class DonutGraphCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      dataOne: Number,
+      dataOne: String,
       dataTwo: Number,
       owner: String,
       fontFamily: 'sans-serif',
@@ -33,4 +33,4 @@ class DonutGraphCollection {
 }
 
 //Export Collection
-export const DonutGraph = new DonutGraphCollection();
+export const PieChart = new PieChartCollection();
