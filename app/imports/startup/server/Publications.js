@@ -4,7 +4,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 import { Cars } from '../../api/cars/CarsCollection';
 import { Emissions } from '../../api/emissions/EmissionsCollection';
-import { TripsCollection } from '../../api/emissions/TripsCollection';
+import { Trips } from '../../api/emissions/TripsCollection';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -47,6 +47,9 @@ Meteor.publish(Emissions.emissionPublicationName, function () {
   return this.ready();
 });
 
-Meteor.publish('trips', function publishTrips() {
-  return TripsCollection.find({ owner: this.userId });
+Meteor.publish(Trips.emissionPublicationName, function () {
+  if (this.userId) {
+    return Trips.collection.find({ owner: this.userId });
+  }
+  return this.ready();
 });

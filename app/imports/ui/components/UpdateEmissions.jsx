@@ -3,8 +3,9 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
-import { TripsCollection } from '../../api/emissions/TripsCollection';
+import { Trips } from '../../api/emissions/TripsCollection';
 import { EmissionsDefineMethod } from '../../api/emissions/EmissionsCollection.methods';
+import { TripsDefineMethod, tripsRemoveMethod } from '../../api/emissions/TripsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
@@ -14,8 +15,8 @@ function UpdateEmissions() {
 
     /* Gets the users saved preset trips */
     const trips = useTracker(() => {
-    Meteor.subscribe('trips');
-    return TripsCollection.find({ owner: user }).fetch();
+    Meteor.subscribe(Trips.tripsPublicationName);
+    return Trips.collection.find({ owner: user }).fetch();
     });
 
     /* Gets the current date and puts it in the correct format for the date input */
@@ -70,7 +71,7 @@ function UpdateEmissions() {
     ];
 
     /* DeleteTrip function allows users to delete preset trips */
-    const deleteTrip = ({ _id }) => Meteor.call('trips.remove', _id);
+    const deleteTrip = ({ _id }) => tripsRemoveMethod.call(_id);
 
     /* Adds the users preset trips along with the custom option to an array that holds the dropdown options */
     const tripOptions = [];
@@ -179,11 +180,11 @@ function UpdateEmissions() {
       } else {
           try {
               if (TripState.custom) {
-                Meteor.call('trips.insert', {
+                  TripsDefineMethod.call({
                     owner: user,
                     name: TripState.trip,
                     miles: TripState.miles,
-                });
+                  });
               }
 
               EmissionsDefineMethod.call({
