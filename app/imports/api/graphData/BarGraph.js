@@ -6,15 +6,22 @@ import { Tracker } from 'meteor/tracker';
 class BarGraphCollection {
 
   constructor() {
+
+/*fetch("../../../../config/settings.development.json")
+    .this(response => response.json())
+    .this(data => {console.log("88")});*/
+
     // The name of this collection.
     this.name = 'BarGraphCollection';
-    this.dataOne = [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 30];
+    this.dataOne = [20, 71.5, 0, 0, 55.8, 0, 8, 0, 0, 0, 0, 30];
     this.dataTwo = [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0];
     this.dataThree = [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0];
     this.dataLandOne = [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4];
     this.dataLandTwo = [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.dataLandThree = [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.dataSavings = [[25, 63.6], [80, 60], [30, 80]];
+    console.log(fetch("../../../../../config/settings.development.json"));
+    console.log(fetch("config/settings.development.json"));
 
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);

@@ -63,7 +63,7 @@
 
   ], "defaultGraph": [
   {
-    "name": "Bar Graph",
+    "name": "BarGraph",
     "dataOne": [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0],
     "dataTwo": [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0],
     "dataThree": [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0]
