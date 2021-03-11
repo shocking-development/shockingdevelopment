@@ -2,6 +2,8 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { DonutGraph } from '../../../api/graphData/DonutGraph';
+import { Stuffs } from '../../../api/stuff/Stuff';
+import StuffItem from '../StuffItem';
 
 /** A simple static component to render some boxes for the landing page. */
 

@@ -2,6 +2,8 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { PieChart } from '../../../api/graphData/PieChart';
+import { Stuffs } from '../../../api/stuff/Stuff';
+import StuffItem from '../StuffItem';
 
 /** A simple static component to render some boxes for the landing page. */
 
