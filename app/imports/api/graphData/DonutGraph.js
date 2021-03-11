@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
+import { Stuffs } from '../stuff/Stuff';
+import StuffItem from '../../ui/components/StuffItem';
 
 /** Encapsulates state and variable values for this collection. */
 class DonutGraphCollection {
