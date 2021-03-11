@@ -61,12 +61,24 @@
       "mpg": 36
     },
 
-  ], "defaultGraph": [
+  ], "defaultBarGraph": [
   {
     "name": "BarGraph",
     "dataOne": [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0],
-    "dataTwo": [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0],
-    "dataThree": [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0]
+    "dataTwo": [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0],
+    "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0]
+  }
+], "defaultDonutGraph": [
+  {
+    "name": "DonutGraph",
+    "dataOne": [["Bike", 6], ["Car", 2], ["Public Transportation", 3]],
+    "dataTwo": [["Tuesday", 6], ["Monday", 2], ["Wednesday", 3]]
+  }
+], "defaultPieChart": [
+  {
+    "name": "PieChart",
+    "dataOne": ["TeleWork", "Carpool", "Electrical Vehical", "Public Transportation", "Biking", "Walking", "Walking"];,
+    "dataTwo": [61, 11, 10, 4.67, 2.67, 2.67],
   }
 ]
 }

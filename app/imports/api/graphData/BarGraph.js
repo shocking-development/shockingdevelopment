@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
+import { Stuffs } from '../stuff/Stuff';
+import StuffItem from '../../ui/components/StuffItem';
 
 /** Encapsulates state and variable values for this collection. */
 class BarGraphCollection {
@@ -12,6 +14,7 @@ class BarGraphCollection {
     .this(data => {console.log("88")});*/
 
     // The name of this collection.
+    //this.def = def;
     this.name = 'BarGraphCollection';
     this.dataOne = [20, 71.5, 0, 0, 55.8, 0, 8, 0, 0, 0, 0, 30];
     this.dataTwo = [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0];
@@ -20,8 +23,10 @@ class BarGraphCollection {
     this.dataLandTwo = [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.dataLandThree = [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.dataSavings = [[25, 63.6], [80, 60], [30, 80]];
-    console.log(fetch("../../../../../config/settings.development.json"));
-    console.log(fetch("config/settings.development.json"));
+    console.log(fetch('../../../../../config/settings.development.json'));
+    console.log(this.dataOne);
+    console.log(Stuffs);
+    console.log(StuffItem);
 
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
