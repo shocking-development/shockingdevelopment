@@ -23,10 +23,6 @@ class BarGraphCollection {
     this.dataLandTwo = [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.dataLandThree = [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.dataSavings = [[25, 63.6], [80, 60], [30, 80]];
-    console.log(fetch('../../../../../config/settings.development.json'));
-    console.log(this.dataOne);
-    console.log(Stuffs);
-    console.log(StuffItem);
 
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
@@ -34,7 +30,7 @@ class BarGraphCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      dataOne: Number,
+      dataOnes: 100,
       dataTwo: Number,
       dataThree: Number,
       owner: String,
