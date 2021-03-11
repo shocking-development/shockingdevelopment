@@ -18,7 +18,7 @@ function RecentlyAdded() {
             {emissions.length !== 0 ?
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <Grid>
-                    <Grid.Row columns={3}>
+                    <Grid.Row columns={emissions.length}>
                         {emissions.map(recentEmissions => <Grid.Column key={toString(recentEmissions.createdAt) + recentEmissions.transportation + recentEmissions.miles}>
                         <Card style={{ padding: '1rem', background: '#4282AF', width: '25em', height: '10em' }}>
                         <Card.Content>
