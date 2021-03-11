@@ -9,8 +9,7 @@ import StuffItem from '../StuffItem';
 
 class DataPageDonutChart1 extends React.Component {
   render() {
-    let data = DonutGraph.dataOne;
-    const options = {
+    let options = {
       title: {
         text: 'Today&apos;s Choice of Travel',
         style: {
@@ -21,8 +20,7 @@ class DataPageDonutChart1 extends React.Component {
       },
       series: [{
         name: 'Transportation',
-        //data: [['Bike', 6], ['Car', 2], ['Public Transportation', 3]],
-        data: data,
+        data: DonutGraph.dataOne,
         size: '60%',
         innerSize: '20%',
         showInLegend: true,

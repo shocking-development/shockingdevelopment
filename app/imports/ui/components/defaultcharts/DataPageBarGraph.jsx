@@ -2,6 +2,8 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { BarGraph } from '../../../api/graphData/BarGraph';
+import { Stuffs } from '../../../api/stuff/Stuff';
+import StuffItem from '../StuffItem';
 
 /** A simple static component to render some boxes for the landing page. */
 
@@ -80,9 +82,6 @@ class DataPageBarGraph extends React.Component {
     };
 
 
-    let dataOne = BarGraph.dataOne;
-    let dataTwo = BarGraph.dataTwo;
-    let dataThree = BarGraph.dataThree;
 
     let optionsLet = {
 
@@ -96,15 +95,15 @@ class DataPageBarGraph extends React.Component {
       },
       series: [{
         name: 'VMT saved (Miles)',
-        data: dataOne,
+        data: BarGraph.schema.dataOne,
 
       }, {
         name: 'Fuel Gallons Saved (Gallons)',
-        data: dataTwo,
+        data: BarGraph.dataTwo,
 
       }, {
         name: 'CO2 reduced (Pounds)',
-        data: dataThree,
+        data: BarGraph.dataThree,
 
       }],
       chart: {
@@ -156,7 +155,8 @@ class DataPageBarGraph extends React.Component {
         },
       },
     };
-
+    console.log("Hello, world");
+    console.log(BarGraph.schema.dataOnes);
     return (
 
         <div>
