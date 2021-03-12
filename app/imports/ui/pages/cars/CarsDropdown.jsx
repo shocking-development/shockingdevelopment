@@ -35,7 +35,13 @@ class CarsDropdown extends React.Component {
     };
 
     /*
-    *
+    * The goal of this page is to filter the select fields based on the user input.
+    * We want to only show the relevant car models based on the years and the make.
+    * To do this we retrieve the car documents and create two arrays with the models
+    * and the make. Then to separate it into an array with objects we filter the car docs
+    * based on the car docs and make. After we create a scheme with the allowedValues the
+    * user can select. After getting the selected values we filter all the cars based on
+    * the make and year chose and return the model.
     */
     const carDocs = Cars.find({}).fetch();
     const carModelForAllCars = carDocs.map((doc) => `${doc.model}-${doc._id}`);
@@ -55,9 +61,6 @@ class CarsDropdown extends React.Component {
     });
 
     const schema = new SimpleSchema2Bridge(sch);
-
-    /* const allowedModelValues = allCars.filter(({ make, year }) => make === this.state.make && year === this.state.years);
-    console.log(allowedModelValues); */
 
     /** Update the form filters the selector each time the user interacts with them. */
     const handleChange = (key, value) => {
@@ -81,8 +84,8 @@ class CarsDropdown extends React.Component {
         }
     };
 
-    const allowedModelValues = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
-    const realAllowedValue = allowedModelValues.map((doc) => `${doc.model}`);
+    const filteredSelectField = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
+    const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
 
     return (
         <div style={pageStyle}>
@@ -99,9 +102,8 @@ class CarsDropdown extends React.Component {
               />
               <SelectField
                   name='model'
-                  allowedValues={realAllowedValue}
+                  allowedValues={allowedModelValues}
               />
-
             </AutoForm>
           </Container>
         </div>
