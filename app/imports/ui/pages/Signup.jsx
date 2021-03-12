@@ -6,7 +6,7 @@ import { Accounts } from 'meteor/accounts-base';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 import swal from 'sweetalert';
 import { userInfoDefineMethod } from '../../api/userInfo/UserInfoCollection.methods';
-import Footer from '../components/Footer';
+import Footer from '../components/footer/Footer';
 
 /**
  * Signup component is similar to signIn component, but we create a new user instead.

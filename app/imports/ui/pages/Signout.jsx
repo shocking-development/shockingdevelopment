@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import Landing from './Landing';
+import Landing from './landing/Landing';
 
 /** After the user clicks the "Signout" link in the NavBar, log them out and display this page. */
 export default class Signout extends React.Component {
