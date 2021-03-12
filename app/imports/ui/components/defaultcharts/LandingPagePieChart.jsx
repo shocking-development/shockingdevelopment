@@ -1,11 +1,16 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { PieChart } from '../../../api/graphData/PieChart';
+import { Stuffs } from '../../../api/stuff/Stuff';
+import StuffItem from '../StuffItem';
 
 /** A simple static component to render some boxes for the landing page. */
 
 class LandingPagePieChart extends React.Component {
   render() {
+    let dataOne = PieChart.dataOne;
+    let dataTwo = PieChart.dataTwo;
     const options = {
       title: {
         text: 'Modes of Travel Cummulative Total',
@@ -19,27 +24,27 @@ class LandingPagePieChart extends React.Component {
         name: 'Modes of Travel',
         colorByPoint: true,
         data: [{
-          name: 'TeleWork',
-          y: 61,
+          name: dataOne[0],
+          y: dataTwo[0],
           sliced: true,
           selected: true,
         }, {
-          name: 'Carpool',
+          name: dataOne[0],
           y: 11,
         }, {
-          name: 'Electrical Vehical',
-          y: 10,
+          name: dataOne[1],
+          y: dataTwo[1],
         }, {
-          name: 'Public Transportation',
-          y: 4.67,
+          name: dataOne[2],
+          y: dataTwo[2],
         },
           {
-            name: 'Biking',
-            y: 2.67,
+            name: dataOne[3],
+            y: dataTwo[3],
           },
           {
-            name: 'Walking',
-            y: 2.67,
+            name: dataOne[4],
+            y: dataTwo[4],
           },
         ],
       }],

@@ -1,11 +1,15 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { BarGraph } from '../../../api/graphData/BarGraph';
+import { Stuffs } from '../../../api/stuff/Stuff';
+import StuffItem from '../StuffItem';
 
 /** A simple static component to render some boxes for the landing page. */
 
 class SavingsPageBarGraph extends React.Component {
   render() {
+
     const options = {
       title: {
         text: 'Your current car vs input',
@@ -18,18 +22,19 @@ class SavingsPageBarGraph extends React.Component {
       series: [{
         color: 'blue',
         name: 'Price (Thousands of Dollars)',
-        data: [25, 63.6],
+        //data: [25, 63.6],
+        data: BarGraph.dataSavings[0],
 
       }, {
         color: 'yellow',
         name: 'Full Saved (Gallons)',
-        data: [80, 60],
+        data: BarGraph.dataSavings[1],
 
       }, {
         color: 'red',
         name: 'CO2 reduced (Pounds)',
         textColor: 'red',
-        data: [30, 80],
+        data: BarGraph.dataSavings[2],
 
       }],
       chart: {
