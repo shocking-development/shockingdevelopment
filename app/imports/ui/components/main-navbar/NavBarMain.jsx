@@ -8,11 +8,11 @@ import { Roles } from 'meteor/alanning:roles';
 
 /**
  * The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ...
- *  * @memberOf ui/components/main-navbar
+ * @memberOf ui/components/main-navbar
  */
 class NavBarMain extends React.Component {
   render() {
-    /** Some styling components */
+    /* Some styling components */
     const navbarVerticle = {
       height: '100%', /* Full-height: remove this if you want "auto" height */
       width: 'auto', /* Set the width of the sidebar */
@@ -35,19 +35,19 @@ class NavBarMain extends React.Component {
 
         <div className={'css-selector'} style={navbarVerticle}>
           {this.props.currentUser ? (
-              // eslint-disable-next-line react/jsx-key
-              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}>
+
+              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }} key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
                   <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular/>
                 </Menu.Item>
                 <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='key8'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='key1'>
                   <Icon name='user' size='large'/>
                   View Profile
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='key1'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='key2'>
                   <Icon name='home' size='large'/>
                   Home
                 </Menu.Item>
@@ -57,17 +57,22 @@ class NavBarMain extends React.Component {
                   Add Today&apos;s Emissions
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key5'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key4'>
                   <Icon name='calculator' size='large'/>
                   GHG calculator
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key6'>
+                {/** <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
                   <Icon name='map' size='large'/>
                   Map your route
+                </Menu.Item> */}
+
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/gotosavings" key='key6'>
+                  <Icon name='money bill alternate' size='large'/>
+                  Go to savings
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key9'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
                 </Menu.Item>

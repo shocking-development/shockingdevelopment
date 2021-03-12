@@ -1,9 +1,9 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Image, Card } from 'semantic-ui-react';
+import { Container, Header, Loader, Image, Card, Button, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 
@@ -34,37 +34,31 @@ class ProfileCard extends React.Component {
           <div style={divstyle}>
             <Container style={{ paddingTop: '5em' }}>
               <Header inverted as="h2" textAlign="center">The User Profile</Header>
-
               <Card style={{ margin: 'auto' }}>
-                <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium'/>
+                <Image size='medium' src ={this.props.profiles.userImage}
+                    // eslint-disable-next-line
+                       onError={(i) => i.target.src='/images/default_image.png'}/>
                 <Card.Content>
                   <Card.Header>
-                    {this.props.profiles.user}
+                    {this.props.profiles.firstName}  {this.props.profiles.lastName}
                   </Card.Header>
                   <Card.Meta>
-                        <span className='date'>
-                          Joined in 2015
-                        </span>
+                   {this.props.profiles.user}
                   </Card.Meta>
                   <Card.Description>
                     <p>
-                      First name: {this.props.profiles.firstName}
-                      <br/>
-                      Last name: {this.props.profiles.lastName}
-                      <br/>
-                      Email: {this.props.profiles.email}
-                      <br/>
-                      Password: {this.props.profiles.password}
-                      <br/>
-                      Transportation: {this.props.profiles.transportation}
-                      <br/>
                       Zipcode: {this.props.profiles.zipcode}
                     </p>
 
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Link to={`/edit/${this.props.profiles._id}`}>Edit Information</Link>
+                  <Button as={NavLink} exact to={`/edit/${this.props.profiles._id}`} animated='vertical' floated='right' size='big'>
+                    <Button.Content hidden>Edit</Button.Content>
+                    <Button.Content visible>
+                      <Icon name='pencil' />
+                    </Button.Content>
+                  </Button>
                 </Card.Content>
               </Card>
             </Container>
