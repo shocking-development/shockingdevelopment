@@ -15,8 +15,10 @@ export const userInfoCarsPublications = {
 class UserInfoCarCollection extends BaseCollection {
   constructor() {
     super('UserInfosCars', new SimpleSchema({
-      userId: String,
+      // userId: String,
       carId: String,
+      carName: String,
+      owner: String,
     }));
   }
 
@@ -27,12 +29,14 @@ class UserInfoCarCollection extends BaseCollection {
    * @param docID the docId name of the doc.
    * @return {String} the docID of the new document.
    */
-  define({ user, make, model, year }) {
-    const userId = UserInfos.findDoc(user);
-    const carId = Cars.findDoc({ make, model, year });
+  define({ /* user, */ carId, carName, owner }) { // define({ user, make, model, year }) {
+    // const userId = UserInfos.findDoc(user);
+    // const carId = Cars.findDoc({ make, model, year });
     const docID = this._collection.insert({
-      userId,
+      // userId,
       carId,
+      carName,
+      owner,
     });
     return docID;
   }

@@ -1,15 +1,41 @@
 import React from 'react';
 import { Container, Header, Loader } from 'semantic-ui-react';
-import { AutoForm, SelectField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import swal from 'sweetalert';
+import { Meteor } from 'meteor/meteor';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
+import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+const formSchema = new SimpleSchema({
+  carName: String,
+  carId: String,
+});
+
+/** Renders a drop down containing all of the car documents */
 class CarsDropdown extends React.Component {
+
+  /** On submit, insert the data. */
+  submit(data, formRef) {
+    const { carName, carId } = data;
+    console.log(data);
+    const owner = Meteor.user().username;
+    userInfoCarDefineMethod.call({ carName, carId, owner },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+            console.error(error.message);
+          } else {
+            swal('Success', 'Item added successfully', 'success');
+            formRef.reset();
+            // console.log('Success');
+          }
+        });
+  }
 
   /** Initialize state fields. */
   constructor(props) {
@@ -76,6 +102,7 @@ class CarsDropdown extends React.Component {
       make: { type: String, allowedValues: carMakeAllowedValues },
       model: { type: String, allowedValues: [] },
       years: { type: String, allowedValues: carYears },
+      carName: String,
     });
 
     const schema = new SimpleSchema2Bridge(sch);
@@ -103,25 +130,48 @@ class CarsDropdown extends React.Component {
     };
 
     const filteredSelectField = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
+    // lets grab the cars id and add it too the users database
+    // const id = filteredSelectField._id;
+    console.log(filteredSelectField);
+    const iDofCar = filteredSelectField.map((doc) => `${doc._id}`).toString();
+    console.log(iDofCar);
     const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
 
+    let fRef = null;
+    const bridge = new SimpleSchema2Bridge(formSchema);
+
     return (
+
         <div style={pageStyle}>
           <NavBarMain/>
           <Container style={{ padding: '10em' }}>
             <Header as="h2" textAlign="center" inverted>Cars</Header>
+            <AutoForm ref={ref => {
+              fRef = ref;
+            }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
                   name='years'
+                  showInlineError={true}
+                  placeholder='Select Year'
               />
               <SelectField
                   name='make'
+                  showInlineError={true}
+                  placeholder='Select Make'
               />
               <SelectField
                   name='model'
                   allowedValues={allowedModelValues}
+                  showInlineError={true}
+                  placeholder='Select Model'
               />
+            </AutoForm>
+              <TextField name='carName'/>
+              <HiddenField name="carId" value={iDofCar}/>;
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
             </AutoForm>
           </Container>
         </div>
