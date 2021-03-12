@@ -31,7 +31,7 @@ class UserInfoCarCollection extends BaseCollection {
    */
   define({ /* user, */ carId, carName, owner }) { // define({ user, make, model, year }) {
     // const userId = UserInfos.findDoc(user);
-    // const carId = Cars.findDoc({ make, model, year });
+    // const carId = Cars.findDoc({ _id });
     const docID = this._collection.insert({
       // userId,
       carId,
@@ -101,7 +101,7 @@ class UserInfoCarCollection extends BaseCollection {
   /**
    * Subscription method for UserInfoCar owned by the current user.
    */
-  subscribeUserInfo() {
+  subscribeUserInfoCars() {
     if (Meteor.isClient) {
       return Meteor.subscribe(userInfoCarsPublications.userInfoCar);
     }
@@ -112,7 +112,7 @@ class UserInfoCarCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeUserInfoAdmin() {
+  subscribeUserInfoAdminCars() {
     if (Meteor.isClient) {
       return Meteor.subscribe(userInfoCarsPublications.userInfoCarAdmin);
     }

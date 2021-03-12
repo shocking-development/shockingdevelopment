@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Header, Loader } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
+import { AutoForm, ErrorField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -10,6 +10,7 @@ import { Meteor } from 'meteor/meteor';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
+import RecentlyAddedCars from './RecentlyAddedCars';
 
 const formSchema = new SimpleSchema({
   carName: String,
@@ -22,12 +23,13 @@ class CarsDropdown extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const { carName, carId } = data;
-    console.log(data);
+    // console.log(data);
     const owner = Meteor.user().username;
     userInfoCarDefineMethod.call({ carName, carId, owner },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
+            // eslint-disable-next-line no-console
             console.error(error.message);
           } else {
             swal('Success', 'Item added successfully', 'success');
@@ -54,10 +56,12 @@ class CarsDropdown extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '60em',
+      height: '66em',
       backgroundSize: 'cover',
+      paddingTop: '5em',
     };
 
     /*
@@ -130,11 +134,12 @@ class CarsDropdown extends React.Component {
     };
 
     const filteredSelectField = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
-    // lets grab the cars id and add it too the users database
-    // const id = filteredSelectField._id;
-    console.log(filteredSelectField);
-    const iDofCar = filteredSelectField.map((doc) => `${doc._id}`).toString();
-    console.log(iDofCar);
+
+    /*
+    * In order to get the car Id we must do the following:
+    */
+    const iDofCar = filteredSelectField.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
+    // console.log(iDofCar);
     const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
 
     let fRef = null;
@@ -144,11 +149,9 @@ class CarsDropdown extends React.Component {
 
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ padding: '10em' }}>
+          <Container>
             <Header as="h2" textAlign="center" inverted>Cars</Header>
-            <AutoForm ref={ref => {
-              fRef = ref;
-            }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
@@ -168,12 +171,28 @@ class CarsDropdown extends React.Component {
                   placeholder='Select Model'
               />
             </AutoForm>
-              <TextField name='carName'/>
-              <HiddenField name="carId" value={iDofCar}/>;
+
+            <AutoForm ref={ref => {
+              fRef = ref;
+            }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+
+              <TextField
+                  name='carName'
+                  placeholder='Enter the name of your vehicle'
+              />
+              <ErrorField
+                  name="carName"
+                  errorMessage="Please type the name of your vehicle"
+              />
+              <HiddenField name="carId" value={iDofCar}/>
+              <ErrorField
+                  name="carId"
+                  errorMessage="Please select your car first"
+              />
               <SubmitField value='Submit'/>
-              <ErrorsField/>
             </AutoForm>
           </Container>
+          <RecentlyAddedCars/>
         </div>
     );
   }

@@ -36,7 +36,8 @@ class NavBarMain extends React.Component {
         <div className={'css-selector'} style={navbarVerticle}>
           {this.props.currentUser ? (
 
-              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }} key='key0'>
+              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}
+                     key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
                   <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular/>
                 </Menu.Item>
@@ -62,7 +63,7 @@ class NavBarMain extends React.Component {
                   GHG calculator
                 </Menu.Item>
 
-                {/** <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
+                {/* <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
                   <Icon name='map' size='large'/>
                   Map your route
                 </Menu.Item> */}
@@ -72,13 +73,14 @@ class NavBarMain extends React.Component {
                   Go to savings
                 </Menu.Item>
 
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/cars" key='key10'>
+                  <Icon name='car' size='large'/>
+                  Cars
+                </Menu.Item>
+
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
-                </Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/cars" key='key10'>
-                  <Icon name='sign-out' size='large'/>
-                  Cars
                 </Menu.Item>
 
               </Menu>,
