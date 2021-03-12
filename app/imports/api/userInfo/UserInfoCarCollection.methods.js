@@ -17,7 +17,7 @@ export const userInfoCarDefineMethod = new ValidatedMethod({
     // console.log('stuffDefineMethod', definitionData);
     if (Meteor.isServer) {
       const docID = UserInfosCars.define(definitionData);
-      console.log(`stuffDefineMethod returning ${docID}. Now have ${UserInfosCars.count()}`);
+      // console.log(`UserInfoCarCollection returning ${docID}. Now have ${UserInfosCars.count()}`);
       return docID;
     }
     return '';
