@@ -2,6 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
+import { Cars } from '../../api/cars/CarsCollection';
+import { Emissions } from '../../api/emissions/EmissionsCollection';
+import { Trips } from '../../api/emissions/TripsCollection';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -25,11 +28,28 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 /** Publish all the collections you need. */
 UserInfos.publish();
 
+/** Publish all the collections you need. */
+Cars.publish();
+
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {
   if (this.userId) {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Emissions.emissionPublicationName, function () {
+  if (this.userId) {
+    return Emissions.collection.find({ owner: this.userId });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Trips.emissionPublicationName, function () {
+  if (this.userId) {
+    return Trips.collection.find({ owner: this.userId });
   }
   return this.ready();
 });

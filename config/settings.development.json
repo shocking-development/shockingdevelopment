@@ -35,7 +35,7 @@
       "owner": "admin@foo.com"
     }
   ],
-  "defaultCars": [
+  "defaultCarsData": [
     {
       "make": "Honda",
       "model": "Accord",
@@ -49,9 +49,21 @@
       "mpg": 19
     },
     {
+      "make": "Dodge",
+      "model": "Charger",
+      "year": 2010,
+      "mpg": 19
+    },
+    {
       "make": "Ford",
       "model": "Escape",
       "year": 2011,
+      "mpg": 25
+    },
+    {
+      "make": "Ford",
+      "model": "Car",
+      "year": 2019,
       "mpg": 25
     },
     {
@@ -61,24 +73,11 @@
       "mpg": 36
     },
 
-  ], "defaultBarGraph": [
-  {
-    "name": "BarGraph",
-    "dataOne": [20, 71.5, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0],
-    "dataTwo": [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0],
-    "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0]
-  }
-], "defaultDonutGraph": [
-  {
-    "name": "DonutGraph",
-    "dataOne": [["Bike", 6], ["Car", 2], ["Public Transportation", 3]],
-    "dataTwo": [["Tuesday", 6], ["Monday", 2], ["Wednesday", 3]]
-  }
-], "defaultPieChart": [
-  {
-    "name": "PieChart",
-    "dataOne": ["TeleWork", "Carpool", "Electrical Vehical", "Public Transportation", "Biking", "Walking", "Walking"];,
-    "dataTwo": [61, 11, 10, 4.67, 2.67, 2.67],
-  }
-]
+    {
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2016,
+      "mpg": 39
+    }
+  ]
 }

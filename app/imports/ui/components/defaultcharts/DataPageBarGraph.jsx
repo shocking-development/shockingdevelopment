@@ -20,7 +20,11 @@ class DataPageBarGraph extends React.Component {
       },
       series: [{
         name: 'VMT saved (Miles)',
-        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+
+        // need what it would have cost using the worst mode of transport and then the mode of transport being used -> gallons
+        // co2 store this info somewhere in a diff/same collection, get all the data from this collection and add them up,
+        // go to only your page calculate your data, user, mode, worstmode of transportation
+        data: [49.9, 71.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 
       }, {
         name: 'Fuel Gallons Saved (Gallons)',

@@ -12,18 +12,17 @@ import Footer from '../components/Footer';
  * Signup component is similar to signIn component, but we create a new user instead.
  */
 class Signup extends React.Component {
-  /** Initialize state fields. */
+  // Initialize state fields.
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
+      confirm: '',
       firstName: '',
       lastName: '',
       error: '',
       zipcode: '',
-      transportation: '',
-      userImage: '',
       redirectToReferer: false,
     };
   }
@@ -35,41 +34,54 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password, firstName, lastName, zipcode, userImage, transportation } = this.state;
+    const { email, password, firstName, lastName, zipcode } = this.state;
     const user = email;
-    userInfoDefineMethod.call({
-          firstName,
-          lastName,
-          user,
-          email,
-          password,
-          zipcode,
-          transportation,
-          userImage,
-          owner: user,
-        },
-        (error) => {
-          if (error) {
-            swal('Error', error.message, 'error');
-            // eslint-disable-next-line no-console
-            console.error(error.message);
-          } else {
-            Accounts.createUser({ email, username: email, password, firstName, lastName, zipcode, userImage, transportation }, (err) => {
-              if (err) {
-                this.setState({ error: err.reason });
-              } else {
-                this.setState({ error: '', redirectToReferer: true });
-              }
-            });
-            swal('Success', 'Profile added successfully', 'success');
-          }
-        });
+
+    // Password validation
+    if (this.state.password !== this.state.confirm) {
+      this.setState({ error: 'Your passwords do not match.' });
+    } else {
+      userInfoDefineMethod.call({
+            firstName,
+            lastName,
+            user,
+            email,
+            password,
+            zipcode,
+            userImage: 'images/default-image.jpg', // set default user profile image
+            owner: user,
+          },
+          (error) => {
+            if (error) {
+              swal('Error', error.message, 'error');
+              // eslint-disable-next-line no-console
+              console.error(error.message);
+            } else {
+              Accounts.createUser({
+                email,
+                username: email,
+                password,
+                firstName,
+                lastName,
+                zipcode,
+                userImage: '',
+              }, (err) => {
+                if (err) {
+                  this.setState({ error: err.reason });
+                } else {
+                  swal('Success', 'Profile added successfully', 'success');
+                  this.setState({ error: '', redirectToReferer: true });
+                }
+              });
+            }
+          });
+    }
   }
 
   /** Display the signup form. Redirect to add page after successful registration and login. */
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/home' } };
-    // if correct authentication, redirect to from: page instead of signup screen
+    // if correct authentication, redirect to home page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
@@ -78,43 +90,78 @@ class Signup extends React.Component {
           <Container id="signup-page" style={{ paddingTop: '13%', paddingBottom: '10%' }}>
             <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
               <Grid.Column>
-
-                <Form onSubmit={this.submit}>
-                  <Segment className='signupcontainer' stacked inverted>
-                    <Image as={NavLink} activeClassName="" exact to="/" src='images/HEI-LOGO.png' size='small'
-                           style={{
-                             top: '50%',
-                             left: '50%',
-                             transform: 'translate(-50%, -50%)',
-                           }}/>
-                    <div className={'sign-header2'}>
-                      <Header
-                          as="h1"
-                          textAlign="center"
-                          style={{
-                            fontFamily: 'Roboto',
-                            fontWeight: '400',
-                            color: 'rgb(4 204 194)',
-                            letterSpacing: '2px',
-                          }}>
-                        Start tracking your emissions
-                      </Header>
-                      <Header
-                          as="h2"
-                          inverted
-                          textAlign="center"
-                          style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
-                        Register your account
-                      </Header>
-                    </div>
+                <Segment className='signupcontainer' stacked inverted>
+                  <Image as={NavLink}
+                         activeClassName=""
+                         exact to="/"
+                         src='images/HEI-LOGO.png'
+                         size='small'
+                         style={{
+                           top: '50%',
+                           left: '50%',
+                           transform: 'translate(-50%, -50%)',
+                         }}/>
+                  <div className={'sign-header2'}>
+                    <Header
+                        as="h1"
+                        textAlign="center"
+                        style={{
+                          fontFamily: 'Roboto',
+                          fontWeight: '400',
+                          color: 'rgb(4 204 194)',
+                          letterSpacing: '2px',
+                        }}>
+                      Start tracking your emissions
+                    </Header>
+                    <Header
+                        as="h2"
+                        inverted
+                        textAlign="center"
+                        style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                      Register your account
+                    </Header>
+                  </div>
+                  <Form inverted onSubmit={this.submit}>
+                    <Form.Group widths={'equal'}>
+                      <Form.Input className={'signupInput'}
+                                  label="First Name"
+                                  id="signup-form-firstName"
+                                  icon="user"
+                                  iconPosition="left"
+                                  name="firstName"
+                                  placeholder="First Name"
+                                  type="firstName"
+                                  onChange={this.handleChange}
+                      />
+                      <Form.Input className={'signupInput'}
+                                  label="Last Name"
+                                  id="signup-form-lastName"
+                                  icon="user"
+                                  iconPosition="left"
+                                  name="lastName"
+                                  placeholder="Last Name"
+                                  type="lastName"
+                                  onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Input className={'signupInput'}
+                                label="Zipcode"
+                                id="signup-form-zipcode"
+                                icon="world"
+                                iconPosition="left"
+                                name="zipcode"
+                                placeholder="Enter your zipcode"
+                                type="zipcode"
+                                onChange={this.handleChange}
+                    />
                     <Form.Input className={'signupInput'}
                                 label="Email"
                                 id="signup-form-email"
-                                icon="user"
+                                icon="mail"
                                 iconPosition="left"
                                 name="email"
                                 type="email"
-                                placeholder="E-mail address"
+                                placeholder="example@email.com"
                                 onChange={this.handleChange}
                     />
                     <Form.Input className={'signupInput'}
@@ -123,7 +170,7 @@ class Signup extends React.Component {
                                 icon="lock"
                                 iconPosition="left"
                                 name="password"
-                                placeholder="Password"
+                                placeholder="Create a password"
                                 type="password"
                                 onChange={this.handleChange}
                     />
@@ -132,53 +179,9 @@ class Signup extends React.Component {
                                 id="signup-form-password"
                                 icon="lock"
                                 iconPosition="left"
-                                name="password"
-                                placeholder="Password"
+                                name="confirm"
+                                placeholder="Confirm your password"
                                 type="password"
-                                onChange={this.handleChange}
-                    />
-                    <Form.Input className={'signupInput'}
-                                label="First Name"
-                                id="signup-form-firstName"
-                                icon="lock"
-                                iconPosition="left"
-                                name="firstName"
-                                placeholder="firstName"
-                                type="firstName"
-                                onChange={this.handleChange}
-                    />
-                    <Form.Input className={'signupInput'}
-                                label="Last Name"
-                                id="signup-form-lastName"
-                                icon="lock"
-                                iconPosition="left"
-                                name="lastName"
-                                placeholder="lastName"
-                                type="lastName"
-                                onChange={this.handleChange}
-                    />
-                    <Form.Input className={'signupInput'}
-                                label="Zipcode"
-                                id="signup-form-zipcode"
-                                name="zipcode"
-                                placeholder="zipcode"
-                                type="zipcode"
-                                onChange={this.handleChange}
-                    />
-                    <Form.Input className={'signupInput'}
-                                label="User Image"
-                                id="signup-form-userImage"
-                                name="userImage"
-                                placeholder="userImage"
-                                type="userImage"
-                                onChange={this.handleChange}
-                    />
-                    <Form.Input className={'signupInput'}
-                                label="Transportation"
-                                id="signup-form-transportation"
-                                name="transportation"
-                                placeholder="transportation"
-                                type="transportation"
                                 onChange={this.handleChange}
                     />
                     <Form.Button
@@ -187,14 +190,17 @@ class Signup extends React.Component {
                         fluid
                         color='linkedin'
                         style={{ borderRadius: '20px' }}
+                        disabled={!this.state.firstName || !this.state.lastName ||
+                        !this.state.email || !this.state.password || !this.state.confirm ||
+                        !this.state.zipcode}
                     />
                     <p style={{ paddingTop: '1em', paddingBottom: '1em' }}>
                       Already have an account?
                       <Link to="/signin"> Login here.</Link>
                     </p>
-                  </Segment>
+                  </Form>
 
-                </Form>
+                </Segment>
 
                 {this.state.error === '' ? (
                     ''

@@ -14,10 +14,11 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Datapage from '../pages/Datapage';
 import GoToSavings from '../pages/GoToSavings';
-import AddData from '../pages/AddData';
+import AddEmissions from '../pages/AddEmissions';
 import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
 import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
+import CarsDropdown from '../pages/cars/CarsDropdown';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -33,11 +34,12 @@ class App extends React.Component {
               <Route path="/landing" component={Landing}/>
               <Route path="/gotosavings" component={GoToSavings}/>
               <ProtectedRoute path="/home" component={Home}/>
-              <ProtectedRoute path="/add" component={AddData}/>
+              <ProtectedRoute path="/add" component={AddEmissions}/>
               <ProtectedRoute path="/addprofile" component={AddProfile}/>
               <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
               <ProtectedRoute path="/profile" component={ProfileCard}/>
               <ProtectedRoute path="/data" component={Datapage}/>
+              <ProtectedRoute path="/cars" component={CarsDropdown}/>
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <Route component={NotFound}/>
