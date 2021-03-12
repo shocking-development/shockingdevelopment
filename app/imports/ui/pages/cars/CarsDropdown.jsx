@@ -106,7 +106,6 @@ class CarsDropdown extends React.Component {
       make: { type: String, allowedValues: carMakeAllowedValues },
       model: { type: String, allowedValues: [] },
       years: { type: String, allowedValues: carYears },
-      carName: String,
     });
 
     const schema = new SimpleSchema2Bridge(sch);

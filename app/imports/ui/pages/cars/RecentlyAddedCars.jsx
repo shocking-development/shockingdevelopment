@@ -18,7 +18,7 @@ class RecentlyAddedCars extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
 
-    console.log(this.props.cars.length);
+    // console.log(this.props.cars.length);
 
     return (
         <div>
@@ -43,9 +43,7 @@ RecentlyAddedCars.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Stuff documents.
   const subscription = UserInfosCars.subscribeUserInfoCars();
-  // const userAccount = Meteor.users.findOne(match.params._id);
   return {
     cars: UserInfosCars.find({}).fetch(),
     ready: subscription.ready(),
