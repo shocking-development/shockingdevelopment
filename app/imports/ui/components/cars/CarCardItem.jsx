@@ -8,12 +8,11 @@ import { userInfoRemoveItMethod } from '../../../api/userInfo/UserInfoCarCollect
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class carCardItem extends React.Component {
 
-
   render() {
     const carDocs = Cars.find(this.props.car.carId).fetch();
     // console.log(carDocs);
 
-    /* DeleteTrip function allows users to delete preset trips */
+    /* deleteCar function allows users to delete preset cars */
     const deleteCar = ({ _id }) => userInfoRemoveItMethod.call(_id);
 
     return (
@@ -33,7 +32,7 @@ class carCardItem extends React.Component {
                     <br/>
                     <b>MPG: {recentCar.mpg} </b>
                   </Card.Content>
-                  <Button onClick={() => deleteCar(this.props.car)} color={'red'} >
+                  <Button onClick={() => deleteCar(this.props.car)} color={'red'}>
                     Delete
                   </Button>
                 </Card></Grid.Column>)}
