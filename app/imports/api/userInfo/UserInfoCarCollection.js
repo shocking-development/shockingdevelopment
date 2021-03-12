@@ -22,14 +22,11 @@ class UserInfoCarCollection extends BaseCollection {
 
   /**
    * Defines a new Car and User Info item.
-   * @param userId the userId of the user.
    * @param carId the carId of the car.
    * @param docID the docId name of the doc.
    * @return {String} the docID of the new document.
    */
-  define({ /* user, */ carId, carName, owner }) { // define({ user, make, model, year }) {
-    // const userId = UserInfos.findDoc(user);
-    // const carId = Cars.findDoc({ _id });
+  define({ carId, carName, owner }) {
     const docID = this._collection.insert({
       // userId,
       carId,

@@ -32,7 +32,7 @@ class CarsDropdown extends React.Component {
             // eslint-disable-next-line no-console
             console.error(error.message);
           } else {
-            swal('Success', 'Item added successfully', 'success');
+            swal('Success', 'Your car has been added!', 'success');
             formRef.reset();
             // console.log('Success');
           }
@@ -62,6 +62,7 @@ class CarsDropdown extends React.Component {
       height: '66em',
       backgroundSize: 'cover',
       paddingTop: '5em',
+      marginLeft: '10%',
     };
 
     /*
