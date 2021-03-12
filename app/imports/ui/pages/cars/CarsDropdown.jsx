@@ -34,9 +34,12 @@ class CarsDropdown extends React.Component {
       backgroundSize: 'cover',
     };
 
-    const carDocs = Cars.find({}).fetch(); // gets the car documents
-    const carModelForAllCars = carDocs.map((doc) => `${doc.model}-${doc._id}`); // this is necessary to correctly filter the objects into an array
-    const carMakeForAllCars = carDocs.map((doc) => `${doc.make}-${doc._id}`); // this is necessary to correctly filter the objects into an array
+    /*
+    *
+    */
+    const carDocs = Cars.find({}).fetch();
+    const carModelForAllCars = carDocs.map((doc) => `${doc.model}-${doc._id}`);
+    const carMakeForAllCars = carDocs.map((doc) => `${doc.make}-${doc._id}`);
     const allCars = carDocs.filter((doc) => carMakeForAllCars.indexOf(doc.make) === carModelForAllCars.indexOf(doc.model));
 
     const carMakeAllowedValues = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Bentley', 'Buick', 'Cadillac', 'Chevrolet', 'Chrysler',
@@ -77,19 +80,9 @@ class CarsDropdown extends React.Component {
 
         }
     };
-    console.log('These are all the cars');
-    console.log(allCars);
-    const allowedModelValues = allCars.filter(({ year, make }) => year === this.state.years && make === this.state.make);
-    console.log(`This is the year selected ${this.state.years}`); // I then want to map the allowed model values
-    console.log(typeof this.state.years);
-    console.log(`This is the make selected ${this.state.make}`);
-    console.log(typeof this.state.make);
-    console.log('This is the allowedModelValues');
-    console.log(allowedModelValues);
-    const realAllowedValue = allowedModelValues.map((doc) => `${doc.model}`);
-    console.log(realAllowedValue);
 
-    console.log(this.state);
+    const allowedModelValues = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
+    const realAllowedValue = allowedModelValues.map((doc) => `${doc.model}`);
 
     return (
         <div style={pageStyle}>
