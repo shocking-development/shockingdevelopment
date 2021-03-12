@@ -79,5 +79,32 @@
       "year": 2016,
       "mpg": 39
     }
-  ]
+  ], "defaultGraphsData": [
+  {
+    "name": "HomeBarGraph",
+    "dataOne": [20, 71.5, 0, 0, 55.8, 0, 8, 0, 0, 0, 0, 30],
+    "dataTwo": [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0],
+    "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0]
+  },
+  {
+    "name": "LandingBarGraph",
+    "dataOne": [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+    "dataTwo": [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  {
+    "name": "GoToSaveingsBarGraph",
+    "dataOne": [[25, 63.6], [80, 60], [30, 80]]
+  },
+  {
+    "name": "HomeDonutGraph",
+    "dataOne": [["Bike", 6], ["Car", 2], ["Public Transportation", 3]],
+    "dataTwo": [["Tuesday", 6], ["Monday", 2], ["Wednesday", 3]]
+  },
+  {
+    "name": "HomePieChartGraph",
+    "dataOne": ["TeleWork", "Carpool", "Electrical Vehical", "Public Transportation", "Biking", "Walking", "Walking"],
+    "dataTwo": [61, 11, 10, 4.67, 2.67, 2.67]
+  }
+]
 }
