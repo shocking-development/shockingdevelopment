@@ -1,18 +1,11 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { BarGraph } from '../../../api/graphData/BarGraph';
-import { Stuffs } from '../../../api/stuff/Stuff';
-import StuffItem from '../StuffItem';
 
 /** A simple static component to render some boxes for the landing page. */
 
 class LandingPageLineChart extends React.Component {
-
   constructor() {
-    let dataOne = BarGraph.dataOne;
-    let dataTwo = BarGraph.dataLandTwo;
-    let dataThree = BarGraph.dataLandThree;
     super();
     this.state = {
       chartOptions: {
@@ -26,18 +19,18 @@ class LandingPageLineChart extends React.Component {
       chartOptions: {
         series: [{
           data: [
-            dataOne[0] + Math.random() * 10,
-            dataOne[1] + Math.random() * 10,
-            dataOne[2] + Math.random() * 10,
-            dataOne[3] + Math.random() * 10,
-            dataOne[4] + Math.random() * 10,
-            dataOne[5] + Math.random() * 10,
-            dataOne[6] + Math.random() * 10,
-            dataOne[7] + Math.random() * 10,
-            dataOne[8] + Math.random() * 10,
-            dataOne[9] + Math.random() * 10,
-            dataOne[10] + Math.random() * 10,
-            dataOne[11] + Math.random() * 10,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
+            Math.random() * 3,
           ],
         }],
         chart: {
