@@ -34,40 +34,27 @@ class CarsDropdown extends React.Component {
       backgroundSize: 'cover',
     };
 
-    const carDocs = Cars.find({}).fetch();
-    const carYears = carDocs.map((doc) => `${doc.year}`);
-    const carModel = carDocs.map((doc) => `${doc.model}-${doc._id}`);
-    const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`);
+    const carDocs = Cars.find({}).fetch(); // gets the car documents
+    const carModelForAllCars = carDocs.map((doc) => `${doc.model}-${doc._id}`); // this is necessary to correctly filter the objects into an array
+    const carMakeForAllCars = carDocs.map((doc) => `${doc.make}-${doc._id}`); // this is necessary to correctly filter the objects into an array
+    const allCars = carDocs.filter((doc) => carMakeForAllCars.indexOf(doc.make) === carModelForAllCars.indexOf(doc.model));
 
-    // an example of how to filter the cars
-     const filteredMake = carDocs.filter((doc) => carMake.indexOf(doc.make) === carModel.indexOf(doc.model));
-    /* console.log(filteredMake);
-
-    const carModel1 = filteredMake.map(({ model, _id }) => ({ model, _id }));
-    console.log(carModel1);
-    const carModel2 = carModel1.map((doc) => `${doc.model}-${doc._id}`);
-    console.log(carModel2);
-
-    const carMake1 = filteredMake.map(({ make, _id, year }) => ({ make, _id, year }));
-    console.log(carMake1);
-    const carMake2 = carMake1.map((doc) => `${doc.make}-${doc._id}-${doc.year}`);
-    console.log(carMake2); */
-
-    // const test1 = filteredMake.filter((obj) => Object.keys(obj).reduce((acc, curr) => acc || obj[curr].includes(2019), false));
-    // console.log(test1);
+    const carMakeAllowedValues = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Bentley', 'Buick', 'Cadillac', 'Chevrolet', 'Chrysler',
+      'Dodge', 'Fiat', 'Ford', 'GMC', 'Genesis', 'Honda', 'Hyundai', 'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln',
+      'Lotus', 'Maserati', 'Mazda', 'Mercedes-Benz', 'Mercury', 'Mini', 'Mitsubishi', 'Nikola', 'Nissan', 'Polestar', 'Pontiac', 'Porsche', 'Ram', 'Rivian',
+      'Rolls-Royce', 'Saab', 'Saturn', 'Scion', 'Smart', 'Subaru', 'Suzuki', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo'];
+    const carYears = [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019];
 
     const sch = new SimpleSchema({
-      make: { type: String, allowedValues: carMake },
-      model: { type: String, allowedValues: carModel },
-      years: { type: String, allowedValues: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019] },
+      make: { type: String, allowedValues: carMakeAllowedValues },
+      model: { type: String, allowedValues: [] },
+      years: { type: String, allowedValues: carYears },
     });
 
     const schema = new SimpleSchema2Bridge(sch);
 
-    // console.log(carYears);
-     console.log(carModel);
-     console.log(carMake);
-     console.log(filteredMake);
+    /* const allowedModelValues = allCars.filter(({ make, year }) => make === this.state.make && year === this.state.years);
+    console.log(allowedModelValues); */
 
     /** Update the form filters the selector each time the user interacts with them. */
     const handleChange = (key, value) => {
@@ -76,32 +63,33 @@ class CarsDropdown extends React.Component {
         this.setState({
           years: value,
         });
-        // console.log(carMake[carYears.indexOf(value)]);
-        // console.log(carYears.indexOf(value));
+
       } else
         if (key === 'make') {
-          // console.log(value);
-          // console.log(carMake.indexOf(value));
           this.setState({
             make: value,
           });
 
         } else {
-          // console.log(value);
-          // console.log(carModel.indexOf(value));
           this.setState({
             model: value,
           });
 
         }
     };
-    const makeNames = Object.entries(carDocs);
-    console.log(makeNames);
-    /* carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make)) */
-    // eslint-disable-next-line no-unused-vars
-    const allowedMakeValues = () => {
-      carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make));
-    };
+    console.log('These are all the cars');
+    console.log(allCars);
+    const allowedModelValues = allCars.filter(({ year, make }) => year === this.state.years && make === this.state.make);
+    console.log(`This is the year selected ${this.state.years}`); // I then want to map the allowed model values
+    console.log(typeof this.state.years);
+    console.log(`This is the make selected ${this.state.make}`);
+    console.log(typeof this.state.make);
+    console.log('This is the allowedModelValues');
+    console.log(allowedModelValues);
+    const realAllowedValue = allowedModelValues.map((doc) => `${doc.model}`);
+    console.log(realAllowedValue);
+
+    console.log(this.state);
 
     return (
         <div style={pageStyle}>
@@ -115,11 +103,10 @@ class CarsDropdown extends React.Component {
               />
               <SelectField
                   name='make'
-                  allowedValues={carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make))}
               />
               <SelectField
                   name='model'
-                  allowedValues={carModel.filter((model) => carYears.indexOf(this.state.years) === carModel.indexOf(model))}
+                  allowedValues={realAllowedValue}
               />
 
             </AutoForm>
