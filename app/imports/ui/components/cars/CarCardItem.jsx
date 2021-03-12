@@ -9,8 +9,6 @@ class carCardItem extends React.Component {
   render() {
     const carDocs = Cars.find(this.props.car.carId).fetch();
     console.log(carDocs);
-    const carModelForAllCars = carDocs.map((doc) => `${doc.model}`);
-    console.log(carModelForAllCars);
 
     return (
         <Card.Content>
