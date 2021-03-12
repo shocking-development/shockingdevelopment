@@ -1,19 +1,25 @@
 import React from 'react';
-import { Card, Grid } from 'semantic-ui-react';
+import { Button, Card, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Cars } from '../../../api/cars/CarsCollection';
+import { userInfoRemoveItMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class carCardItem extends React.Component {
+
+
   render() {
     const carDocs = Cars.find(this.props.car.carId).fetch();
-    console.log(carDocs);
+    // console.log(carDocs);
+
+    /* DeleteTrip function allows users to delete preset trips */
+    const deleteCar = ({ _id }) => userInfoRemoveItMethod.call(_id);
 
     return (
         <Card.Content>
           <Grid>
-            <Grid.Row columns={carDocs.length} >
+            <Grid.Row columns={carDocs.length}>
               {carDocs.map(recentCar => <Grid.Column key={toString(recentCar.year) + recentCar.make + recentCar._id}>
                 <Card>
                   <Card.Content>
@@ -27,6 +33,9 @@ class carCardItem extends React.Component {
                     <br/>
                     <b>MPG: {recentCar.mpg} </b>
                   </Card.Content>
+                  <Button onClick={() => deleteCar(this.props.car)} color={'red'} >
+                    Delete
+                  </Button>
                 </Card></Grid.Column>)}
             </Grid.Row>
           </Grid>
