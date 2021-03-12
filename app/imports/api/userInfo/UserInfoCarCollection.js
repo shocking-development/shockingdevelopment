@@ -3,8 +3,6 @@ import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
-import { Cars } from '../cars/CarsCollection';
-import { UserInfos } from './UserInfoCollection';
 
 /** Encapsulates state and variable values for this collection. */
 export const userInfoCarsPublications = {
