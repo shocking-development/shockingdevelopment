@@ -155,16 +155,19 @@ class CarsDropdown extends React.Component {
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
+                  className={'carDropdownSelectField'}
                   name='years'
                   showInlineError={true}
                   placeholder='Select Year'
               />
               <SelectField
+                  className={'carDropdownSelectField'}
                   name='make'
                   showInlineError={true}
                   placeholder='Select Make'
               />
               <SelectField
+                  className={'carDropdownSelectField'}
                   name='model'
                   allowedValues={allowedModelValues}
                   showInlineError={true}
@@ -177,6 +180,7 @@ class CarsDropdown extends React.Component {
             }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
 
               <TextField
+                  className={'carDropdownSelectField'}
                   name='carName'
                   placeholder='Enter the name of your vehicle'
               />
