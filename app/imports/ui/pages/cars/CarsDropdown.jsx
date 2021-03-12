@@ -48,11 +48,29 @@ class CarsDropdown extends React.Component {
     const carMakeForAllCars = carDocs.map((doc) => `${doc.make}-${doc._id}`);
     const allCars = carDocs.filter((doc) => carMakeForAllCars.indexOf(doc.make) === carModelForAllCars.indexOf(doc.model));
 
-    const carMakeAllowedValues = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Bentley', 'Buick', 'Cadillac', 'Chevrolet', 'Chrysler',
-      'Dodge', 'Fiat', 'Ford', 'GMC', 'Genesis', 'Honda', 'Hyundai', 'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln',
-      'Lotus', 'Maserati', 'Mazda', 'Mercedes-Benz', 'Mercury', 'Mini', 'Mitsubishi', 'Nikola', 'Nissan', 'Polestar', 'Pontiac', 'Porsche', 'Ram', 'Rivian',
-      'Rolls-Royce', 'Saab', 'Saturn', 'Scion', 'Smart', 'Subaru', 'Suzuki', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo'];
-    const carYears = [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019];
+    const carMakeAllowedValues = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Bentley', 'Buick', 'Cadillac', 'Chevrolet',
+      'Chrysler', 'Dodge', 'Fiat', 'Ford', 'GMC', 'Genesis', 'Honda', 'Hyundai',
+      'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Mazda',
+      'Mercedes-Benz', 'Mercury', 'Mini', 'Mitsubishi',
+      'Nikola', 'Nissan', 'Polestar', 'Pontiac', 'Porsche', 'Ram', 'Rivian',
+      'Rolls-Royce', 'Saab', 'Saturn', 'Scion', 'Smart', 'Subaru', 'Suzuki',
+      'Tesla', 'Toyota', 'Volkswagen', 'Volvo'];
+
+    /* Code reference to generate Array of years https://renatello.com/javascript-array-of-years/ */
+    function generateArrayOfYears() {
+      const max = new Date().getFullYear();
+      const min = max - 37;
+      const years = [];
+
+      for (let i = max; i >= min; i--) {
+        years.push(i);
+      }
+      return years;
+    }
+
+    const years = generateArrayOfYears();
+
+    const carYears = years;
 
     const sch = new SimpleSchema({
       make: { type: String, allowedValues: carMakeAllowedValues },
@@ -111,9 +129,7 @@ class CarsDropdown extends React.Component {
   }
 }
 
-/** Require an array of Stuff documents in the props. */
 CarsDropdown.propTypes = {
-  cars: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -122,7 +138,6 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Cars.subscribeCars();
   return {
-    cars: Cars.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(CarsDropdown);
