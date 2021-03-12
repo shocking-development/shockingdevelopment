@@ -7,12 +7,11 @@ import PropTypes from 'prop-types';
 import NavBarMain from '../components/main-navbar/NavBarMain';
 import SavingsPageBarGraph from '../components/defaultcharts/SavingsPageBarGraph';
 
-/** A simple static component to render the go to savings page when users are logged in. */
+/** A simple static component to render the home page when users are logged in. */
 class GoToSavings extends React.Component {
 
   render() {
 
-    //In page styles
     const dataPageBarGraphstyling = {
       background: 'rgb(200, 200, 200)',
       borderRadius: '5px',
@@ -34,15 +33,13 @@ class GoToSavings extends React.Component {
 
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '75em',
+      height: '70em',
     };
 
     return (
-
-        //Add page style
         <div style={pageStyle}>
           <NavBarMain/>
-          
+
           <Card.Group style={cardStyle}>
             <Card>
               <Card.Content>
