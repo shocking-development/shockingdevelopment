@@ -38,9 +38,11 @@ class GoToSavings extends React.Component {
     };
 
     return (
+
+        //Add page style
         <div style={pageStyle}>
           <NavBarMain/>
-
+          
           <Card.Group style={cardStyle}>
             <Card>
               <Card.Content>

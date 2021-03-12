@@ -10,6 +10,8 @@ class DonutGraphCollection {
   constructor() {
     // The name of this collection.
     this.name = 'DonutGraphCollection';
+
+    //Current plays holder data
     this.dataOne = [['Bike', 6], ['Car', 2], ['Public Transportation', 3]];
     this.dataTwo = [['Tuesday', 6], ['Monday', 2], ['Wednesday', 3]];
 
@@ -22,6 +24,7 @@ class DonutGraphCollection {
       dataOne: Number,
       dataTwo: Number,
       owner: String,
+
       fontFamily: 'sans-serif',
     }, { tracker: Tracker });
 

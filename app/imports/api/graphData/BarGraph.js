@@ -9,13 +9,10 @@ class BarGraphCollection {
 
   constructor() {
 
-/*fetch("../../../../config/settings.development.json")
-    .this(response => response.json())
-    .this(data => {console.log("88")});*/
-
     // The name of this collection.
-    //this.def = def;
     this.name = 'BarGraphCollection';
+
+    //Current plays holder data
     this.dataOne = [20, 71.5, 0, 0, 55.8, 0, 8, 0, 0, 0, 0, 30];
     this.dataTwo = [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0];
     this.dataThree = [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0];
@@ -30,7 +27,7 @@ class BarGraphCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      dataOnes: 100,
+      dataOnes: Number,
       dataTwo: Number,
       dataThree: Number,
       owner: String,

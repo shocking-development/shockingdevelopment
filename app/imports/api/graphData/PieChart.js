@@ -8,8 +8,11 @@ import StuffItem from '../../ui/components/StuffItem';
 class PieChartCollection {
 
   constructor() {
+
     // The name of this collection.
     this.name = 'PieChartCollection';
+
+    //Current plays holder data
     this.dataOne = ['TeleWork', 'Carpool', 'Electrical Vehical', 'Public Transportation', 'Biking', 'Walking', 'Walking'];
     this.dataTwo = [61, 11, 10, 4.67, 2.67, 2.67];
 

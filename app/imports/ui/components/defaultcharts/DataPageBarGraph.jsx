@@ -155,8 +155,7 @@ class DataPageBarGraph extends React.Component {
         },
       },
     };
-    console.log("Hello, world");
-    console.log(BarGraph.schema.dataOnes);
+
     return (
 
         <div>
