@@ -136,7 +136,7 @@ class GoToSavings extends React.Component {
             <Card>
               <Card.Content>
                 <div align="right"><Icon name='bicycle'/></div>
-                <Card.Header>Bikeing</Card.Header>
+                <Card.Header>Biking</Card.Header>
                 <Card.Meta>How much would you save by Bikeing</Card.Meta>
                 <Card.Description>{this.props.currentUser.transportation}</Card.Description>
               </Card.Content>

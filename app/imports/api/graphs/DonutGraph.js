@@ -21,8 +21,8 @@ class DonutGraphCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      dataOne: Number,
-      dataTwo: Number,
+      dataOne: Array[Number],
+      dataTwo: Array[Number],
       owner: String,
 
       fontFamily: 'sans-serif',

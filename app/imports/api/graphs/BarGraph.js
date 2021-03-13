@@ -27,9 +27,9 @@ class BarGraphCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      dataOnes: Number,
-      dataTwo: Number,
-      dataThree: Number,
+      dataOnes: Array[Number],
+      dataTwo: Array[Number],
+      dataThree: Array[Number],
       owner: String,
       fontFamily: 'sans-serif',
     }, { tracker: Tracker });

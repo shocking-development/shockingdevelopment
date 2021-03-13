@@ -22,9 +22,10 @@ class PieChartCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      dataOne: String,
-      dataTwo: Number,
+      dataOne: Array[String],
+      dataTwo: Array[Number],
       owner: String,
+
       fontFamily: 'sans-serif',
     }, { tracker: Tracker });
 
