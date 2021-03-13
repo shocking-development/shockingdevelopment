@@ -12,13 +12,14 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import Datapage from '../pages/Datapage';
-import GoToSavings from '../pages/GoToSavings';
+import Datapage from '../pages/home/Datapage';
+import GoToSavings from '../pages/savings/GoToSavings';
 import AddEmissions from '../pages/emissions/AddEmissions';
 import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
 import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
 import CarsDropdown from '../pages/cars/CarsDropdown';
+import EmissionsChart from '../components/emissions/EmissionsChart';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -40,6 +41,7 @@ class App extends React.Component {
               <ProtectedRoute path="/profile" component={ProfileCard}/>
               <ProtectedRoute path="/data" component={Datapage}/>
               <ProtectedRoute path="/cars" component={CarsDropdown}/>
+              <ProtectedRoute path="/emissionsChart" component={EmissionsChart}/>
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <Route component={NotFound}/>

@@ -22,7 +22,6 @@ class RecentlyAddedCars extends React.Component {
 
     return (
         <div>
-          <NavBarHome/>
           <Header inverted as="h2" textAlign="center">Your Cars</Header>
           {this.props.cars.length !== 0 ?
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '3rem' }}>

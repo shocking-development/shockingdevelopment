@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import Datapage from '../Datapage';
+import Datapage from './Datapage';
 
 /** A simple static component to render the home page when users are logged in. */
 class Home extends React.Component {
