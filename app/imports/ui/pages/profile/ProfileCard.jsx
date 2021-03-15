@@ -49,6 +49,9 @@ class ProfileCard extends React.Component {
                     <p>
                       Zipcode: {this.props.profiles.zipcode}
                     </p>
+                    <p>
+                      Option: {this.props.profiles.option}
+                    </p>
 
                   </Card.Description>
                 </Card.Content>
