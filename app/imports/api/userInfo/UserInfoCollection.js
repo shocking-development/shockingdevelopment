@@ -23,7 +23,11 @@ class UserInfoCollection extends BaseCollection {
       userImage: String,
       zipcode: Number,
       transportation: String,
-      options: String,
+      options: {
+        type: String,
+        allowedValues: ['metric', 'us units'],
+        defaultValue: 'us unit',
+      },
     }));
   }
 

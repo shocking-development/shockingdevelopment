@@ -12,10 +12,9 @@ import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
-
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, password, zipcode, transportation, _id } = data;
+    const { firstName, lastName, user, email, password, zipcode, transportation, option, _id } = data;
     const updateData = {
       id: _id,
       firstName,
@@ -25,6 +24,7 @@ class EditProfile extends React.Component {
       password,
       zipcode,
       transportation,
+      option,
     };
     userInfoUpdateMethod.call(updateData, (error) => (error ?
         swal('Error', error.message, 'error') :
@@ -74,6 +74,7 @@ class EditProfile extends React.Component {
                   <TextField name='transportation'/>
                   <TextField name='userImage'/>
                   <NumField name='zipcode' decimal={false}/>
+                  <SelectField name='option'/>
                   <SubmitField value='Update'/>
                   <ErrorsField/>
                   <HiddenField name='owner'/>
