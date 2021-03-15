@@ -23,7 +23,7 @@ class UserInfoCollection extends BaseCollection {
       userImage: String,
       zipcode: Number,
       transportation: String,
-      options: {
+      unitSystem: {
         type: String,
         allowedValues: ['metric', 'us units'],
         defaultValue: 'us units',
@@ -43,7 +43,7 @@ class UserInfoCollection extends BaseCollection {
    * @param transportation, the transportation, of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation, option }) {
+  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation, unitSystem }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
@@ -54,7 +54,7 @@ class UserInfoCollection extends BaseCollection {
       zipcode,
       userImage,
       transportation,
-      option,
+      unitSystem,
     });
     return docID;
   }
@@ -70,7 +70,7 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person (optional).
    * @param transportation, the transportation, of the person.
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation, option }) {
+  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation, unitSystem }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -97,8 +97,8 @@ class UserInfoCollection extends BaseCollection {
     if (transportation) {
       updateData.transportation = transportation;
     }
-    if (option) {
-      updateData.option = option;
+    if (unitSystem) {
+      updateData.unitSystem = unitSystem;
     }
     this._collection.update(docID, { $set: updateData });
   }

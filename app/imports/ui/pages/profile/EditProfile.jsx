@@ -14,7 +14,7 @@ import NavBarHome from '../../components/main-navbar/NavBarMain';
 class EditProfile extends React.Component {
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, password, zipcode, transportation, option, _id } = data;
+    const { firstName, lastName, user, email, password, zipcode, transportation, unitSystem , _id } = data;
     const updateData = {
       id: _id,
       firstName,
@@ -24,7 +24,7 @@ class EditProfile extends React.Component {
       password,
       zipcode,
       transportation,
-      option,
+      unitSystem,
     };
     userInfoUpdateMethod.call(updateData, (error) => (error ?
         swal('Error', error.message, 'error') :
