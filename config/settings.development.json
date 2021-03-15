@@ -20,6 +20,7 @@
       "zipcode": "96822",
       "userImage": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thoughtco.com%2Fchinese-flower-lotus-687523&psig=AOvVaw0RcJQRG4UksrnmhhXRwGlH&ust=1614806253217000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjFwprEku8CFQAAAAAdAAAAABAI",
       "transportation": "electricity",
+      "option": "us units",
       "owner": "john@foo.com"
     },
     {
@@ -31,6 +32,7 @@
       "zipcode": "96822",
       "userImage": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thoughtco.com%2Fchinese-flower-lotus-687523&psig=AOvVaw0RcJQRG4UksrnmhhXRwGlH&ust=1614806253217000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjFwprEku8CFQAAAAAdAAAAABAI",
       "transportation": "electricity",
+      "option": "us units",
       "role": "admin",
       "owner": "admin@foo.com"
     }
