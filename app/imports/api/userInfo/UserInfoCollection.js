@@ -26,7 +26,7 @@ class UserInfoCollection extends BaseCollection {
       options: {
         type: String,
         allowedValues: ['metric', 'us units'],
-        defaultValue: 'us unit',
+        defaultValue: 'us units',
       },
     }));
   }

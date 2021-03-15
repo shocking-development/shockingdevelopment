@@ -74,7 +74,6 @@ class EditProfile extends React.Component {
                   <TextField name='transportation'/>
                   <TextField name='userImage'/>
                   <NumField name='zipcode' decimal={false}/>
-                  <SelectField name='option'/>
                   <SubmitField value='Update'/>
                   <ErrorsField/>
                   <HiddenField name='owner'/>
