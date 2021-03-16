@@ -13,5 +13,10 @@ export function calculateGHG(gallons) {
   return (4.63 * (gallons * mutltifactor)).toFixed(3);
 }
 
+/** This function converts liters into gallons. */
+export function calculateGal(liters) {
+  const convertFactor = 0.264172;
+  return (liters * convertFactor);
+}
 // distance and mpg calculates number of gallons
 // calculate the cost of the trip in another file, for each trip then all the trips

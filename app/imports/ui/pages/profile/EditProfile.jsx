@@ -12,7 +12,6 @@ import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -22,13 +21,14 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, password, zipcode, _id } = data;
+    const { firstName, lastName, user, email, password, zipcode, transportation, unitSystem , _id } = data;
     let userImage;
     if (this.state.userImage === 'no-change') {
       userImage = this.props.doc.userImage;
     } else {
       userImage = this.state.userImage;
     }
+
     const updateData = {
       id: _id,
       firstName,
@@ -38,6 +38,8 @@ class EditProfile extends React.Component {
       password,
       zipcode,
       userImage,
+      transportation,
+      unitSystem,
     };
     userInfoUpdateMethod.call(updateData, (error) => (error ?
         swal('Error', error.message, 'error') :
@@ -127,6 +129,8 @@ class EditProfile extends React.Component {
                   <TextField name='user'/>
                   <TextField name='email'/>
                   <TextField name='password'/>
+                  <SelectField name='unitSystem'/>
+                  <TextField name='transportation'/>
                   <TextField name='userImage'/>
                   <NumField name='zipcode' decimal={false}/>
                   <SubmitField value='Update'/>
