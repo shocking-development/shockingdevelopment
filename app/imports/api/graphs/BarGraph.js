@@ -1,8 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
-import { Stuffs } from '../stuff/Stuff';
-import StuffItem from '../../ui/components/StuffItem';
 
 /** Encapsulates state and variable values for this collection. */
 class BarGraphCollection {
@@ -12,7 +10,7 @@ class BarGraphCollection {
     // The name of this collection.
     this.name = 'BarGraphCollection';
 
-    //Current plays holder data
+    // Current plays holder data
     this.dataOne = [20, 71.5, 0, 0, 55.8, 0, 8, 0, 0, 0, 0, 30];
     this.dataTwo = [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0];
     this.dataThree = [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0];
@@ -43,5 +41,5 @@ class BarGraphCollection {
   }
 }
 
-//Export Collection
+// Export Collection
 export const BarGraph = new BarGraphCollection();

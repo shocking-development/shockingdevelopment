@@ -21,7 +21,7 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, password, zipcode, transportation, unitSystem , _id } = data;
+    const { firstName, lastName, user, email, password, zipcode, transportation, unitSystem, _id } = data;
     let userImage;
     if (this.state.userImage === 'no-change') {
       userImage = this.props.doc.userImage;

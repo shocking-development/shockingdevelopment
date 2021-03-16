@@ -1,8 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
-import { Stuffs } from '../stuff/Stuff';
-import StuffItem from '../../ui/components/StuffItem';
 
 /** Encapsulates state and variable values for this collection. */
 class PieChartCollection {
@@ -12,7 +10,7 @@ class PieChartCollection {
     // The name of this collection.
     this.name = 'PieChartCollection';
 
-    //Current plays holder data
+    // Current plays holder data
     this.dataOne = ['TeleWork', 'Carpool', 'Electrical Vehical', 'Public Transportation', 'Biking', 'Walking', 'Walking'];
     this.dataTwo = [61, 11, 10, 4.67, 2.67, 2.67];
 
@@ -37,5 +35,5 @@ class PieChartCollection {
   }
 }
 
-//Export Collection
+// Export Collection
 export const PieChart = new PieChartCollection();
