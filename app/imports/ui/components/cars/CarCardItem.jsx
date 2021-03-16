@@ -32,7 +32,7 @@ class carCardItem extends React.Component {
                     <br/>
                     <b>MPG: {recentCar.mpg} </b>
                   </Card.Content>
-                  <Button onClick={() => deleteCar(this.props.car)} color={'red'}>
+                  <Button id='delete-trip' onClick={() => deleteCar(this.props.car)} color={'red'}>
                     Delete
                   </Button>
                 </Card></Grid.Column>)}
