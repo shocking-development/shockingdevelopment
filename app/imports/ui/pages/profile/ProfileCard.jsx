@@ -58,7 +58,12 @@ class ProfileCard extends React.Component {
                     <Button.Content visible>
                       <Icon name='pencil' />
                     </Button.Content>
-                  </Button>
+                  </Button><Button as={NavLink} exact to={`/change/${this.props.profiles._id}`} animated='vertical' floated='left' size='big'>
+                  <Button.Content hidden>Password</Button.Content>
+                  <Button.Content visible>
+                    <Icon name='lock' />
+                  </Button.Content>
+                </Button>
                 </Card.Content>
               </Card>
             </Container>
