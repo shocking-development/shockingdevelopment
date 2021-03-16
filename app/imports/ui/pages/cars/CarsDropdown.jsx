@@ -155,18 +155,21 @@ class CarsDropdown extends React.Component {
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
+                  id='select-year'
                   className={'carDropdownSelectField'}
                   name='years'
                   showInlineError={true}
                   placeholder='Select Year'
               />
               <SelectField
+                  id='select-make'
                   className={'carDropdownSelectField'}
                   name='make'
                   showInlineError={true}
                   placeholder='Select Make'
               />
               <SelectField
+                  id='select-model'
                   className={'carDropdownSelectField'}
                   name='model'
                   allowedValues={allowedModelValues}
@@ -180,6 +183,7 @@ class CarsDropdown extends React.Component {
             }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
 
               <TextField
+                  id='input-car'
                   className={'carDropdownSelectField'}
                   name='carName'
                   placeholder='Enter the name of your vehicle'
@@ -193,7 +197,7 @@ class CarsDropdown extends React.Component {
                   name="carId"
                   errorMessage="Please select your car first"
               />
-              <SubmitField value='Submit'/>
+              <SubmitField value='Submit' id='submit-car'/>
             </AutoForm>
           </Container>
           <RecentlyAddedCars/>
