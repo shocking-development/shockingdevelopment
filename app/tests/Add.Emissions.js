@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class SavingsPage {
+class AddEmissions {
   constructor() {
-    this.pageId = '#savings';
+    this.pageId = '#add-emissions';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -12,10 +12,10 @@ class SavingsPage {
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
   }
 
-  async goToSavingsPage(testController) {
+  async addEmissions(testController) {
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
-    await testController.click('#savings');
+    await testController.click('#add-emissions');
   }
 }
 
-export const yourSavings = new SavingsPage();
+export const emissions = new AddEmissions();

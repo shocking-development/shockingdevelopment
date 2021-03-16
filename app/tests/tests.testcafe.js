@@ -2,15 +2,15 @@ import { landingPage } from './landing.page';
 import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
-import GHGEmissionsCalculator from '../imports/ui/pages/ghg-emissions-calculator/GHGEmissionsCalculator';
 import { emissionsCalculator } from './GHG.Emissions.Calculator';
 import { SignUpPage } from './signup.page';
+import { yourSavings } from './Go.To.Savings';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'john@foo.com', password: 'changeme', input: 30 };
-const signup = { firstName: 'Johnny', lastName: 'Guitar', zipcode: '98674', email: 'johnny@foo.com', password: '12345678', cPassword: '12345678'};
+const signup = { firstName: 'Johnny', lastName: 'Guitar', zipcode: '98674', email: 'johnny@foo.com', password: '12345678', cPassword: '12345678' };
 
 fixture('meteor-application-template-react localhost test with default db')
     .page('http://localhost:3000');
@@ -31,6 +31,7 @@ test('Test that GoToSavings page work', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
+  await yourSavings.goToSavingsPage(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
