@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-class GHGEmissionsCalculator {
+class GHGCalculator {
   constructor() {
     this.pageId = '#calculator';
     this.pageSelector = Selector(this.pageId);
@@ -12,11 +12,11 @@ class GHGEmissionsCalculator {
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
   }
 
-  async hasTable(testController) {
+  async testCalculation(testController) {
     const rowCount = Selector('tr').count;
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
     await testController.expect(rowCount).get(2);
   }
 }
 
-export const emissionsCalculator = new GHGEmissionsCalculator();
+export const emissionsCalculator = new GHGCalculator();

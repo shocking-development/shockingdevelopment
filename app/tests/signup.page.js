@@ -3,7 +3,7 @@ import { navBar } from './navbar.component';
 
 class SignupPage {
   constructor() {
-    this.pageId = '#signup-page';
+    this.pageId = '#login-dropdown-up';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -13,13 +13,17 @@ class SignupPage {
   }
 
   /** Signs up a new user, then checks to see that they are logged in by checking the navbar. */
-  async signupUser(testController, username, password) {
+  async signupUser(testController, firstName, lastName, zipcode, username, password, cPassword) {
     await this.isDisplayed(testController);
+    await testController.typeText('signup-form-firstName', firstName);
+    await testController.typeText('signup-form-lastName', lastName);
+    await testController.typeText('signup-form-zipcode', zipcode);
     await testController.typeText('#signup-form-email', username);
     await testController.typeText('#signup-form-password', password);
+    await testController.typeText('signup-form-confirm-password', cPassword);
     await testController.click('#signup-form-submit');
     await navBar.isLoggedIn(testController, username);
   }
 }
 
-export const signupPage = new SignupPage();
+export const SignUpPage = new SignupPage();
