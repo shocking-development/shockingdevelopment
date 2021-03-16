@@ -12,9 +12,16 @@ class AddEmissions {
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
   }
 
-  async addEmissions(testController) {
+  async updateEmissions(testController, mpg) {
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
-    await testController.click('#add-emissions');
+    await testController.typeText('add-mpg', mpg);
+    await testController.click('#update-mpg');
+  }
+
+  async addTrip(testController) {
+    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await testController.click();
+    await testController.click();
   }
 }
 

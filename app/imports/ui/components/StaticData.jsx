@@ -9,10 +9,10 @@ function StaticData() {
     return (
         <div>
             <h3 style={centerText}>Miles Per Gallon (mpg)</h3>
-            <input style={dataInput} type="text" />
+            <input style={dataInput} id='#add-mpg'type="text" />
             <br/>
             <br/>
-            <Button inverted>Update</Button>
+            <Button inverted id='update-mpg'>Update</Button>
         </div>
     );
 }
