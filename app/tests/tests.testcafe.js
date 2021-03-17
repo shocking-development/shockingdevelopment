@@ -5,12 +5,15 @@ import { navBar } from './navbar.component';
 import { emissionsCalculator } from './GHG.Emissions.Calculator';
 import { SignUpPage } from './signup.page';
 import { yourSavings } from './Go.To.Savings';
+import { emissions } from './Add.Emissions';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'john@foo.com', password: 'changeme', input: 30 };
 const signup = { firstName: 'Johnny', lastName: 'Guitar', zipcode: '98674', email: 'johnny@foo.com', password: '12345678', cPassword: '12345678' };
+const updatedEmissions = { updateEmissions: 35 };
+const addedEmissions = { };
 
 fixture('meteor-application-template-react localhost test with default db')
     .page('http://localhost:3000');
@@ -49,6 +52,17 @@ test('test that the signup page works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await SignUpPage.signupUser(testController, signup.firstName, signup.lastName, signup.zipcode, signup.email, signup.password, signup.cPassword);
   await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('test that the add emissions page works', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await emissions.addTrip(testController);
+  await emissions.updateEmissions(testController);
+  await emissions.deleteTrip(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });

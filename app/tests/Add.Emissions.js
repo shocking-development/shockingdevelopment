@@ -26,11 +26,7 @@ class AddEmissions {
     await testController.typeText('#input-car', name);
   }
 
-  async deleteTrip(testController, year, make, model, name) {
-    await testController.click('#select-year', year);
-    await testController.click('#select-make', make);
-    await testController.click('#select-model', model);
-    await testController.typeText('#input-car', name);
+  async deleteTrip(testController) {
     await testController.click('#delete-trip');
   }
 }
