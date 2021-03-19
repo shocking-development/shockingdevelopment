@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import { calculateCO2, calculateGal, calculateGHG } from '../../../api/trips/ghgcalculation';
+import { calculateCO2, calculateGal, calculateGHG, convertTons } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render the GHGEmissionsCalculatorMetricwhen users are logged in. */
 
@@ -99,7 +99,7 @@ class GHGEmissionsCalculatorMetric extends React.Component {
               </Form>
               {this.state.show &&
               (<Segment>
-                <p> {calculateCO2(calculateGal(this.state.input))} tons of CO2 emissions is generated
+                <p> {convertTons(calculateCO2(calculateGal(this.state.input)))} tons of CO2 emissions is generated
                   from {this.state.input} liter(s) of
                   gas </p>
                 <p> This is equivalent to the GHG emissions from {calculateGHG(calculateGal(this.state.input))} passenger vehicles
