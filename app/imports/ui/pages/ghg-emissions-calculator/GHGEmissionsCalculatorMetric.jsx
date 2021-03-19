@@ -55,6 +55,7 @@ class GHGEmissionsCalculatorMetric extends React.Component {
 
   /** Render the calculation page. */
   render() {
+    // eslint-disable-next-line no-unused-vars
     const pageStyle = {
       paddingTop: '20em',
       paddingBottom: '10em',
@@ -98,10 +99,10 @@ class GHGEmissionsCalculatorMetric extends React.Component {
               </Form>
               {this.state.show &&
               (<Segment>
-                <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
+                <p> {calculateCO2(calculateGal(this.state.input))} tons of CO2 emissions is generated
                   from {this.state.input} liter(s) of
                   gas </p>
-                <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger vehicles
+                <p> This is equivalent to the GHG emissions from {calculateGHG(calculateGal(this.state.input))} passenger vehicles
                   driven for one
                   year.</p>
               </Segment>)}
