@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Segment, Header, Container, Button } from 'semantic-ui-react';
+import { Form, Segment, Header, Container, Image, Button } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -82,9 +82,12 @@ class GHGEmissionsCalculatorMetric extends React.Component {
     return (
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
-          <div style={pageStyle}>
+          <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '80vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+            <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Container style={containerStyle} className='signupcontainer'>
-              <Header inverted size={'huge'}>Greenhouse Gas Calculator For Metric Units</Header>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
                     placeholder='Enter liters of gas'
