@@ -18,6 +18,7 @@ import AddData from '../pages/AddData';
 import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
 import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
+import GHGEmissionsCalculatorContainerMetric from '../pages/ghg-emissions-calculator/GHGEmissionsCalculatorMetric';
 import CarsDropdown from '../pages/cars/CarsDropdown';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -41,6 +42,7 @@ class App extends React.Component {
               <ProtectedRoute path="/data" component={Datapage}/>
               <ProtectedRoute path="/cars" component={CarsDropdown}/>
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
+              <ProtectedRoute path="/ghgCalMetric" component={GHGEmissionsCalculatorContainerMetric}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <Route component={NotFound}/>
             </Switch>
