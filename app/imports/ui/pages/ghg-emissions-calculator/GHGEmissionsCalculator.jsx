@@ -81,7 +81,7 @@ class GHGEmissionsCalculator extends React.Component {
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
           <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '80vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
-            <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
+            <Header inverted size={'huge'}>Greenhouse Gas Calculator (US Units)</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
