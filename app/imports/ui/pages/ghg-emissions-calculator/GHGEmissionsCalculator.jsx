@@ -1,11 +1,11 @@
 import React from 'react';
-import { Form, Segment, Header, Container, Button } from 'semantic-ui-react';
+import { Form, Segment, Header, Container, Button, Image } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
+import { calculateCO2, calculateGal, calculateGHG, convertTons } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
 
@@ -80,12 +80,15 @@ class GHGEmissionsCalculator extends React.Component {
     return (
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
-          <div style={pageStyle}>
+          <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '80vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+            <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Container style={containerStyle} className='signupcontainer'>
-              <Header inverted size={'huge'}>Greenhouse Gas Calculator</Header>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
-                    placeholder='Enter gallons of gas'
+                    placeholder='Enter liters of gas'
                     value={this.state.input}
                     onChange={this.handleInputChange}
                 />
@@ -94,7 +97,7 @@ class GHGEmissionsCalculator extends React.Component {
               {this.state.show &&
               (<Segment>
                 <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
-                  from {this.state.input} gallon(s) of
+                  from {this.state.input} liter(s) of
                   gas </p>
                 <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger vehicles
                   driven for one
