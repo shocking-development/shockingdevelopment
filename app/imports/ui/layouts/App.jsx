@@ -17,6 +17,7 @@ import GoToSavings from '../pages/GoToSavings';
 import AddEmissions from '../pages/AddEmissions';
 import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
+import AddGraph from '../pages/GraphDropdown';
 import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
 import CarsDropdown from '../pages/cars/CarsDropdown';
 
@@ -40,6 +41,7 @@ class App extends React.Component {
               <ProtectedRoute path="/profile" component={ProfileCard}/>
               <ProtectedRoute path="/data" component={Datapage}/>
               <ProtectedRoute path="/cars" component={CarsDropdown}/>
+              <ProtectedRoute path="/addgraph" component={AddGraph}/>
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <Route component={NotFound}/>

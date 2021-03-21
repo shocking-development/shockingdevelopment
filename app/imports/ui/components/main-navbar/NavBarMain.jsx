@@ -83,6 +83,11 @@ class NavBarMain extends React.Component {
                   Sign Out
                 </Menu.Item>
 
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/addgraph" key='key11'>
+                  <Icon name='sign-out' size='large'/>
+                  Make Graph
+                </Menu.Item>
+
               </Menu>,
               ]
           ) : ''}
