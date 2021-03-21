@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader, Header, Segment, Container, Card, Image } from 'semantic-ui-react';
+import { Loader, Header, Segment, Container, Image, Grid } from 'semantic-ui-react';
 import swal from 'sweetalert';
 // eslint-disable-next-line no-unused-vars
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
@@ -21,7 +21,7 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, password, zipcode, transportation, unitSystem, _id } = data;
+    const { firstName, lastName, user, email, zipcode, transportation, unitSystem, _id } = data;
     let userImage;
     if (this.state.userImage === 'no-change') {
       userImage = this.props.doc.userImage;
@@ -35,7 +35,6 @@ class EditProfile extends React.Component {
       lastName,
       user,
       email,
-      password,
       zipcode,
       userImage,
       transportation,
@@ -76,11 +75,10 @@ class EditProfile extends React.Component {
   renderPage() {
     const bridge = new SimpleSchema2Bridge(UserInfos.getSchema());
     const pageStyle = {
-      marginLeft: '20em',
+      paddingLeft: '15em',
       paddingTop: '6em',
-      height: '90em',
+      height: '70em',
       backgroundSize: 'cover',
-      marginRight: '6em',
     };
 
     let dataImage = this.state.userImage;
@@ -89,7 +87,6 @@ class EditProfile extends React.Component {
     }
 
     return (
-
         <div style={{
           background: 'rgb(21 51 62)',
           backgroundSize: 'cover',
@@ -99,46 +96,51 @@ class EditProfile extends React.Component {
           <NavBarHome/>
           <Container style={pageStyle}>
             <Header inverted as="h2" textAlign="center">Edit Profile</Header>
-            <Card style={{ margin: 'auto' }}>
-              <div>
-                <label htmlFor="file-input">
+
+            <Grid>
+              <Grid.Row style={{ marginTop: '3em' }} className='signupcontainer'>
+                <Grid.Column width={5}>
                   <Image
-                      size={'huge'}
-                      style={{ cursor: 'pointer', width: '150px', height: '150px' }}
+                      size={'massive'}
+                      // style={{ width: '150px', height: '150px' }}
                       src={dataImage}
                       centered
                   />
-                  <div style={{ color: '#024731' }}>Choose Your Photo here</div>
-                </label>
-                <input type="file"
-                       id="file-input"
-                       name="picture"
-                       accept=".jpg, .jpeg, .png"
-                       style={{ display: 'none' }}
-                       onChange={this.onImageUpload}/>
-              </div>
-              <AutoForm
-                  schema={bridge}
-                  onSubmit={data => {
-                    // eslint-disable-next-line no-undef,no-alert
-                    if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
-                  }} model={this.props.doc}>
-                <Segment>
-                  <TextField name='firstName'/>
-                  <TextField name='lastName'/>
-                  <TextField name='user'/>
-                  <TextField name='email'/>
-                  <TextField name='password'/>
-                  <SelectField name='unitSystem'/>
-                  <TextField name='transportation'/>
-                  <TextField name='userImage'/>
-                  <NumField name='zipcode' decimal={false}/>
-                  <SubmitField value='Update'/>
-                  <ErrorsField/>
-                  <HiddenField name='owner'/>
-                </Segment>
-              </AutoForm>
-            </Card>
+                  <div style={{ color: 'black' }}>
+                    <label style={{ cursor: 'pointer', backgroundColor: 'white' }} htmlFor="file-input">
+                      Choose Your Photo here
+                    </label>
+                  </div>
+                  <input type="file"
+                         id="file-input"
+                         name="picture"
+                         accept=".jpg, .jpeg, .png"
+                         style={{ display: 'none' }}
+                         onChange={this.onImageUpload}/>
+                </Grid.Column>
+                <Grid.Column stretched width={11}>
+                  <AutoForm
+                      schema={bridge}
+                      onSubmit={data => {
+                        // eslint-disable-next-line no-undef,no-alert
+                        if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
+                      }} model={this.props.doc}>
+                    <Segment>
+                      <TextField name='firstName'/>
+                      <TextField name='lastName'/>
+                      <TextField name='user'/>
+                      <TextField name='email'/>
+                      <SelectField name='unitSystem'/>
+                      <TextField name='transportation'/>
+                      <NumField name='zipcode' decimal={false}/>
+                      <SubmitField value='Update'/>
+                      <ErrorsField/>
+                      <HiddenField name='owner'/>
+                    </Segment>
+                  </AutoForm>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Container>
         </div>
     );
