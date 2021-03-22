@@ -16,10 +16,10 @@ function EmissionsChart() {
   const dateRecorded = emissions.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`);
   const dataMiles = emissions.map(recentEmissions => recentEmissions.miles);
 
-  console.log(emissions);
+  // console.log(emissions);
   // if the date created at is the same then add the miles up
   // if the object created had the same date as another object add up the miles
-  console.log(emissions.map(recentEmissions => `${recentEmissions.date}-${recentEmissions.miles}`));
+  // console.log(emissions.map(recentEmissions => `${recentEmissions.date}-${recentEmissions.miles}`));
 
   const options = {
     title: {

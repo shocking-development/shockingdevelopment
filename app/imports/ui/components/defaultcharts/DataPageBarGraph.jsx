@@ -1,11 +1,22 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
+import { Emissions } from '../../../api/emissions/EmissionsCollection';
+import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render some boxes for the landing page. */
 
-class DataPageBarGraph extends React.Component {
-  render() {
+function DataPageBarGraph() {
+  const user = useTracker(() => Meteor.userId());
+  const emissions = useTracker(() => {
+    Meteor.subscribe(Emissions.emissionsPublicationName);
+    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
+  });
+  const dateRecorded = emissions.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`);
+  const dataMiles = emissions.map(recentEmissions => recentEmissions.miles);
+
     const options = {
       title: {
         text: 'Your 2021 Environmental Benefits Cummulative Total',
@@ -20,7 +31,7 @@ class DataPageBarGraph extends React.Component {
         // need what it would have cost using the worst mode of transport and then the mode of transport being used -> gallons
         // co2 store this info somewhere in a diff/same collection, get all the data from this collection and add them up,
         // go to only your page calculate your data, user, mode, worstmode of transportation
-        data: [49.9, 71.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: dataMiles,
 
       }, {
         name: 'Fuel Gallons Saved (Gallons)',
@@ -49,20 +60,7 @@ class DataPageBarGraph extends React.Component {
             fontWeight: 'bold',
           },
         },
-        categories: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sep',
-          'Oct',
-          'Nov',
-          'Dec',
-        ],
+        categories: dateRecorded,
         crosshair: true,
       },
       yAxis: {
@@ -89,7 +87,7 @@ class DataPageBarGraph extends React.Component {
           />
         </div>
     );
-  }
+
 }
 
 export default DataPageBarGraph;

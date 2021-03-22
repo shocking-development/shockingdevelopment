@@ -19,7 +19,7 @@ function AddEmissions() {
           <StaticData/>
           <UpdateEmissions/>
           <RecentlyAdded/>
-          <EmissionsChart/>
+          {/*<EmissionsChart/>*/}
         </div>
       </div>
   );

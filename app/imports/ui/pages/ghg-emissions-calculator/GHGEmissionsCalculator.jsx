@@ -8,14 +8,6 @@ import NavBarHome from '../../components/main-navbar/NavBarMain';
 import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
-
-/* <Form.Button
-    color='teal'
-    style={{ borderRadius: '20px' }}
-    fluid
-    id="calculator-submit"
-    content="calculate"
-/> */
 class GHGEmissionsCalculator extends React.Component {
 
   /** Initialize component state with properties for input */
