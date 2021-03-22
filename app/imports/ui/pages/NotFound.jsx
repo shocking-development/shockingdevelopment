@@ -1,5 +1,4 @@
 import React from 'react';
-
 import NavBarMain from '../components/main-navbar/NavBarMain';
 import { Header, Image } from 'semantic-ui-react';
 
