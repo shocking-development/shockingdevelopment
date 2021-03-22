@@ -18,10 +18,22 @@
       "email": "john@foo.com",
       "password": "changeme",
       "zipcode": "96822",
-      "userImage": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thoughtco.com%2Fchinese-flower-lotus-687523&psig=AOvVaw0RcJQRG4UksrnmhhXRwGlH&ust=1614806253217000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjFwprEku8CFQAAAAAdAAAAABAI",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "transportation": "electricity",
       "unitSystem": "us units",
       "owner": "john@foo.com"
+    },
+    {
+      "firstName": "Amanda",
+      "lastName": "Foo",
+      "user": "amandafoo",
+      "email": "amanda@foo.com",
+      "password": "changeme",
+      "zipcode": "96814",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "transportation": "electricity",
+      "unitSystem": "metric",
+      "owner": "amanda@foo.com"
     },
     {
       "firstName": "Admin",
