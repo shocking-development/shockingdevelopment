@@ -176,7 +176,7 @@ class Signup extends React.Component {
                     />
                     <Form.Input className={'signupInput'}
                                 label="Confirm Password"
-                                id="signup-form-password"
+                                id="signup-form-confirm-password"
                                 icon="lock"
                                 iconPosition="left"
                                 name="confirm"

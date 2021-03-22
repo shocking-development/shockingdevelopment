@@ -63,10 +63,15 @@ class NavBarMain extends React.Component {
                   GHG calculator
                 </Menu.Item>
 
-                {/* <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCalMetric" key='key8'>
+                  <Icon name='calculator' size='large'/>
+                  GHG calculator Metric
+                </Menu.Item>
+
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
                   <Icon name='map' size='large'/>
                   Map your route
-                </Menu.Item> */}
+                </Menu.Item>
 
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/gotosavings" key='key6'>
                   <Icon name='money bill alternate' size='large'/>

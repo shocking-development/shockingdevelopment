@@ -4,22 +4,23 @@ import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
 import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Home from '../pages/home/Home';
-import Landing from '../pages/landing/Landing';
+import Home from '../pages/Home';
+import Landing from '../pages/Landing';
 import ListProfileAdmin from '../pages/profile/ListProfileAdmin';
 import EditProfile from '../pages/profile/EditProfile';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import Datapage from '../pages/home/Datapage';
-import GoToSavings from '../pages/savings/GoToSavings';
-import AddEmissions from '../pages/emissions/AddEmissions';
+import Datapage from '../pages/Datapage';
+import GoToSavings from '../pages/GoToSavings';
+import AddEmissions from '../pages/AddEmissions';
 import AddProfile from '../pages/profile/AddProfile';
 import ProfileCard from '../pages/profile/ProfileCard';
 import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissionsCalculator';
+import GHGEmissionsCalculatorContainerMetric from '../pages/ghg-emissions-calculator/GHGEmissionsCalculatorMetric';
 import CarsDropdown from '../pages/cars/CarsDropdown';
-import EmissionsChart from '../components/emissions/EmissionsChart';
+import ChangePassword from '../pages/profile/ChangePassword';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -38,11 +39,12 @@ class App extends React.Component {
               <ProtectedRoute path="/add" component={AddEmissions}/>
               <ProtectedRoute path="/addprofile" component={AddProfile}/>
               <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
+              <ProtectedRoute path="/change/:_id" component={ChangePassword}/>
               <ProtectedRoute path="/profile" component={ProfileCard}/>
               <ProtectedRoute path="/data" component={Datapage}/>
               <ProtectedRoute path="/cars" component={CarsDropdown}/>
-              <ProtectedRoute path="/emissionsChart" component={EmissionsChart}/>
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
+              <ProtectedRoute path="/ghgCalMetric" component={GHGEmissionsCalculatorContainerMetric}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <Route component={NotFound}/>
             </Switch>

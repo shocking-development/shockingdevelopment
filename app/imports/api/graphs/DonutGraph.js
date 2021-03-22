@@ -1,8 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
-import { Stuffs } from '../stuff/Stuff';
-import StuffItem from '../../ui/components/StuffItem';
 
 /** Encapsulates state and variable values for this collection. */
 class DonutGraphCollection {
@@ -11,7 +9,7 @@ class DonutGraphCollection {
     // The name of this collection.
     this.name = 'DonutGraphCollection';
 
-    //Current plays holder data
+    // Current plays holder data
     this.dataOne = [['Bike', 6], ['Car', 2], ['Public Transportation', 3]];
     this.dataTwo = [['Tuesday', 6], ['Monday', 2], ['Wednesday', 3]];
 
@@ -37,5 +35,5 @@ class DonutGraphCollection {
   }
 }
 
-//Export Collection
+// Export Collection
 export const DonutGraph = new DonutGraphCollection();
