@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
+// eslint-disable-next-line no-unused-vars
 import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render some boxes for the landing page. */

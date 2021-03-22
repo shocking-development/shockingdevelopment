@@ -4,7 +4,6 @@ import NavBarHome from '../../components/main-navbar/NavBarMain';
 import StaticData from '../../components/emissions/StaticData';
 import UpdateEmissions from '../../components/emissions/UpdateEmissions';
 import RecentlyAdded from '../../components/emissions/RecentlyAdded';
-import EmissionsChart from '../../components/emissions/EmissionsChart';
 
 function AddEmissions() {
 
@@ -19,7 +18,6 @@ function AddEmissions() {
           <StaticData/>
           <UpdateEmissions/>
           <RecentlyAdded/>
-          {/*<EmissionsChart/>*/}
         </div>
       </div>
   );

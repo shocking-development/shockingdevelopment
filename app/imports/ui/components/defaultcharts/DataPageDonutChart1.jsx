@@ -47,7 +47,6 @@ function DataPageDonutChart1() {
                 }
   }
 
-
   const options = {
     title: {
       text: 'Today&apos;s Choice of Travel',

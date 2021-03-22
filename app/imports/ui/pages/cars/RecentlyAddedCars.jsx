@@ -3,7 +3,6 @@ import { Header, Loader, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
-import NavBarHome from '../../components/main-navbar/NavBarMain';
 import CarCardItem from '../../components/cars/CarCardItem';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
