@@ -89,7 +89,7 @@ class GHGEmissionsCalculator extends React.Component {
             <Container style={containerStyle} className='signupcontainer'>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
-                    placeholder='Enter liters of gas'
+                    placeholder='Enter the gallons of gas'
                     value={this.state.input}
                     onChange={this.handleInputChange}
                 />
