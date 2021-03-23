@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Image, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
+import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
 /**
  * The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ...
@@ -39,7 +40,9 @@ class NavBarMain extends React.Component {
               [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}
                      key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
-                  <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular/>
+                  <Image size='medium' circular src ={this.props.profiles.userImage}
+                      // eslint-disable-next-line
+                         onError={(i) => i.target.src='/images/default_image.png'}/>
                 </Menu.Item>
                 <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 
@@ -104,12 +107,21 @@ class NavBarMain extends React.Component {
 
 /** Declare the types of all properties. */
 NavBarMain.propTypes = {
+  profiles: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
   currentUser: PropTypes.string,
+  currentId: PropTypes.string,
 };
+
+const subscription = UserInfos.subscribeUserInfo();
+const userAccount = Meteor.users.findOne(Meteor.userId());
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 const NavBar2Container = withTracker(() => ({
+  profiles: UserInfos.findOne(userAccount),
   currentUser: Meteor.user() ? Meteor.user().username : '',
+  currentId: Meteor.userId(),
+  ready: subscription.ready(),
 }))(NavBarMain);
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
