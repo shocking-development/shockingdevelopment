@@ -102,7 +102,7 @@ class ProfileCard extends React.Component {
                     Zipcode: {this.props.profiles.zipcode}
                   </p>
                   <p>
-                    Option: {this.props.profiles.unitSystem}
+                    Unit Preference: {this.props.profiles.unitSystem}
                   </p>
                 </Header>
 
