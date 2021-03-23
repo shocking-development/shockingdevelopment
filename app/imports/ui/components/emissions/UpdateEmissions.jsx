@@ -221,7 +221,7 @@ function UpdateEmissions() {
     /* Return function rendering the component */
     return (
         <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Card style={{ padding: '1rem', background: '#4282AF' }}>
+            <Card style={{ padding: '1rem', background: '#0DA3CB' }}>
                 <Card.Content>
                     <Card.Header style={{ color: 'white' }}>Date</Card.Header>
                         <input type="date" value={TripState.date} onChange={changeDate}/>
