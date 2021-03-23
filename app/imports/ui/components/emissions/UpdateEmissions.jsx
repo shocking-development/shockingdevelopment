@@ -4,8 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Icon } from 'semantic-ui-react';
 import { Trips } from '../../../api/emissions/TripsCollection';
-import { EmissionsDefineMethod } from '../../api/emissions/EmissionsCollection.methods';
-import { TripsDefineMethod, tripsRemoveMethod } from '../../api/emissions/TripsCollection.methods';
+import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
+import { TripsDefineMethod, tripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
