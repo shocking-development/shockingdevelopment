@@ -33,7 +33,7 @@ class GoToSavings extends React.Component {
 
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '70em',
+      height: '100em',
     };
 
     return (
