@@ -79,7 +79,7 @@ function UpdateEmissions() {
         tripOptions.push({
             key: trip._id,
             text: `${trip.name} (${trip.miles})`,
-            value: Number(trip.miles),
+            value: trip._id,
             content: (
                 <div>
                 {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red' onClick={() => deleteTrip(trip)} />
@@ -179,19 +179,23 @@ function UpdateEmissions() {
         swal('Error', 'Please enter a number in the miles input', 'error');
       } else {
           try {
+              let miles;
               if (TripState.custom) {
                   TripsDefineMethod.call({
                     owner: user,
                     name: TripState.trip,
                     miles: TripState.miles,
                   });
+                  miles = TripState.miles;
+              } else {
+                  miles = Trips.collection.findOne({ _id: TripState.miles }).fetch();
               }
 
               EmissionsDefineMethod.call({
                 owner: user,
                 date: TripState.date,
                 transportation: TripState.transportation,
-                miles: TripState.miles,
+                miles: miles,
                 createdAt: new Date(),
             },
             (error) => {
