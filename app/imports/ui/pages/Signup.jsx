@@ -49,6 +49,7 @@ class Signup extends React.Component {
             password,
             zipcode,
             userImage: 'images/default-image.jpg', // set default user profile image
+            transportation: 'default',
             owner: user,
           },
           (error) => {
@@ -65,6 +66,7 @@ class Signup extends React.Component {
                 lastName,
                 zipcode,
                 userImage: '',
+                transportation: '',
               }, (err) => {
                 if (err) {
                   this.setState({ error: err.reason });

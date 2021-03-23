@@ -1,11 +1,11 @@
 import React from 'react';
-import { Form, Segment, Header, Container, Button } from 'semantic-ui-react';
+import { Form, Segment, Header, Container, Image, Button } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import { calculateCO2, calculateGal, calculateGHG } from '../../../api/trips/ghgcalculation';
+import { calculateCO2, calculateGal, calculateGHG, convertTons } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render the GHGEmissionsCalculatorMetricwhen users are logged in. */
 
@@ -55,6 +55,7 @@ class GHGEmissionsCalculatorMetric extends React.Component {
 
   /** Render the calculation page. */
   render() {
+    // eslint-disable-next-line no-unused-vars
     const pageStyle = {
       paddingTop: '20em',
       paddingBottom: '10em',
@@ -82,9 +83,12 @@ class GHGEmissionsCalculatorMetric extends React.Component {
     return (
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
-          <div style={pageStyle}>
+          <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '80vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+            <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Container style={containerStyle} className='signupcontainer'>
-              <Header inverted size={'huge'}>Greenhouse Gas Calculator For Metric Units</Header>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
                     placeholder='Enter liters of gas'
@@ -95,10 +99,10 @@ class GHGEmissionsCalculatorMetric extends React.Component {
               </Form>
               {this.state.show &&
               (<Segment>
-                <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
+                <p> {convertTons(calculateCO2(calculateGal(this.state.input)))} tons of CO2 emissions is generated
                   from {this.state.input} liter(s) of
                   gas </p>
-                <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger vehicles
+                <p> This is equivalent to the GHG emissions from {calculateGHG(calculateGal(this.state.input))} passenger vehicles
                   driven for one
                   year.</p>
               </Segment>)}

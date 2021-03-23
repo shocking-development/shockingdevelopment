@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
-import { Trips } from '../../../api/emissions/TripsCollection';
-import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
-import { TripsDefineMethod, tripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
+import { Dropdown, Card, Button, Input, Popup, Icon } from 'semantic-ui-react';
+import { Trips } from '../../api/emissions/TripsCollection';
+import { EmissionsDefineMethod } from '../../api/emissions/EmissionsCollection.methods';
+import { TripsDefineMethod, tripsRemoveMethod } from '../../api/emissions/TripsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
@@ -82,7 +82,7 @@ function UpdateEmissions() {
             value: Number(trip.miles),
             content: (
                 <div>
-                {`${trip.name} (${trip.miles})`}<Button icon='remove' size='small' color='red' onClick={() => deleteTrip(trip)} />
+                {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red' onClick={() => deleteTrip(trip)} />
                 </div>
             ),
         });
