@@ -52,7 +52,7 @@ class ProfileCard extends React.Component {
                 <Button.Group
                     style={{
                       position: 'relative',
-                      left: '30%',
+                      left: '36%',
                     }}
                 >
                   <Button

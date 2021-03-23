@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
+import { Header } from 'semantic-ui-react';
 
 /** A simple static component to render some boxes for the landing page. */
 
@@ -106,10 +107,14 @@ function DataPageDonutChart1() {
 
   return (
       <div>
-        <HighchartsReact
-            highcharts={Highcharts}
-            options={options}
-        />
+        {emissions.length !== 0 ?
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+            /> : <Header inverted as="h3" textAlign="center" >
+              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href="#/add">Try adding todays
+              emissions </a>
+            </Header>}
       </div>
   );
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Image, Icon } from 'semantic-ui-react';
+import { Menu, Image, Icon, Loader } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
@@ -12,7 +12,13 @@ import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
  * @memberOf ui/components/main-navbar
  */
 class NavBarMain extends React.Component {
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    return (this.props.ready) ? this.renderPage() :
+        <Loader active inverted>Getting data</Loader>;
+  }
+
+  renderPage() {
     /* Some styling components */
     const navbarVerticle = {
       height: '100%', /* Full-height: remove this if you want "auto" height */
@@ -40,9 +46,9 @@ class NavBarMain extends React.Component {
               [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}
                      key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
-                  <Image size='medium' circular src ={this.props.profiles.userImage}
+                  <Image size='medium' circular src={this.props.profiles.userImage}
                       // eslint-disable-next-line
-                         onError={(i) => i.target.src='/images/default_image.png'}/>
+                         onError={(i) => i.target.src = '/images/default_image.png'}/>
                 </Menu.Item>
                 <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 

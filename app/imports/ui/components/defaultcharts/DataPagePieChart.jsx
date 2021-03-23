@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Header } from 'semantic-ui-react';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
 
 /** A simple static component to render some boxes for the landing page. */
@@ -117,10 +118,14 @@ function DataPagePieChart() {
 
   return (
       <div>
-        <HighchartsReact
-            highcharts={Highcharts}
-            options={options}
-        />
+        {emissions.length !== 0 ?
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+            /> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
+              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href="#/add">Try adding todays
+              emissions </a>
+            </Header>}
       </div>
   );
 }

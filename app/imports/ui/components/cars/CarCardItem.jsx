@@ -22,7 +22,7 @@ class carCardItem extends React.Component {
           <Grid>
             <Grid.Row columns={carDocs.length}>
               {carDocs.map(recentCar => <Grid.Column key={recentCar._id}>
-                <Card style={{ background: '#136282' }}>
+                <Card style={{ background: '#1d7f90', boxShadow: 'none' }}>
                   <Card.Content>
                     <Icon name={'car'} size={'huge'} inverted/>
                   </Card.Content>
@@ -51,7 +51,7 @@ class carCardItem extends React.Component {
                        style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
                       MPG: {recentCar.mpg} </b>
                   </Card.Content>
-                  <Button id='delete-trip' onClick={() => deleteCar(this.props.car)} color={'blue'}>
+                  <Button id='delete-trip' onClick={() => deleteCar(this.props.car)} color={'teal'}>
                     Remove Car
                   </Button>
                 </Card>

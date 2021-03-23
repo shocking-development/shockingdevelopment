@@ -32,7 +32,7 @@ class CarsDropdown extends React.Component {
             // eslint-disable-next-line no-console
             console.error(error.message);
           } else {
-            swal('Success', 'Your car has been added!', 'success');
+            swal('Success', 'Your car has been added! Please visit your profile to view your cars.', 'success');
             formRef.reset();
             // console.log('Success');
           }
@@ -200,7 +200,6 @@ class CarsDropdown extends React.Component {
               <SubmitField value='Submit' id='submit-car'/>
             </AutoForm>
           </Container>
-          <RecentlyAddedCars/>
         </div>
     );
   }

@@ -98,16 +98,16 @@ class EditProfile extends React.Component {
             <Header inverted as="h2" textAlign="center">Edit Profile</Header>
 
             <Grid>
-              <Grid.Row style={{ marginTop: '3em' }} className='signupcontainer'>
+              <Grid.Row style={{ marginTop: '3em', background: 'rgb(21 51 62)' }}>
                 <Grid.Column width={5}>
                   <Image
                       size={'massive'}
-                      // style={{ width: '150px', height: '150px' }}
+                      style={{ borderRadius: '5%' }}
                       src={dataImage}
                       centered
                   />
                   <div style={{ color: 'black' }}>
-                    <label style={{ cursor: 'pointer', backgroundColor: 'white' }} htmlFor="file-input">
+                    <label style={{ cursor: 'pointer', color: 'aliceblue' }} htmlFor="file-input">
                       Choose Your Photo here
                     </label>
                   </div>
@@ -125,14 +125,14 @@ class EditProfile extends React.Component {
                         // eslint-disable-next-line no-undef,no-alert
                         if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
                       }} model={this.props.doc}>
-                    <Segment>
-                      <TextField name='firstName'/>
-                      <TextField name='lastName'/>
-                      <TextField name='user'/>
-                      <TextField name='email'/>
-                      <SelectField name='unitSystem'/>
-                      <TextField name='transportation'/>
-                      <NumField name='zipcode' decimal={false}/>
+                    <Segment className='viewProfile'>
+                      <TextField className={'carDropdownSelectField'} name='firstName'/>
+                      <TextField className={'carDropdownSelectField'} name='lastName'/>
+                      <TextField className={'carDropdownSelectField'} name='user'/>
+                      <TextField className={'carDropdownSelectField'} name='email'/>
+                      <SelectField className={'carDropdownSelectField'} name='unitSystem'/>
+                      <TextField className={'carDropdownSelectField'} name='transportation'/>
+                      <NumField className={'carDropdownSelectField'} name='zipcode' decimal={false}/>
                       <SubmitField value='Update'/>
                       <ErrorsField/>
                       <HiddenField name='owner'/>

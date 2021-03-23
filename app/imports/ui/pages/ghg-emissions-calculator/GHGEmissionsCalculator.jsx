@@ -67,18 +67,26 @@ class GHGEmissionsCalculator extends React.Component {
       paddingLeft: '5em',
       paddingRight: '5em',
       paddingBottom: '10em',
-      backgroundColor: 'white',
+      backgroundColor: 'rgb(21 51 62)',
     };
 
     return (
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
-          <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '80vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+          <div style={{
+            textAlign: 'center',
+            background: 'rgb(21 51 62)',
+            minHeight: '100vh',
+            Width: '100%',
+            paddingLeft: '15em',
+            paddingTop: '8em',
+            paddingBottom: '8em',
+          }}>
             <Header inverted size={'huge'}>Greenhouse Gas Calculator (US Units)</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
-            <Container style={containerStyle} className='signupcontainer'>
+            <Container style={containerStyle}>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
                     placeholder='Enter the gallons of gas'
