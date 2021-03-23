@@ -5,12 +5,23 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
+import StaticData from '../../components/StaticData';
+import UpdateEmissions from '../../components/UpdateEmissions';
+import RecentlyAdded from '../../components/RecentlyAdded';
+import  SavingsPageBarGraph  from '../../components/defaultcharts/TestingPageBarGraph';
 
 
 /** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
 
-
+const dataPageBarGraphstyling = {
+  background: 'rgb(200, 200, 200)',
+  borderRadius: '5px',
+  paddingTop: '5px',
+  paddingRight: '5px',
+  color: 'black',
+};
 class GraphTest extends React.Component {
+
 
   /** Initialize component state with properties for input */
   constructor(props) {
@@ -41,20 +52,19 @@ class GraphTest extends React.Component {
   }
 
   /** Update the form controls each time the user interacts with them. */
-  handleInputChange = (e, q, o) => {
+  handleInputChange = (e) => {
     this.setState({
       input1: e.target.value,
-      input2: q.target.value,
     });
   };
 
-  handleInputChange2 = (e, q, o) => {
+  handleInputChange2 = (e) => {
     this.setState({
       input2: e.target.value,
     });
   };
 
-  handleInputChange3 = (e, q, o) => {
+  handleInputChange3 = (e) => {
     this.setState({
       input3: e.target.value,
     });
@@ -125,6 +135,11 @@ class GraphTest extends React.Component {
               </Segment>)}
             </Container>
           </div>
+
+          <div style={dataPageBarGraphstyling}>
+            <SavingsPageBarGraph/>
+          </div>
+
         </div>
     );
   }
