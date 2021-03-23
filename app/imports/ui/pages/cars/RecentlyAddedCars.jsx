@@ -30,7 +30,11 @@ class RecentlyAddedCars extends React.Component {
                 <Grid>
                   {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>)}
                 </Grid>
-              </div> : <Header inverted as="h2" textAlign="center">You have not added any cars</Header>}
+              </div> : <Header inverted as="h2" textAlign="center">No cars have been added. You can add cars <a
+                  style={{ color: '#45efe7' }} href={'#/cars'}>
+                here
+              </a>.
+              </Header>}
         </div>
     );
   }

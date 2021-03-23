@@ -1,7 +1,6 @@
 import React from 'react';
 import { Header, Image } from 'semantic-ui-react';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import StaticData from '../../components/emissions/StaticData';
 import UpdateEmissions from '../../components/emissions/UpdateEmissions';
 import RecentlyAdded from '../../components/emissions/RecentlyAdded';
 
