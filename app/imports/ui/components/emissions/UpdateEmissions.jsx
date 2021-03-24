@@ -95,7 +95,7 @@ function UpdateEmissions() {
     });
 
     /* Initializing the trip state */
-    const [TripState, setTripState] = useState({
+    const [tripState, setTripState] = useState({
         date: fullDate,
         transportation: null,
         custom: false,
@@ -107,21 +107,21 @@ function UpdateEmissions() {
     const changeDate = (e) => {
         setTripState({
             date: e.target.value,
-            transportation: TripState.transportation,
-            custom: TripState.custom,
-            trip: TripState.trip,
-            miles: TripState.miles,
+            transportation: tripState.transportation,
+            custom: tripState.custom,
+            trip: tripState.trip,
+            miles: tripState.miles,
         });
     };
 
     /* Changes the transportation state */
     const changeTransportation = (e, data) => {
         setTripState({
-            date: TripState.date,
+            date: tripState.date,
             transportation: data.value,
-            custom: TripState.custom,
-            trip: TripState.trip,
-            miles: TripState.miles,
+            custom: tripState.custom,
+            trip: tripState.trip,
+            miles: tripState.miles,
         });
     };
 
@@ -129,16 +129,16 @@ function UpdateEmissions() {
     const changeTrip = (e, data) => {
         if (data.value === 'Custom') {
             setTripState({
-                date: TripState.date,
-                transportation: TripState.transportation,
+                date: tripState.date,
+                transportation: tripState.transportation,
                 custom: true,
                 trip: null,
                 miles: null,
             });
         } else {
             setTripState({
-                date: TripState.date,
-                transportation: TripState.transportation,
+                date: tripState.date,
+                transportation: tripState.transportation,
                 custom: false,
                 trip: data.key,
                 miles: data.value,
@@ -149,21 +149,21 @@ function UpdateEmissions() {
     /* Changes the trip state to the trip name the user inputs for a custom trip */
     const changeTripName = (e) => {
         setTripState({
-            date: TripState.date,
-            transportation: TripState.transportation,
+            date: tripState.date,
+            transportation: tripState.transportation,
             custom: true,
             trip: e.target.value,
-            miles: TripState.miles,
+            miles: tripState.miles,
         });
     };
 
     /* Changes the miles state that the user inputs for a custom trip */
     const changeTripMiles = (e) => {
         setTripState({
-            date: TripState.date,
-            transportation: TripState.transportation,
+            date: tripState.date,
+            transportation: tripState.transportation,
             custom: true,
-            trip: TripState.trip,
+            trip: tripState.trip,
             miles: Number(e.target.value),
         });
     };
@@ -171,30 +171,30 @@ function UpdateEmissions() {
     /* Handles the submission and checks for errors, also adds to the trip collection if a custom trip was made */
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (TripState.transportation === null) {
+      if (tripState.transportation === null) {
         swal('Error', 'Please select transportation', 'error');
-      } else if (TripState.trip === null) {
+      } else if (tripState.trip === null) {
         swal('Error', 'Please select a trip', 'error');
-      } else if (typeof TripState.miles !== 'number') {
+      } else if (typeof tripState.miles !== 'number' && tripState.custom) {
         swal('Error', 'Please enter a number in the miles input', 'error');
       } else {
           try {
               let miles;
-              if (TripState.custom) {
+              if (tripState.custom) {
                   TripsDefineMethod.call({
                     owner: user,
-                    name: TripState.trip,
-                    miles: TripState.miles,
+                    name: tripState.trip,
+                    miles: tripState.miles,
                   });
-                  miles = TripState.miles;
+                  miles = tripState.miles;
               } else {
-                  miles = Trips.collection.findOne({ _id: TripState.miles }).fetch();
+                  miles = Trips.collection.findOne({ _id: tripState.miles }).miles;
               }
 
               EmissionsDefineMethod.call({
                 owner: user,
-                date: TripState.date,
-                transportation: TripState.transportation,
+                date: tripState.date,
+                transportation: tripState.transportation,
                 miles: miles,
                 createdAt: new Date(),
             },
@@ -224,12 +224,12 @@ function UpdateEmissions() {
             <Card style={{ padding: '1rem', background: '#0DA3CB' }}>
                 <Card.Content>
                     <Card.Header style={{ color: 'white' }}>Date</Card.Header>
-                        <input type="date" value={TripState.date} onChange={changeDate}/>
+                        <input type="date" value={tripState.date} onChange={changeDate}/>
                         <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
                         <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
                         <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
                         <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
-                        {TripState.custom ?
+                        {tripState.custom ?
                             <div>
                                 <br/>
                                 <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
