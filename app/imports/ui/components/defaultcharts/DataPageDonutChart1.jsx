@@ -3,8 +3,8 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Emissions } from '../../../api/emissions/EmissionsCollection';
 import { Header } from 'semantic-ui-react';
+import { Emissions } from '../../../api/emissions/EmissionsCollection';
 
 /** A simple static component to render some boxes for the landing page. */
 

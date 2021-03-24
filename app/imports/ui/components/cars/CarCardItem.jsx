@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Grid, Header, Icon } from 'semantic-ui-react';
+import { Button, Card, Grid, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Cars } from '../../../api/cars/CarsCollection';
@@ -58,7 +58,6 @@ class carCardItem extends React.Component {
               </Grid.Column>)}
             </Grid.Row>
           </Grid>
-          {/* <Card.Header>{this.props.car.owner}</Card.Header> */}
         </Card.Content>
     );
   }

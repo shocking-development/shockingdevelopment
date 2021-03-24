@@ -3,11 +3,10 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Header, Menu } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
 // eslint-disable-next-line no-unused-vars
 import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
-import { NavLink } from 'react-router-dom';
 
 /** A simple static component to render some boxes for the landing page. */
 

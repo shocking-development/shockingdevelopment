@@ -135,11 +135,14 @@ class CarsDropdown extends React.Component {
 
     const filteredSelectField = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
 
+    console.log(filteredSelectField);
+
     /*
     * In order to get the car Id we must do the following:
     */
-    const iDofCar = filteredSelectField.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
-    // console.log(iDofCar);
+    const filteredModel = filteredSelectField.filter(({ year, make, model }) => year === Number(this.state.years) && make === this.state.make && model === this.state.model);
+    const iDofCar = filteredModel.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
+    console.log(iDofCar);
     const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
 
     let fRef = null;
@@ -200,6 +203,7 @@ class CarsDropdown extends React.Component {
               <SubmitField value='Submit' id='submit-car'/>
             </AutoForm>
           </Container>
+          <RecentlyAddedCars/>
         </div>
     );
   }
