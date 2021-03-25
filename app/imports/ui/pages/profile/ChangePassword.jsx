@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader, Header, Segment, Container, Card } from 'semantic-ui-react';
+import { Loader, Header, Image, Segment, Container, Card } from 'semantic-ui-react';
 import swal from 'sweetalert';
 // eslint-disable-next-line no-unused-vars
 import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
@@ -51,6 +51,9 @@ class ChangePassword extends React.Component {
           <NavBarHome/>
           <Container style={pageStyle}>
             <Header inverted as="h2" textAlign="center">Change Password</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Card style={{ margin: 'auto' }}>
               <AutoForm
                   schema={bridge}
