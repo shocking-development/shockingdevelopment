@@ -211,5 +211,19 @@
   margin-top: -10px;
 }
 
+.carDropdownSelectField label
+{
+  color: white !important;
+}
+
+.viewProfile {
+  background:rgb(13, 163, 203) !important;
+  border-radius: 0.9%;
+}
+
+.CarcardFont{
+  color: white !important;
+}
+
 
 

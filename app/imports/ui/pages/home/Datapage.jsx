@@ -4,11 +4,11 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import NavBarHome from '../components/main-navbar/NavBarMain';
-import DataPagePieChart from '../components/defaultcharts/DataPagePieChart';
-import DataPageBarGraph from '../components/defaultcharts/DataPageBarGraph';
-import DataPageDonutChart1 from '../components/defaultcharts/DataPageDonutChart1';
-import DataPageDonutChart2 from '../components/defaultcharts/DataPageDonutChart2';
+import NavBarHome from '../../components/main-navbar/NavBarMain';
+import DataPagePieChart from '../../components/defaultcharts/DataPagePieChart';
+import DataPageBarGraph from '../../components/defaultcharts/DataPageBarGraph';
+import DataPageDonutChart1 from '../../components/defaultcharts/DataPageDonutChart1';
+import DataPageDonutChart2 from '../../components/defaultcharts/DataPageDonutChart2';
 
 /** A simple static component to render the datapage page when users are logged in. */
 class Datapage extends React.Component {

@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Image, Icon } from 'semantic-ui-react';
+import { Menu, Image, Icon, Loader } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
+import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
 /**
  * The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ...
  * @memberOf ui/components/main-navbar
  */
 class NavBarMain extends React.Component {
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    return (this.props.ready) ? this.renderPage() :
+        <Loader active inverted>Getting data</Loader>;
+  }
+
+  renderPage() {
     /* Some styling components */
     const navbarVerticle = {
       height: '100%', /* Full-height: remove this if you want "auto" height */
@@ -36,9 +43,12 @@ class NavBarMain extends React.Component {
         <div className={'css-selector'} style={navbarVerticle}>
           {this.props.currentUser ? (
 
-              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }} key='key0'>
+              [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}
+                     key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
-                  <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular/>
+                  <Image size='medium' circular src={this.props.profiles.userImage}
+                      // eslint-disable-next-line
+                         onError={(i) => i.target.src = '/images/default_image.png'}/>
                 </Menu.Item>
                 <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 
@@ -62,27 +72,29 @@ class NavBarMain extends React.Component {
                   GHG calculator
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCalMetric" key='key8'>
+                  <Icon name='calculator' size='large'/>
+                  GHG calculator Metric
+                </Menu.Item>
+
+                {/* <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
                   <Icon name='map' size='large'/>
                   Map your route
-                </Menu.Item>
+                </Menu.Item> */}
 
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/gotosavings" key='key6'>
                   <Icon name='money bill alternate' size='large'/>
                   Go to savings
                 </Menu.Item>
 
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/cars" key='key10'>
+                  <Icon name='car' size='large'/>
+                  Cars
+                </Menu.Item>
+
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
-                </Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/cars" key='key10'>
-                  <Icon name='sign-out' size='large'/>
-                  Cars
-                </Menu.Item>
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
-                  <Icon name='sign-out' size='large'/>
-                  List Cars
                 </Menu.Item>
 
               </Menu>,
@@ -101,12 +113,21 @@ class NavBarMain extends React.Component {
 
 /** Declare the types of all properties. */
 NavBarMain.propTypes = {
+  profiles: PropTypes.object,
+  ready: PropTypes.bool.isRequired,
   currentUser: PropTypes.string,
+  currentId: PropTypes.string,
 };
+
+const subscription = UserInfos.subscribeUserInfo();
+const userAccount = Meteor.users.findOne(Meteor.userId());
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 const NavBar2Container = withTracker(() => ({
+  profiles: UserInfos.findOne(userAccount),
   currentUser: Meteor.user() ? Meteor.user().username : '',
+  currentId: Meteor.userId(),
+  ready: subscription.ready(),
 }))(NavBarMain);
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */

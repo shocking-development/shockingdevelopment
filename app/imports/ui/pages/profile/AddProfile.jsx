@@ -50,7 +50,7 @@ class AddProfile extends React.Component {
           <Container>
             <Grid container>
               <Grid.Column>
-                <Header as="h2" textAlign="center">Add Stuff</Header>
+                <Header as="h2" textAlign="center">Add Profile</Header>
                 <AutoForm ref={ref => {
                   fRef = ref;
                 }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>

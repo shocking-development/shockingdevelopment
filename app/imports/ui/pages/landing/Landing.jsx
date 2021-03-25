@@ -1,9 +1,9 @@
 import React from 'react';
-import LandingSection1Text from '../components/landing/LandingSection1Text';
-import NavBarLanding from '../components/landing/NavBarLanding';
-import LandingSection1Boxes from '../components/landing/LandingSection1Boxes';
-import LandingSection2 from '../components/landing/LandingSection2';
-import Footer from '../components/Footer';
+import LandingSection1Text from '../../components/landing/LandingSection1Text';
+import NavBarLanding from '../../components/landing/NavBarLanding';
+import LandingSection1Boxes from '../../components/landing/LandingSection1Boxes';
+import LandingSection2 from '../../components/landing/LandingSection2';
+import Footer from '../../components/footer/Footer';
 
 /**
  * A simple static component to render some text for the landing page.

@@ -1,15 +1,43 @@
 import React from 'react';
 import { Container, Header, Loader } from 'semantic-ui-react';
-import { AutoForm, SelectField } from 'uniforms-semantic';
+import { AutoForm, ErrorField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import swal from 'sweetalert';
+import { Meteor } from 'meteor/meteor';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
+import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
+import RecentlyAddedCars from './RecentlyAddedCars';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+const formSchema = new SimpleSchema({
+  carName: String,
+  carId: String,
+});
+
+/** Renders a drop down containing all of the car documents */
 class CarsDropdown extends React.Component {
+
+  /** On submit, insert the data. */
+  submit(data, formRef) {
+    const { carName, carId } = data;
+    // console.log(data);
+    const owner = Meteor.user().username;
+    userInfoCarDefineMethod.call({ carName, carId, owner },
+        (error) => {
+          if (error) {
+            swal('Error', error.message, 'error');
+            // eslint-disable-next-line no-console
+            console.error(error.message);
+          } else {
+            swal('Success', 'Your car has been added! Please visit your profile to view your cars.', 'success');
+            formRef.reset();
+            // console.log('Success');
+          }
+        });
+  }
 
   /** Initialize state fields. */
   constructor(props) {
@@ -28,46 +56,60 @@ class CarsDropdown extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '60em',
+      height: '66em',
       backgroundSize: 'cover',
+      paddingTop: '5em',
+      marginLeft: '10%',
     };
 
+    /*
+    * The goal of this page is to filter the select fields based on the user input.
+    * We want to only show the relevant car models based on the years and the make.
+    * To do this we retrieve the car documents and create two arrays with the models
+    * and the make. Then to separate it into an array with objects we filter the car docs
+    * based on the car docs and make. After we create a scheme with the allowedValues the
+    * user can select. After getting the selected values we filter all the cars based on
+    * the make and year chose and return the model.
+    */
     const carDocs = Cars.find({}).fetch();
-    const carYears = carDocs.map((doc) => `${doc.year}`);
-    const carModel = carDocs.map((doc) => `${doc.model}-${doc._id}`);
-    const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`);
+    const carModelForAllCars = carDocs.map((doc) => `${doc.model}-${doc._id}`);
+    const carMakeForAllCars = carDocs.map((doc) => `${doc.make}-${doc._id}`);
+    const allCars = carDocs.filter((doc) => carMakeForAllCars.indexOf(doc.make) === carModelForAllCars.indexOf(doc.model));
 
-    // an example of how to filter the cars
-     const filteredMake = carDocs.filter((doc) => carMake.indexOf(doc.make) === carModel.indexOf(doc.model));
-    /* console.log(filteredMake);
+    const carMakeAllowedValues = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Bentley', 'Buick', 'Cadillac', 'Chevrolet',
+      'Chrysler', 'Dodge', 'Fiat', 'Ford', 'GMC', 'Genesis', 'Honda', 'Hyundai',
+      'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Mazda',
+      'Mercedes-Benz', 'Mercury', 'Mini', 'Mitsubishi',
+      'Nikola', 'Nissan', 'Polestar', 'Pontiac', 'Porsche', 'Ram', 'Rivian',
+      'Rolls-Royce', 'Saab', 'Saturn', 'Scion', 'Smart', 'Subaru', 'Suzuki',
+      'Tesla', 'Toyota', 'Volkswagen', 'Volvo'];
 
-    const carModel1 = filteredMake.map(({ model, _id }) => ({ model, _id }));
-    console.log(carModel1);
-    const carModel2 = carModel1.map((doc) => `${doc.model}-${doc._id}`);
-    console.log(carModel2);
+    /* Code reference to generate Array of years https://renatello.com/javascript-array-of-years/ */
+    function generateArrayOfYears() {
+      const max = new Date().getFullYear();
+      const min = max - 37;
+      const years = [];
 
-    const carMake1 = filteredMake.map(({ make, _id, year }) => ({ make, _id, year }));
-    console.log(carMake1);
-    const carMake2 = carMake1.map((doc) => `${doc.make}-${doc._id}-${doc.year}`);
-    console.log(carMake2); */
+      for (let i = max; i >= min; i--) {
+        years.push(i);
+      }
+      return years;
+    }
 
-    // const test1 = filteredMake.filter((obj) => Object.keys(obj).reduce((acc, curr) => acc || obj[curr].includes(2019), false));
-    // console.log(test1);
+    const years = generateArrayOfYears();
+
+    const carYears = years;
 
     const sch = new SimpleSchema({
-      make: { type: String, allowedValues: carMake },
-      model: { type: String, allowedValues: carModel },
-      years: { type: String, allowedValues: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019] },
+      make: { type: String, allowedValues: carMakeAllowedValues },
+      model: { type: String, allowedValues: [] },
+      years: { type: String, allowedValues: carYears },
     });
 
     const schema = new SimpleSchema2Bridge(sch);
-
-    // console.log(carYears);
-     console.log(carModel);
-     console.log(carMake);
-     console.log(filteredMake);
 
     /** Update the form filters the selector each time the user interacts with them. */
     const handleChange = (key, value) => {
@@ -76,62 +118,98 @@ class CarsDropdown extends React.Component {
         this.setState({
           years: value,
         });
-        // console.log(carMake[carYears.indexOf(value)]);
-        // console.log(carYears.indexOf(value));
+
       } else
         if (key === 'make') {
-          // console.log(value);
-          // console.log(carMake.indexOf(value));
           this.setState({
             make: value,
           });
 
         } else {
-          // console.log(value);
-          // console.log(carModel.indexOf(value));
           this.setState({
             model: value,
           });
 
         }
     };
-    const makeNames = Object.entries(carDocs);
-    console.log(makeNames);
-    /* carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make)) */
-    // eslint-disable-next-line no-unused-vars
-    const allowedMakeValues = () => {
-      carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make));
-    };
+
+    const filteredSelectField = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
+
+    console.log(filteredSelectField);
+
+    /*
+    * In order to get the car Id we must do the following:
+    */
+    const filteredModel = filteredSelectField.filter(({ year, make, model }) => year === Number(this.state.years) && make === this.state.make && model === this.state.model);
+    const iDofCar = filteredModel.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
+    console.log(iDofCar);
+    const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
+
+    let fRef = null;
+    const bridge = new SimpleSchema2Bridge(formSchema);
 
     return (
+
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ padding: '10em' }}>
+          <Container>
             <Header as="h2" textAlign="center" inverted>Cars</Header>
+
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
+                  id='select-year'
+                  className={'carDropdownSelectField'}
                   name='years'
+                  showInlineError={true}
+                  placeholder='Select Year'
               />
               <SelectField
+                  id='select-make'
+                  className={'carDropdownSelectField'}
                   name='make'
-                  allowedValues={carMake.filter((make) => carYears.indexOf(this.state.years) === carMake.indexOf(make))}
+                  showInlineError={true}
+                  placeholder='Select Make'
               />
               <SelectField
+                  id='select-model'
+                  className={'carDropdownSelectField'}
                   name='model'
-                  allowedValues={carModel.filter((model) => carYears.indexOf(this.state.years) === carModel.indexOf(model))}
+                  allowedValues={allowedModelValues}
+                  showInlineError={true}
+                  placeholder='Select Model'
               />
+            </AutoForm>
 
+            <AutoForm ref={ref => {
+              fRef = ref;
+            }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+
+              <TextField
+                  id='input-car'
+                  className={'carDropdownSelectField'}
+                  name='carName'
+                  placeholder='Enter the name of your vehicle'
+              />
+              <ErrorField
+                  name="carName"
+                  errorMessage="Please type the name of your vehicle"
+              />
+              <HiddenField name="carId" value={iDofCar}/>
+              <ErrorField
+                  name="carId"
+                  errorMessage="Please select your car first"
+              />
+              <SubmitField value='Submit' id='submit-car'/>
             </AutoForm>
           </Container>
+          <RecentlyAddedCars/>
         </div>
     );
   }
 }
 
-/** Require an array of Stuff documents in the props. */
 CarsDropdown.propTypes = {
-  cars: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -140,7 +218,6 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Cars.subscribeCars();
   return {
-    cars: Cars.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(CarsDropdown);

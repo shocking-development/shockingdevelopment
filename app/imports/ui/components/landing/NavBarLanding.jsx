@@ -56,7 +56,7 @@ function NavBarLanding() { // implement function and have boolean for user/admin
 
       <Menu.Item>
 
-        <Dropdown className='body' id="navbar-current-user" text={user} pointing="top right"
+        <Dropdown className='body' id="navbar-current-user" text={user.toString()} pointing="top right"
                   icon={'user'}
                   style={loginButton}>
           <Dropdown.Menu>

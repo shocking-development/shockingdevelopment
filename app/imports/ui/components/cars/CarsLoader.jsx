@@ -1,6 +1,6 @@
 import papa from 'papaparse';
 
-function CarsDropDown1() {
+function CarsLoader() {
   /* the csv url */
   const carsCSVfile = 'https://raw.githubusercontent.com/CalianaFortin/vehicledata/main/vehicles.csv';
   const carOptions = [];
@@ -38,4 +38,4 @@ function CarsDropDown1() {
   );
 }
 
-export default CarsDropDown1;
+export default CarsLoader;

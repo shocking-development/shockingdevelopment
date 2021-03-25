@@ -1,16 +1,13 @@
 import React from 'react';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Header } from 'semantic-ui-react';
+import HighchartsReact from 'highcharts-react-official';
+import Highcharts from 'highcharts';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
-// eslint-disable-next-line no-unused-vars
-import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
 
-/** A simple static component to render some boxes for the landing page. */
+function EmissionsChart() {
 
-function DataPageBarGraph() {
   const user = useTracker(() => Meteor.userId());
   const emissions = useTracker(() => {
     Meteor.subscribe(Emissions.emissionsPublicationName);
@@ -19,9 +16,14 @@ function DataPageBarGraph() {
   const dateRecorded = emissions.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`);
   const dataMiles = emissions.map(recentEmissions => recentEmissions.miles);
 
+  // console.log(emissions);
+  // if the date created at is the same then add the miles up
+  // if the object created had the same date as another object add up the miles
+  // console.log(emissions.map(recentEmissions => `${recentEmissions.date}-${recentEmissions.miles}`));
+
   const options = {
     title: {
-      text: 'Your 2021 Environmental Benefits Cummulative Total',
+      text: 'Your 2021 Emissions Total',
       style: {
         color: 'white',
         fontWeight: '300',
@@ -29,19 +31,11 @@ function DataPageBarGraph() {
       },
     },
     series: [{
-      name: 'VMT saved (Miles)',
+      name: 'VMT (Miles)',
       // need what it would have cost using the worst mode of transport and then the mode of transport being used -> gallons
       // co2 store this info somewhere in a diff/same collection, get all the data from this collection and add them up,
       // go to only your page calculate your data, user, mode, worstmode of transportation
       data: dataMiles,
-
-    }, {
-      name: 'Fuel Gallons Saved (Gallons)',
-      data: [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-    }, {
-      name: 'CO2 reduced (Pounds)',
-      data: [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 
     }],
     chart: {
@@ -82,18 +76,16 @@ function DataPageBarGraph() {
   };
 
   return (
-      <div>
-        {emissions.length !== 0 ?
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={options}
-            /> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href="#/add">Try adding todays
-              emissions </a>
-            </Header>}
+      <div style={{ paddingTop: '3rem' }}>
+        <Header inverted size='huge' textAlign={'center'}>Graph</Header>
+        <div>
+          <HighchartsReact
+              highcharts={Highcharts}
+              options={options}
+          />
+        </div>
       </div>
   );
-
 }
 
-export default DataPageBarGraph;
+export default EmissionsChart;

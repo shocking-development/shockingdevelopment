@@ -1,11 +1,14 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Image, Card, Button, Icon } from 'semantic-ui-react';
+import { Container, Grid, Loader, Image, Button, Icon, Header } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
+import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
+import { Cars } from '../../../api/cars/CarsCollection';
+import RecentlyAddedCars from '../cars/RecentlyAddedCars';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileCard extends React.Component {
@@ -20,50 +23,102 @@ class ProfileCard extends React.Component {
   renderPage() {
 
     const pageStyle = {
-      display: 'flex',
-      background: 'rgb(21 51 62)',
-    };
-    const divstyle = {
-      height: '100vh',
-      paddingTop: '2em',
+      paddingLeft: '15em',
+      paddingTop: '6em',
+      height: '70em',
+      backgroundSize: 'cover',
     };
 
     return (
-        <div style={pageStyle}>
+        <div style={{
+          background: 'rgb(21 51 62)',
+          backgroundSize: 'cover',
+          height: '100%',
+          marginTop: '-10px',
+        }}>
           <NavBarHome/>
-          <div style={divstyle}>
-            <Container style={{ paddingTop: '5em' }}>
-              <Header inverted as="h2" textAlign="center">The User Profile</Header>
-              <Card style={{ margin: 'auto' }}>
-                <Image size='medium' src ={this.props.profiles.userImage}
-                    // eslint-disable-next-line
-                       onError={(i) => i.target.src='/images/default_image.png'}/>
-                <Card.Content>
-                  <Card.Header>
-                    {this.props.profiles.firstName}  {this.props.profiles.lastName}
-                  </Card.Header>
-                  <Card.Meta>
-                   {this.props.profiles.user}
-                  </Card.Meta>
-                  <Card.Description>
-                    <p>
-                      Zipcode: {this.props.profiles.zipcode}
-                    </p>
 
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button as={NavLink} exact to={`/edit/${this.props.profiles._id}`} animated='vertical' floated='right' size='big'>
-                    <Button.Content hidden>Edit</Button.Content>
+          <Container style={pageStyle}>
+            <Grid className='viewProfile'>
+              <Grid.Column width={5}
+
+              >
+                <Image src={this.props.profiles.userImage}
+                    // eslint-disable-next-line
+                       onError={(i) => i.target.src = '/images/default_image.png'}
+                       style={{ borderRadius: '5%' }}
+                />
+
+                <Button.Group
+                    style={{
+                      position: 'relative',
+                      left: '36%',
+                    }}
+                >
+                  <Button
+                      as={NavLink}
+                      exact to={`/change/${this.props.profiles._id}`}
+                      animated='vertical'
+                      size='medium'
+                      style={{ marginTop: '10px' }}
+                      color='blue'
+                  >
+                    <Button.Content hidden>Password</Button.Content>
                     <Button.Content visible>
-                      <Icon name='pencil' />
+                      <Icon name='lock'/>
                     </Button.Content>
                   </Button>
-                </Card.Content>
-              </Card>
-            </Container>
-          </div>
+
+                  <Button
+                      as={NavLink}
+                      exact to={`/edit/${this.props.profiles._id}`}
+                      animated='vertical'
+                      size='medium'
+                      style={{ marginTop: '10px' }}
+                      color='blue'
+                  >
+                    <Button.Content hidden>Edit</Button.Content>
+                    <Button.Content visible>
+                      <Icon name='pencil'/>
+                    </Button.Content>
+                  </Button>
+                </Button.Group>
+
+              </Grid.Column>
+
+              <Grid.Column
+                  width={4}
+                  style={{ top: '2vh', left: '2%' }}
+              >
+
+                <Header as='h1' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                  {this.props.profiles.firstName} {this.props.profiles.lastName}
+                </Header>
+                <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                  <p>
+                    Username: {this.props.profiles.user}
+                  </p>
+                  <p>
+                    Zipcode: {this.props.profiles.zipcode}
+                  </p>
+                  <p>
+                    Unit Preference: {this.props.profiles.unitSystem}
+                  </p>
+                </Header>
+
+              </Grid.Column>
+
+              <Grid.Column width={6}>
+
+                <RecentlyAddedCars/>
+
+              </Grid.Column>
+
+            </Grid>
+          </Container>
+
         </div>
+
     );
   }
 }
@@ -74,17 +129,21 @@ ProfileCard.propTypes = {
   ready: PropTypes.bool.isRequired,
   currentUser: PropTypes.string,
   currentId: PropTypes.string,
+  cars: PropTypes.array,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
   // Get access to Stuff documents.
-  const subscription = UserInfos.subscribeUserInfo();
+  const sub1 = UserInfos.subscribeUserInfo();
   const userAccount = Meteor.users.findOne(match.params._id);
+  const sub2 = UserInfosCars.subscribeUserInfoCars();
+  const sub3 = Cars.subscribeCars();
   return {
     profiles: UserInfos.findOne(userAccount),
     currentUser: Meteor.user() ? Meteor.user().username : '',
     currentId: match.params._id,
-    ready: subscription.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready(),
+    cars: UserInfosCars.find({}).fetch(),
   };
 })(ProfileCard);

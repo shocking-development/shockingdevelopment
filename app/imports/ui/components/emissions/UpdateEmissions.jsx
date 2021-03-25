@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Dropdown, Card, Button, Input, Popup } from 'semantic-ui-react';
-import { TripsCollection } from '../../api/data/TripsCollection';
+import { Dropdown, Card, Button, Input, Popup, Icon } from 'semantic-ui-react';
+import { Trips } from '../../../api/emissions/TripsCollection';
+import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
+import { TripsDefineMethod, tripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
-function UpdateData() {
+function UpdateEmissions() {
 
     /* Gets the current user */
     const user = useTracker(() => Meteor.userId());
 
     /* Gets the users saved preset trips */
     const trips = useTracker(() => {
-    Meteor.subscribe('trips');
-    return TripsCollection.find({ owner: user }).fetch();
+    Meteor.subscribe(Trips.tripsPublicationName);
+    return Trips.collection.find({ owner: user }).fetch();
     });
 
     /* Gets the current date and puts it in the correct format for the date input */
@@ -69,7 +71,7 @@ function UpdateData() {
     ];
 
     /* DeleteTrip function allows users to delete preset trips */
-    const deleteTrip = ({ _id }) => Meteor.call('trips.remove', _id);
+    const deleteTrip = ({ _id }) => tripsRemoveMethod.call(_id);
 
     /* Adds the users preset trips along with the custom option to an array that holds the dropdown options */
     const tripOptions = [];
@@ -77,10 +79,10 @@ function UpdateData() {
         tripOptions.push({
             key: trip._id,
             text: `${trip.name} (${trip.miles})`,
-            value: Number(trip.miles),
+            value: trip._id,
             content: (
                 <div>
-                {`${trip.name} (${trip.miles})`}<Button icon='remove' size='small' color='red' onClick={() => deleteTrip(trip)} />
+                {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red' onClick={() => deleteTrip(trip)} />
                 </div>
             ),
         });
@@ -93,7 +95,7 @@ function UpdateData() {
     });
 
     /* Initializing the trip state */
-    const [TripState, setTripState] = useState({
+    const [tripState, setTripState] = useState({
         date: fullDate,
         transportation: null,
         custom: false,
@@ -105,21 +107,21 @@ function UpdateData() {
     const changeDate = (e) => {
         setTripState({
             date: e.target.value,
-            transportation: TripState.transportation,
-            custom: TripState.custom,
-            trip: TripState.trip,
-            miles: TripState.miles,
+            transportation: tripState.transportation,
+            custom: tripState.custom,
+            trip: tripState.trip,
+            miles: tripState.miles,
         });
     };
 
     /* Changes the transportation state */
     const changeTransportation = (e, data) => {
         setTripState({
-            date: TripState.date,
+            date: tripState.date,
             transportation: data.value,
-            custom: TripState.custom,
-            trip: TripState.trip,
-            miles: TripState.miles,
+            custom: tripState.custom,
+            trip: tripState.trip,
+            miles: tripState.miles,
         });
     };
 
@@ -127,16 +129,16 @@ function UpdateData() {
     const changeTrip = (e, data) => {
         if (data.value === 'Custom') {
             setTripState({
-                date: TripState.date,
-                transportation: TripState.transportation,
+                date: tripState.date,
+                transportation: tripState.transportation,
                 custom: true,
                 trip: null,
                 miles: null,
             });
         } else {
             setTripState({
-                date: TripState.date,
-                transportation: TripState.transportation,
+                date: tripState.date,
+                transportation: tripState.transportation,
                 custom: false,
                 trip: data.key,
                 miles: data.value,
@@ -147,21 +149,21 @@ function UpdateData() {
     /* Changes the trip state to the trip name the user inputs for a custom trip */
     const changeTripName = (e) => {
         setTripState({
-            date: TripState.date,
-            transportation: TripState.transportation,
+            date: tripState.date,
+            transportation: tripState.transportation,
             custom: true,
             trip: e.target.value,
-            miles: TripState.miles,
+            miles: tripState.miles,
         });
     };
 
     /* Changes the miles state that the user inputs for a custom trip */
     const changeTripMiles = (e) => {
         setTripState({
-            date: TripState.date,
-            transportation: TripState.transportation,
+            date: tripState.date,
+            transportation: tripState.transportation,
             custom: true,
-            trip: TripState.trip,
+            trip: tripState.trip,
             miles: Number(e.target.value),
         });
     };
@@ -169,33 +171,44 @@ function UpdateData() {
     /* Handles the submission and checks for errors, also adds to the trip collection if a custom trip was made */
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (TripState.transportation === null) {
+      if (tripState.transportation === null) {
         swal('Error', 'Please select transportation', 'error');
-      } else if (TripState.trip === null) {
+      } else if (tripState.trip === null) {
         swal('Error', 'Please select a trip', 'error');
-      } else if (typeof TripState.miles !== 'number') {
+      } else if (typeof tripState.miles !== 'number' && tripState.custom) {
         swal('Error', 'Please enter a number in the miles input', 'error');
       } else {
           try {
-              if (TripState.custom) {
-                Meteor.call('trips.insert', {
+              let miles;
+              if (tripState.custom) {
+                  TripsDefineMethod.call({
                     owner: user,
-                    name: TripState.trip,
-                    miles: TripState.miles,
-                });
+                    name: tripState.trip,
+                    miles: tripState.miles,
+                  });
+                  miles = tripState.miles;
+              } else {
+                  miles = Trips.collection.findOne({ _id: tripState.miles }).miles;
               }
 
-            Meteor.call('data.insert', {
+              EmissionsDefineMethod.call({
                 owner: user,
-                date: TripState.date,
-                transportation: TripState.transportation,
-                miles: TripState.miles,
-            });
+                date: tripState.date,
+                transportation: tripState.transportation,
+                miles: miles,
+                createdAt: new Date(),
+            },
+            (error) => {
+                if (error) {
+                  swal('Error', error.message, 'error');
+                } else {
+                    swal('Success', 'Added successfully', 'success').then(() => {
+                        // eslint-disable-next-line no-undef
+                        window.location.reload();
+                    });
+                }
+              });
 
-            swal('Success', 'Added successfully', 'success').then(() => {
-                // eslint-disable-next-line no-undef
-                window.location.reload();
-            });
           } catch {
               swal('Error', 'Failed to add, please try again.', 'error').then(() => {
                 // eslint-disable-next-line no-undef
@@ -208,15 +221,15 @@ function UpdateData() {
     /* Return function rendering the component */
     return (
         <div style={{ paddingTop: '3rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Card style={{ padding: '1rem', background: '#4282AF' }}>
+            <Card style={{ padding: '1rem', background: '#0DA3CB' }}>
                 <Card.Content>
                     <Card.Header style={{ color: 'white' }}>Date</Card.Header>
-                        <input type="date" value={TripState.date} onChange={changeDate}/>
+                        <input type="date" value={tripState.date} onChange={changeDate}/>
                         <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
                         <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions} onChange={changeTransportation}/>
                         <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
                         <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions} onChange={changeTrip}/>
-                        {TripState.custom ?
+                        {tripState.custom ?
                             <div>
                                 <br/>
                                 <Popup content='Insert a name for this trip' trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name' onChange={changeTripName}/>}/>
@@ -235,4 +248,4 @@ function UpdateData() {
     );
 }
 
-export default UpdateData;
+export default UpdateEmissions;
