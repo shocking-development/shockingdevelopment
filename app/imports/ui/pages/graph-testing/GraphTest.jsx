@@ -5,10 +5,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import StaticData from '../../components/StaticData';
-import UpdateEmissions from '../../components/UpdateEmissions';
-import RecentlyAdded from '../../components/RecentlyAdded';
+import { tesing } from '../../../ui/components/defaultcharts/TestinBarGraph';
 import  SavingsPageBarGraph  from '../../components/defaultcharts/TestingPageBarGraph';
+import HighchartsReact from 'highcharts-react-official';
+import Highcharts from 'highcharts';
 
 
 /** A simple static component to render the GHGEmissionsCalculator when users are logged in. */
@@ -138,6 +138,16 @@ class GraphTest extends React.Component {
 
           <div style={dataPageBarGraphstyling}>
             <SavingsPageBarGraph/>
+            <script>{console.log(this.state.input1, this.state.input2, this.state.input3)}</script>
+            <div>
+              <HighchartsReact
+                  highcharts={Highcharts}
+                  options={tesing(this.state.input1, this.state.input2, this.state.input3,
+                      [this.state.input1, this.state.input2, this.state.input3])}
+
+              />
+            </div>
+
           </div>
 
         </div>

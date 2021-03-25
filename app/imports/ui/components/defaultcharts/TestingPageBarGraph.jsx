@@ -1,9 +1,11 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { tesing } from './TestinBarGraph';
+import EmissionsCollection from '../../../api/emissions/EmissionsCollection';
 
 /** A simple static component to render some boxes for the landing page. */
-
+console.log(EmissionsCollection.miles + "You");
 class TestingPageBarGraph extends React.Component {
 
 
@@ -21,7 +23,7 @@ class TestingPageBarGraph extends React.Component {
       series: [{
         color: 'blue',
         name: 'Price (Thousands of Dollars)',
-        data: [25, 63.6, 15],
+        data: [25, 63],
 
       }, {
         color: 'yellow',
