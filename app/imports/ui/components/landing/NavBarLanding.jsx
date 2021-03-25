@@ -34,13 +34,10 @@ function NavBarLanding() { // implement function and have boolean for user/admin
   };
 
   /* Gets the current user and tells us if we are logging in */
-  const { user, isLoggedIn } = useTracker(() => {
-    // eslint-disable-next-line no-shadow
-    const user = Meteor.user();
+  const { isLoggedIn } = useTracker(() => {
     const userId = Meteor.userId(); // gets the id of the user
     const isLoggingIn = Meteor.loggingIn();
     return {
-      user,
       userId,
       isLoggingIn,
       isLoggedIn: !!userId, // if the user logged in does not equal the userId then we are signing in
