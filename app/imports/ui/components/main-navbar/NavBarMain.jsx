@@ -67,12 +67,12 @@ class NavBarMain extends React.Component {
                   Add Today&apos;s Emissions
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key4'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key4' id="calculator-imperial">
                   <Icon name='calculator' size='large'/>
                   GHG calculator
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCalMetric" key='key8'>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCalMetric" key='key8' id="calculator-metric">
                   <Icon name='calculator' size='large'/>
                   GHG calculator Metric
                 </Menu.Item>

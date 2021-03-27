@@ -6,6 +6,7 @@ import { emissionsCalculator } from './GHG.Emissions.Calculator';
 import { SignUpPage } from './signup.page';
 import { yourSavings } from './Go.To.Savings';
 import { emissions } from './Add.Emissions';
+import { emissionsCalculatorMetric } from './GHG.Emissions.Calculator.Metric';
 
 /* global fixture:false, test:false */
 
@@ -63,6 +64,15 @@ test('test that the add emissions page works', async (testController) => {
   await emissions.addTrip(testController);
   await emissions.updateEmissions(testController, updatedEmissions.updateEmissions);
   await emissions.deleteTrip(testController, addedEmissions.year, addedEmissions.make, addedEmissions.model, addedEmissions.name);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('test that the GHG emissions metric calculator work', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await emissionsCalculatorMetric.testCalculationMetric(testController, credentials.input);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });

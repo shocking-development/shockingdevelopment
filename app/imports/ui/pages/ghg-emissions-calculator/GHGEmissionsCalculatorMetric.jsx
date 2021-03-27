@@ -83,11 +83,12 @@ class GHGEmissionsCalculatorMetric extends React.Component {
             <Container style={containerStyle}>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
+                    id='calculator-metric'
                     placeholder='Enter liters of gas'
                     value={this.state.input}
                     onChange={this.handleInputChange}
                 />
-                <Button color='blue' onClick={this.showResult}>Calculate</Button>
+                <Button color='blue' onClick={this.showResult} id='submit-metric'>Calculate</Button>
               </Form>
               {this.state.show &&
               (<Segment>
