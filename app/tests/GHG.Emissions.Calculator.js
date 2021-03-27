@@ -17,6 +17,10 @@ class GHGCalculator {
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
     await testController.expect(rowCount).get(2);
   }
+
+  async testCalculationMetric(testController) {
+    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+  }
 }
 
 export const emissionsCalculator = new GHGCalculator();
