@@ -16,8 +16,8 @@ export const TripsDefineMethod = new ValidatedMethod({
     },
   });
 
-  export const tripsRemoveMethod = new ValidatedMethod({
-    name: 'tripsCollection.remove',
+  export const TripsRemoveMethod = new ValidatedMethod({
+    name: 'TripsCollection.remove',
     mixins: [CallPromiseMixin],
     validate: null,
     run(docId) {

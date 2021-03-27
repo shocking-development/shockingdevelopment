@@ -5,7 +5,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Icon } from 'semantic-ui-react';
 import { Trips } from '../../../api/emissions/TripsCollection';
 import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
-import { TripsDefineMethod, tripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
+import { TripsDefineMethod, TripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
@@ -71,7 +71,7 @@ function UpdateEmissions() {
     ];
 
     /* DeleteTrip function allows users to delete preset trips */
-    const deleteTrip = ({ _id }) => tripsRemoveMethod.call(_id);
+    const deleteTrip = ({ _id }) => TripsRemoveMethod.call(_id);
 
     /* Adds the users preset trips along with the custom option to an array that holds the dropdown options */
     const tripOptions = [];

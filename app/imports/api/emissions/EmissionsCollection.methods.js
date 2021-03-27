@@ -15,3 +15,12 @@ export const EmissionsDefineMethod = new ValidatedMethod({
       return '';
     },
   });
+
+export const EmissionsRemoveMethod = new ValidatedMethod({
+    name: 'EmissionsCollection.remove',
+    mixins: [CallPromiseMixin],
+    validate: null,
+    run(docId) {
+      return Emissions.collection.remove(docId);
+    },
+  });
