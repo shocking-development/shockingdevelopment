@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Card, Header, Grid } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
 
 function RecentlyAdded() {
@@ -13,8 +13,7 @@ function RecentlyAdded() {
   });
 
   return (
-      <div style={{ paddingTop: '3rem' }}>
-        <Header inverted size='huge' textAlign={'center'}>Recently Added</Header>
+      <div>
         {emissions.length !== 0 ?
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
               <Grid>
