@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Icon } from 'semantic-ui-react';
+import { Button, Card, Image, Header, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -39,8 +39,12 @@ class GoToSavings extends React.Component {
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-
-          <Card.Group style={cardStyle}>
+          <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '100vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+            <Header as='h1' inverted textAlign='center'>SAVINGS</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
+            <Card.Group style={cardStyle}>
             <Card>
               <Card.Content>
                 <div align="right"><Icon name='car'/></div>
@@ -153,6 +157,7 @@ class GoToSavings extends React.Component {
               </Card.Content>
             </Card>
           </Card.Group>
+        </div>
         </div>
     );
   }
