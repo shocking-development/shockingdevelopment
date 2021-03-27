@@ -11,7 +11,7 @@ import { emissionsCalculatorMetric } from './GHG.Emissions.Calculator.Metric';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'john@foo.com', password: 'changeme', input: 30 };
+const credentials = { username: 'john@foo.com', password: 'changeme', inputImperial: 30, inputMetric: 60 };
 const signup = { firstName: 'Johnny', lastName: 'Guitar', zipcode: '98674', email: 'johnny@foo.com', password: '12345678', cPassword: '12345678' };
 const updatedEmissions = { updateEmissions: 35 };
 const addedEmissions = { year: '2019', make: 'Ford', model: 'Lancer', name: 'Mondeo Hybrid' };
@@ -44,7 +44,7 @@ test('Test that the GHG Emissions Calculator works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
-  await emissionsCalculator.testCalculation(testController, credentials.input);
+  await emissionsCalculator.testCalculation(testController, credentials.inputImperial);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
@@ -68,11 +68,17 @@ test('test that the add emissions page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('test that the GHG emissions metric calculator work', async (testController) => {
+test('test to make sure that the GHG emissions metric calculator work', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
-  await emissionsCalculatorMetric.testCalculationMetric(testController, credentials.input);
+  await emissionsCalculatorMetric.testCalculationMetric(testController, credentials.inputMetric);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+});
+
+test('test that makes sure that everything in the profile page works', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
 });
