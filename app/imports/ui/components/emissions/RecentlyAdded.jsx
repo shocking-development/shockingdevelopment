@@ -35,7 +35,7 @@ function RecentlyAdded() {
                 </Grid.Row>
               </Grid>
             </div>
-            : <h1>You have not added any emissions</h1>}
+            : <Header inverted size ='huge' textAlign='center'>You have not added any emissions</Header>}
       </div>
   );
 }
