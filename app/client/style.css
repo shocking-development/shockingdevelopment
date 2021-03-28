@@ -20,6 +20,10 @@
     padding-left: 10px !important;
   }
 
+  .menu.item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   /* The hover animation for the landing page*/
   .zoom {
     transition: transform .2s; /* Animation */
