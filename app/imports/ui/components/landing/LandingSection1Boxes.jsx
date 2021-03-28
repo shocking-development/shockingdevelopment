@@ -79,8 +79,7 @@ class LandingSection1Boxes extends React.Component {
                 </Segment>
               </Grid.Column>
 
-              <Grid.Column className="menu-boxes-column" as={NavLink} exact
-                           to="/notfound">
+              <Grid.Column className="menu-boxes-column">
                 <Segment className="zoom" style={infoBoxColoring}>
                   <i style={iconStyling}
                      className="map marker alternate icon"></i>
