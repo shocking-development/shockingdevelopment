@@ -21,7 +21,8 @@ class LandingSection2 extends React.Component {
     };
     return (
         <div style={{ background: '#001947' }}>
-
+          <br/>
+          <Header inverted size="huge" textAlign='center'>See how much you can save!</Header>
           <Statistic.Group widths='three' style={{ padding: '5em' }}>
             <Statistic inverted>
               <Statistic.Value>1,550</Statistic.Value>
