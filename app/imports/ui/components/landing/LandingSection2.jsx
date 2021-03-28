@@ -58,6 +58,12 @@ class LandingSection2 extends React.Component {
               </div>
             </Grid.Row>
           </Grid>
+          <Grid stackable columns='equal'>
+            <Grid.Row style={trackYourGHGemissionsStyling}>
+              <div style={{ color: 'white', margin: 'auto' }}>
+                <Header className='body' as='h1' style={{color:'white'}}>Calculate your GHG beforehand!</Header></div>
+            </Grid.Row>
+          </Grid>
 
           <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%' }}>
             <div style={{ margin: 'auto', paddingLeft: '3%' }}>
