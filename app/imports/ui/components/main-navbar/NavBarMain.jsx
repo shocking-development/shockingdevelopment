@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Image, Icon, Loader } from 'semantic-ui-react';
+import { Menu, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
@@ -72,7 +72,8 @@ class NavBarMain extends React.Component {
                   GHG calculator
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCalMetric" key='key8' id="calculator-metric">
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCalMetric" key='key8'
+                           id="calculator-metric">
                   <Icon name='calculator' size='large'/>
                   GHG calculator Metric
                 </Menu.Item>
@@ -93,10 +94,14 @@ class NavBarMain extends React.Component {
                 </Menu.Item>
 
                 {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                    <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'
-                               style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin
+                      <IconGroup style={{ float: 'right' }} size={'large'}>
+                        <Icon name='user'/>
+                        <Icon corner style={{ color: 'rgb(169,169,169)' }} name='cog'/>
+                      </IconGroup>
+                    </Menu.Item>
                 ) : ''}
-                
+
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
