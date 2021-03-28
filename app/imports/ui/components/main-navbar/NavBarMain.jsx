@@ -92,19 +92,19 @@ class NavBarMain extends React.Component {
                   Cars
                 </Menu.Item>
 
+                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'
+                               style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
+                ) : ''}
+                
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
                 </Menu.Item>
-
               </Menu>,
               ]
           ) : ''}
 
-          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'
-                         style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
-          ) : ''}
         </div>
 
     );
