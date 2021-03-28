@@ -44,7 +44,7 @@ class LandingSection2 extends React.Component {
                 <Header className='body' as='h1' style={{ color: 'white' }}> Track your GHG emissions </Header>
                 <p className='body'
                    style={fontstyling}>
-                  Find out how much GHG emisions you generate and learn of efficient alternatives.
+                  Find out how much GHG emissions you generate and learn of efficient alternatives.
                 </p>
                 <Button className="ui blue circular button"
                         style={{ fontSize: '16px' }}
@@ -61,7 +61,7 @@ class LandingSection2 extends React.Component {
           <Grid stackable columns='equal'>
             <Grid.Row style={trackYourGHGemissionsStyling}>
               <div style={{ color: 'white', margin: 'auto' }}>
-                <Header className='body' as='h1' style={{color:'white'}}>Calculate your GHG beforehand!</Header></div>
+                <Header className='body' as='h1' style={{color: 'white' }}>Calculate your GHG beforehand!</Header></div>
             </Grid.Row>
           </Grid>
 
