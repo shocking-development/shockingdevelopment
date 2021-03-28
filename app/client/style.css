@@ -23,6 +23,10 @@
   padding-top: 15px !important;
   padding-bottom: 15px !important;
 }
+.spacing-menu-item2 {
+  padding-top: 15px !important;
+  padding-bottom: 0px !important;
+}
 
 /* The hover animation for the landing page*/
 .zoom {

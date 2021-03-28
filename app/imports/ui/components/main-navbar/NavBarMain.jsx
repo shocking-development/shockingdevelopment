@@ -64,7 +64,7 @@ class NavBarMain extends React.Component {
                   Home
                 </Menu.Item>
 
-                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/add"
+                <Menu.Item className='spacing-menu-item2' as={NavLink} activeClassName="active" exact to="/add"
                            key='key3'>
                   <Icon name='cloud' size='large'/>
                   Add Today&apos;s Emissions
