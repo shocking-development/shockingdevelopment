@@ -97,7 +97,7 @@ class NavBarMain extends React.Component {
                     <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin
                       <IconGroup style={{ float: 'right' }} size={'large'}>
                         <Icon name='user'/>
-                        <Icon corner style={{ color: 'rgb(169,169,169)' }} name='cog'/>
+                        <Icon corner style={{ color: 'rgb(169,169,169)' }} name='setting'/>
                       </IconGroup>
                     </Menu.Item>
                 ) : ''}
