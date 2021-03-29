@@ -43,7 +43,7 @@ class GoToSavings extends React.Component {
     // returns the GoToSaveings page.
     return (
 
-        <div style={pageStyle}>
+        <div style={pageStyle} >
 
           <NavBarMain/>
           <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '100vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
@@ -51,7 +51,7 @@ class GoToSavings extends React.Component {
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
-            <Card.Group style={cardStyle}>
+            <Card.Group style={cardStyle} >
             <Card>
               <Card.Content>
                 <div align="right"><Icon name='car'/></div>
