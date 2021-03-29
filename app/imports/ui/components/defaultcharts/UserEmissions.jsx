@@ -5,7 +5,7 @@ import { Emissions } from '../../../api/emissions/EmissionsCollection';
 // eslint-disable-next-line no-unused-vars
 import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
 
-//A simple static component to render some boxes for the landing page.
+//A export function to give data to other pages.
 export function User() {
   const user = useTracker(() => Meteor.userId());
   return user;
@@ -71,6 +71,9 @@ export function UserEmissionData(index) {
 
   if(index === "DataMiles"){
     return dataMiles;
+  }
+  if(index === "Transportation"){
+    return emissions.map(recentEmissions => recentEmissions.transportation);
   }
 
   return user;
