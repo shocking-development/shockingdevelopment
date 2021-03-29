@@ -1,23 +1,14 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
 import { Header } from 'semantic-ui-react';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
 // eslint-disable-next-line no-unused-vars
-import { calculateCO2, calculateGHG } from '../../../api/trips/ghgcalculation';
+import { UserEmissionData } from './UserEmissions';
 
 /** A simple static component to render some boxes for the landing page. */
 
 function DataPageBarGraph() {
-  const user = useTracker(() => Meteor.userId());
-  const emissions = useTracker(() => {
-    Meteor.subscribe(Emissions.emissionsPublicationName);
-    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
-  });
-  const dateRecorded = emissions.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`);
-  const dataMiles = emissions.map(recentEmissions => recentEmissions.miles);
 
   const options = {
     title: {
@@ -33,7 +24,7 @@ function DataPageBarGraph() {
       // need what it would have cost using the worst mode of transport and then the mode of transport being used -> gallons
       // co2 store this info somewhere in a diff/same collection, get all the data from this collection and add them up,
       // go to only your page calculate your data, user, mode, worstmode of transportation
-      data: dataMiles,
+      data: UserEmissionData("DataMiles"),
 
     }, {
       name: 'Fuel Gallons Saved (Gallons)',
@@ -62,7 +53,7 @@ function DataPageBarGraph() {
           fontWeight: 'bold',
         },
       },
-      categories: dateRecorded,
+      categories: UserEmissionData("DateRecorded"),
       crosshair: true,
     },
     yAxis: {
@@ -83,7 +74,7 @@ function DataPageBarGraph() {
 
   return (
       <div>
-        {emissions.length !== 0 ?
+        {UserEmissionData("Emissions").length !== 0 ?
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
