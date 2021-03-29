@@ -32,15 +32,15 @@ class ListProfileAdmin extends React.Component {
             <Table celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>UserName</Table.HeaderCell>
-                  <Table.HeaderCell>firstName</Table.HeaderCell>
-                  <Table.HeaderCell>lastName</Table.HeaderCell>
-                  <Table.HeaderCell>email</Table.HeaderCell>
-                  <Table.HeaderCell>password</Table.HeaderCell>
-                  <Table.HeaderCell>transportation</Table.HeaderCell>
-                  <Table.HeaderCell>zipcode</Table.HeaderCell>
-                  <Table.HeaderCell>owner</Table.HeaderCell>
-                  <Table.HeaderCell>remove</Table.HeaderCell>
+                  <Table.HeaderCell>Username</Table.HeaderCell>
+                  <Table.HeaderCell>First Name</Table.HeaderCell>
+                  <Table.HeaderCell>Last Name</Table.HeaderCell>
+                  <Table.HeaderCell>Email</Table.HeaderCell>
+                  <Table.HeaderCell>Password</Table.HeaderCell>
+                  <Table.HeaderCell>Personal Transportation</Table.HeaderCell>
+                  <Table.HeaderCell>Zipcode</Table.HeaderCell>
+                  <Table.HeaderCell>Owner</Table.HeaderCell>
+                  <Table.HeaderCell>Remove</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
