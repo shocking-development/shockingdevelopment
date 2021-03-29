@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
@@ -24,8 +24,11 @@ class ListProfileAdmin extends React.Component {
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ padding: '10em' }}>
+          <Container style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '110vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
+            <Image  src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Table celled>
               <Table.Header>
                 <Table.Row>
