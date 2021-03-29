@@ -28,7 +28,7 @@ class GoToSavings extends React.Component {
 
     // In page styling for the display cards themselves.
     const cardStyle = {
-      marginLeft: '20em',
+      marginLeft: '15em',
       marginRight: '5em',
       paddingTop: '10em',
       alignment: 'left',
@@ -44,7 +44,6 @@ class GoToSavings extends React.Component {
     return (
 
         <div style={pageStyle}>
-
           <NavBarMain/>
           <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '100vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
             <Header as='h1' inverted textAlign='center'>SAVINGS</Header>
