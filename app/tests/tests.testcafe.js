@@ -7,6 +7,7 @@ import { SignUpPage } from './signup.page';
 import { yourSavings } from './Go.To.Savings';
 import { emissions } from './Add.Emissions';
 import { emissionsCalculatorMetric } from './GHG.Emissions.Calculator.Metric';
+import { userProfilePage } from './Profile.page';
 
 /* global fixture:false, test:false */
 
@@ -81,4 +82,7 @@ test('test that makes sure that everything in the profile page works', async (te
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
+  await userProfilePage.visitProfile(testController);
+  await userProfilePage.editProfile(testController);
+  await userProfilePage.profilePassword(testController);
 });
