@@ -13,26 +13,6 @@ class LandingPageLineChart extends React.Component {
           name: '2020',
           data: [0, 1, 0, 2, 3, 5, 8, 5, 15, 14, 25, 54],
         }],
-      },
-    };
-    setInterval(() => this.setState({
-      chartOptions: {
-        series: [{
-          data: [
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-            Math.random() * 3,
-          ],
-        }],
         chart: {
           styledMode: true,
           spacingTop: 20,
@@ -84,8 +64,29 @@ class LandingPageLineChart extends React.Component {
           },
         },
       },
-    }), 1500);
-  }
+    }
+    setInterval(() => this.setState({
+          chartOptions: {
+            series: [{
+              data: [
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+                Math.random() * 3,
+              ],
+            }],
+          }
+        }),
+        1500);
+  };
 
   render() {
 

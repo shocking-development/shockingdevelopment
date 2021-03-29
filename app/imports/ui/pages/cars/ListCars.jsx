@@ -37,7 +37,7 @@ class ListCars extends React.Component {
     const carYears = carDocs.map((doc) => `${doc.year}`);
     const carModel = carDocs.map((doc) => `${doc.model}-${doc._id}`);
     const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`); */ }
-    const allCars = _.pluck(Cars.collection.find().fetch(), 'make');
+    const allCars = _.pluck(Cars.find().fetch(), 'make');
     const formSchema = makeSchema(allCars);
     const bridge = new SimpleSchema2Bridge(formSchema);
     const pageStyle = {
