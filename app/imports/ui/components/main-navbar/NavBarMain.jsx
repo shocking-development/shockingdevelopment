@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Image, Icon, Loader } from 'semantic-ui-react';
+import { Menu, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
@@ -52,27 +52,33 @@ class NavBarMain extends React.Component {
                 </Menu.Item>
                 <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/profile" key='key1'>
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/profile"
+                           key='key1'>
                   <Icon name='user' size='large'/>
                   View Profile
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='key2'>
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/home"
+                           key='key2'>
                   <Icon name='home' size='large'/>
                   Home
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='key3'>
+                <Menu.Item className='spacing-menu-item2' as={NavLink} activeClassName="active" exact to="/add"
+                           key='key3'>
                   <Icon name='cloud' size='large'/>
                   Add Today&apos;s Emissions
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCal" key='key4' id="calculator-imperial">
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCal"
+                           key='key4' id="calculator-imperial">
                   <Icon name='calculator' size='large'/>
                   GHG calculator
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/ghgCalMetric" key='key8' id="calculator-metric">
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
+                           key='key8'
+                           id="calculator-metric">
                   <Icon name='calculator' size='large'/>
                   GHG calculator Metric
                 </Menu.Item>
@@ -82,29 +88,39 @@ class NavBarMain extends React.Component {
                   Map your route
                 </Menu.Item> */}
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/gotosavings" key='key6'>
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/gotosavings"
+                           key='key6'>
                   <Icon name='money bill alternate' size='large'/>
                   Go to savings
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/cars" key='key10'>
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/cars"
+                           key='key10'>
                   <Icon name='car' size='large'/>
                   Cars
                 </Menu.Item>
 
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/signout" key='key7'>
+                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                    <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/admin"
+                               key='admin'>Admin
+
+                      <IconGroup style={{ float: 'right' }} size={'large'}>
+                        <Icon name='user'/>
+                        <Icon corner style={{ color: 'rgb(169,169,169)' }} name='setting'/>
+                      </IconGroup>
+
+                    </Menu.Item>
+                ) : ''}
+
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
+                           key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
                 </Menu.Item>
-
               </Menu>,
               ]
           ) : ''}
 
-          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'
-                         style={{ color: 'white', marginLeft: '20px' }}>Admin</Menu.Item>
-          ) : ''}
         </div>
 
     );
