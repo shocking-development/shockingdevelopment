@@ -18,7 +18,7 @@ class carCardItem extends React.Component {
     // console.log(carDocs.length);
 
     return (
-        <Card.Content style={{ paddingTop: '3rem', paddingLeft: '10%', paddingBottom: '5%' }}>
+        <Card.Content style={{ paddingLeft: '10%', paddingBottom: '5%' }}>
           <Grid>
             <Grid.Row columns={carDocs.length}>
               {carDocs.map(recentCar => <Grid.Column key={recentCar._id}>
