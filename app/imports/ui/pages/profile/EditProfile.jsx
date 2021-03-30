@@ -128,14 +128,14 @@ class EditProfile extends React.Component {
                         if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
                       }} model={this.props.doc}>
                     <Segment className='viewProfile'>
-                      <TextField className={'carDropdownSelectField'} name='firstName'/>
-                      <TextField className={'carDropdownSelectField'} name='lastName'/>
-                      <TextField className={'carDropdownSelectField'} name='user'/>
-                      <TextField className={'carDropdownSelectField'} name='email'/>
-                      <SelectField className={'carDropdownSelectField'} name='unitSystem'/>
-                      <TextField className={'carDropdownSelectField'} name='transportation'/>
-                      <NumField className={'carDropdownSelectField'} name='zipcode' decimal={false}/>
-                      <SubmitField value='Update'/>
+                      <TextField className={'carDropdownSelectField'} id='update-first' name='firstName'/>
+                      <TextField className={'carDropdownSelectField'} id='update-last' name='lastName'/>
+                      <TextField className={'carDropdownSelectField'} id='update-user' name='user'/>
+                      <TextField className={'carDropdownSelectField'} id='update-email' name='email'/>
+                      <SelectField className={'carDropdownSelectField'} id='update-units' name='unitSystem'/>
+                      <TextField className={'carDropdownSelectField'} id='update-transportation' name='transportation'/>
+                      <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode' decimal={false}/>
+                      <SubmitField value='Update' id='update-form-submit'/>
                       <ErrorsField/>
                       <HiddenField name='owner'/>
                     </Segment>

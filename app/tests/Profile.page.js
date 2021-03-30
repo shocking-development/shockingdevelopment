@@ -20,11 +20,23 @@ class ProfilePage {
   // Check for edit portion of user profile
   async editProfile(testController) {
     await this.isDisplayed(testController);
+    await testController.click('#edit-profile');
+    await testController.typeText('#update-first');
+    await testController.typeText('#update-last');
+    await testController.typeText('#update-user');
+    await testController.typeText('#update-email');
+    await testController.typeText('#update-units');
+    await testController.typeText('#update-transportation');
+    await testController.typeText('#update-zipcode');
+    await testController.click('#update-form-submit');
   }
 
   // Check if can edit/change users password
   async profilePassword(testController) {
     await this.isDisplayed(testController);
+    await testController.click('#edit-password');
+    await testController.typeText('#update-password');
+    await testController.click('#update-password-submit');
   }
 }
 
