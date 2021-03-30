@@ -19,7 +19,7 @@ class RecentlyAddedCars extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
 
-    // console.log(this.props.cars.length);
+    // For debugging console.log(this.props.cars.length);
 
     return (
         <div>
@@ -38,10 +38,10 @@ class RecentlyAddedCars extends React.Component {
                   className={'RecentlyAddedCarsHeader'}
                   inverted as="h2"
                   textAlign="center">
-                No cars have been added. You can add cars <a
+                No cars have been added. <a
                   style={{ color: '#45efe7' }} href={'#/cars'}>
-                here
-              </a>.
+                You can add cars here.
+              </a>
               </Header>}
         </div>
     );

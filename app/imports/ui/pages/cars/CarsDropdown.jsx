@@ -50,9 +50,11 @@ class CarsDropdown extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <div className={'loaderStyle'}>
-      <Loader active>Getting data</Loader>
-    </div>;
+    return (this.props.ready) ? this.renderPage() :
+        <div className={'loaderStyle'}>
+          <Loader inverted active>Getting Cars</Loader>
+        </div>;
+
   }
 
   /** Render the page once subscriptions have been received. */
@@ -136,14 +138,14 @@ class CarsDropdown extends React.Component {
 
     const filteredSelectField = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
 
-    console.log(filteredSelectField);
+    // for debugging console.log(filteredSelectField);
 
     /*
     * In order to get the car Id we must do the following:
     */
     const filteredModel = filteredSelectField.filter(({ year, make, model }) => year === Number(this.state.years) && make === this.state.make && model === this.state.model);
     const iDofCar = filteredModel.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
-    console.log(iDofCar);
+    // for debugging console.log(iDofCar);
     const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
 
     let fRef = null;

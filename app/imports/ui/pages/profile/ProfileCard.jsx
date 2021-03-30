@@ -5,10 +5,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
-import NavBarHome from '../../components/main-navbar/NavBarMain';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';
 import RecentlyAddedCars from '../cars/RecentlyAddedCars';
+import NavBarMain from '../../components/main-navbar/NavBarMain';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileCard extends React.Component {
@@ -41,7 +41,7 @@ class ProfileCard extends React.Component {
           marginTop: '-10px',
           width: '100%',
         }}>
-          <NavBarHome/>
+          <NavBarMain/>
 
           <Container style={pageStyle}>
             <Grid className='viewProfile'>
