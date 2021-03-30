@@ -13,13 +13,13 @@ class AddEmissions {
   }
 
   async updateEmissions(testController, mpg) {
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await this.isDisplayed(testController);
     await testController.typeText('#add-mpg', mpg);
     await testController.click('#update-mpg');
   }
 
   async addTrip(testController, year, make, model, name) {
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await this.isDisplayed(testController);
     await testController.click('#select-year', year);
     await testController.click('#select-make', make);
     await testController.click('#select-model', model);
@@ -27,6 +27,8 @@ class AddEmissions {
   }
 
   async deleteTrip(testController) {
+    await this.isDisplayed(testController);
+    await this.addTrip(testController);
     await testController.click('#delete-trip');
   }
 }

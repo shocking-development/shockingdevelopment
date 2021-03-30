@@ -13,7 +13,7 @@ class GHGCalculator {
   }
 
   async testCalculation(testController, determinant) {
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await this.isDisplayed(testController);
     await testController.typeText('#input-imperial', determinant);
     await testController.click('#submit-imperial');
   }

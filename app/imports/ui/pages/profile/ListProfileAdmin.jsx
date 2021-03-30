@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
@@ -24,20 +24,23 @@ class ListProfileAdmin extends React.Component {
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ padding: '10em' }}>
+          <Container style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '110vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Table celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>UserName</Table.HeaderCell>
-                  <Table.HeaderCell>firstName</Table.HeaderCell>
-                  <Table.HeaderCell>lastName</Table.HeaderCell>
-                  <Table.HeaderCell>email</Table.HeaderCell>
-                  <Table.HeaderCell>password</Table.HeaderCell>
-                  <Table.HeaderCell>transportation</Table.HeaderCell>
-                  <Table.HeaderCell>zipcode</Table.HeaderCell>
-                  <Table.HeaderCell>owner</Table.HeaderCell>
-                  <Table.HeaderCell>remove</Table.HeaderCell>
+                  <Table.HeaderCell>Username</Table.HeaderCell>
+                  <Table.HeaderCell>First Name</Table.HeaderCell>
+                  <Table.HeaderCell>Last Name</Table.HeaderCell>
+                  <Table.HeaderCell>Email</Table.HeaderCell>
+                  <Table.HeaderCell>Password</Table.HeaderCell>
+                  <Table.HeaderCell>Personal Transportation</Table.HeaderCell>
+                  <Table.HeaderCell>Zipcode</Table.HeaderCell>
+                  <Table.HeaderCell>Owner</Table.HeaderCell>
+                  <Table.HeaderCell>Remove</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
