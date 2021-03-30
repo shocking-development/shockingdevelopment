@@ -77,7 +77,7 @@ function DataPageBarGraph() {
                 highcharts={Highcharts}
                 options={options}
             /> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href="#/add">Try adding todays
+              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>
