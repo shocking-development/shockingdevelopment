@@ -2,15 +2,13 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Header } from 'semantic-ui-react';
-import { Emissions } from '../../../api/emissions/EmissionsCollection';
 import { UserEmissionData } from './UserEmissions';
 
 /** A simple static component to render some boxes for the landing page. */
 
 function DataPagePieChart() {
 
-
-  const transportation = UserEmissionData("Transportation");
+  const transportation = UserEmissionData('Transportation');
   let droveCount = 0;
   let teleworkCount = 0;
   let publicTransportationCount = 0;
@@ -113,12 +111,12 @@ function DataPagePieChart() {
 
   return (
       <div>
-        {UserEmissionData("Emissions").length !== 0 ?
+        {UserEmissionData('Emissions').length !== 0 ?
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
             /> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href="#/add">Try adding todays
+              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>

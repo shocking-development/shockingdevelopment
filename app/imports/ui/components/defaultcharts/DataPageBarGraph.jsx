@@ -2,8 +2,6 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Header } from 'semantic-ui-react';
-import { Emissions } from '../../../api/emissions/EmissionsCollection';
-// eslint-disable-next-line no-unused-vars
 import { UserEmissionData } from './UserEmissions';
 
 /** A simple static component to render some boxes for the landing page. */
@@ -24,7 +22,8 @@ function DataPageBarGraph() {
       // need what it would have cost using the worst mode of transport and then the mode of transport being used -> gallons
       // co2 store this info somewhere in a diff/same collection, get all the data from this collection and add them up,
       // go to only your page calculate your data, user, mode, worstmode of transportation
-      data: UserEmissionData("DataMiles"),
+      // need to add up data according to date
+      data: UserEmissionData('DataMiles'),
 
     }, {
       name: 'Fuel Gallons Saved (Gallons)',
@@ -53,7 +52,7 @@ function DataPageBarGraph() {
           fontWeight: 'bold',
         },
       },
-      categories: UserEmissionData("DateRecorded"),
+      categories: UserEmissionData('DateRecorded'),
       crosshair: true,
     },
     yAxis: {
@@ -74,12 +73,12 @@ function DataPageBarGraph() {
 
   return (
       <div>
-        {UserEmissionData("Emissions").length !== 0 ?
+        {UserEmissionData('Emissions').length !== 0 ?
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
             /> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href="#/add">Try adding todays
+              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>

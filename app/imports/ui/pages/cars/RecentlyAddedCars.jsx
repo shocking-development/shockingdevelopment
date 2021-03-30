@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Loader, Grid, Image, Container } from 'semantic-ui-react';
+import { Header, Loader, Grid, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
@@ -25,9 +25,7 @@ class RecentlyAddedCars extends React.Component {
                   style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
             Your Cars
           </Header>
-          <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-            paddingBottom: '50px',
-          }}/>
+          <Image src='images/HEI-WAVE-LOGO.png' centered size='small'/>
           {this.props.cars.length !== 0 ?
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <Grid>

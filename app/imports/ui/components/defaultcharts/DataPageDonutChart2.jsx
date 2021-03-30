@@ -2,8 +2,6 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-/** A simple static component to render some boxes for the landing page. */
-
 class DataPageDonutChart1 extends React.Component {
   render() {
     const options = {
