@@ -16,7 +16,11 @@ class ProfileCard extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() :
-        <Loader active inverted>Getting data</Loader>;
+        <div
+            className={'loaderStyle'}>
+          <Loader active inverted> Getting data</Loader>
+        </div>;
+
   }
 
   /** Render the page once subscriptions have been received. */
@@ -25,7 +29,7 @@ class ProfileCard extends React.Component {
     const pageStyle = {
       paddingLeft: '15em',
       paddingTop: '6em',
-      height: '70em',
+      minHeight: '110vh',
       backgroundSize: 'cover',
     };
 
@@ -35,6 +39,7 @@ class ProfileCard extends React.Component {
           backgroundSize: 'cover',
           height: '100%',
           marginTop: '-10px',
+          width: '100%',
         }}>
           <NavBarHome/>
 
@@ -46,7 +51,7 @@ class ProfileCard extends React.Component {
                 <Image src={this.props.profiles.userImage}
                     // eslint-disable-next-line
                        onError={(i) => i.target.src = '/images/default_image.png'}
-                       style={{ borderRadius: '5%' }}
+                       style={{ borderRadius: '5%', width: '225px' }}
                 />
 
                 <Button.Group
@@ -91,7 +96,7 @@ class ProfileCard extends React.Component {
                   style={{ top: '2vh', left: '2%' }}
               >
 
-                <Header as='h1' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
                   {this.props.profiles.firstName} {this.props.profiles.lastName}
                 </Header>
                 <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>

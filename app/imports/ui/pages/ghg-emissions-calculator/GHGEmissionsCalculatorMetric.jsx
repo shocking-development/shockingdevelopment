@@ -75,7 +75,15 @@ class GHGEmissionsCalculatorMetric extends React.Component {
     return (
         <div style={outer_div_pagestyle}>
           <NavBarHome/>
-          <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '100vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+          <div style={{
+            textAlign: 'center',
+            background: 'rgb(21 51 62)',
+            minHeight: '110vh',
+            Width: '100%',
+            paddingLeft: '15em',
+            paddingTop: '8em',
+            paddingBottom: '8em'
+          }}>
             <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
@@ -95,7 +103,8 @@ class GHGEmissionsCalculatorMetric extends React.Component {
                 <p> {convertTons(calculateCO2(calculateGal(this.state.input)))} tons of CO2 emissions is generated
                   from {this.state.input} liter(s) of
                   gas </p>
-                <p> This is equivalent to the GHG emissions from {calculateGHG(calculateGal(this.state.input))} passenger vehicles
+                <p> This is equivalent to the GHG emissions
+                  from {calculateGHG(calculateGal(this.state.input))} passenger vehicles
                   driven for one
                   year.</p>
               </Segment>)}

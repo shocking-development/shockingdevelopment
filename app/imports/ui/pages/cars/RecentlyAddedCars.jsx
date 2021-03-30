@@ -11,7 +11,9 @@ class RecentlyAddedCars extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() :
-        <Loader active inverted>Getting data</Loader>;
+        <div style={{ background: 'transparent' }}>
+          <Loader active inverted>Getting data</Loader>
+        </div>;
   }
 
   /** Render the page once subscriptions have been received. */
@@ -21,17 +23,22 @@ class RecentlyAddedCars extends React.Component {
 
     return (
         <div>
-          <Header inverted as="h2" textAlign="center"
-                  style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+          <Header inverted as="h1" textAlign="center"
+                  style={{ fontWeight: 'lighter', paddingTop: '15px' }}>
             Your Cars
           </Header>
-          <Image src='images/HEI-WAVE-LOGO.png' centered size='small'/>
+          <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{ paddingBottom: '2em' }}/>
           {this.props.cars.length !== 0 ?
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                <Grid>
+                <Grid className={'RecentlyAddedCarsGrid'}>
                   {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>)}
                 </Grid>
-              </div> : <Header inverted as="h2" textAlign="center">No cars have been added. You can add cars <a
+              </div> :
+              <Header
+                  className={'RecentlyAddedCarsHeader'}
+                  inverted as="h2"
+                  textAlign="center">
+                No cars have been added. You can add cars <a
                   style={{ color: '#45efe7' }} href={'#/cars'}>
                 here
               </a>.

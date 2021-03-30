@@ -76,7 +76,7 @@ class GHGEmissionsCalculator extends React.Component {
           <div style={{
             textAlign: 'center',
             background: 'rgb(21 51 62)',
-            minHeight: '100vh',
+            minHeight: '110vh',
             Width: '100%',
             paddingLeft: '15em',
             paddingTop: '8em',
