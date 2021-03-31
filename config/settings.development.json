@@ -397,6 +397,18 @@
     { "make": "BMW", "model": "X2 M35i", "year": 2019, "mpg": 23 },
     { "make": "BMW", "model": "X2 xDrive28i", "year": 2018, "mpg": 21 },
 
+    { "make": "BMW", "model": "Z4 sDrive30i", "year": 2021, "mpg": 24 },
+    { "make": "BMW", "model": "Z4 sDriveM40i", "year": 2021, "mpg": 24 },
+    { "make": "BMW", "model": "Z4 sDrive30i", "year": 2020, "mpg": 24 },
+    { "make": "BMW", "model": "Z4 sDriveM40i", "year": 2020, "mpg": 24 },
+    { "make": "BMW", "model": "Z4 sDrive30i", "year": 2019, "mpg": 25 },
+    { "make": "BMW", "model": "Z4 sDrive28i", "year": 2016, "mpg": 22 },
+    { "make": "BMW", "model": "Z4 sDrive35i", "year": 2016, "mpg": 17 },
+    { "make": "BMW", "model": "Z4 sDrive35is", "year": 2016, "mpg": 17 },
+    { "make": "BMW", "model": "Z4 sDrive28i", "year": 2015, "mpg": 22 },
+    { "make": "BMW", "model": "Z4 sDrive35i", "year": 2015, "mpg": 17 },
+    { "make": "BMW", "model": "Z4 sDrive35is", "year": 2015, "mpg": 17 },
+
     { "make": "Bentley", "model": "Bentayga", "year": 2021, "mpg": 15 },
     { "make": "Bentley", "model": "Continental GT", "year": 2020, "mpg": 16 },
     
