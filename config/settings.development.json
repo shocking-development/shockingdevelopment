@@ -62,6 +62,26 @@
     { "make": "Audi", "model": "S5", "year": 2019, "mpg": 21 },
     { "make": "Audi", "model": "Q5 (H)", "year": 2021, "mpg": 23 },
 
+    { "make": "Audi", "model": "TT 45 TFSI Quattro", "year": 2020, "mpg": 23 },
+    { "make": "Audi", "model": "TT 2.0 TFSI Quattro", "year": 2020, "mpg": 23 },
+    { "make": "Audi", "model": "TT 2.5 TFSI", "year": 2020, "mpg": 19 },
+
+    { "make": "Audi", "model": "TT Coupe", "year": 2019, "mpg": 23 },
+    { "make": "Audi", "model": "TT Roadster", "year": 2019, "mpg": 23 },
+    { "make": "Audi", "model": "TTS", "year": 2019, "mpg": 23 },
+    { "make": "Audi", "model": "TT RS", "year": 2019, "mpg": 20 },
+
+    { "make": "Audi", "model": "TT Coupe 2.0 TFSI", "year": 2018, "mpg": 23 },
+    { "make": "Audi", "model": "TT Roadster 2.0 TFSI", "year": 2018, "mpg": 23 },
+    { "make": "Audi", "model": "TTS 2.0 TFSI", "year": 2018, "mpg": 23 },
+    { "make": "Audi", "model": "TT 2.5 TFSI", "year": 2018, "mpg": 19 },
+
+    { "make": "Audi", "model": "TTS 2.0 TFSI", "year": 2017, "mpg": 23 },
+
+    { "make": "Audi", "model": "TT Coupe S-Tronic Quattro 2.0T", "year": 2017, "mpg": 23 },
+    { "make": "Audi", "model": "TT Roadster S-Tronic Quattro 2.0T", "year": 2017, "mpg": 23 },
+    { "make": "Audi", "model": "TTS Coupe S-Tronic Quattro 2.0T", "year": 2017, "mpg": 23 },
+
     { "make": "BMW", "model": "330i", "year": 2020, "mpg": 26 },
     { "make": "BMW", "model": "330i xDrive", "year": 2020, "mpg": 25 },
     { "make": "BMW", "model": "M340i", "year": 2020, "mpg": 22 },
@@ -222,7 +242,15 @@
     { "make": "Saturn", "model": "ION", "year": 2007, "mpg": 26 },
 
     { "make": "Scion", "model": "tC", "year": 2016, "mpg": 23 },
+
     { "make": "Scion", "model": "xB", "year": 2015, "mpg": 22 },
+    { "make": "Scion", "model": "xB", "year": 2014, "mpg": 22 },
+    { "make": "Scion", "model": "xB", "year": 2013, "mpg": 22 },
+    { "make": "Scion", "model": "xB", "year": 2012, "mpg": 22 },
+    { "make": "Scion", "model": "xB", "year": 2011, "mpg": 22 },
+    { "make": "Scion", "model": "xB", "year": 2010, "mpg": 22 },
+    { "make": "Scion", "model": "xB", "year": 2009, "mpg": 22 },
+    { "make": "Scion", "model": "xB", "year": 2008, "mpg": 22 },
 
     { "make": "Scion", "model": "FR-S MT", "year": 2016, "mpg": 22 },
     { "make": "Scion", "model": "FR-S AT", "year": 2016, "mpg": 25 },
@@ -292,8 +320,6 @@
     { "make": "Toyota", "model": "86 AT", "year": 2020, "mpg": 24 },
     { "make": "Toyota", "model": "GT86 MT", "year": 2020, "mpg": 21 },
     { "make": "Toyota", "model": "GT86 AT", "year": 2020, "mpg": 24 },
-    { "make": "Toyota", "model": "GT86 Hakone Edition AT", "year": 2020, "mpg": 24 },
-    { "make": "Toyota", "model": "GT86 Hakone Edition MT", "year": 2020, "mpg": 21 },
 
     { "make": "Toyota", "model": "86 MT", "year": 2019, "mpg": 21 },
     { "make": "Toyota", "model": "86 AT", "year": 2019, "mpg": 24 },
@@ -307,8 +333,6 @@
 
     { "make": "Toyota", "model": "86 MT", "year": 2017, "mpg": 21 },
     { "make": "Toyota", "model": "86 AT", "year": 2017, "mpg": 24 },
-    { "make": "Toyota", "model": "86 860 Special Edition MT", "year": 2017, "mpg": 21 },
-    { "make": "Toyota", "model": "86 860 Special Edition AT", "year": 2017, "mpg": 24 },
 
     { "make": "Toyota", "model": "Corolla", "year": 2021, "mpg": 31 },
     { "make": "Toyota", "model": "Corolla (H)", "year": 2021, "mpg": 53 },
