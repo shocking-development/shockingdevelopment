@@ -6,6 +6,7 @@ import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField,
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import { userInfoUpdateMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
@@ -40,9 +41,30 @@ class EditProfile extends React.Component {
       transportation,
       unitSystem,
     };
+
     userInfoUpdateMethod.call(updateData, (error) => (error ?
         swal('Error', error.message, 'error') :
         swal('Success', 'Item updated successfully', 'success')));
+
+    /*
+    if (email) {
+      Meteor.call('updateEmail', email, (err) => {
+        if (err) {
+          console.log(`Error updating email address: {err}`);
+        }
+      });
+    } */
+
+    const emailResult = Meteor.call('updateEmail', email);
+    if (!emailResult) {
+      console.log('Error updating email address: {err}');
+    }
+
+    const usernameResult = Meteor.call('updateUsername', user);
+    if (!usernameResult) {
+      console.log('Error updating username: {err}');
+    }
+
   }
 
   /* For user profile image upload */
@@ -85,6 +107,8 @@ class EditProfile extends React.Component {
     if (this.state.userImage === 'no-change') {
       dataImage = this.props.doc.userImage;
     }
+    console.log(Meteor.users.findOne(Meteor.userId()).emails[0].address);
+    console.log(Meteor.user());
 
     return (
         <div style={{

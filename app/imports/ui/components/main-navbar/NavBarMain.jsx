@@ -141,7 +141,8 @@ const userAccount = Meteor.users.findOne(Meteor.userId());
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 const NavBar2Container = withTracker(() => ({
   profiles: UserInfos.findOne(userAccount),
-  currentUser: Meteor.user() ? Meteor.user().username : '',
+  // currentUser: Meteor.user() ? Meteor.user().username : '',
+  currentUser: UserInfos.findOne(userAccount).firstName,
   currentId: Meteor.userId(),
   ready: subscription.ready(),
 }))(NavBarMain);
