@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class GHGCalculator {
+class GHGCalculatorMetric {
   constructor() {
-    this.pageId = '#calculator-imperial';
+    this.pageId = '#calculator-metric';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -12,11 +12,11 @@ class GHGCalculator {
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
   }
 
-  async testCalculation(testController, determinant) {
+  async testCalculationMetric(testController, determinantMetric) {
     await this.isDisplayed(testController);
-    await testController.typeText('#input-imperial', determinant);
-    await testController.click('#submit-imperial');
+    await testController.typeText('#input-metric', determinantMetric);
+    await testController.click('#submit-metric');
   }
 }
 
-export const emissionsCalculator = new GHGCalculator();
+export const emissionsCalculatorMetric = new GHGCalculatorMetric();

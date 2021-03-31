@@ -2,10 +2,11 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-/** A simple static component to render some boxes for the landing page. */
-
+// A simple static component to render some boxes for the the graph page.
 class SavingsPageBarGraph extends React.Component {
   render() {
+
+    // variable to hold the parameters for the graph.
     const options = {
       title: {
         text: 'Your current car vs input',
@@ -18,18 +19,18 @@ class SavingsPageBarGraph extends React.Component {
       series: [{
         color: 'blue',
         name: 'Price (Thousands of Dollars)',
-        data: [25, 63.6],
+        data: [25 + Math.random() * 20, 30 + Math.random() * 20],
 
       }, {
         color: 'yellow',
         name: 'Full Saved (Gallons)',
-        data: [80, 60],
+        data: [30 + Math.random() * 20, 10 + Math.random() * 20],
 
       }, {
         color: 'red',
         name: 'CO2 reduced (Pounds)',
         textColor: 'red',
-        data: [30, 80],
+        data: [20 + Math.random() * 20, 10 + Math.random() * 20],
 
       }],
       chart: {
@@ -73,6 +74,7 @@ class SavingsPageBarGraph extends React.Component {
       },
     };
 
+    // return the graph.
     return (
         <div>
           <HighchartsReact
