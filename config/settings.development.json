@@ -491,51 +491,41 @@
 
     { "make": "Scion", "model": "FR-S MT", "year": 2016, "mpg": 22 },
     { "make": "Scion", "model": "FR-S AT", "year": 2016, "mpg": 25 },
-
     { "make": "Scion", "model": "FR-S MT", "year": 2015, "mpg": 22 },
     { "make": "Scion", "model": "FR-S AT", "year": 2015, "mpg": 25 },
-
     { "make": "Scion", "model": "FR-S MT", "year": 2014, "mpg": 22 },
     { "make": "Scion", "model": "FR-S AT", "year": 2014, "mpg": 25 },
-
     { "make": "Scion", "model": "FR-S MT", "year": 2013, "mpg": 22 },
     { "make": "Scion", "model": "FR-S AT", "year": 2013, "mpg": 25 },
 
     { "make": "Smart", "model": "EQ Fortwo", "year": 2019, "mpg": 124 },
     { "make": "Smart", "model": "Fortwo", "year": 2017, "mpg": 33 },
+
     { "make": "Subaru", "model": "WRX", "year": 2021, "mpg": 20 },
     { "make": "Subaru", "model": "Forester", "year": 2021, "mpg": 26 },
-
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2020, "mpg": 21 },
     { "make": "Subaru", "model": "BRZ Limited AT", "year": 2020, "mpg": 24 },
     { "make": "Subaru", "model": "BRZ tS MT", "year": 2020, "mpg": 20 },
-
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2019, "mpg": 21 },
     { "make": "Subaru", "model": "BRZ Limited AT", "year": 2019, "mpg": 24 },
     { "make": "Subaru", "model": "BRZ Premium MT", "year": 2019, "mpg": 21 },
     { "make": "Subaru", "model": "BRZ Premium AT", "year": 2019, "mpg": 24 },
-
     { "make": "Subaru", "model": "BRZ Premium MT", "year": 2018, "mpg": 21 },
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2018, "mpg": 21 },
     { "make": "Subaru", "model": "BRZ Limited AT", "year": 2018, "mpg": 24 },
     { "make": "Subaru", "model": "BRZ tS MT", "year": 2028, "mpg": 20 },
-
     { "make": "Subaru", "model": "BRZ Premium MT", "year": 2017, "mpg": 21 },
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2017, "mpg": 21 },
     { "make": "Subaru", "model": "BRZ Limited AT", "year": 2017, "mpg": 24 },
-
     { "make": "Subaru", "model": "BRZ Premium MT", "year": 2016, "mpg": 22 },
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2016, "mpg": 22 },
     { "make": "Subaru", "model": "BRZ Limited AT", "year": 2016, "mpg": 25 },
-
     { "make": "Subaru", "model": "BRZ Premium MT", "year": 2015, "mpg": 22 },
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2015, "mpg": 22 },
     { "make": "Subaru", "model": "BRZ Limited AT", "year": 2015, "mpg": 25 },
-
     { "make": "Subaru", "model": "BRZ Premium MT", "year": 2014, "mpg": 22 },
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2014, "mpg": 22 },
     { "make": "Subaru", "model": "BRZ Limited AT", "year": 2014, "mpg": 25 },
-
     { "make": "Subaru", "model": "BRZ Premium MT", "year": 2013, "mpg": 22 },
     { "make": "Subaru", "model": "BRZ Premium AT", "year": 2013, "mpg": 25 },
     { "make": "Subaru", "model": "BRZ Limited MT", "year": 2013, "mpg": 22 },
@@ -557,17 +547,14 @@
     { "make": "Toyota", "model": "86 AT", "year": 2020, "mpg": 24 },
     { "make": "Toyota", "model": "GT86 MT", "year": 2020, "mpg": 21 },
     { "make": "Toyota", "model": "GT86 AT", "year": 2020, "mpg": 24 },
-
     { "make": "Toyota", "model": "86 MT", "year": 2019, "mpg": 21 },
     { "make": "Toyota", "model": "86 AT", "year": 2019, "mpg": 24 },
     { "make": "Toyota", "model": "GT86 MT", "year": 2019, "mpg": 21 },
     { "make": "Toyota", "model": "GT86 AT", "year": 2019, "mpg": 24 },
-
     { "make": "Toyota", "model": "86 MT", "year": 2018, "mpg": 21 },
     { "make": "Toyota", "model": "86 AT", "year": 2018, "mpg": 24 },
     { "make": "Toyota", "model": "GT86 MT", "year": 2018, "mpg": 21 },
     { "make": "Toyota", "model": "GT86 AT", "year": 2018, "mpg": 24 },
-
     { "make": "Toyota", "model": "86 MT", "year": 2017, "mpg": 21 },
     { "make": "Toyota", "model": "86 AT", "year": 2017, "mpg": 24 },
 
@@ -578,10 +565,16 @@
     { "make": "Toyota", "model": "Prius (H)", "year": 2009, "mpg": 48 },
     { "make": "Toyota", "model": "Prius (H)", "year": 2021, "mpg": 51 },
     { "make": "Toyota", "model": "Supra Mark V", "year": 2021, "mpg": 22 },
-    { "make": "Toyota", "model": "Yaris L/LE", "year": 2020, "mpg": 30 },
-    { "make": "Toyota", "model": "Yaris LE/XLE Hatchback", "year": 2020, "mpg": 32 },
+
+    { "make": "Toyota", "model": "Yaris L", "year": 2020, "mpg": 30 },
+    { "make": "Toyota", "model": "Yaris LE", "year": 2020, "mpg": 30 },
+    { "make": "Toyota", "model": "Yaris LE Hatchback", "year": 2020, "mpg": 32 },
+    { "make": "Toyota", "model": "Yaris XLE Hatchback", "year": 2020, "mpg": 32 },
     { "make": "Toyota", "model": "Yaris Sedan", "year": 2016, "mpg": 29 },
-    { "make": "Toyota", "model": "Yaris L/LE/SE", "year": 2016, "mpg": 30 },
+    { "make": "Toyota", "model": "Yaris L", "year": 2016, "mpg": 30 },
+    { "make": "Toyota", "model": "Yaris LE", "year": 2016, "mpg": 30 },
+    { "make": "Toyota", "model": "Yaris SE", "year": 2016, "mpg": 30 },
+    
     { "make": "Volkswagen", "model": "ID.4", "year": 2021, "mpg": 104 },
     { "make": "Volkswagen", "model": "Atlas", "year": 2021, "mpg": 21 },
     { "make": "Volkswagen", "model": "Golf", "year": 2021, "mpg": 29 },
