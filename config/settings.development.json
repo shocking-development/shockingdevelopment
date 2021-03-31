@@ -360,8 +360,10 @@
     { "make": "BMW", "model": "X6 xDrive50i", "year": 2017, "mpg": 15 },
 
     { "make": "BMW", "model": "X3", "year": 2020, "mpg": 25 },
+
     { "make": "Bentley", "model": "Bentayga", "year": 2021, "mpg": 15 },
     { "make": "Bentley", "model": "Continental GT", "year": 2020, "mpg": 16 },
+    
     { "make": "Buick", "model": "Enclave", "year": 2021, "mpg": 18 },
     { "make": "Buick", "model": "Regal TourX", "year": 2020, "mpg": 21 },
     { "make": "Cadillac", "model": "Escalade", "year": 2021, "mpg": 21 },
@@ -426,6 +428,10 @@
     { "make": "Kia", "model": "Sorento", "year": 2016, "mpg": 21 },
     { "make": "Kia", "model": "Soul", "year": 2016, "mpg": 24 },
     { "make": "Kia", "model": "Optima", "year": 2015, "mpg": 36 },
+
+    { "make": "Lamborghini", "model": "Urus", "year": 2020, "mpg": 12 },
+    { "make": "Lamborghini", "model": "Urus", "year": 2019, "mpg": 12 },
+
     { "make": "Land Rover", "model": "Range Rover", "year": 2021, "mpg": 22 },
     { "make": "Land Rover", "model": "Range Rover", "year": 2020, "mpg": 22 },
     { "make": "Lexus", "model": "IS", "year": 2021, "mpg": 21 },
