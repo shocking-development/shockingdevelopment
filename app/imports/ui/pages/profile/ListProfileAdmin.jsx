@@ -26,7 +26,7 @@ class ListProfileAdmin extends React.Component {
           <NavBarMain/>
           <Container style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '110vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
-            <Image  src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
             <Table celled>

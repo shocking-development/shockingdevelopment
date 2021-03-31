@@ -53,7 +53,7 @@ class NavBarMain extends React.Component {
                 <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/profile"
-                           key='key1'>
+                           key='key1' id='user-profile'>
                   <Icon name='user' size='large'/>
                   View Profile
                 </Menu.Item>

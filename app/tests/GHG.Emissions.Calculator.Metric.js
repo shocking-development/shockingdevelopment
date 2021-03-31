@@ -13,7 +13,7 @@ class GHGCalculatorMetric {
   }
 
   async testCalculationMetric(testController, determinantMetric) {
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await this.isDisplayed(testController);
     await testController.typeText('#input-metric', determinantMetric);
     await testController.click('#submit-metric');
   }
