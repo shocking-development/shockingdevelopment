@@ -78,9 +78,29 @@
 
     { "make": "Audi", "model": "TTS 2.0 TFSI", "year": 2017, "mpg": 23 },
 
-    { "make": "Audi", "model": "TT Coupe S-Tronic Quattro 2.0T", "year": 2017, "mpg": 23 },
-    { "make": "Audi", "model": "TT Roadster S-Tronic Quattro 2.0T", "year": 2017, "mpg": 23 },
-    { "make": "Audi", "model": "TTS Coupe S-Tronic Quattro 2.0T", "year": 2017, "mpg": 23 },
+    { "make": "Audi", "model": "TT Coupe S-Tronic Quattro 2.0T", "year": 2016, "mpg": 23 },
+    { "make": "Audi", "model": "TT Roadster S-Tronic Quattro 2.0T", "year": 2016, "mpg": 23 },
+    { "make": "Audi", "model": "TTS Coupe S-Tronic Quattro 2.0T", "year": 2016, "mpg": 23 },
+
+    { "make": "Audi", "model": "TT Coupe S-Tronic Quattro 2.0T", "year": 2015, "mpg": 22 },
+    { "make": "Audi", "model": "TT Roadster S-Tronic Quattro 2.0T", "year": 2015, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Coupe S-Tronic Quattro 2.0T", "year": 2015, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Roadster S-Tronic Quattro 2.0T", "year": 2015, "mpg": 22 },
+
+    { "make": "Audi", "model": "TT Coupe S-Tronic Quattro 2.0T", "year": 2014, "mpg": 22 },
+    { "make": "Audi", "model": "TT Roadster S-Tronic Quattro 2.0T", "year": 2014, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Coupe S-Tronic Quattro 2.0T", "year": 2014, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Roadster S-Tronic Quattro 2.0T", "year": 2014, "mpg": 22 },
+
+    { "make": "Audi", "model": "TT Coupe S-Tronic Quattro 2.0T Premium Plus", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TT Coupe S-Tronic Quattro 2.0T Prestige", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TT Roadster S-Tronic Quattro 2.0T Premium Plus", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TT Roadster S-Tronic Quattro 2.0T Prestige", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Coupe S-Tronic Quattro 2.0T Premium Plus", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Coupe S-Tronic Quattro 2.0T Prestige", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Roadster S-Tronic Quattro 2.0T Premium Plus", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TTS Roadster S-Tronic Quattro 2.0T Prestige", "year": 2013, "mpg": 22 },
+    { "make": "Audi", "model": "TTRS Coupe Quattro 2.5T MT", "year": 2013, "mpg": 18 },
 
     { "make": "BMW", "model": "330i", "year": 2020, "mpg": 26 },
     { "make": "BMW", "model": "330i xDrive", "year": 2020, "mpg": 25 },
