@@ -46,25 +46,23 @@ class EditProfile extends React.Component {
         swal('Error', error.message, 'error') :
         swal('Success', 'Item updated successfully', 'success')));
 
-    /*
-    if (email) {
+    /* Update email address in Meteor Accounts */
+    if (email !== Meteor.user().emails[0].address) {
       Meteor.call('updateEmail', email, (err) => {
         if (err) {
-          console.log(`Error updating email address: {err}`);
+          console.log('Error updating email address: {err}');
         }
       });
-    } */
-
-    const emailResult = Meteor.call('updateEmail', email);
-    if (!emailResult) {
-      console.log('Error updating email address: {err}');
     }
 
-    const usernameResult = Meteor.call('updateUsername', user);
-    if (!usernameResult) {
-      console.log('Error updating username: {err}');
+    /* Update username in Meteor Accounts */
+    if (user !== Meteor.user().username) {
+      Meteor.call('updateUsername', user, (err) => {
+        if (err) {
+          console.log('Error updating username: {err}');
+        }
+      });
     }
-
   }
 
   /* For user profile image upload */
@@ -107,8 +105,10 @@ class EditProfile extends React.Component {
     if (this.state.userImage === 'no-change') {
       dataImage = this.props.doc.userImage;
     }
-    console.log(Meteor.users.findOne(Meteor.userId()).emails[0].address);
+
+    /* REMOVE LATER */
     console.log(Meteor.user());
+    console.log(Meteor.user().emails[0].address);
 
     return (
         <div style={{
@@ -158,7 +158,8 @@ class EditProfile extends React.Component {
                       <TextField className={'carDropdownSelectField'} id='update-email' name='email'/>
                       <SelectField className={'carDropdownSelectField'} id='update-units' name='unitSystem'/>
                       <TextField className={'carDropdownSelectField'} id='update-transportation' name='transportation'/>
-                      <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode' decimal={false}/>
+                      <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode'
+                                decimal={false}/>
                       <SubmitField value='Update' id='update-form-submit'/>
                       <ErrorsField/>
                       <HiddenField name='owner'/>
