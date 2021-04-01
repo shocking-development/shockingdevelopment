@@ -25,16 +25,16 @@ class ProfileCard extends React.Component {
     const pageStyle = {
       paddingLeft: '15em',
       paddingTop: '6em',
-      height: '70em',
+      height: '100vh',
       backgroundSize: 'cover',
     };
 
     return (
         <div style={{
           background: 'rgb(21 51 62)',
-          backgroundSize: 'cover',
           height: '100%',
-          marginTop: '-10px',
+          backgroundSize: 'cover',
+          //marginTop: '-10px',
         }}>
           <NavBarHome/>
 
