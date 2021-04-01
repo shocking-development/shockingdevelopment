@@ -13,7 +13,7 @@ class SavingsPage {
   }
 
   async goToSavingsPage(testController) {
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await this.isDisplayed(testController);
     await testController.click('#savings');
   }
 }

@@ -67,6 +67,7 @@ class ProfileCard extends React.Component {
                       size='medium'
                       style={{ marginTop: '10px' }}
                       color='blue'
+                      id='edit-password'
                   >
                     <Button.Content hidden>Password</Button.Content>
                     <Button.Content visible>
@@ -76,6 +77,7 @@ class ProfileCard extends React.Component {
 
                   <Button
                       as={NavLink}
+                      id='edit-profile'
                       exact to={`/edit/${this.props.profiles._id}`}
                       animated='vertical'
                       size='medium'
@@ -144,8 +146,9 @@ export default withTracker(({ match }) => {
   const userAccount = Meteor.users.findOne(match.params._id);
   const sub2 = UserInfosCars.subscribeUserInfoCars();
   const sub3 = Cars.subscribeCars();
+  const profiles = UserInfos.findOne(userAccount);
   return {
-    profiles: UserInfos.findOne(userAccount),
+    profiles,
     currentUser: Meteor.user() ? Meteor.user().username : '',
     currentId: match.params._id,
     ready: sub1.ready() && sub2.ready() && sub3.ready(),

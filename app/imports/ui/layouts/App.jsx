@@ -21,6 +21,7 @@ import GHGEmissionsCalculator from '../pages/ghg-emissions-calculator/GHGEmissio
 import GHGEmissionsCalculatorContainerMetric from '../pages/ghg-emissions-calculator/GHGEmissionsCalculatorMetric';
 import CarsDropdown from '../pages/cars/CarsDropdown';
 import ChangePassword from '../pages/profile/ChangePassword';
+import ListCars from '../pages/cars/ListCars';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -46,6 +47,7 @@ class App extends React.Component {
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
               <ProtectedRoute path="/ghgCalMetric" component={GHGEmissionsCalculatorContainerMetric}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
+              <AdminProtectedRoute path="/listcars" component={ListCars}/>
               <Route component={NotFound}/>
             </Switch>
           </div>
