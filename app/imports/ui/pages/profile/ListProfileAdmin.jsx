@@ -23,7 +23,6 @@ class ListProfileAdmin extends React.Component {
       background: 'rgb(21 51 62)',
       minHeight: '110vh',
       backgroundSize: 'cover',
-      paddingLeft: '10%',
     };
     return (
         <div style={pageStyle}>
