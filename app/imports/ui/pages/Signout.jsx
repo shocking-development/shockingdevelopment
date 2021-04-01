@@ -42,12 +42,14 @@ export default class Signout extends React.Component {
 
   render() {
     ModalExampleBasic();
-    Meteor.logout(function () {
+    Meteor.logout(function (event) {
+      event.
+    });
       return (
           <div id="signout-page">
             <Landing/>
           </div>
       );
-    });
+    }
   }
 }
