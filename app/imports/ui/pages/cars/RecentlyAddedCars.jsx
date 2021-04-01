@@ -26,7 +26,7 @@ class RecentlyAddedCars extends React.Component {
           background: 'rgb(11 164 203)',
           backgroundSize: 'cover',
         }}>
-          <Header inverted as="h2" textAlign="center"
+          <Header inverted as="h1" textAlign="center"
                   style={{ fontWeight: 'lighter', paddingTop: '15px' }}>
             Your Cars
           </Header>
