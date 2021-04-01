@@ -5,14 +5,16 @@ import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import CarItem from '../../components/cars/CarItem';
 import { Cars } from '../../../api/cars/CarsCollection';
-import BaseCollection from '../../../api/base/BaseCollection';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListCars extends React.Component {
-  /*dispatch: any;
+  dispatch: any;
+
   pagination: any;
+
   setShowIndex: (collectionName: string, index: number) => any;
-  setShowCount: (collectionName: string, count: number) => any;*/
+
+  setShowCount: (collectionName: string, count: number) => any;
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -27,9 +29,9 @@ class ListCars extends React.Component {
       height: '60em',
       backgroundSize: 'cover',
     };
-    /*console.log(this.props.Car);*/
+    /* console.log(this.props.Car); */
     //const showCount = pagination[Cars].showCount;
-    /*const count = Cars.count();*/
+    /* const count = Cars.count(); */
 
     return (
         <div style={pageStyle}>
@@ -41,7 +43,7 @@ class ListCars extends React.Component {
             Width: '100%',
             paddingLeft: '15em',
             paddingTop: '8em',
-            paddingBottom: '8em'
+            paddingBottom: '8em',
           }}>
             <Header as="h2" textAlign="center" inverted>List All Cars </Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
@@ -96,7 +98,7 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Cars.subscribeCars();
   return {
-    Car: Cars.find({}).fetch(),
+    Car: Cars.find({}, { sort: { count: -1 }, limit: 25 }).fetch(), //the changed line
     ready: subscription.ready(),
   };
 })(ListCars);
