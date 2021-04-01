@@ -20,9 +20,9 @@ class RecentlyAddedCars extends React.Component {
     // console.log(this.props.cars.length);
 
     return (
-        <div className='override-container' style={{
+        <div style={{
           background: 'rgb(21 51 62)',
-          height: '100vh',
+          backgroundSize: 'cover',
         }}>
           <Header inverted as="h2" textAlign="center"
                   style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
