@@ -1,17 +1,12 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { Meteor } from 'meteor/meteor';
-import { useTracker } from 'meteor/react-meteor-data';
 import { Header } from 'semantic-ui-react';
-import { Emissions } from '../../../api/emissions/EmissionsCollection';
 import { UserEmissionData } from './UserEmissions';
-
-/** A simple static component to render some boxes for the landing page. */
 
 function DataPageDonutChart1() {
 
-  const transportation = UserEmissionData("Emissions").map(recentEmissions => recentEmissions.transportation);
+  const transportation = UserEmissionData('Emissions').map(recentEmissions => recentEmissions.transportation);
   let droveCount = 0;
   let teleworkCount = 0;
   let publicTransportationCount = 0;
@@ -103,12 +98,12 @@ function DataPageDonutChart1() {
 
   return (
       <div>
-        {UserEmissionData("Emissions").length !== 0 ?
+        {UserEmissionData('Emissions').length !== 0 ?
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
-            /> : <Header inverted as="h3" textAlign="center" >
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href="#/add">Try adding todays
+            /> : <Header inverted as="h3" textAlign="center">
+              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>

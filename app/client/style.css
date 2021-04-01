@@ -8,6 +8,10 @@
   margin-top: -10px;
 }
 
+.override-container{
+  margin-left: 0% !important;
+}
+
 /* padding for the blue menu boxes on the home page*/
 .menu-boxes {
   padding-top: 10.4em !important;
@@ -258,5 +262,17 @@
   color: white !important;
 }
 
+.RecentlyAddedCarsGrid.grid{
+  margin-bottom: 0px !important;
+}
 
+.loaderStyle {
+  background: rgb(21 51 62);
+  min-height: 70em;
+  background-size: cover;
+}
+
+.RecentlyAddedCarsHeader{
+  margin-top: -13px !important;
+}
 

@@ -10,7 +10,6 @@ import { Meteor } from 'meteor/meteor';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
-import RecentlyAddedCars from './RecentlyAddedCars';
 
 const formSchema = new SimpleSchema({
   carName: String,
@@ -51,7 +50,11 @@ class CarsDropdown extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.ready) ? this.renderPage() :
+        <div className={'loaderStyle'}>
+          <Loader inverted active>Getting Cars</Loader>
+        </div>;
+
   }
 
   /** Render the page once subscriptions have been received. */
@@ -59,10 +62,11 @@ class CarsDropdown extends React.Component {
 
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '66em',
+      height: '100vh',
       backgroundSize: 'cover',
       paddingTop: '5em',
-      marginLeft: '10%',
+      paddingLeft: '10%',
+      justifyContent: 'center',
     };
 
     /*
@@ -135,14 +139,14 @@ class CarsDropdown extends React.Component {
 
     const filteredSelectField = allCars.filter(({ year, make }) => year === Number(this.state.years) && make === this.state.make);
 
-    console.log(filteredSelectField);
+    // for debugging console.log(filteredSelectField);
 
     /*
     * In order to get the car Id we must do the following:
     */
     const filteredModel = filteredSelectField.filter(({ year, make, model }) => year === Number(this.state.years) && make === this.state.make && model === this.state.model);
     const iDofCar = filteredModel.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
-    console.log(iDofCar);
+    // for debugging console.log(iDofCar);
     const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
 
     let fRef = null;
@@ -206,7 +210,6 @@ class CarsDropdown extends React.Component {
               <SubmitField value='Submit' id='submit-car'/>
             </AutoForm>
           </Container>
-          <RecentlyAddedCars/>
         </div>
     );
   }
@@ -218,7 +221,7 @@ CarsDropdown.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Cars documents.
   const subscription = Cars.subscribeCars();
   return {
     ready: subscription.ready(),

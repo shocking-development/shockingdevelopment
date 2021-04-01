@@ -6,8 +6,8 @@ import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField,
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
-import { userInfoUpdateMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** Renders the Page for editing a single document. */
@@ -15,14 +15,14 @@ class ChangePassword extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { password, _id } = data;
-    const updateData = {
-      id: _id,
-      password,
-    };
-    userInfoUpdateMethod.call(updateData, (error) => (error ?
-        swal('Error', error.message, 'error') :
-        swal('Success', 'Item updated successfully', 'success')));
+    const { password } = data;
+    Meteor.call('changePass', password, (err) => {
+          if (err) {
+            console.log('Error changing password: {err}');
+          } else {
+            swal('Success', 'Password changed successfully', 'success');
+          }
+        });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -62,7 +62,7 @@ class ChangePassword extends React.Component {
                     if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
                   }} model={this.props.doc}>
                 <Segment>
-                  <TextField name='password'/>
+                  <TextField name='password' id='update-password-submit'/>
                   <SubmitField value='Update'/>
                   <ErrorsField/>
                   <HiddenField name='owner'/>

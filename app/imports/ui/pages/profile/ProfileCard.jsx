@@ -5,10 +5,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
-import NavBarHome from '../../components/main-navbar/NavBarMain';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';
 import RecentlyAddedCars from '../cars/RecentlyAddedCars';
+import NavBarMain from '../../components/main-navbar/NavBarMain';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfileCard extends React.Component {
@@ -16,7 +16,11 @@ class ProfileCard extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() :
-        <Loader active inverted>Getting data</Loader>;
+        <div
+            className={'loaderStyle'}>
+          <Loader active inverted> Getting data</Loader>
+        </div>;
+
   }
 
   /** Render the page once subscriptions have been received. */
@@ -25,18 +29,19 @@ class ProfileCard extends React.Component {
     const pageStyle = {
       paddingLeft: '15em',
       paddingTop: '6em',
-      height: '70em',
+      minHeight: '110vh',
       backgroundSize: 'cover',
     };
 
     return (
         <div style={{
           background: 'rgb(21 51 62)',
-          backgroundSize: 'cover',
           height: '100%',
           marginTop: '-10px',
+          width: '100%',
+          backgroundSize: 'cover',
         }}>
-          <NavBarHome/>
+          <NavBarMain/>
 
           <Container style={pageStyle}>
             <Grid className='viewProfile'>
@@ -46,7 +51,7 @@ class ProfileCard extends React.Component {
                 <Image src={this.props.profiles.userImage}
                     // eslint-disable-next-line
                        onError={(i) => i.target.src = '/images/default_image.png'}
-                       style={{ borderRadius: '5%' }}
+                       style={{ borderRadius: '5%', width: '225px' }}
                 />
 
                 <Button.Group
@@ -62,6 +67,7 @@ class ProfileCard extends React.Component {
                       size='medium'
                       style={{ marginTop: '10px' }}
                       color='blue'
+                      id='edit-password'
                   >
                     <Button.Content hidden>Password</Button.Content>
                     <Button.Content visible>
@@ -71,6 +77,7 @@ class ProfileCard extends React.Component {
 
                   <Button
                       as={NavLink}
+                      id='edit-profile'
                       exact to={`/edit/${this.props.profiles._id}`}
                       animated='vertical'
                       size='medium'
@@ -91,7 +98,7 @@ class ProfileCard extends React.Component {
                   style={{ top: '2vh', left: '2%' }}
               >
 
-                <Header as='h1' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
                   {this.props.profiles.firstName} {this.props.profiles.lastName}
                 </Header>
                 <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
@@ -139,8 +146,9 @@ export default withTracker(({ match }) => {
   const userAccount = Meteor.users.findOne(match.params._id);
   const sub2 = UserInfosCars.subscribeUserInfoCars();
   const sub3 = Cars.subscribeCars();
+  const profiles = UserInfos.findOne(userAccount);
   return {
-    profiles: UserInfos.findOne(userAccount),
+    profiles,
     currentUser: Meteor.user() ? Meteor.user().username : '',
     currentId: match.params._id,
     ready: sub1.ready() && sub2.ready() && sub3.ready(),

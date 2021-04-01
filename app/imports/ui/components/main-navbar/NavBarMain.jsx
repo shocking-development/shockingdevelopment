@@ -33,7 +33,7 @@ class NavBarMain extends React.Component {
 
     const userstyling = {
       margin: 'auto',
-      width: '86%',
+      width: '68%',
       fontSize: 'large',
       fontWeight: 'lighter',
     };
@@ -46,14 +46,14 @@ class NavBarMain extends React.Component {
               [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}
                      key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
-                  <Image size='medium' circular src={this.props.profiles.userImage}
+                  <Image size='medium' circular src={this.props.profiles?.userImage}
                       // eslint-disable-next-line
-                         onError={(i) => i.target.src = '/images/default_image.png'}/>
+                         onError={(i) => i.target.src = '/images/default_image.jpg'}/>
                 </Menu.Item>
-                <Menu.Item style={userstyling}> Hello, {this.props.currentUser} </Menu.Item>
+                <Menu.Item style={userstyling}> Hello, {this.props.profiles?.firstName}! </Menu.Item>
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/profile"
-                           key='key1'>
+                           key='key1' id='user-profile'>
                   <Icon name='user' size='large'/>
                   View Profile
                 </Menu.Item>
@@ -112,11 +112,22 @@ class NavBarMain extends React.Component {
                     </Menu.Item>
                 ) : ''}
 
+                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
+                  <IconGroup style={{ float: 'right' }} size={'large'}>
+                    <Icon name='list alternate outline'/>
+                    <Icon corner style={{ color: 'rgb(169,169,169)' }} name='car'/>
+                  </IconGroup>
+                  List Cars (Admin)
+                </Menu.Item>
+                ) : ''}
+
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
                            key='key7'>
                   <Icon name='sign-out' size='large'/>
                   Sign Out
                 </Menu.Item>
+
               </Menu>,
               ]
           ) : ''}
@@ -135,16 +146,25 @@ NavBarMain.propTypes = {
   currentId: PropTypes.string,
 };
 
-const subscription = UserInfos.subscribeUserInfo();
-const userAccount = Meteor.users.findOne(Meteor.userId());
-
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-const NavBar2Container = withTracker(() => ({
-  profiles: UserInfos.findOne(userAccount),
-  currentUser: Meteor.user() ? Meteor.user().username : '',
-  currentId: Meteor.userId(),
-  ready: subscription.ready(),
-}))(NavBarMain);
+const NavBar2Container = withTracker(() => {
+  const subscription = UserInfos.subscribeUserInfo();
+  const userAccount = Meteor.users.findOne(Meteor.userId());
+  let profiles;
+  if (userAccount) {
+    profiles = UserInfos.findOne({ user: userAccount.username });
+  }
+  const currentUser = Meteor.user() ? Meteor.user().username : '';
+  const currentId = Meteor.userId();
+  const ready = subscription.ready();
+
+  return {
+    profiles,
+    currentUser,
+    currentId,
+    ready,
+  };
+})(NavBarMain);
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
 export default withRouter(NavBar2Container);

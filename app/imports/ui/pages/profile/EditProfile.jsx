@@ -6,6 +6,7 @@ import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField,
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import { userInfoUpdateMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
@@ -40,6 +41,26 @@ class EditProfile extends React.Component {
       transportation,
       unitSystem,
     };
+
+    /* Update email address in Meteor Accounts */
+    if (email !== Meteor.user().emails[0].address) {
+      Meteor.call('updateEmail', email, (err) => {
+        if (err) {
+          console.log('Error updating email address');
+        }
+      });
+    }
+
+    /* DOESNT WORK RIGHT NOW: Update username in Meteor Accounts
+    if (user !== Meteor.user().username) {
+      Meteor.call('updateUsername', user, (err) => {
+        if (err) {
+          console.log('Error updating username');
+        }
+      });
+    } */
+
+    /* Update info in UserInfos Collection */
     userInfoUpdateMethod.call(updateData, (error) => (error ?
         swal('Error', error.message, 'error') :
         swal('Success', 'Item updated successfully', 'success')));
@@ -86,6 +107,10 @@ class EditProfile extends React.Component {
       dataImage = this.props.doc.userImage;
     }
 
+    /* REMOVE LATER */
+    console.log(Meteor.user());
+    console.log(this.props.doc);
+
     return (
         <div style={{
           background: 'rgb(21 51 62)',
@@ -128,14 +153,15 @@ class EditProfile extends React.Component {
                         if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
                       }} model={this.props.doc}>
                     <Segment className='viewProfile'>
-                      <TextField className={'carDropdownSelectField'} name='firstName'/>
-                      <TextField className={'carDropdownSelectField'} name='lastName'/>
-                      <TextField className={'carDropdownSelectField'} name='user'/>
-                      <TextField className={'carDropdownSelectField'} name='email'/>
-                      <SelectField className={'carDropdownSelectField'} name='unitSystem'/>
-                      <TextField className={'carDropdownSelectField'} name='transportation'/>
-                      <NumField className={'carDropdownSelectField'} name='zipcode' decimal={false}/>
-                      <SubmitField value='Update'/>
+                      <TextField className={'carDropdownSelectField'} id='update-first' name='firstName'/>
+                      <TextField className={'carDropdownSelectField'} id='update-last' name='lastName'/>
+                      <TextField className={'carDropdownSelectField'} id='update-user' name='user'/>
+                      <TextField className={'carDropdownSelectField'} id='update-email' name='email'/>
+                      <SelectField className={'carDropdownSelectField'} id='update-units' name='unitSystem'/>
+                      <TextField className={'carDropdownSelectField'} id='update-transportation' name='transportation'/>
+                      <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode'
+                                decimal={false}/>
+                      <SubmitField value='Update' id='update-form-submit'/>
                       <ErrorsField/>
                       <HiddenField name='owner'/>
                     </Segment>
@@ -158,12 +184,18 @@ EditProfile.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
+  // Subscribe to UserInfos collection.
+  const subscription = UserInfos.subscribeUserInfo();
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
-  // Get access to Stuff documents.
-  const subscription = UserInfos.subscribeUserInfo();
+  const doc = UserInfos.findOne(documentId);
+  const ready = subscription.ready();
+
+  /* REMOVE LATER */
+  console.log(documentId, doc);
+
   return {
-    doc: UserInfos.findOne(documentId),
-    ready: subscription.ready(),
+    doc,
+    ready,
   };
 })(EditProfile);

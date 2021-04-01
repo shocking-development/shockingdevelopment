@@ -78,10 +78,10 @@ class LandingSection1Boxes extends React.Component {
               <Grid.Column className="menu-boxes-column">
                 <Segment className="zoom" style={infoBoxColoring}>
                   <i style={iconStyling}
-                     className="map marker alternate icon"></i>
-                  <p className='body' style={infoBoxesStyling}>Map your route</p>
+                     className="calculator icon"></i>
+                  <p className='body' style={infoBoxesStyling}>Emissions Calculator</p>
                   <p className='body' style={pargraphInfoBoxesStyling}>
-                    Map your daily route and learn how much gas you can save by switching to an electrical vehicle.
+                    Calculate how much GHG you could have reduced.
                   </p>
                 </Segment>
               </Grid.Column>

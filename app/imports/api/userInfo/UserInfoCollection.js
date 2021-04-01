@@ -17,7 +17,7 @@ class UserInfoCollection extends BaseCollection {
       firstName: String,
       lastName: String,
       user: String,
-      owner: String,
+      owner: String, // is this redundant?
       email: String,
       password: String,
       userImage: String,
@@ -125,7 +125,7 @@ class UserInfoCollection extends BaseCollection {
       Meteor.publish(userInfoPublications.userInfo, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ owner: username });
+          return instance._collection.find({ user: username });
         }
         return this.ready();
       });

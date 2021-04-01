@@ -14,10 +14,14 @@ class Home extends React.Component {
     const square = { width: 285, height: 285 };
     const pageStyle = {
       background: 'rgb(21 51 62)',
+      minHeight: '110vh',
+      width: '100%',
     };
     const divstyle = {
       paddingLeft: '14%',
       paddingTop: '3%',
+      background: 'rgb(21 51 62)',
+      width: '100vw',
     };
 
     return (
