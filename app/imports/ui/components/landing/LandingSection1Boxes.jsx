@@ -84,7 +84,7 @@ class LandingSection1Boxes extends React.Component {
 
               <Grid.Column className="menu-boxes-column">
                 <Segment className="zoom" style={infoBoxColoring}>
-                  <Link to="ghgCalc">
+                  <Link to="ghgCalc" spy={true} smooth={true}>
                     <i style={iconStyling}
                        className="calculator icon"></i>
                     <p className='body' style={infoBoxesStyling}>Emissions Calculator</p>
