@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
-import { Cars } from '../../../api/cars/CarsCollection';
 import RecentlyAddedCars from '../cars/RecentlyAddedCars';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 
@@ -27,19 +26,16 @@ class ProfileCard extends React.Component {
   renderPage() {
 
     const pageStyle = {
-      paddingLeft: '15em',
+      paddingLeft: '10em',
       paddingTop: '6em',
-      minHeight: '110vh',
-      backgroundSize: 'cover',
+      minHeight: '120vh',
     };
 
     return (
         <div style={{
           background: 'rgb(21 51 62)',
-          height: '100%',
-          marginTop: '-10px',
-          width: '100%',
           backgroundSize: 'cover',
+
         }}>
           <NavBarMain/>
 
@@ -145,13 +141,12 @@ export default withTracker(({ match }) => {
   const sub1 = UserInfos.subscribeUserInfo();
   const userAccount = Meteor.users.findOne(match.params._id);
   const sub2 = UserInfosCars.subscribeUserInfoCars();
-  const sub3 = Cars.subscribeCars();
   const profiles = UserInfos.findOne(userAccount);
   return {
     profiles,
     currentUser: Meteor.user() ? Meteor.user().username : '',
     currentId: match.params._id,
-    ready: sub1.ready() && sub2.ready() && sub3.ready(),
+    ready: sub1.ready() && sub2.ready(),
     cars: UserInfosCars.find({}).fetch(),
   };
 })(ProfileCard);
