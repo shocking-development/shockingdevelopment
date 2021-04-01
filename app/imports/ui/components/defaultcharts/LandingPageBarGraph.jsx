@@ -8,7 +8,7 @@ class LandingPageBarGraph extends React.Component {
   render() {
     const options = {
       title: {
-        text: 'Environmental Benefits Cummulative Total',
+        text: 'Environmental Benefits Cumulative Total',
         style: {
           color: '#ccc',
           fontWeight: '300',

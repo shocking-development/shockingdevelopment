@@ -1,7 +1,8 @@
 import React from 'react';
-import { Header, Loader, Grid, Image } from 'semantic-ui-react';
+import { Header, Loader, Grid, Button, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import CarCardItem from '../../components/cars/CarCardItem';
 
@@ -19,22 +20,33 @@ class RecentlyAddedCars extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
 
-    // For debugging console.log(this.props.cars.length);
+    // For debugging console.log(this.props.cars.length); <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{ paddingBottom: '2em' }}/>
 
     return (
-        <div style={{
-          background: 'rgb(11 164 203)',
-          backgroundSize: 'cover',
-        }}>
+        <div>
           <Header inverted as="h1" textAlign="center"
-                  style={{ fontWeight: 'lighter', paddingTop: '15px' }}>
+                  style={{ fontWeight: 'lighter', paddingTop: '15px', paddingBottom: '15px' }}>
             Your Cars
           </Header>
-          <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{ paddingBottom: '2em' }}/>
           {this.props.cars.length !== 0 ?
-              <div style={{ width: '78%', margin: 'auto' }}>
+              <div>
                 <Grid className={'RecentlyAddedCarsGrid'}>
                   {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>)}
+                  <Grid.Column className={'addCarBtn'}>
+                    <Button
+                        as={NavLink}
+                        exact to={'/cars'}
+                        animated='vertical'
+                        size='medium'
+                        color='teal'
+                        id='edit-password'
+                    >
+                      <Button.Content hidden>Add Car</Button.Content>
+                      <Button.Content visible>
+                        <Icon name='add'/>
+                      </Button.Content>
+                    </Button>
+                  </Grid.Column>
                 </Grid>
               </div> :
               <Header
@@ -42,7 +54,7 @@ class RecentlyAddedCars extends React.Component {
                   inverted as="h2"
                   textAlign="center">
                 No cars have been added. <a
-                  style={{ color: '#45efe7' }} href={'#/cars'}>
+                  style={{ color: '#009c95' }} href={'#/cars'}>
                 You can add cars here.
               </a>
               </Header>}
@@ -61,7 +73,7 @@ RecentlyAddedCars.propTypes = {
 export default withTracker(() => {
   const subscription = UserInfosCars.subscribeUserInfoCars();
   return {
-    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 2 }).fetch(),
+    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 3 }).fetch(),
     ready: subscription.ready(),
   };
 })(RecentlyAddedCars);

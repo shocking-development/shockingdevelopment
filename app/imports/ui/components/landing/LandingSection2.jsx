@@ -92,35 +92,45 @@ class LandingSection2 extends React.Component {
                 <LandingPageLineChart/>
               </div>
             </Grid.Row>
+
             <Grid.Row style={trackYourGHGemissionsStyling}>
-              <div style={{ color: 'white', margin: 'auto' }}>
-                <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>
-                <p className='body'
-                   style={fontstyling}>
-                  Calculate before or after to see how much you can reduce your GHG.
-                </p>
-              </div>
-              <div style={{ paddingRight: '30em' }}>
-                <Form size='small' onSubmit={this.handleFormSubmit}>
-                  <Form.Input
-                      id='calculator-imperial'
-                      placeholder='Enter the gallons of gas'
-                      value={this.state.input}
-                      onChange={this.handleInputChange}
-                  />
-                  <Button color='blue' onClick={this.showResult} id='submit-imperial'>Calculate</Button>
-                </Form>
+              <Grid.Column width={7} style={{ paddingLeft: '3em' }}>
+                <div style={{ color: 'white' }}>
+                  <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>
+                  <p className='body'
+                     style={fontstyling}>
+                    Calculate before or after to see how much you can reduce your GHG.
+                  </p>
+                </div>
+              </Grid.Column>
+              <Grid.Column width={3}>
+                <div>
+                  <Form size='small' onSubmit={this.handleFormSubmit}>
+                    <Form.Input
+                        id='calculator-imperial'
+                        placeholder='Enter the gallons of gas'
+                        value={this.state.input}
+                        onChange={this.handleInputChange}
+                    />
+                    <Button color='blue' onClick={this.showResult} id='submit-imperial'>Calculate</Button>
+                  </Form>
+                </div>
+              </Grid.Column>
+              <Grid.Column width={3}>
                 {this.state.show &&
                 (<Segment>
-                  <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
-                    from {this.state.input} gallon(s) of
-                    gas </p>
-                  <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger vehicles
-                    driven for one
-                    year.</p>
-                </Segment>)}
-              </div>
+                      <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
+                        from {this.state.input} gallon(s) of
+                        gas </p>
+                      <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger
+                        vehicles
+                        driven for one
+                        year.</p>
+                    </Segment>
+                )}
+              </Grid.Column>
             </Grid.Row>
+
           </Grid>
 
           <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%' }}>

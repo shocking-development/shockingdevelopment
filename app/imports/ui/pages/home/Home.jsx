@@ -11,16 +11,17 @@ import Datapage from './Datapage';
 class Home extends React.Component {
 
   render() {
-    const square = { width: 285, height: 285 };
+    const square = { width: 230, height: 230 };
     const pageStyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       minHeight: '110vh',
       width: '100%',
     };
     const divstyle = {
-      paddingLeft: '14%',
+      paddingLeft: '15%',
       paddingTop: '3%',
-      background: 'rgb(21 51 62)',
+      paddingRight: '2%',
+      background: '#001947',
       width: '100vw',
     };
 
@@ -28,7 +29,7 @@ class Home extends React.Component {
         <div style={pageStyle}>
           <NavBarHome/>
           <div style={divstyle}>
-            <Grid stackable centered columns={3}>
+            <Grid stackable centered columns={4}>
               <Grid.Row centered>
                 <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
@@ -66,6 +67,20 @@ class Home extends React.Component {
                   </div>
 
                 </Grid.Column>
+
+                <Grid.Column className={'jello-horizontal'}>
+                  <div align="center">
+                    <Segment className={'grow'} circular style={square}>
+                      <Statistic inverted>
+                        {/* Needs to be filled with actual data. */}
+                        <Statistic.Value>2 lb(s)</Statistic.Value>
+                        <Statistic.Label>of Emissions Produced</Statistic.Label>
+                      </Statistic>
+                    </Segment>
+                  </div>
+
+                </Grid.Column>
+
               </Grid.Row>
             </Grid>
             <Datapage/>

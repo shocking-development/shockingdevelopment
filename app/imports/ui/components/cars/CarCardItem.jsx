@@ -16,7 +16,7 @@ class carCardItem extends React.Component {
         <Card.Content style={{ paddingBottom: '5%' }}>
           <Grid>
             <Grid.Row>
-               <Grid.Column key={this.props.car._id}>
+              <Grid.Column width={14} key={this.props.car._id}>
                 <Card style={{ background: '#1d7f90', boxShadow: 'none' }}>
                   <Card.Content>
                     <Icon name={'car'} size={'huge'} inverted/>
@@ -49,9 +49,12 @@ class carCardItem extends React.Component {
                   <Button id='delete-trip' onClick={() => deleteCar(this.props.car)} color={'teal'}>
                     Remove Car
                   </Button>
+
                 </Card>
+
               </Grid.Column>
             </Grid.Row>
+
           </Grid>
         </Card.Content>
     );

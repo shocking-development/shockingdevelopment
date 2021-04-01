@@ -98,7 +98,7 @@ class EditProfile extends React.Component {
     const pageStyle = {
       paddingLeft: '15em',
       paddingTop: '6em',
-      height: '70em',
+      minHeight: '110vh',
       backgroundSize: 'cover',
     };
 
@@ -113,7 +113,7 @@ class EditProfile extends React.Component {
 
     return (
         <div style={{
-          background: 'rgb(21 51 62)',
+          background: '#001947',
           backgroundSize: 'cover',
           height: '100%',
           marginTop: '-10px',
@@ -125,7 +125,7 @@ class EditProfile extends React.Component {
               paddingBottom: '50px',
             }}/>
             <Grid>
-              <Grid.Row style={{ marginTop: '3em', background: 'rgb(21 51 62)' }}>
+              <Grid.Row style={{ marginTop: '3em', background: '#001947' }}>
                 <Grid.Column width={5}>
                   <Image
                       size={'massive'}
@@ -161,7 +161,7 @@ class EditProfile extends React.Component {
                       <TextField className={'carDropdownSelectField'} id='update-transportation' name='transportation'/>
                       <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode'
                                 decimal={false}/>
-                      <SubmitField value='Update' id='update-form-submit'/>
+                      <SubmitField style={{ background: '#3184d8', color: 'white' }} value='Update' id='update-form-submit'/>
                       <ErrorsField/>
                       <HiddenField name='owner'/>
                     </Segment>

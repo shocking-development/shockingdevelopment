@@ -26,7 +26,7 @@ class CarsDropdown extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const { carName, carId, makeofCar, modelofCar, yearofCar, mpgofCar } = data;
-    console.log(data);
+    // console.log(data);
     const owner = Meteor.user().username;
     userInfoCarDefineMethod.call({ carName, carId, makeofCar, modelofCar, yearofCar, mpgofCar, owner },
         (error) => {
@@ -65,7 +65,7 @@ class CarsDropdown extends React.Component {
   renderPage() {
 
     const pageStyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       height: '100vh',
       backgroundSize: 'cover',
       paddingTop: '5em',

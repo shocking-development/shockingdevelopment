@@ -99,10 +99,19 @@ function DataPageDonutChart1() {
   return (
       <div>
         {UserEmissionData('Emissions').length !== 0 ?
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={options}
-            /> : <Header inverted as="h3" textAlign="center">
+            <div>
+              <HighchartsReact
+                  highcharts={Highcharts}
+                  options={options}
+              />
+              <h1 style={{
+                position: 'relative',
+                left: '90%',
+                bottom: '53vh',
+              }}><a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
+              </h1>
+            </div> :
+            <Header inverted as="h3" textAlign="center" style={{ marginTop: '9em', paddingLeft: '10px' }}>
               Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}

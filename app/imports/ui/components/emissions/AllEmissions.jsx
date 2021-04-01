@@ -17,7 +17,7 @@ function AllEmissions() {
 
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ width: '60%' }}>
+        <div style={{ width: '73%' }}>
               <Table>
                 <Table.Header>
                 <Table.Row>

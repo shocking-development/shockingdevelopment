@@ -8,7 +8,7 @@ class LandingPagePieChart extends React.Component {
   render() {
     const options = {
       title: {
-        text: 'Modes of Travel Cummulative Total',
+        text: 'Modes of Travel Cumulative Total',
         style: {
           color: '#ccc',
           fontWeight: '300',

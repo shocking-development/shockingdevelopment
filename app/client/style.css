@@ -8,7 +8,7 @@
   margin-top: -10px;
 }
 
-.override-container{
+.override-container {
   margin-left: 0% !important;
 }
 
@@ -27,6 +27,7 @@
   padding-top: 15px !important;
   padding-bottom: 15px !important;
 }
+
 .spacing-menu-item2 {
   padding-top: 15px !important;
   padding-bottom: 0px !important;
@@ -43,8 +44,8 @@
 
 /* The styling of the circles of data on the Home page */
 .ui.circular.segment { /* restyles the semantic ui segment */
-  background: rgb(13, 163, 203);
-  border: 1px solid #20639B;
+  background: rgba(0, 73, 122, 1);
+  border: 0px solid #20639B;
 }
 
 /* The hover animation */
@@ -254,25 +255,51 @@
 }
 
 .viewProfile {
-  background: rgb(13, 163, 203) !important;
-  border-radius: 0.9%;
+  background: rgba(0, 73, 122, 0.5) !important;
+}
+
+.profileGrid.grid > .row > .column {
+  padding-left: 0.8em !important;
+  padding-right: 0em !important;
+}
+
+.profileGrid.grid > .row {
+  padding-bottom: 0.8em !important;
+  padding-top: 0em !important;
 }
 
 .CarcardFont {
   color: white !important;
 }
 
-.RecentlyAddedCarsGrid.grid{
+.RecentlyAddedCarsGrid.grid {
   margin-bottom: 0px !important;
+  padding-left: 1.5em !important;
 }
 
 .loaderStyle {
-  background: rgb(21 51 62);
+  background: #001947;
   min-height: 70em;
   background-size: cover;
 }
 
-.RecentlyAddedCarsHeader{
+.RecentlyAddedCarsHeader {
   margin-top: -13px !important;
+  font-weight: lighter !important;
+  margin-bottom: 1em !important;
+}
+
+.addCarBtn {
+  padding-top: 0em !important;
+}
+
+.infoCard {
+  padding-top: 4%;
+  padding-left: 7.5em;
+}
+
+.headerdataPage {
+  background: #0a69a7 !important;
+  color: white !important;
 }
 

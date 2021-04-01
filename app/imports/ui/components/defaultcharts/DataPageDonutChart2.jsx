@@ -55,11 +55,19 @@ class DataPageDonutChart1 extends React.Component {
     };
 
     return (
-        <div >
+        <div>
           <HighchartsReact
               highcharts={Highcharts}
               options={options}
           />
+          <h1 style={{
+            position: 'relative',
+            left: '90%',
+            bottom: '53vh',
+          }}><a style={{
+            color: '#45efe7',
+          }} href={'#/add'}> + </a></h1>
+
         </div>
     );
   }

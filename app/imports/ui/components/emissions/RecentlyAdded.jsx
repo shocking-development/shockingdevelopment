@@ -20,7 +20,7 @@ function RecentlyAdded() {
                 <Grid.Row columns={emissions.length}>
                   {emissions.map(recentEmissions => <Grid.Column
                       key={toString(recentEmissions.createdAt) + recentEmissions.transportation + recentEmissions.miles}>
-                    <Card style={{ padding: '1rem', background: '#0DA3CB', width: '25em', height: '10em' }}>
+                    <Card style={{ padding: '1rem', background: '#0DA3CB', width: '25em', height: '10em', boxShadow: 'none' }}>
                       <Card.Content>
                         <Card.Header
                             style={{ color: 'white' }}>{`${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`}</Card.Header>
@@ -34,7 +34,8 @@ function RecentlyAdded() {
                 </Grid.Row>
               </Grid>
             </div>
-            : <Header inverted size ='huge' textAlign='center'>You have not added any emissions</Header>}
+            : <Header inverted size='huge' textAlign='center' style={{ fontWeight: '100' }}>You have not added any
+              emissions</Header>}
       </div>
   );
 }

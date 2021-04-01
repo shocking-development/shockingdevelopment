@@ -20,7 +20,7 @@ class ListProfileAdmin extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const pageStyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       minHeight: '110vh',
       backgroundSize: 'cover',
     };
@@ -29,7 +29,7 @@ class ListProfileAdmin extends React.Component {
           <NavBarMain/>
           <Container style={{
             textAlign: 'center',
-            background: 'rgb(21 51 62)',
+            background: '#001947',
             minHeight: '110vh',
             Width: '100%',
             paddingLeft: '15em',

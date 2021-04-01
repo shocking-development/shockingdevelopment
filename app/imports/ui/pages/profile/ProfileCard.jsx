@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Grid, Loader, Image, Button, Icon, Header } from 'semantic-ui-react';
+import { Container, Grid, Loader, Image, Button, Icon, Header, Segment } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -33,89 +33,95 @@ class ProfileCard extends React.Component {
 
     return (
         <div style={{
-          background: 'rgb(21 51 62)',
+          background: '#001947',
           backgroundSize: 'cover',
 
         }}>
           <NavBarMain/>
 
           <Container style={pageStyle}>
-            <Grid className='viewProfile'>
-              <Grid.Column width={5}
+            <Grid className={'profileGrid'}>
 
-              >
-                <Image src={this.props.profiles.userImage}
-                    // eslint-disable-next-line
-                       onError={(i) => i.target.src = '/images/default_image.png'}
-                       style={{ borderRadius: '5%', width: '225px' }}
-                />
+              <Grid.Row>
+                <Grid.Column width={5}
 
-                <Button.Group
-                    style={{
-                      position: 'relative',
-                      left: '36%',
-                    }}
                 >
-                  <Button
-                      as={NavLink}
-                      exact to={`/change/${this.props.profiles._id}`}
-                      animated='vertical'
-                      size='medium'
-                      style={{ marginTop: '10px' }}
-                      color='blue'
-                      id='edit-password'
-                  >
-                    <Button.Content hidden>Password</Button.Content>
-                    <Button.Content visible>
-                      <Icon name='lock'/>
-                    </Button.Content>
-                  </Button>
 
-                  <Button
-                      as={NavLink}
-                      id='edit-profile'
-                      exact to={`/edit/${this.props.profiles._id}`}
-                      animated='vertical'
-                      size='medium'
-                      style={{ marginTop: '10px' }}
-                      color='blue'
-                  >
-                    <Button.Content hidden>Edit</Button.Content>
-                    <Button.Content visible>
-                      <Icon name='pencil'/>
-                    </Button.Content>
-                  </Button>
-                </Button.Group>
+                  <div className={'profilepicCard'}>
+                    <Image src={this.props.profiles.userImage}
+                        // eslint-disable-next-line
+                           onError={(i) => i.target.src = '/images/default_image.png'}
+                           style={{ borderRadius: '0.28571429rem', width: '305px' }}
+                    />
+                  </div>
 
-              </Grid.Column>
+                </Grid.Column>
 
-              <Grid.Column
-                  width={4}
-                  style={{ top: '2vh', left: '2%' }}
-              >
+                <Grid.Column width={11}>
+                  <Segment className={'viewProfile'} style={{ height: '305px' }}>
+                    <div className={'infoCard'}>
+                      <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
+                        {this.props.profiles.firstName} {this.props.profiles.lastName}
+                        <Button
+                            as={NavLink}
+                            id='edit-profile'
+                            exact to={`/edit/${this.props.profiles._id}`}
+                            animated='vertical'
+                            size='tiny'
+                            color='blue'
+                            style={{ marginLeft: '20px', width: '9%' }}
+                            circular
+                        >
+                          <Button.Content hidden>Edit</Button.Content>
+                          <Button.Content visible>
+                            <Icon name='pencil'/>
+                          </Button.Content>
+                        </Button>
+                      </Header>
 
-                <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
-                  {this.props.profiles.firstName} {this.props.profiles.lastName}
-                </Header>
-                <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
-                  <p>
-                    Username: {this.props.profiles.user}
-                  </p>
-                  <p>
-                    Zipcode: {this.props.profiles.zipcode}
-                  </p>
-                  <p>
-                    Unit Preference: {this.props.profiles.unitSystem}
-                  </p>
-                </Header>
+                      <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                        <p>
+                          Username: {this.props.profiles.user}
+                        </p>
+                        <p>
+                          Zipcode: {this.props.profiles.zipcode}
+                        </p>
+                        <p>
+                          Unit Preference: {this.props.profiles.unitSystem}
+                        </p>
+                        <p>
+                          Password:
+                          <Button
+                              as={NavLink}
+                              exact to={`/change/${this.props.profiles._id}`}
+                              animated='vertical'
+                              size='medium'
+                              style={{ marginLeft: '10px', width: '23%' }}
+                              color='blue'
+                              id='edit-password'
+                          >
+                            <Button.Content hidden>Edit Password</Button.Content>
+                            <Button.Content visible>
+                              <Icon name='lock'/>
+                            </Button.Content>
+                          </Button>
+                        </p>
 
-              </Grid.Column>
+                      </Header>
 
-              <Grid.Column width={6}>
+                    </div>
+                  </Segment>
+                </Grid.Column>
 
-                <RecentlyAddedCars/>
+              </Grid.Row>
 
-              </Grid.Column>
+              <Grid.Row>
+                <Grid.Column width={16}>
+                  <Segment className={'viewProfile'}>
+                    <RecentlyAddedCars/>
+                  </Segment>
+                </Grid.Column>
+              </Grid.Row>
 
             </Grid>
           </Container>

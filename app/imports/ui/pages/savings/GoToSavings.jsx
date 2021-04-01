@@ -14,7 +14,7 @@ class GoToSavings extends React.Component {
 
     // In page styling for the graphs.
     const dataPageBarGraphstyling = {
-      background: 'rgb(200, 200, 200)',
+      background: 'transparent',
       borderRadius: '5px',
       paddingTop: '5px',
       paddingRight: '5px',
@@ -30,13 +30,12 @@ class GoToSavings extends React.Component {
     const cardStyle = {
       marginLeft: '15em',
       marginRight: '5em',
-      paddingTop: '10em',
       alignment: 'left',
     };
 
     // In page styling for the page.
     const pageStyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       height: '100em',
     };
 
@@ -45,130 +44,138 @@ class GoToSavings extends React.Component {
 
         <div style={pageStyle}>
           <NavBarMain/>
-          <div style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '100vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+          <div style={{
+            textAlign: 'center',
+            background: '#001947',
+            minHeight: '100vh',
+            Width: '100%',
+            paddingLeft: '15em',
+            paddingTop: '8em',
+            paddingBottom: '8em',
+          }}>
             <Header as='h1' inverted textAlign='center'>SAVINGS</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
             <Card.Group style={cardStyle}>
-            <Card>
-              <Card.Content>
-                <div align="right"><Icon name='car'/></div>
-                <Card.Header>Car</Card.Header>
-                <Card.Meta>How much would you save by using this car.</Card.Meta>
-                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
-              </Card.Content>
-              <Card.Content>
-                <div style={dataPageBarGraphstyling}>
-                  <SavingsPageBarGraph/>
-                </div>
-              </Card.Content>
-              <Card.Content extra color='green'>
-                <div className='ui three buttons'>
-                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
+              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
+                <Card.Content>
+                  <div align="right"><Icon inverted name='car'/></div>
+                  <Card.Header className={'CarcardFont'}>Car</Card.Header>
+                  <Card.Meta className={'CarcardFont'}>How much would you save by using this car.</Card.Meta>
+                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
+                </Card.Content>
+                <Card.Content>
+                  <div style={dataPageBarGraphstyling}>
+                    <SavingsPageBarGraph/>
+                  </div>
+                </Card.Content>
+                <Card.Content extra color='teal'>
+                  <div className='ui three buttons'>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
-                </div>
-              </Card.Content>
-            </Card>
+                  </div>
+                </Card.Content>
+              </Card>
 
-            <Card>
-              <Card.Content>
-                <div align="right"><Icon name='battery three'/></div>
-                <Card.Header>Electric Car</Card.Header>
-                <Card.Meta>How much would you save by using this electric car.</Card.Meta>
-                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
-              </Card.Content>
+              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
+                <Card.Content>
+                  <div align="right"><Icon inverted name='battery three'/></div>
+                  <Card.Header className={'CarcardFont'}>Electric Car</Card.Header>
+                  <Card.Meta className={'CarcardFont'}>How much would you save by using this electric car.</Card.Meta>
+                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
+                </Card.Content>
 
-              <Card.Content>
-                <div style={dataPageBarGraphstyling}>
-                  <SavingsPageBarGraph/>
-                </div>
-              </Card.Content>
+                <Card.Content className={'CarcardFont'}>
+                  <div style={dataPageBarGraphstyling}>
+                    <SavingsPageBarGraph/>
+                  </div>
+                </Card.Content>
 
-              <Card.Content extra color='green'>
-                <div className='ui three buttons'>
-                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound">Input Car</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
+                <Card.Content extra color='teal'>
+                  <div className='ui three buttons'>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
-                </div>
-              </Card.Content>
-            </Card>
+                  </div>
+                </Card.Content>
+              </Card>
 
-            <Card>
-              <Card.Content>
-                <div align="right"><Icon align="right" name='truck'/></div>
-                <Card.Header>Car Pool</Card.Header>
-                <Card.Meta>How much would you save by using this carpool.</Card.Meta>
-                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
-              </Card.Content>
+              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
+                <Card.Content>
+                  <div align="right"><Icon inverted align="right" name='truck'/></div>
+                  <Card.Header className={'CarcardFont'}>Car Pool</Card.Header>
+                  <Card.Meta className={'CarcardFont'}>How much would you save by using this carpool.</Card.Meta>
+                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
+                </Card.Content>
 
-              <Card.Content>
-                <div style={dataPageBarGraphstyling}>
-                  <SavingsPageBarGraph/>
-                </div>
-              </Card.Content>
+                <Card.Content>
+                  <div style={dataPageBarGraphstyling}>
+                    <SavingsPageBarGraph/>
+                  </div>
+                </Card.Content>
 
-              <Card.Content extra>
-                <div className='ui four buttons'>
-                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
-                  <Button color='green' as={NavLink} exact to="/add">Input Car</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound">Input Members</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-                </div>
-              </Card.Content>
-            </Card>
+                <Card.Content extra>
+                  <div className='ui four buttons'>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Car</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound">Input Members</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
+                  </div>
+                </Card.Content>
+              </Card>
 
-            <Card>
-              <Card.Content>
-                <div align="right"><Icon name='bus'/>
-                  <Icon name='train'/></div>
-                <Card.Header>Public Transport</Card.Header>
-                <Card.Meta>How much would you save by using this public transport system.</Card.Meta>
-                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
-              </Card.Content>
+              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
+                <Card.Content>
+                  <div align="right"><Icon inverted name='bus'/>
+                    <Icon inverted name='train'/></div>
+                  <Card.Header className={'CarcardFont'}>Public Transport</Card.Header>
+                  <Card.Meta className={'CarcardFont'}>How much would you save by using this public transport system.</Card.Meta>
+                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
+                </Card.Content>
 
-              <Card.Content>
-                <div style={dataPageBarGraphstyling}>
-                  <SavingsPageBarGraph/>
-                </div>
-              </Card.Content>
+                <Card.Content>
+                  <div style={dataPageBarGraphstyling}>
+                    <SavingsPageBarGraph/>
+                  </div>
+                </Card.Content>
 
-              <Card.Content extra>
-                <div className='ui three buttons'>
-                  <Button color='green' as={NavLink} exact to="/add">Input Usage</Button>
-                  <Button color='green' as={NavLink} exact to="/add">Input type</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-                </div>
-              </Card.Content>
-            </Card>
+                <Card.Content extra>
+                  <div className='ui three buttons'>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
+                    <Button color='teal' as={NavLink} exact to="/add">Input type</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
+                  </div>
+                </Card.Content>
+              </Card>
 
-            <Card>
-              <Card.Content>
-                <div align="right"><Icon name='bicycle'/></div>
-                <Card.Header>Biking</Card.Header>
-                <Card.Meta>How much would you save by Biking</Card.Meta>
-                <Card.Description>{this.props.currentUser.transportation}</Card.Description>
-              </Card.Content>
+              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
+                <Card.Content>
+                  <div align="right"><Icon inverted name='bicycle'/></div>
+                  <Card.Header className={'CarcardFont'}>Biking</Card.Header>
+                  <Card.Meta className={'CarcardFont'}>How much would you save by Biking</Card.Meta>
+                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
+                </Card.Content>
 
-              <Card.Content>
-                <div style={dataPageBarGraphstyling}>
-                  <SavingsPageBarGraph/>
-                </div>
-              </Card.Content>
+                <Card.Content>
+                  <div style={dataPageBarGraphstyling}>
+                    <SavingsPageBarGraph/>
+                  </div>
+                </Card.Content>
 
-              <Card.Content extra>
-                <div className='ui two buttons'>
-                  <Button color='green' as={NavLink} exact to="/add" style={inCardStyle}>Input Usage</Button>
-                  <Button color='green' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-                </div>
-              </Card.Content>
-            </Card>
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button color='teal' as={NavLink} exact to="/add" style={inCardStyle}>Input Usage</Button>
+                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
+                  </div>
+                </Card.Content>
+              </Card>
 
-          </Card.Group>
-        </div>
+            </Card.Group>
+          </div>
         </div>
     );
   }

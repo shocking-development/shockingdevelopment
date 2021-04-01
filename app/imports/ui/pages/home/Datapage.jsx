@@ -22,20 +22,20 @@ class Datapage extends React.Component {
       backgroundSize: 'cover',
     };
     const outer_div_pagestyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       backgroundSize: 'cover',
       height: '100%',
     };
 
     const dataPagePieChartstyling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
       boxShadow: '-41px -1px 44px -3px #0E324C',
       paddingTop: '10px',
     };
 
     const dataPagebarGraphstyling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
       boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
@@ -43,7 +43,7 @@ class Datapage extends React.Component {
     };
 
     const dataPageDonutChart1styling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
       boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
@@ -55,7 +55,7 @@ class Datapage extends React.Component {
     };
 
     const dataPageDonutChart2styling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
       boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
@@ -67,7 +67,7 @@ class Datapage extends React.Component {
     };
 
     const dataTableDivstyling = {
-      background: 'white',
+      background: '#0a69a7',
       borderRadius: '6px',
       boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
@@ -78,12 +78,12 @@ class Datapage extends React.Component {
       width: '51%',
     };
     const tablestyling = {
-      background: 'white',
+      background: '#0a69a7',
       position: 'relative',
       left: '1.29em',
       height: '100%',
       width: '94%',
-      color: 'black',
+      color: 'white',
       border: 'none',
     };
 
@@ -112,18 +112,18 @@ class Datapage extends React.Component {
                   </div>
                   <div style={dataTableDivstyling}>
                     <Table style={tablestyling} celled>
-                      <Table.Header className={'headerdataPage'}>
+                      <Table.Header>
                         <Table.Row>
-                          <Table.HeaderCell>Week</Table.HeaderCell>
-                          <Table.HeaderCell>Emissions</Table.HeaderCell>
-                          <Table.HeaderCell>Transportation</Table.HeaderCell>
+                          <Table.HeaderCell className={'headerdataPage'}>Week</Table.HeaderCell>
+                          <Table.HeaderCell className={'headerdataPage'}>Emissions</Table.HeaderCell>
+                          <Table.HeaderCell className={'headerdataPage'}>Transportation</Table.HeaderCell>
                         </Table.Row>
                       </Table.Header>
 
                       <Table.Body>
                         <Table.Row>
                           <Table.Cell>
-                            <Label ribbon>This Week</Label>
+                            <Label ribbon color='green'>This Week</Label>
                           </Table.Cell>
                           <Table.Cell>.01</Table.Cell>
                           <Table.Cell>Public Transportation</Table.Cell>
@@ -142,17 +142,17 @@ class Datapage extends React.Component {
 
                       <Table.Footer>
                         <Table.Row>
-                          <Table.HeaderCell colSpan='3'>
+                          <Table.HeaderCell className={'headerdataPage'} colSpan='3'>
                             <Menu floated='right' pagination>
-                              <Menu.Item as='a' icon>
+                              <Menu.Item className={'headerdataPage'} as='a' icon>
                                 <Icon name='chevron left'/>
                               </Menu.Item>
-                              <Menu.Item as='a'>1</Menu.Item>
-                              <Menu.Item as='a'>2</Menu.Item>
-                              <Menu.Item as='a'>3</Menu.Item>
-                              <Menu.Item as='a'>4</Menu.Item>
-                              <Menu.Item as='a' icon>
-                                <Icon name='chevron right'/>
+                              <Menu.Item className={'headerdataPage'} as='a'>1</Menu.Item>
+                              <Menu.Item className={'headerdataPage'} as='a'>2</Menu.Item>
+                              <Menu.Item className={'headerdataPage'} as='a'>3</Menu.Item>
+                              <Menu.Item className={'headerdataPage'} as='a'>4</Menu.Item>
+                              <Menu.Item className={'headerdataPage'} as='a' icon>
+                                <Icon className={'headerdataPage'} name='chevron right'/>
                               </Menu.Item>
                             </Menu>
                           </Table.HeaderCell>
