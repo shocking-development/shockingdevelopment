@@ -23,7 +23,7 @@ class RecentlyAddedCars extends React.Component {
 
     return (
         <div style={{
-          background: 'rgb(21 51 62)',
+          background: 'rgb(11 164 203)',
           backgroundSize: 'cover',
         }}>
           <Header inverted as="h2" textAlign="center"
