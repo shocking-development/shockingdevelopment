@@ -14,16 +14,17 @@ const makeSchema = (allCars) => new SimpleSchema({
   'vehicle.$': {type: String, allowedValues: allCars},
 });
 
+
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListCars extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { vehicle: [] };
+    this.state = { Make: [] };
   }
 
   submit(data) {
-    this.setState({vehicle: data.cars || [] });
+    this.setState({Make: data.make || [] });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -37,9 +38,10 @@ class ListCars extends React.Component {
     const carYears = carDocs.map((doc) => `${doc.year}`);
     const carModel = carDocs.map((doc) => `${doc.model}-${doc._id}`);
     const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`); */ }
-    const allCars = _.pluck(Cars.find().fetch(), 'make');
-    const formSchema = makeSchema(allCars);
+    const allMake = _.pluck(Cars.find().fetch(), 'make');
+    const formSchema = makeSchema(allMake);
     const bridge = new SimpleSchema2Bridge(formSchema);
+    const Cars = Cars.find({make : { $in: this.state.make }}).fetch();
     const pageStyle = {
       background: 'rgb(21 51 62)',
       height: '60em',
@@ -74,6 +76,7 @@ class ListCars extends React.Component {
                 <SubmitField id='submit' value='Submit'/>
               </Segment>
             </AutoForm>
+
           </div>
         </div>
     );
