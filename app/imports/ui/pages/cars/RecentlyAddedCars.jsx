@@ -29,7 +29,7 @@ class RecentlyAddedCars extends React.Component {
           </Header>
           <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{ paddingBottom: '2em' }}/>
           {this.props.cars.length !== 0 ?
-              <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <div style={{ width: '78%', margin: 'auto' }}>
                 <Grid className={'RecentlyAddedCarsGrid'}>
                   {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>)}
                 </Grid>
@@ -58,7 +58,7 @@ RecentlyAddedCars.propTypes = {
 export default withTracker(() => {
   const subscription = UserInfosCars.subscribeUserInfoCars();
   return {
-    cars: UserInfosCars.find({}).fetch(),
+    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 2 }).fetch(),
     ready: subscription.ready(),
   };
 })(RecentlyAddedCars);

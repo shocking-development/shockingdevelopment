@@ -2,26 +2,21 @@ import React from 'react';
 import { Button, Card, Grid, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { Cars } from '../../../api/cars/CarsCollection';
 import { userInfoRemoveItMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class carCardItem extends React.Component {
 
   render() {
-    const carDocs = Cars.find(this.props.car.carId).fetch();
-    // console.log(carDocs);
 
     /* deleteCar function allows users to delete preset cars */
     const deleteCar = ({ _id }) => userInfoRemoveItMethod.call(_id);
 
-    // console.log(carDocs.length);
-
     return (
         <Card.Content style={{ paddingBottom: '5%' }}>
-          <Grid style={{ marginBottom: '0 rem' }}>
-            <Grid.Row columns={carDocs.length}>
-              {carDocs.map(recentCar => <Grid.Column key={recentCar._id}>
+          <Grid>
+            <Grid.Row>
+               <Grid.Column key={this.props.car._id}>
                 <Card style={{ background: '#1d7f90', boxShadow: 'none' }}>
                   <Card.Content>
                     <Icon name={'car'} size={'huge'} inverted/>
@@ -35,27 +30,27 @@ class carCardItem extends React.Component {
                   <Card.Content>
                     <Card.Header className='CarcardFont'
                                  style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
-                      Car Year: {recentCar.year}
+                      Car Year: {this.props.car.yearofCar}
                     </Card.Header>
                     <b style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}
                        className='CarcardFont'
-                    > Make: {recentCar.make}
+                    > Make: {this.props.car.makeofCar}
                     </b>
                     <br/>
                     <b className='CarcardFont'
                        style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}
-                    > Model: {recentCar.model}
+                    > Model: {this.props.car.modelofCar}
                     </b>
                     <br/>
                     <b className='CarcardFont'
                        style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
-                      MPG: {recentCar.mpg} </b>
+                      MPG: {this.props.car.mpgofCar} </b>
                   </Card.Content>
                   <Button id='delete-trip' onClick={() => deleteCar(this.props.car)} color={'teal'}>
                     Remove Car
                   </Button>
                 </Card>
-              </Grid.Column>)}
+              </Grid.Column>
             </Grid.Row>
           </Grid>
         </Card.Content>

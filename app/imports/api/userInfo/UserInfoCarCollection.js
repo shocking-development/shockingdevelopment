@@ -17,6 +17,10 @@ class UserInfoCarCollection extends BaseCollection {
       carId: String,
       carName: String,
       owner: String,
+      makeofCar: String,
+      modelofCar: String,
+      yearofCar: Number,
+      mpgofCar: Number,
     }));
   }
 
@@ -26,12 +30,16 @@ class UserInfoCarCollection extends BaseCollection {
    * @param docID the docId name of the doc.
    * @return {String} the docID of the new document.
    */
-  define({ carId, carName, owner }) {
+  define({ carId, carName, owner, makeofCar, modelofCar, yearofCar, mpgofCar }) {
     const docID = this._collection.insert({
       // userId,
       carId,
       carName,
       owner,
+      makeofCar,
+      modelofCar,
+      yearofCar,
+      mpgofCar,
     });
     return docID;
   }
