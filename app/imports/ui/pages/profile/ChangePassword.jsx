@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
-import { userInfoUpdateMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** Renders the Page for editing a single document. */
