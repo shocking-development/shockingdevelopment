@@ -62,10 +62,11 @@ class CarsDropdown extends React.Component {
 
     const pageStyle = {
       background: 'rgb(21 51 62)',
+      height: '100vh',
       backgroundSize: 'cover',
       paddingTop: '5em',
       paddingLeft: '10%',
-      minHeight: '110vh',
+      justifyContent: 'center',
     };
 
     /*

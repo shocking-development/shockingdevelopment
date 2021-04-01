@@ -41,6 +41,7 @@ class ListCars extends React.Component {
           <NavBarMain/>
           <Container style={{
             textAlign: 'center',
+            background: 'rgb(21 51 62)',
             minHeight: '110vh',
             Width: '100%',
             paddingLeft: '15em',
@@ -100,7 +101,7 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Cars.subscribeCars();
   return {
-    Car: Cars.find({}, { sort: { count: -1 }, limit: 25 }).fetch(),
+    Car: Cars.find({}, { sort: { count: -1 }, limit: 25 }).fetch(), // the changed line
     ready: subscription.ready(),
   };
 })(ListCars);

@@ -22,8 +22,11 @@ class RecentlyAddedCars extends React.Component {
     // For debugging console.log(this.props.cars.length);
 
     return (
-        <div>
-          <Header inverted as="h1" textAlign="center"
+        <div style={{
+          background: 'rgb(21 51 62)',
+          backgroundSize: 'cover',
+        }}>
+          <Header inverted as="h2" textAlign="center"
                   style={{ fontWeight: 'lighter', paddingTop: '15px' }}>
             Your Cars
           </Header>

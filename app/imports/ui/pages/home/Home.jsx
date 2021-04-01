@@ -20,6 +20,8 @@ class Home extends React.Component {
     const divstyle = {
       paddingLeft: '14%',
       paddingTop: '3%',
+      background: 'rgb(21 51 62)',
+      width: '100vw',
     };
 
     return (

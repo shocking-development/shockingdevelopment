@@ -36,10 +36,10 @@ class ProfileCard extends React.Component {
     return (
         <div style={{
           background: 'rgb(21 51 62)',
-          backgroundSize: 'cover',
           height: '100%',
           marginTop: '-10px',
           width: '100%',
+          backgroundSize: 'cover',
         }}>
           <NavBarMain/>
 
