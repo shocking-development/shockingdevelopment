@@ -1,30 +1,13 @@
 import React from 'react';
-import Segment, { Container, Table, Header, Loader } from 'semantic-ui-react';
+import Segment, { Container, Table, Header, Loader, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import CarItem  from '../../components/cars/CarItem';
 import { Cars } from '../../../api/cars/CarsCollection';
-import SubmitField, { AutoForm } from 'uniforms-semantic';
-import MultiSelectField from '../../forms/controllers/MultiSelectField';
-
-
-const makeSchema = (allCars) => new SimpleSchema({
-  vehicle: { type: Array, label: 'Make', Optional: true},
-  'vehicle.$': {type: String, allowedValues: allCars},
-});
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListCars extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { vehicle: [] };
-  }
-
-  submit(data) {
-    this.setState({vehicle: data.cars || [] });
-  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -33,13 +16,7 @@ class ListCars extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    {/**const carDocs = Cars.find({}).fetch();
-    const carYears = carDocs.map((doc) => `${doc.year}`);
-    const carModel = carDocs.map((doc) => `${doc.model}-${doc._id}`);
-    const carMake = carDocs.map((doc) => `${doc.make}-${doc._id}`); */ }
-    const allCars = _.pluck(Cars.collection.find().fetch(), 'make');
-    const formSchema = makeSchema(allCars);
-    const bridge = new SimpleSchema2Bridge(formSchema);
+
     const pageStyle = {
       background: 'rgb(21 51 62)',
       height: '60em',
@@ -50,8 +27,11 @@ class ListCars extends React.Component {
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ padding: '10em' }}>
+          <Container style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '110vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
             <Header as="h2" textAlign="center" inverted>List All Cars </Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Table celled>
               <Table.Header>
                 <Table.Row>
@@ -66,15 +46,6 @@ class ListCars extends React.Component {
               </Table.Body>
             </Table>
           </Container>
-          <div id="filter-page" className="filterFunction">
-            <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
-              <Segment>
-                <MultiSelectField id='car' name='car' showInlineError={true}
-                                  placeholder={'Search a Car'}/>
-                <SubmitField id='submit' value='Submit'/>
-              </Segment>
-            </AutoForm>
-          </div>
         </div>
     );
   }
