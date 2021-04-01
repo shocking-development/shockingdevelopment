@@ -14,7 +14,7 @@
     {
       "firstName": "John",
       "lastName": "Foo",
-      "user": "johnfoo",
+      "user": "john@foo.com",
       "email": "john@foo.com",
       "password": "changeme",
       "zipcode": "96822",
@@ -26,7 +26,7 @@
     {
       "firstName": "Amanda",
       "lastName": "Foo",
-      "user": "amandafoo",
+      "user": "amanda@foo.com",
       "email": "amanda@foo.com",
       "password": "changeme",
       "zipcode": "96814",
@@ -38,7 +38,7 @@
     {
       "firstName": "Admin",
       "lastName": "Foo",
-      "user": "admin",
+      "user": "admin@foo.com",
       "email": "admin@foo.com",
       "password": "changeme",
       "zipcode": "96822",
