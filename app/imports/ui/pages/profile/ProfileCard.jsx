@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
-import { Cars } from '../../../api/cars/CarsCollection';
 import RecentlyAddedCars from '../cars/RecentlyAddedCars';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 
