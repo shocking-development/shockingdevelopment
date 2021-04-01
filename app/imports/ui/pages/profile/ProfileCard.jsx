@@ -62,6 +62,7 @@ class ProfileCard extends React.Component {
                       size='medium'
                       style={{ marginTop: '10px' }}
                       color='blue'
+                      id='edit-password'
                   >
                     <Button.Content hidden>Password</Button.Content>
                     <Button.Content visible>
@@ -71,6 +72,7 @@ class ProfileCard extends React.Component {
 
                   <Button
                       as={NavLink}
+                      id='edit-profile'
                       exact to={`/edit/${this.props.profiles._id}`}
                       animated='vertical'
                       size='medium'

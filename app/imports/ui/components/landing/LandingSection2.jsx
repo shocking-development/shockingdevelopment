@@ -1,12 +1,48 @@
 import React from 'react';
-import { Statistic, Grid, Header, Button } from 'semantic-ui-react';
+import { Statistic, Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
 import LandingPagePieChart from '../defaultcharts/LandingPagePieChart';
+import { calculateCO2, calculateGal, calculateGHG } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render some statistics for the landing page. */
 class LandingSection2 extends React.Component {
+  /** Initialize component state with properties for input */
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      show: false,
+    };
+  }
+
+  /** Toggle segment that shows the calculation result */
+  showResult = () => {
+    this.setState({
+      show: true,
+    });
+  }
+
+  /** Handle submission by outputing the values to the console. */
+  handleFormSubmit = () => {
+    // eslint-disable-next-line no-console
+    console.log('input:', this.state.input);
+    // eslint-disable-next-line no-console
+    console.log('convert liters to US units:', calculateGal(this.state.input));
+    // eslint-disable-next-line no-console
+    console.log('input CO2:', calculateCO2(calculateGal(this.state.input)));
+    // eslint-disable-next-line no-console
+    console.log('input GHG:', calculateGHG(calculateGal(this.state.input)));
+  }
+
+  /** Update the form controls each time the user interacts with them. */
+  handleInputChange = (e) => {
+    this.setState({
+      input: e.target.value,
+    });
+  }
+
   render() {
     /** Some styling components */
     const trackYourGHGemissionsStyling = {
@@ -54,6 +90,35 @@ class LandingSection2 extends React.Component {
               </div>
               <div style={{ paddingRight: '1em' }}>
                 <LandingPageLineChart/>
+              </div>
+            </Grid.Row>
+            <Grid.Row style={trackYourGHGemissionsStyling}>
+              <div style={{ color: 'white', margin: 'auto' }}>
+                <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>
+                <p className='body'
+                   style={fontstyling}>
+                  Calculate before or after to see how much you can reduce your GHG.
+                </p>
+              </div>
+              <div style={{ paddingRight: '30em' }}>
+                <Form size='small' onSubmit={this.handleFormSubmit}>
+                  <Form.Input
+                      id='calculator-imperial'
+                      placeholder='Enter the gallons of gas'
+                      value={this.state.input}
+                      onChange={this.handleInputChange}
+                  />
+                  <Button color='blue' onClick={this.showResult} id='submit-imperial'>Calculate</Button>
+                </Form>
+                {this.state.show &&
+                (<Segment>
+                  <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
+                    from {this.state.input} liter(s) of
+                    gas </p>
+                  <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger vehicles
+                    driven for one
+                    year.</p>
+                </Segment>)}
               </div>
             </Grid.Row>
           </Grid>

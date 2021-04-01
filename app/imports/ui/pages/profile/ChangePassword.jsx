@@ -62,7 +62,7 @@ class ChangePassword extends React.Component {
                     if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
                   }} model={this.props.doc}>
                 <Segment>
-                  <TextField name='password'/>
+                  <TextField name='password' id='update-password-submit'/>
                   <SubmitField value='Update'/>
                   <ErrorsField/>
                   <HiddenField name='owner'/>

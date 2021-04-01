@@ -89,11 +89,12 @@ class GHGEmissionsCalculator extends React.Component {
             <Container style={containerStyle}>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
+                    id='calculator-imperial'
                     placeholder='Enter the gallons of gas'
                     value={this.state.input}
                     onChange={this.handleInputChange}
                 />
-                <Button color='blue' onClick={this.showResult}>Calculate</Button>
+                <Button color='blue' onClick={this.showResult} id='submit-imperial'>Calculate</Button>
               </Form>
               {this.state.show &&
               (<Segment>
