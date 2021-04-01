@@ -95,7 +95,7 @@ class LandingSection2 extends React.Component {
 
             <Grid.Row style={trackYourGHGemissionsStyling}>
               <Grid.Column width={7} style={{ paddingLeft: '3em' }}>
-                <div style={{ color: 'white' }}>
+                <div id="ghgCalc" style={{ color: 'white' }}>
                   <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>
                   <p className='body'
                      style={fontstyling}>

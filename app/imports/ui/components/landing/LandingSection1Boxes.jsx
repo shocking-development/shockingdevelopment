@@ -1,23 +1,8 @@
 import React from 'react';
-import { useRef } from 'react';
 import { Grid, Segment, Icon, Container } from 'semantic-ui-react';
+import { Link } from 'react-scroll';
 
 /** A simple static component to render some boxes for the landing page. */
-
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-
-const ScrollCalc = () => {
-
-  const myRef = useRef(null);
-  const executeScroll = () => scrollToRef(myRef);
-
-  return (
-      <>
-        <div ref={myRef}>I wanna be seen</div>
-        <button onClick={executeScroll}> Click to scroll</button>
-      </>
-  );
-};
 
 class LandingSection1Boxes extends React.Component {
 
@@ -25,6 +10,7 @@ class LandingSection1Boxes extends React.Component {
     super(props);
     this.myRef = React.createRef();
   }
+
   render() {
 
     const infoBoxesStyling = {
@@ -97,13 +83,15 @@ class LandingSection1Boxes extends React.Component {
               </Grid.Column>
 
               <Grid.Column className="menu-boxes-column">
-                <Segment ref={this.myRef} className="zoom" style={infoBoxColoring}>
-                  <i style={iconStyling}
-                     className="calculator icon"></i>
-                  <p className='body' style={infoBoxesStyling}>Emissions Calculator</p>
-                  <p className='body' style={pargraphInfoBoxesStyling}>
-                    Calculate how much GHG you could have reduced.
-                  </p>
+                <Segment className="zoom" style={infoBoxColoring}>
+                  <Link to="ghgCalc">
+                    <i style={iconStyling}
+                       className="calculator icon"></i>
+                    <p className='body' style={infoBoxesStyling}>Emissions Calculator</p>
+                    <p className='body' style={pargraphInfoBoxesStyling}>
+                      Calculate how much GHG you could have reduced.
+                    </p>
+                  </Link>
                 </Segment>
               </Grid.Column>
 
