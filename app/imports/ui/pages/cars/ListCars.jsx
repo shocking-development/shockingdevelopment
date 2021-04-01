@@ -33,7 +33,7 @@ class ListCars extends React.Component {
       backgroundSize: 'cover',
     };
     /* console.log(this.props.Car); */
-    //const showCount = pagination[Cars].showCount;
+    // const showCount = pagination[Cars].showCount;
     /* const count = Cars.count(); */
 
     return (
@@ -100,7 +100,7 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Cars.subscribeCars();
   return {
-    Car: Cars.find({}, { sort: { count: -1 }, limit: 25 }).fetch(), //the changed line
+    Car: Cars.find({}, { sort: { count: -1 }, limit: 25 }).fetch(),
     ready: subscription.ready(),
   };
 })(ListCars);

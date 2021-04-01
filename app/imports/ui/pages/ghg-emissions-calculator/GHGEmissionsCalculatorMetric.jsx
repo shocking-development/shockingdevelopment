@@ -82,7 +82,7 @@ class GHGEmissionsCalculatorMetric extends React.Component {
             Width: '100%',
             paddingLeft: '15em',
             paddingTop: '8em',
-            paddingBottom: '8em'
+            paddingBottom: '8em',
           }}>
             <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{

@@ -34,7 +34,7 @@ class ListProfileAdmin extends React.Component {
             Width: '100%',
             paddingLeft: '15em',
             paddingTop: '8em',
-            paddingBottom: '8em'
+            paddingBottom: '8em',
           }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
