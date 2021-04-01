@@ -112,7 +112,7 @@ class NavBarMain extends React.Component {
                     </Menu.Item>
                 ) : ''}
 
-                
+                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
                   <IconGroup style={{ float: 'right' }} size={'large'}>
                     <Icon name='list alternate outline'/>
@@ -120,6 +120,7 @@ class NavBarMain extends React.Component {
                   </IconGroup>
                   List Cars (Admin)
                 </Menu.Item>
+                ) : ''}
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
                            key='key7'>
