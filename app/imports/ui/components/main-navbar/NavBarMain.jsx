@@ -112,18 +112,18 @@ class NavBarMain extends React.Component {
                     </Menu.Item>
                 ) : ''}
 
-                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
-                           key='key7'>
-                  <Icon name='sign-out' size='large'/>
-                  Sign Out
-                </Menu.Item>
-
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
                   <IconGroup style={{ float: 'right' }} size={'large'}>
                     <Icon name='list alternate outline'/>
                     <Icon corner style={{ color: 'rgb(169,169,169)' }} name='car'/>
                   </IconGroup>
                   List Cars (Admin)
+                </Menu.Item>
+
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
+                           key='key7'>
+                  <Icon name='sign-out' size='large'/>
+                  Sign Out
                 </Menu.Item>
 
               </Menu>,
