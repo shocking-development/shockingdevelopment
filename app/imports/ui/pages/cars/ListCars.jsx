@@ -26,7 +26,7 @@ class ListCars extends React.Component {
 
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '60em',
+      height: '100%',
       backgroundSize: 'cover',
     };
     /* console.log(this.props.Car); */
@@ -38,7 +38,8 @@ class ListCars extends React.Component {
           <NavBarMain/>
           <Container style={{
             textAlign: 'center',
-            background: 'rgb(21 51 62)',
+            //background: 'rgb(21 51 62)',
+            //backgroundSize: 'cover',
             minHeight: '110vh',
             Width: '100%',
             paddingLeft: '15em',
