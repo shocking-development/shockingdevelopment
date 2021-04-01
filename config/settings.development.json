@@ -50,7 +50,13 @@
     }
   ],
   "defaultCarsData": [
-    { "make": "Acura", "model": "NSX", "year": 2021, "mpg": 21 },
+
+    { "make": "Acura", "model": "NSX (H)", "year": 2021, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2020, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2019, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2018, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2017, "mpg": 21 },
+
     { "make": "Acura", "model": "ILX", "year": 2016, "mpg": 24 },
     { "make": "Acura", "model": "TLX", "year": 2021, "mpg": 22 },
     { "make": "Alfa Romeo", "model": "Giulia", "year": 2021, "mpg": 24 },
@@ -609,10 +615,11 @@
     { "make": "Subaru", "model": "Levorg", "year": 2014, "mpg": 33 },
     { "make": "Suzuki", "model": "Swift", "year": 2001, "mpg": 36 },
     { "make": "Suzuki", "model": "Vitara", "year": 2004, "mpg": 19 },
-    { "make": "Tesla", "model": "Model 3", "year": 2021, "mpg": 148 },
-    { "make": "Tesla", "model": "Model S", "year": 2021, "mpg": 121 },
-    { "make": "Tesla", "model": "Model X", "year": 2021, "mpg": 109 },
-    { "make": "Tesla", "model": "Model Y", "year": 2021, "mpg": 131 },
+    
+    { "make": "Tesla", "model": "Model 3 (E)", "year": 2021, "mpg": 148 },
+    { "make": "Tesla", "model": "Model S (E)", "year": 2021, "mpg": 121 },
+    { "make": "Tesla", "model": "Model X (E)", "year": 2021, "mpg": 109 },
+    { "make": "Tesla", "model": "Model Y (E)", "year": 2021, "mpg": 131 },
 
     { "make": "Toyota", "model": "86 MT", "year": 2020, "mpg": 21 },
     { "make": "Toyota", "model": "86 AT", "year": 2020, "mpg": 24 },
