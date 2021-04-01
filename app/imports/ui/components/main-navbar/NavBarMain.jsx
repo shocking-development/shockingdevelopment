@@ -119,7 +119,10 @@ class NavBarMain extends React.Component {
                 </Menu.Item>
 
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
-                  <Icon name='sign-out' size='large'/>
+                  <IconGroup style={{ float: 'right' }} size={'large'}>
+                    <Icon name='list alternate outline'/>
+                    <Icon corner style={{ color: 'rgb(169,169,169)' }} name='car'/>
+                  </IconGroup>
                   List Cars (Admin)
                 </Menu.Item>
 
