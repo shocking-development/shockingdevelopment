@@ -42,27 +42,28 @@ class EditProfile extends React.Component {
       unitSystem,
     };
 
-    userInfoUpdateMethod.call(updateData, (error) => (error ?
-        swal('Error', error.message, 'error') :
-        swal('Success', 'Item updated successfully', 'success')));
-
     /* Update email address in Meteor Accounts */
     if (email !== Meteor.user().emails[0].address) {
       Meteor.call('updateEmail', email, (err) => {
         if (err) {
-          console.log('Error updating email address: {err}');
+          console.log('Error updating email address');
         }
       });
     }
 
-    /* Update username in Meteor Accounts */
+    /* DOESNT WORK RIGHT NOW: Update username in Meteor Accounts
     if (user !== Meteor.user().username) {
       Meteor.call('updateUsername', user, (err) => {
         if (err) {
-          console.log('Error updating username: {err}');
+          console.log('Error updating username');
         }
       });
-    }
+    } */
+
+    /* Update info in UserInfos Collection */
+    userInfoUpdateMethod.call(updateData, (error) => (error ?
+        swal('Error', error.message, 'error') :
+        swal('Success', 'Item updated successfully', 'success')));
   }
 
   /* For user profile image upload */
@@ -108,7 +109,7 @@ class EditProfile extends React.Component {
 
     /* REMOVE LATER */
     console.log(Meteor.user());
-    console.log(Meteor.user().emails[0].address);
+    console.log(this.props.doc);
 
     return (
         <div style={{
@@ -183,12 +184,18 @@ EditProfile.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
+  // Subscribe to UserInfos collection.
+  const subscription = UserInfos.subscribeUserInfo();
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
-  // Get access to Stuff documents.
-  const subscription = UserInfos.subscribeUserInfo();
+  const doc = UserInfos.findOne(documentId);
+  const ready = subscription.ready();
+
+  /* REMOVE LATER */
+  console.log(documentId, doc);
+
   return {
-    doc: UserInfos.findOne(documentId),
-    ready: subscription.ready(),
+    doc,
+    ready,
   };
 })(EditProfile);

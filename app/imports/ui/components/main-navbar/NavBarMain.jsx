@@ -46,11 +46,11 @@ class NavBarMain extends React.Component {
               [<Menu inverted pointing secondary vertical style={{ borderWidth: '0', fontFamily: 'sans-serif' }}
                      key='key0'>
                 <Menu.Item as={NavLink} activeClassName="" exact to="/profile">
-                  <Image size='medium' circular src={this.props.profiles.userImage}
+                  <Image size='medium' circular src={this.props.profiles?.userImage}
                       // eslint-disable-next-line
                          onError={(i) => i.target.src = '/images/default_image.jpg'}/>
                 </Menu.Item>
-                <Menu.Item style={userstyling}> Hello, {this.props.profiles.firstName}! </Menu.Item>
+                <Menu.Item style={userstyling}> Hello, {this.props.profiles?.firstName}! </Menu.Item>
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/profile"
                            key='key1' id='user-profile'>
@@ -144,16 +144,25 @@ NavBarMain.propTypes = {
   currentId: PropTypes.string,
 };
 
-const subscription = UserInfos.subscribeUserInfo();
-const userAccount = Meteor.users.findOne(Meteor.userId());
-
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-const NavBar2Container = withTracker(() => ({
-  profiles: UserInfos.findOne(userAccount),
-  currentUser: Meteor.user() ? Meteor.user().username : '',
-  currentId: Meteor.userId(),
-  ready: subscription.ready(),
-}))(NavBarMain);
+const NavBar2Container = withTracker(() => {
+  const subscription = UserInfos.subscribeUserInfo();
+  const userAccount = Meteor.users.findOne(Meteor.userId());
+  let profiles;
+  if (userAccount) {
+    profiles = UserInfos.findOne({ user: userAccount.username });
+  }
+  const currentUser = Meteor.user() ? Meteor.user().username : '';
+  const currentId = Meteor.userId();
+  const ready = subscription.ready();
+
+  return {
+    profiles,
+    currentUser,
+    currentId,
+    ready,
+  };
+})(NavBarMain);
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
 export default withRouter(NavBar2Container);
