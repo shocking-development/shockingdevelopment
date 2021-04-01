@@ -17,7 +17,7 @@ class UserInfoCollection extends BaseCollection {
       firstName: String,
       lastName: String,
       user: String,
-      owner: String,
+      owner: String, // is this redundant?
       email: String,
       password: String,
       userImage: String,
