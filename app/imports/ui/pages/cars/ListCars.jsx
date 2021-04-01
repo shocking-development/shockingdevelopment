@@ -1,13 +1,18 @@
 import React from 'react';
-import Segment, { Container, Table, Header, Loader, Image } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
-import CarItem  from '../../components/cars/CarItem';
+import CarItem from '../../components/cars/CarItem';
 import { Cars } from '../../../api/cars/CarsCollection';
+import BaseCollection from '../../../api/base/BaseCollection';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListCars extends React.Component {
+  /*dispatch: any;
+  pagination: any;
+  setShowIndex: (collectionName: string, index: number) => any;
+  setShowCount: (collectionName: string, count: number) => any;*/
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -22,16 +27,45 @@ class ListCars extends React.Component {
       height: '60em',
       backgroundSize: 'cover',
     };
-    console.log(this.props.Car);
+    /*console.log(this.props.Car);*/
+    //const showCount = pagination[Cars].showCount;
+    /*const count = Cars.count();*/
 
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '110vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+          <Container style={{
+            textAlign: 'center',
+            background: 'rgb(21 51 62)',
+            minHeight: '110vh',
+            Width: '100%',
+            paddingLeft: '15em',
+            paddingTop: '8em',
+            paddingBottom: '8em'
+          }}>
             <Header as="h2" textAlign="center" inverted>List All Cars </Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
+            <div aria-label="Pagination Navigation" role="navigation" className="ui pagination menu">
+              <a aria-current="false" aria-disabled="false" tabIndex="0" value="1" aria-label="First item"
+                 type="firstItem" className="item">«</a>
+              <a aria-current="false" aria-disabled="false" tabIndex="0" value="4" aria-label="Previous item"
+                 type="prevItem"
+                 className="item">⟨</a><a aria-current="false" aria-disabled="false" tabIndex="0" value="1"
+                                          type="pageItem"
+                                          className="item">1</a>
+              <a aria-current="false" aria-disabled="true" tabIndex="-1" value="3" type="ellipsisItem"
+                 className="item">2</a>
+              <a aria-current="false" aria-disabled="true" tabIndex="-1" value="7" type="ellipsisItem"
+                 className="item">...</a>
+              <a aria-current="false" aria-disabled="false" tabIndex="0" value="10"
+                 type="pageItem" className="item">10</a>
+              <a aria-current="false" aria-disabled="false" tabIndex="0" value="6" aria-label="Next item"
+                 type="nextItem" className="item">⟩</a>
+              <a aria-current="false" aria-disabled="false" tabIndex="0" value="10" aria-label="Last item"
+                 type="lastItem" className="item">»</a>
+            </div>
             <Table celled>
               <Table.Header>
                 <Table.Row>
