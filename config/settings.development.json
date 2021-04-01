@@ -50,7 +50,13 @@
     }
   ],
   "defaultCarsData": [
-    { "make": "Acura", "model": "NSX", "year": 2021, "mpg": 21 },
+
+    { "make": "Acura", "model": "NSX (H)", "year": 2021, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2020, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2019, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2018, "mpg": 21 },
+    { "make": "Acura", "model": "NSX (H)", "year": 2017, "mpg": 21 },
+
     { "make": "Acura", "model": "ILX", "year": 2016, "mpg": 24 },
     { "make": "Acura", "model": "TLX", "year": 2021, "mpg": 22 },
     { "make": "Alfa Romeo", "model": "Giulia", "year": 2021, "mpg": 24 },
@@ -429,6 +435,12 @@
     { "make": "Dodge", "model": "Challenger SRT8", "year": 2014, "mpg": 18},
     { "make": "Dodge", "model": "Challenger", "year": 2021, "mpg": 19},
     { "make": "Dodge", "model": "Dart", "year": 2016, "mpg": 28 },
+
+    { "make": "Ferrari", "model": "F430", "year": 2009, "mpg": 11 },
+    { "make": "Ferrari", "model": "F430 Spider", "year": 2009, "mpg": 11 },
+    { "make": "Ferrari", "model": "F430 Scuderia", "year": 2009, "mpg": 11 },
+    { "make": "Ferrari", "model": "F430", "year": 2008, "mpg": 11 },
+
     { "make": "Fiat", "model": "500X", "year": 2021, "mpg": 24 },
     { "make": "Fiat", "model": "500L", "year": 2020, "mpg": 22 },
     { "make": "Fisker", "model": "Karma (H)", "year": 2012, "mpg": 26 },
@@ -455,10 +467,26 @@
     { "make": "Honda", "model": "Accord", "year": 2020, "mpg": 30 },
     { "make": "Honda", "model": "Accord", "year": 2018, "mpg": 30 },
     { "make": "Honda", "model": "Ridgeline", "year": 2020, "mpg": 19 },
+
     { "make": "Hyundai", "model": "Elantra", "year": 2021, "mpg": 33 },
     { "make": "Hyundai", "model": "Genesis Coupe", "year": 2016, "mpg": 17 },
     { "make": "Hyundai", "model":  "Kona", "year": 2021, "mpg": 28 },
     { "make": "Hyundai", "model": "Sonata", "year": 2020, "mpg": 28 },
+
+    { "make": "Hyundai", "model": "Veloster 2.0 MT", "year": 2021, "mpg": 25 },
+    { "make": "Hyundai", "model": "Veloster 2.0 AT", "year": 2021, "mpg": 27 },
+    { "make": "Hyundai", "model": "Veloster Turbo R-Spec", "year": 2021, "mpg": 26 },
+    { "make": "Hyundai", "model": "Veloster Turbo DCT", "year": 2021, "mpg": 28 },
+    { "make": "Hyundai", "model": "Veloster 2.0 MT", "year": 2020, "mpg": 25 },
+    { "make": "Hyundai", "model": "Veloster 2.0 AT", "year": 2020, "mpg": 27 },
+    { "make": "Hyundai", "model": "Veloster Turbo R-Spec", "year": 2020, "mpg": 26 },
+    { "make": "Hyundai", "model": "Veloster Turbo DCT", "year": 2020, "mpg": 28 },
+    { "make": "Hyundai", "model": "Veloster MT", "year": 2020, "mpg": 22 },
+    { "make": "Hyundai", "model": "Veloster 2.0 MT", "year": 2019, "mpg": 25 },
+    { "make": "Hyundai", "model": "Veloster 2.0 AT", "year": 2019, "mpg": 27 },
+    { "make": "Hyundai", "model": "Veloster Turbo R-Spec", "year": 2019, "mpg": 26 },
+    { "make": "Hyundai", "model": "Veloster Turbo DCT", "year": 2019, "mpg": 28 },
+
     { "make": "Infiniti", "model": "G35", "year": 2006, "mpg": 19 },
     { "make": "Infiniti", "model": "G37", "year": 2011, "mpg": 20 },
     { "make": "Infiniti", "model": "Q60", "year": 2021, "mpg": 20 },
@@ -609,10 +637,11 @@
     { "make": "Subaru", "model": "Levorg", "year": 2014, "mpg": 33 },
     { "make": "Suzuki", "model": "Swift", "year": 2001, "mpg": 36 },
     { "make": "Suzuki", "model": "Vitara", "year": 2004, "mpg": 19 },
-    { "make": "Tesla", "model": "Model 3", "year": 2021, "mpg": 148 },
-    { "make": "Tesla", "model": "Model S", "year": 2021, "mpg": 121 },
-    { "make": "Tesla", "model": "Model X", "year": 2021, "mpg": 109 },
-    { "make": "Tesla", "model": "Model Y", "year": 2021, "mpg": 131 },
+
+    { "make": "Tesla", "model": "Model 3 (E)", "year": 2021, "mpg": 148 },
+    { "make": "Tesla", "model": "Model S (E)", "year": 2021, "mpg": 121 },
+    { "make": "Tesla", "model": "Model X (E)", "year": 2021, "mpg": 109 },
+    { "make": "Tesla", "model": "Model Y (E)", "year": 2021, "mpg": 131 },
 
     { "make": "Toyota", "model": "86 MT", "year": 2020, "mpg": 21 },
     { "make": "Toyota", "model": "86 AT", "year": 2020, "mpg": 24 },
