@@ -18,13 +18,13 @@ class ListProfileAdmin extends React.Component {
   renderPage() {
     const pageStyle = {
       background: 'rgb(21 51 62)',
-      height: '60em',
+      height: '110vh',
       backgroundSize: 'cover',
     };
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '110vh', Width: '100%', paddingLeft: '15em', paddingTop: '8em', paddingBottom: '8em' }}>
+          <Container style={{ textAlign: 'center', background: 'rgb(21 51 62)', minHeight: '110vh', Width: '100vw', paddingTop: '8em', paddingBottom: '8em' }}>
             <Header as="h2" textAlign="center" inverted>List Profiles (Admin)</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',

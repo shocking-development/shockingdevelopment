@@ -20,21 +20,25 @@ class RecentlyAddedCars extends React.Component {
     // console.log(this.props.cars.length);
 
     return (
-        <div>
+        <div className='override-container' style={{
+          background: 'rgb(21 51 62)',
+          height: '100vh',
+        }}>
           <Header inverted as="h2" textAlign="center"
                   style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
             Your Cars
           </Header>
           <Image src='images/HEI-WAVE-LOGO.png' centered size='small'/>
           {this.props.cars.length !== 0 ?
-              <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Grid>
                   {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>)}
                 </Grid>
-              </div> : <Header inverted as="h2" textAlign="center">No cars have been added. You can add cars <a
-                  style={{ color: '#45efe7' }} href={'#/cars'}>
-                here
-              </a>.
+              </div> : <Header inverted as="h2" textAlign="center">No cars have been added. You can add cars
+                <a
+                    style={{ color: '#45efe7' }} href={'#/cars'}>
+                  here
+                </a>.
               </Header>}
         </div>
     );

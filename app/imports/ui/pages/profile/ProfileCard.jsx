@@ -34,7 +34,6 @@ class ProfileCard extends React.Component {
           background: 'rgb(21 51 62)',
           height: '100%',
           backgroundSize: 'cover',
-          //marginTop: '-10px',
         }}>
           <NavBarHome/>
 
@@ -141,8 +140,9 @@ export default withTracker(({ match }) => {
   const userAccount = Meteor.users.findOne(match.params._id);
   const sub2 = UserInfosCars.subscribeUserInfoCars();
   const sub3 = Cars.subscribeCars();
+  const profiles = UserInfos.findOne(userAccount);
   return {
-    profiles: UserInfos.findOne(userAccount),
+    profiles,
     currentUser: Meteor.user() ? Meteor.user().username : '',
     currentId: match.params._id,
     ready: sub1.ready() && sub2.ready() && sub3.ready(),
