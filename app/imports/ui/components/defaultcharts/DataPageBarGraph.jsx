@@ -82,7 +82,7 @@ function DataPageBarGraph() {
               <h1 style={{
                 position: 'relative',
                 left: '95%',
-                bottom: '53vh',
+                bottom: '46vh',
               }}><a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
               </h1>
             </div> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
