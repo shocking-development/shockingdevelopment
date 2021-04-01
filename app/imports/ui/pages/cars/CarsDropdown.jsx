@@ -62,7 +62,7 @@ class CarsDropdown extends React.Component {
       height: '66em',
       backgroundSize: 'cover',
       paddingTop: '5em',
-      marginLeft: '10%',
+      //marginLeft: '10%',
     };
 
     /*
