@@ -18,7 +18,10 @@ class ListCars extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.ready) ? this.renderPage() : <div
+        className={'loaderStyle'}>
+      <Loader active inverted> Getting data</Loader>
+    </div>;
   }
 
   /** Render the page once subscriptions have been received. */
@@ -38,8 +41,6 @@ class ListCars extends React.Component {
           <NavBarMain/>
           <Container style={{
             textAlign: 'center',
-            //background: 'rgb(21 51 62)',
-            //backgroundSize: 'cover',
             minHeight: '110vh',
             Width: '100%',
             paddingLeft: '15em',

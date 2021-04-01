@@ -33,7 +33,7 @@ class NavBarMain extends React.Component {
 
     const userstyling = {
       margin: 'auto',
-      width: '86%',
+      width: '68%',
       fontSize: 'large',
       fontWeight: 'lighter',
     };
