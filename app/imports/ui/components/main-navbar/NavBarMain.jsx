@@ -117,6 +117,12 @@ class NavBarMain extends React.Component {
                   <Icon name='sign-out' size='large'/>
                   Sign Out
                 </Menu.Item>
+
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
+                  <Icon name='sign-out' size='large'/>
+                  List Cars (Admin)
+                </Menu.Item>
+
               </Menu>,
               ]
           ) : ''}
