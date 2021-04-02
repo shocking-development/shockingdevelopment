@@ -1,5 +1,5 @@
 import React from 'react';
-import { Statistic, Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
+import { Statistic, Grid, Header, Button, Form, Segment, GridRow } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
@@ -48,6 +48,7 @@ class LandingSection2 extends React.Component {
     const trackYourGHGemissionsStyling = {
       background: 'linear-gradient(' +
           '-225deg, rgba(8,0,96,1) 0%, rgba(4,62,107,1) 37%, rgba(0,124,118,1) 100%)',
+      height: '110vh',
     };
     const fontstyling = {
       fontFamily: 'sans-serif',
@@ -133,7 +134,7 @@ class LandingSection2 extends React.Component {
 
           </Grid>
 
-          <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%' }}>
+          <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%', height: '110vh'}}>
             <div style={{ margin: 'auto', paddingLeft: '3%' }}>
               <Header
                   className='body'
