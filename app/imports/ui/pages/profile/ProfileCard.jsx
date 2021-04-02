@@ -43,9 +43,7 @@ class ProfileCard extends React.Component {
             <Grid className={'profileGrid'}>
 
               <Grid.Row>
-                <Grid.Column width={5}
-
-                >
+                <Grid.Column width={5}>
 
                   <div className={'profilepicCard'}>
                     <Image src={this.props.profiles.userImage}
@@ -87,6 +85,9 @@ class ProfileCard extends React.Component {
                           Zipcode: {this.props.profiles.zipcode}
                         </p>
                         <p>
+                          State: {this.props.profiles.State}
+                        </p>
+                        <p>
                           Unit Preference: {this.props.profiles.unitSystem}
                         </p>
                         <p>
@@ -108,7 +109,6 @@ class ProfileCard extends React.Component {
                         </p>
 
                       </Header>
-
                     </div>
                   </Segment>
                 </Grid.Column>

@@ -28,7 +28,7 @@ class UserInfoCollection extends BaseCollection {
         allowedValues: ['metric', 'us units'],
         defaultValue: 'us units',
       },
-      state: {
+      State: {
         type: String,
         allowedValues: ['Alaska', 'Alabama', 'Arkansas', 'Arizona', 'California', 'Colorado', 'Connecticut',
           'District of Columbia', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa', 'Idaho', 'Illinois',
@@ -53,7 +53,7 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation, unitSystem }) {
+  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation, unitSystem, state }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
@@ -65,6 +65,7 @@ class UserInfoCollection extends BaseCollection {
       userImage,
       transportation,
       unitSystem,
+      state,
     });
     return docID;
   }
@@ -79,7 +80,7 @@ class UserInfoCollection extends BaseCollection {
    * @param password the password of the person (optional).
    * @param zipcode the zipcode of the person (optional).
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation, unitSystem }) {
+  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation, unitSystem, state }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -108,6 +109,9 @@ class UserInfoCollection extends BaseCollection {
     }
     if (unitSystem) {
       updateData.unitSystem = unitSystem;
+    }
+    if (state) {
+      updateData.state = state;
     }
     this._collection.update(docID, { $set: updateData });
   }

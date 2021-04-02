@@ -18,7 +18,7 @@ function DataPageBarGraph() {
       },
     },
     series: [{
-      name: 'VMT saved (Miles)',
+      name: 'VMT (Miles)',
       // need what it would have cost using the worst mode of transport and then the mode of transport being used -> gallons
       // co2 store this info somewhere in a diff/same collection, get all the data from this collection and add them up,
       // go to only your page calculate your data, user, mode, worstmode of transportation
@@ -26,12 +26,12 @@ function DataPageBarGraph() {
       data: UserEmissionData('DataMiles'),
 
     }, {
-      name: 'Fuel Gallons Saved (Gallons)',
-      data: [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      name: 'Money spent ($)',
+      data: UserEmissionData('MoneySpent'),
 
     }, {
-      name: 'CO2 reduced (Pounds)',
-      data: [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      name: 'CO2 emissions produced (lbs)',
+      data: UserEmissionData('CO2EmissionsProduced'),
 
     }],
     chart: {
