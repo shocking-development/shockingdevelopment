@@ -70,7 +70,7 @@ class UserInfoCollection extends BaseCollection {
    * @param password the password of the person (optional).
    * @param zipcode the zipcode of the person (optional).
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation, unitSystem }) {
+  update(docID, { firstName, lastName, user, email, password, lastLogIn, zipcode, userImage, transportation, unitSystem }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -86,6 +86,9 @@ class UserInfoCollection extends BaseCollection {
     }
     if (password) {
       updateData.password = password;
+    }
+    if (_.isDate(lastLogIn)) {
+      updateData.lastLogIn = lastLogIn;
     }
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(zipcode)) {
