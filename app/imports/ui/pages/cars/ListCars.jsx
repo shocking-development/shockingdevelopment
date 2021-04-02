@@ -9,33 +9,30 @@ import { Cars } from '../../../api/cars/CarsCollection';
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListCars extends React.Component {
 
+  /* Link for pagination
+  https://stackoverflow.com/questions/57471901/how-to-implement-pagination-for-react-by-semantic-ui-react
+  */
+
   /** Initialize component state with properties for login and redirection. */
   constructor(props) {
     super(props);
     this.state = {
-      showIndex: '',
-      showCount: 0,
+      showIndex: 0,
+      showCount: 25,
+      activePage: 1,
     };
   }
 
   /** Update the form controls each time the user interacts with them. */
   handleInputChange = (e, data) => {
     this.setState({
-      showIndex: data.activePage,
-      showCount: (data.activePage) * 25,
-      // we could probably do some calculations of the index in order to actually increment in the collection
+      activePage: Number(data.activePage), // we save the active page e.g. the number the user clicks
+      showIndex: (this.state.activePage * 25 - 25),
+      showCount: (this.state.activePage * 25),
     });
-    console.log('index:', this.state.showIndex);
-    console.log('count:', this.state.showCount);
+    // for debugging console.log('index:', this.state.showIndex);
+    // for debugging console.log('count:', this.state.showCount);
   }
-
-  /** Update the form controls each time the user interacts with them. */
-  handlePrevious = (e, { name, value }) => {
-    this.setState({ [name]: value });
-  }
-  // here we are going to need to get the correct index of the collection to show
-  // use the slice funciton
-  // get the state index
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -55,19 +52,20 @@ class ListCars extends React.Component {
     };
 
     const startIndex = this.state.showIndex; // lets do an if statement
-    console.log(`STARTINDEX:${startIndex}`);
+    // for debugging console.log(`STARTINDEX:${startIndex}`);
 
-    const endIndex = startIndex + this.state.showCount;
-    console.log(`ENDINDEX:${endIndex}`);
+    const endIndex = this.state.showCount;
+    // for debugging console.log(`ENDINDEX:${endIndex}`);
 
-    const count = this.props.Car.length;
+    /* const count = this.props.Car.length;
     if (endIndex > count) { // an edge case
-      this.endIndex = count;
-    }
+      endIndex = count;
+    } */
 
     // we are going to slice based on the index
 
-    // const showCount = this.props.Car.slice(0, 25).length; // this currently gets the max amount of cars to show, the show count state will change based on the index
+    // const showCount = this.props.Car.slice(0, 25).length;
+    // this currently gets the max amount of cars to show, the show count state will change based on the index
     // we will slice the items then map over them
     // console.log(showCount);
     // important code  const currentTodos = todos.slice( indexOfFirstTodo, indexOfLastTodo );
@@ -100,7 +98,7 @@ class ListCars extends React.Component {
 
             <Pagination
                 defaultActivePage={1}
-                totalPages={Math.ceil(this.props.Car.length / 10)}
+                totalPages={Math.ceil(this.props.Car.length / 25)}
                 onPageChange={this.handleInputChange}
             />
             <Table celled>
@@ -112,7 +110,7 @@ class ListCars extends React.Component {
                   <Table.HeaderCell>MPG</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
-              <Table.Body> {/* we are going to .slice instead of map */}
+              <Table.Body> {/* we are going to .slice in conjunction with map to get the correct amount */}
                 {this.props.Car.map((car) => <CarItem key={car._id} car={car}/>).slice(startIndex, endIndex)}
               </Table.Body>
             </Table>
