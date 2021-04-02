@@ -20,6 +20,7 @@ class UserInfoCollection extends BaseCollection {
       owner: String, // is this redundant?
       email: String,
       password: String,
+      lastLogIn: Date,
       userImage: String,
       zipcode: Number,
       transportation: String,
@@ -42,7 +43,7 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation, unitSystem }) {
+  define({ firstName, lastName, user, owner, email, password, lastLogIn, zipcode, userImage, transportation, unitSystem }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
@@ -50,6 +51,7 @@ class UserInfoCollection extends BaseCollection {
       owner,
       email,
       password,
+      lastLogIn,
       zipcode,
       userImage,
       transportation,
