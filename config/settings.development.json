@@ -21,6 +21,7 @@
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "transportation": "electricity",
       "unitSystem": "us units",
+      "state": "Hawaii",
       "owner": "john@foo.com"
     },
     {
@@ -33,6 +34,7 @@
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "transportation": "electricity",
       "unitSystem": "metric",
+      "state": "Hawaii",
       "owner": "amanda@foo.com"
     },
     {
@@ -45,6 +47,7 @@
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "transportation": "electricity",
       "unitSystem": "us units",
+      "state": "Hawaii",
       "role": "admin",
       "owner": "admin@foo.com"
     }
@@ -417,7 +420,7 @@
 
     { "make": "Bentley", "model": "Bentayga", "year": 2021, "mpg": 15 },
     { "make": "Bentley", "model": "Continental GT", "year": 2020, "mpg": 16 },
-    
+
     { "make": "Buick", "model": "Enclave", "year": 2021, "mpg": 18 },
     { "make": "Buick", "model": "Regal TourX", "year": 2020, "mpg": 21 },
     { "make": "Cadillac", "model": "Escalade", "year": 2021, "mpg": 21 },
@@ -737,31 +740,37 @@
     { "make": "Volvo", "model": "S90", "year": 2020, "mpg": 21 }
   ],
   "defaultGraphsData": [
-  {
-    "name": "HomeBarGraph",
-    "dataOne": [20, 71.5, 0, 0, 55.8, 0, 8, 0, 0, 0, 0, 30],
-    "dataTwo": [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0],
-    "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0]
-  },
-  {
-    "name": "LandingBarGraph",
-    "dataOne": [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-    "dataTwo": [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-  },
-  {
-    "name": "GoToSaveingsBarGraph",
-    "dataOne": [[25, 63.6], [80, 60], [30, 80]]
-  },
-  {
-    "name": "HomeDonutGraph",
-    "dataOne": [["Bike", 6], ["Car", 2], ["Public Transportation", 3]],
-    "dataTwo": [["Tuesday", 6], ["Monday", 2], ["Wednesday", 3]]
-  },
-  {
-    "name": "HomePieChartGraph",
-    "dataOne": ["TeleWork", "Carpool", "Electrical Vehical", "Public Transportation", "Biking", "Walking", "Walking"],
-    "dataTwo": [61, 11, 10, 4.67, 2.67, 2.67]
-  }
-]
+    {
+      "name": "HomeBarGraph",
+      "dataOne": [20, 71.5, 0, 0, 55.8, 0, 8, 0, 0, 0, 0, 30],
+      "dataTwo": [83.6, 78.8, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0],
+      "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 90, 0, 0, 0]
+    },
+    {
+      "name": "LandingBarGraph",
+      "dataOne": [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+      "dataTwo": [83.6, 78.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "dataThree": [48.9, 38.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "name": "GoToSaveingsBarGraph",
+      "dataOne": [[25, 63.6], [80, 60], [30, 80]]
+    },
+    {
+      "name": "HomeDonutGraph",
+      "dataOne": [["Bike", 6], ["Car", 2], ["Public Transportation", 3]],
+      "dataTwo": [["Tuesday", 6], ["Monday", 2], ["Wednesday", 3]]
+    },
+    {
+      "name": "HomePieChartGraph",
+      "dataOne": ["TeleWork", "Carpool", "Electrical Vehical", "Public Transportation", "Biking", "Walking", "Walking"],
+      "dataTwo": [61, 11, 10, 4.67, 2.67, 2.67]
+    }
+  ],
+  "stateGasolinePrices": [
+    {"state": "Alaska", "regularPrice": "3.125", "midGradePrice": "3.291", "premiumPrice": "3.446", "Diesel":  "3.010"},
+    {"state": "Alabama", "regularPrice": "2.646", "midGradePrice": "2.966", "premiumPrice": "3.287", "Diesel":  "2.881"},
+
+
+  ]
 }
