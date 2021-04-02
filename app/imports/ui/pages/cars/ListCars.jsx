@@ -17,8 +17,8 @@ class ListCars extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showIndex: 0,
-      showCount: 25,
+      // showIndex: 0,
+      // showCount: 25,
       activePage: 1,
     };
   }
@@ -27,8 +27,8 @@ class ListCars extends React.Component {
   handleInputChange = (e, data) => {
     this.setState({
       activePage: Number(data.activePage), // we save the active page e.g. the number the user clicks
-      showIndex: (this.state.activePage * 25 - 25),
-      showCount: (this.state.activePage * 25),
+      // showIndex: (this.state.activePage * 25 - 25),
+      // showCount: (this.state.activePage * 25),
     });
     // for debugging console.log('index:', this.state.showIndex);
     // for debugging console.log('count:', this.state.showCount);
@@ -51,34 +51,13 @@ class ListCars extends React.Component {
       backgroundSize: 'cover',
     };
 
-    const startIndex = this.state.showIndex; // lets do an if statement
+    const startIndex = (this.state.activePage * 25 - 25); // lets do an if statement
     // for debugging console.log(`STARTINDEX:${startIndex}`);
 
-    const endIndex = this.state.showCount;
+    const endIndex = (this.state.activePage * 25);
     // for debugging console.log(`ENDINDEX:${endIndex}`);
 
-    /* const count = this.props.Car.length;
-    if (endIndex > count) { // an edge case
-      endIndex = count;
-    } */
-
-    // we are going to slice based on the index
-
-    // const showCount = this.props.Car.slice(0, 25).length;
-    // this currently gets the max amount of cars to show, the show count state will change based on the index
-    // we will slice the items then map over them
-    // console.log(showCount);
-    // important code  const currentTodos = todos.slice( indexOfFirstTodo, indexOfLastTodo );
-    // (event, data) => console.log(data.activePage)
-
     return (
-        /* const startIndex = pagination[collection.getCollectionName()].showIndex;
-        const showCount = pagination[collection.getCollectionName()].showCount;
-        const endIndex = startIndex + showCount;
-        const itemsToShow = _.slice(items, startIndex, endIndex);
-        the index of 1 should show the pages from 0,25
-        the index of 2 should show the pages from 25,50
-        */
 
         <div style={pageStyle}>
           <NavBarMain/>
