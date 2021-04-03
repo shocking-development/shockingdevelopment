@@ -6,9 +6,9 @@ import { Emissions } from '../../../api/emissions/EmissionsCollection';
 
 function RecentlyAdded() {
 
-  const user = useTracker(() => Meteor.userId());
   const emissions = useTracker(() => {
     Meteor.subscribe(Emissions.emissionsPublicationName);
+    const user = Meteor.userId();
     return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 }, limit: 3 }).fetch();
   });
 
