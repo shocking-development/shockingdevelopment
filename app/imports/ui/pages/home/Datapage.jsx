@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Table, Menu, Label, Icon } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -78,7 +78,7 @@ class Datapage extends React.Component {
       height: '100%',
       width: '51%',
     };
-    const tablestyling = {
+    /* const tablestyling = {
       background: '#0a69a7',
       position: 'relative',
       left: '1.29em',
@@ -86,7 +86,7 @@ class Datapage extends React.Component {
       width: '94%',
       color: 'white',
       border: 'none',
-    };
+    }; */
 
     return (
         <div style={outer_div_pagestyle}>
@@ -183,4 +183,4 @@ export default withRouter(DatapageContainer);
                           </Table.HeaderCell>
                         </Table.Row>
                       </Table.Footer>
-                    </Table>*/
+                    </Table> */
