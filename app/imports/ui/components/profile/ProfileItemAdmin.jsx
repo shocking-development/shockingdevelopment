@@ -7,9 +7,18 @@ import { NavLink } from 'react-router-dom';
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListProfileAdmin.jsx. */
 class ProfileItemAdmin extends React.Component {
 
-  removeUser(docID) {
-    Meteor.users.remove(docID);
+  removeUser() {
+    this.props.allow({
+      remove() {
+        // Can admin remove your own documents.
+        return true;
+      },
+
+    });
+
+    Meteor.users.remove(this.props);
   }
+
 
   render() {
     return (
