@@ -187,6 +187,7 @@ class CarsDropdown extends React.Component {
                   name='years'
                   showInlineError={true}
                   placeholder='Select Year'
+                  style={{ minHeight: '40px', minWidth: '100px' }}
               />
               <SelectField
                   id='select-make'
