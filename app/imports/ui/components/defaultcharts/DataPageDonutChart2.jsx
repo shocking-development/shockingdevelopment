@@ -1,6 +1,7 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { Header } from 'semantic-ui-react';
 import { UserEmissionData } from './UserEmissions';
 
 function DataPageDonutChart1() {
@@ -15,7 +16,7 @@ function DataPageDonutChart1() {
   let Saturday = 0;
   let Sunday = 0;
 
-  for (let i = 0; i < ghgEmissionsbyDays.length; i++) {
+  for (let i = 0, n = ghgEmissionsbyDays.length; i < n; i++) {
     if (ghgEmissionsbyDays[i].date === 0) {
       Monday += ghgEmissionsbyDays[i].ghgProduced;
     } else
@@ -91,18 +92,20 @@ function DataPageDonutChart1() {
 
   return (
       <div>
-        <HighchartsReact
-            highcharts={Highcharts}
-            options={options}
-        />
-        <h1 style={{
-          position: 'absolute',
-          left: '90%',
-          bottom: '53vh',
-        }}><a style={{
-          color: '#45efe7',
-        }} href={'#/add'}> + </a></h1>
-
+        {UserEmissionData('Emissions').length !== 0 ?
+            <div>
+              <HighchartsReact
+                  highcharts={Highcharts}
+                  options={options}
+              />
+              <h1 style={{ position: 'absolute', top: '-18px', right: '22px' }}>
+                <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
+              </h1>
+            </div> :
+            <Header inverted as="h3" textAlign="center" style={{ marginTop: '4.5em', paddingLeft: '10px' }}>
+              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
+              emissions </a>
+            </Header>}
       </div>
   );
 

@@ -117,7 +117,7 @@ function DataPagePieChart() {
                   highcharts={Highcharts}
                   options={options}
               />
-              <h1 style={{ position: 'absolute', top: '10px', right: '45px' }}>
+              <h1 style={{ position: 'absolute', top: '-18px', right: '22px' }}>
                 <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
               </h1>
             </div> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
