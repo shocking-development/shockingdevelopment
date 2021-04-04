@@ -102,7 +102,7 @@ function DataPageDonutChart1() {
                 <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
               </h1>
             </div> :
-            <Header inverted as="h3" textAlign="center" style={{ marginTop: '4.5em', paddingLeft: '10px' }}>
+            <Header inverted as="h3" textAlign="center" style={{ marginTop: '3em', paddingLeft: '10px', marginBottom: '3em' }}>
               Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
