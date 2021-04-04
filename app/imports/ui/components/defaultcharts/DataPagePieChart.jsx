@@ -117,11 +117,8 @@ function DataPagePieChart() {
                   highcharts={Highcharts}
                   options={options}
               />
-              <h1 style={{
-                position: 'relative',
-                left: '95%',
-                bottom: '53vh',
-              }}><a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
+              <h1 style={{ position: 'absolute', top: '10px', right: '45px' }}>
+                <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
               </h1>
             </div> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
               Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays

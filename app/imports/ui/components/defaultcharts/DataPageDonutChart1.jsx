@@ -105,7 +105,7 @@ function DataPageDonutChart1() {
                   options={options}
               />
               <h1 style={{
-                position: 'relative',
+                position: 'absolute',
                 left: '90%',
                 bottom: '53vh',
               }}><a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
