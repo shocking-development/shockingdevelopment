@@ -88,8 +88,8 @@ class CarsDropdown extends React.Component {
     const allCars = carDocs.filter((doc) => carMakeForAllCars.indexOf(doc.make) === carModelForAllCars.indexOf(doc.model));
 
     const carMakeAllowedValues = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Bentley', 'Buick', 'Cadillac', 'Chevrolet',
-      'Chrysler', 'Dodge', 'Fiat', 'Ford', 'GMC', 'Genesis', 'Honda', 'Hyundai',
-      'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Mazda',
+      'Chrysler', 'Dodge', 'Fiat', 'Fisker', 'Ford', 'Ferrari', 'GMC', 'Genesis', 'Honda', 'Hyundai',
+      'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lamborghini', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Mazda',
       'Mercedes-Benz', 'Mercury', 'Mini', 'Mitsubishi',
       'Nikola', 'Nissan', 'Polestar', 'Pontiac', 'Porsche', 'Ram', 'Rivian',
       'Rolls-Royce', 'Saab', 'Saturn', 'Scion', 'Smart', 'Subaru', 'Suzuki',
