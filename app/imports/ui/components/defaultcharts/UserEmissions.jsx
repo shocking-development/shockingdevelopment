@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
+import { _ } from 'meteor/underscore';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import {
@@ -74,7 +75,7 @@ export function UserEmissionData(index) {
     const o = acc.filter(function (obj) {
       // for debugging console.log(obj.date.getTime() === val.date.getTime());
       // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getTime() === val.date.getTime();
+      return obj.date.getMonth() === val.date.getMonth();
     }).pop() || { date: val.date, miles: 0 };
 
     o.miles += val.miles;
@@ -101,13 +102,11 @@ export function UserEmissionData(index) {
 
   // for debugging console.log(finalresultdays);
 
-  const finalresult = result.filter(function (itm, index1, a) {
+  const finalresult = _.sortBy((result.filter(function (itm, index1, a) {
     return index1 === a.indexOf(itm);
-  }).reverse();
+  })), 'date');
 
-  // console.log(finalresult);
-
-  const dateRecorded = finalresult.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`);
+  const dateRecorded = finalresult.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}`);
 
   const dataMiles = finalresult.map(recentEmissions => recentEmissions.miles);
 
