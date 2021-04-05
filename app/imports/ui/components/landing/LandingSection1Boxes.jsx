@@ -52,12 +52,14 @@ class LandingSection1Boxes extends React.Component {
             <Grid stackable className='menu-boxes' columns='equal' id='landing-page'>
               <Grid.Column className="menu-boxes-column">
                 <Segment className="zoom" style={infoBoxColoring}>
+                  <Link to="saved" spy={true} smooth={true}>
                   <Icon style={iconStyling}
                         className="money bill alternate icon"></Icon>
                   <p className='body' style={infoBoxesStyling}>Savings</p>
                   <p className='body' style={pargraphInfoBoxesStyling}>
                     Learn how much you can save by switching to an electric vehicle.
                   </p>
+                  </Link>
                 </Segment>
               </Grid.Column>
 
@@ -73,12 +75,14 @@ class LandingSection1Boxes extends React.Component {
 
               <Grid.Column className="menu-boxes-column">
                 <Segment className="zoom" style={infoBoxColoring}>
-                  <Icon style={iconStyling}
-                        className="check circle icon"></Icon>
-                  <p className='body' style={infoBoxesStyling}>Benefits</p>
-                  <p className='body' style={pargraphInfoBoxesStyling}>
-                    Learn the benefits of switching to an electrical vehicle.
-                  </p>
+                  <Link to="trackEM" spy={true} smooth={true}>
+                    <Icon style={iconStyling}
+                          className="check circle icon"></Icon>
+                    <p className='body' style={infoBoxesStyling}>Benefits</p>
+                    <p className='body' style={pargraphInfoBoxesStyling}>
+                      Learn the benefits of switching to an electrical vehicle.
+                    </p>
+                  </Link>
                 </Segment>
               </Grid.Column>
 
