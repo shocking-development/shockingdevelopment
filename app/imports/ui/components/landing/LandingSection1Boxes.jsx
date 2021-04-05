@@ -1,9 +1,16 @@
 import React from 'react';
 import { Grid, Segment, Icon, Container } from 'semantic-ui-react';
+import { Link } from 'react-scroll';
 
 /** A simple static component to render some boxes for the landing page. */
 
 class LandingSection1Boxes extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
   render() {
 
     const infoBoxesStyling = {
@@ -77,12 +84,14 @@ class LandingSection1Boxes extends React.Component {
 
               <Grid.Column className="menu-boxes-column">
                 <Segment className="zoom" style={infoBoxColoring}>
-                  <i style={iconStyling}
-                     className="calculator icon"></i>
-                  <p className='body' style={infoBoxesStyling}>Emissions Calculator</p>
-                  <p className='body' style={pargraphInfoBoxesStyling}>
-                    Calculate how much GHG you could have reduced.
-                  </p>
+                  <Link to="ghgCalc" spy={true} smooth={true}>
+                    <i style={iconStyling}
+                       className="calculator icon"></i>
+                    <p className='body' style={infoBoxesStyling}>Emissions Calculator</p>
+                    <p className='body' style={pargraphInfoBoxesStyling}>
+                      Calculate how much GHG you could have reduced.
+                    </p>
+                  </Link>
                 </Segment>
               </Grid.Column>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Statistic, Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
+import { Statistic, Grid, Header, Button, Form, Segment, GridRow } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
@@ -48,6 +48,7 @@ class LandingSection2 extends React.Component {
     const trackYourGHGemissionsStyling = {
       background: 'linear-gradient(' +
           '-225deg, rgba(8,0,96,1) 0%, rgba(4,62,107,1) 37%, rgba(0,124,118,1) 100%)',
+      height: '110vh',
     };
     const fontstyling = {
       fontFamily: 'sans-serif',
@@ -93,8 +94,8 @@ class LandingSection2 extends React.Component {
               </div>
             </Grid.Row>
 
-            <Grid.Row style={trackYourGHGemissionsStyling}>
-              <Grid.Column width={7} style={{ paddingLeft: '3em' }}>
+            <Grid.Row id="ghgCalc" style={trackYourGHGemissionsStyling}>
+              <div style={{ color: 'white', margin: 'auto' }}>
                 <div style={{ color: 'white' }}>
                   <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>
                   <p className='body'
@@ -102,38 +103,35 @@ class LandingSection2 extends React.Component {
                     Calculate before or after to see how much you can reduce your GHG.
                   </p>
                 </div>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <div>
-                  <Form size='small' onSubmit={this.handleFormSubmit}>
-                    <Form.Input
-                        id='calculator-imperial'
-                        placeholder='Enter the gallons of gas'
-                        value={this.state.input}
-                        onChange={this.handleInputChange}
-                    />
-                    <Button color='blue' onClick={this.showResult} id='submit-imperial'>Calculate</Button>
-                  </Form>
-                </div>
-              </Grid.Column>
-              <Grid.Column width={3}>
+              </div>
+
+              <div
+                  style={{ color: 'white', marginLeft: '2px', marginTop: 'auto', marginBottom: 'auto', width: 'auto' }}>
+                <Form size='small' onSubmit={this.handleFormSubmit}>
+                  <Form.Input
+                      id='calculator-imperial'
+                      placeholder='Enter the gallons of gas'
+                      value={this.state.input}
+                      onChange={this.handleInputChange}
+                  />
+                  <Button color='blue' onClick={this.showResult} id='submit-imperial'>Calculate</Button>
+                </Form>
+              </div>
+
+              <div style={{ margin: 'auto' }}>
                 {this.state.show &&
                 (<Segment>
-                      <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
-                        from {this.state.input} gallon(s) of
-                        gas </p>
-                      <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger
-                        vehicles
-                        driven for one
-                        year.</p>
+                      <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated from </p>
+                      <p> {this.state.input} gallon(s) of gas. This is equivalent to the GHG emissions</p>
+                      <p> from {calculateGHG(this.state.input)} passenger vehicles driven for one year.</p>
                     </Segment>
                 )}
-              </Grid.Column>
+              </div>
             </Grid.Row>
 
           </Grid>
 
-          <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%' }}>
+          <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%', height: '110vh' }}>
             <div style={{ margin: 'auto', paddingLeft: '3%' }}>
               <Header
                   className='body'
