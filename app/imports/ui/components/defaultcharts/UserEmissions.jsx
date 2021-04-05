@@ -70,7 +70,9 @@ export function UserEmissionData(index) {
   * Need to detect diffent modes of traveling
   */
 
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects */
+  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
+  * The purpose of the code is to sum up all the miles for a specific month
+  * */
   const result = emissions.reduce(function (acc, val) {
     const o = acc.filter(function (obj) {
       // for debugging console.log(obj.date.getTime() === val.date.getTime());
@@ -83,7 +85,9 @@ export function UserEmissionData(index) {
     return acc;
   }, []);
 
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects */
+  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
+  * The purpose of this code is to sum up all the miles for each day of the week
+  * */
   const resultdays = emissions.reduce(function (acc, val) {
     const o = acc.filter(function (obj) {
       // for debugging console.log(obj.date.getTime() === val.date.getTime());
@@ -96,39 +100,74 @@ export function UserEmissionData(index) {
     return acc;
   }, []);
 
+  /* *
+  * Removes the duplicates of the resultdays
+  * */
   const finalresultdays = resultdays.filter(function (itm, index1, a) {
     return index1 === a.indexOf(itm);
   }).reverse();
 
   // for debugging console.log(finalresultdays);
 
-  const finalresult = _.sortBy((result.filter(function (itm, index1, a) {
+  /* *
+  * Removes the duplicates of the resultMonths
+  * */
+  const finalresultMonths = _.sortBy((result.filter(function (itm, index1, a) {
     return index1 === a.indexOf(itm);
   })), 'date');
 
+  /* *
+  * Formats the days to months e.g. outputting January for month 1
+  * */
   const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
-  const dateRecorded = finalresult.map(recentEmissions => formatter.format(recentEmissions.date));
+  /* *
+  * maps the months to an array
+  * */
+  const dateRecorded = finalresultMonths.map(recentEmissions => formatter.format(recentEmissions.date));
 
-  const dataMiles = finalresult.map(recentEmissions => recentEmissions.miles);
+  /* *
+  * maps the miles to an array
+  * */
+  const dataMiles = finalresultMonths.map(recentEmissions => recentEmissions.miles);
 
+  /* *
+  * maps the transportation to an array
+  * */
   const persontransportation = emissions.map(recentEmissions => recentEmissions.transportation);
 
+  /* *
+  * gets users mpg and maps it to an array
+  * */
   const carmpg = carInfo.map(car => car.mpgofCar);
 
-  const Co2Produced = finalresult.map(recentEmissions => Number(calculatePounds(calculateCO2(calculateGalUsed(recentEmissions.miles, carmpg)))));
+  /* *
+  * Gets the cumaltive total of the months of CO2 Produced
+  * */
+  const Co2Produced = finalresultMonths.map(recentEmissions => Number(calculatePounds(calculateCO2(calculateGalUsed(recentEmissions.miles, carmpg)))));
 
+  /* *
+  * reducer helps to add up an array
+  * */
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-  const ghgEquivalencyEmissionsProduced = finalresult.map(recentEmissions => Number((calculateGHG(calculateGalUsed(recentEmissions.miles, carmpg)))));
+  /* *
+  * calculates the ghg equivalency e.g. the calculation for the calculator
+  * */
+  const ghgEquivalencyEmissionsProduced = finalresultMonths.map(recentEmissions => Number((calculateGHG(calculateGalUsed(recentEmissions.miles, carmpg)))));
 
+  /* *
+  * the Total emisons regardless of month e.g. only one number
+  * */
   let totalEmissions;
   if (Co2Produced.length !== 0) {
     totalEmissions = Co2Produced.reduce(reducer);
   }
 
+  /* *
+  * the Total equivalency emisons regardless of month e.g. only one number
+  * */
   let totalGHGEmissions;
-
   if (ghgEquivalencyEmissionsProduced.length !== 0) {
     totalGHGEmissions = ghgEquivalencyEmissionsProduced.reduce(reducer);
   }
@@ -138,10 +177,16 @@ export function UserEmissionData(index) {
     totalMilesDriven = dataMiles.reduce(reducer);
   } */
 
+  /* *
+  * The state gas price to calculate how much they spend based on the amount of miles they drive
+  * */
   const stateGasPrice = 3.14;
 
-  const moneyspent = finalresult.map(recentEmissions => Number(fuelCost(calculateGalUsed(recentEmissions.miles, carmpg), stateGasPrice)));
+  const moneyspent = finalresultMonths.map(recentEmissions => Number(fuelCost(calculateGalUsed(recentEmissions.miles, carmpg), stateGasPrice)));
 
+  /* *
+  * The state gas price to calculate how much they spend based on the amount of miles they drive
+  * */
   const ghgEmissionsbyDays = finalresultdays.map(item => {
     const container = { day: '', ghgProduced: '' };
 
