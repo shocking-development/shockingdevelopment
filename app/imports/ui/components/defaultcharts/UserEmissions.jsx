@@ -185,7 +185,7 @@ export function UserEmissionData(index) {
   const moneyspent = finalresultMonths.map(recentEmissions => Number(fuelCost(calculateGalUsed(recentEmissions.miles, carmpg), stateGasPrice)));
 
   /* *
-  * The state gas price to calculate how much they spend based on the amount of miles they drive
+  * saves the ghg produced by day into an array
   * */
   const ghgEmissionsbyDays = finalresultdays.map(item => {
     const container = { day: '', ghgProduced: '' };
