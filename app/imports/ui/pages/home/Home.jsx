@@ -20,7 +20,7 @@ function Home() {
     background: '#001947',
     width: '100vw',
   };
-
+    // Use tracker here
     const totalEmissions = UserEmissionData('totalEmissions');
     // for debugging console.log(totalEmissions);
 

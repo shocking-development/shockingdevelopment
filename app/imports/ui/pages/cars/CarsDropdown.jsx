@@ -13,7 +13,6 @@ import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollec
 
 const formSchema = new SimpleSchema({
   carName: String,
-  carId: String,
   makeofCar: String,
   modelofCar: String,
   yearofCar: Number,
@@ -25,10 +24,10 @@ class CarsDropdown extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { carName, carId, makeofCar, modelofCar, yearofCar, mpgofCar } = data;
+    const { carName, makeofCar, modelofCar, yearofCar, mpgofCar } = data;
     // console.log(data);
     const owner = Meteor.user().username;
-    userInfoCarDefineMethod.call({ carName, carId, makeofCar, modelofCar, yearofCar, mpgofCar, owner },
+    userInfoCarDefineMethod.call({ carName, makeofCar, modelofCar, yearofCar, mpgofCar, owner },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -149,8 +148,6 @@ class CarsDropdown extends React.Component {
     * In order to get the car Id we must do the following:
     */
     const filteredModel = filteredSelectField.filter(({ year, make, model }) => year === Number(this.state.years) && make === this.state.make && model === this.state.model);
-    const iDofCar = filteredModel.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
-    // for debugging console.log(iDofCar);
 
     const make_of_Car = filteredModel.map((doc) => `${doc.make}`).toString(); // gets the id of the car selected
     // for debugging console.log(iDofCar);
@@ -220,15 +217,11 @@ class CarsDropdown extends React.Component {
                   name="carName"
                   errorMessage="Please type the name of your vehicle"
               />
-              <HiddenField name="carId" value={iDofCar}/>
               <HiddenField name="makeofCar" value={make_of_Car}/>
               <HiddenField name="modelofCar" value={model_of_Car}/>
               <HiddenField name="yearofCar" value={year_of_Car}/>
               <HiddenField name="mpgofCar" value={mpg_of_Car}/>
-              <ErrorField
-                  name="carId"
-                  errorMessage="Please select your car first"
-              />
+
               <SubmitField value='Submit' id='submit-car'/>
             </AutoForm>
           </Container>

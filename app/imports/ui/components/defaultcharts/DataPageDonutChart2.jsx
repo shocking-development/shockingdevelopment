@@ -17,25 +17,25 @@ function DataPageDonutChart1() {
   let Sunday = 0;
 
   for (let i = 0, n = ghgEmissionsbyDays.length; i < n; i++) {
-    if (ghgEmissionsbyDays[i].date === 0) {
+    if (ghgEmissionsbyDays[i].day === 0) {
       Monday += ghgEmissionsbyDays[i].ghgProduced;
     } else
-      if (ghgEmissionsbyDays[i].date === 1) {
+      if (ghgEmissionsbyDays[i].day === 1) {
         Tuesday += ghgEmissionsbyDays[i].ghgProduced;
       } else
-        if (ghgEmissionsbyDays[i].date === 2) {
+        if (ghgEmissionsbyDays[i].day === 2) {
           Wednesday += ghgEmissionsbyDays[i].ghgProduced;
         } else
-          if (ghgEmissionsbyDays[i].date === 3) {
+          if (ghgEmissionsbyDays[i].day === 3) {
             Thursday += ghgEmissionsbyDays[i].ghgProduced;
           } else
-            if (ghgEmissionsbyDays[i].date === 4) {
+            if (ghgEmissionsbyDays[i].day === 4) {
               Friday += ghgEmissionsbyDays[i].ghgProduced;
             } else
-              if (ghgEmissionsbyDays[i].date === 5) {
+              if (ghgEmissionsbyDays[i].day === 5) {
                 Saturday += ghgEmissionsbyDays[i].ghgProduced;
               } else
-                if (ghgEmissionsbyDays[i].date === 6) {
+                if (ghgEmissionsbyDays[i].day === 6) {
                   Sunday += ghgEmissionsbyDays[i].ghgProduced;
                 }
   }

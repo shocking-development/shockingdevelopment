@@ -178,7 +178,7 @@ export function UserEmissionData(index) {
   } */
 
   /* *
-  * The state gas price to calculate how much they spend based on the amount of miles they drive
+  * The state gas price to calculate how much they spend based on the amount of miles they drive -> change to function
   * */
   const stateGasPrice = 3.14;
 
@@ -190,7 +190,7 @@ export function UserEmissionData(index) {
   const ghgEmissionsbyDays = finalresultdays.map(item => {
     const container = { day: '', ghgProduced: '' };
 
-    container.date = item.date.getDay();
+    container.day = item.date.getDay();
     container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg))));
 
     return container;
