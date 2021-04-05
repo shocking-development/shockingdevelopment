@@ -64,18 +64,6 @@ class LandingSection1Boxes extends React.Component {
               </Grid.Column>
 
               <Grid.Column className="menu-boxes-column">
-                <Link to="community" spy={true} smooth={true}>
-                  <Segment className="zoom" style={infoBoxColoring}>
-                    <Icon style={iconStyling} className="line graph"></Icon>
-                    <p className='body' style={infoBoxesStyling}>Data</p>
-                    <p className='body' style={pargraphInfoBoxesStyling}>
-                      View your daily GHG emissions and learn how to reduce your emissions.
-                    </p>
-                  </Segment>
-                </Link>
-              </Grid.Column>
-
-              <Grid.Column className="menu-boxes-column">
                 <Link to="trackEM" spy={true} smooth={true}>
                   <Segment className="zoom" style={infoBoxColoring}>
                     <Icon style={iconStyling}
@@ -100,7 +88,17 @@ class LandingSection1Boxes extends React.Component {
                   </Segment>
                 </Link>
               </Grid.Column>
-
+              <Grid.Column className="menu-boxes-column">
+                <Link to="community" spy={true} smooth={true}>
+                  <Segment className="zoom" style={infoBoxColoring}>
+                    <Icon style={iconStyling} className="line graph"></Icon>
+                    <p className='body' style={infoBoxesStyling}>Data</p>
+                    <p className='body' style={pargraphInfoBoxesStyling}>
+                      View your daily GHG emissions and learn how to reduce your emissions.
+                    </p>
+                  </Segment>
+                </Link>
+              </Grid.Column>
             </Grid>
           </Container>
         </div>
