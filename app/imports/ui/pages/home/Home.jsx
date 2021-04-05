@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Segment, Statistic } from 'semantic-ui-react';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 import Datapage from './Datapage';
-import { UserEmissionData } from '../../components/defaultcharts/UserEmissions';
+import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsData';
 
 /** A simple static component to render the home page when users are logged in. */
 function Home() {

@@ -17,7 +17,7 @@ export function User() {
   return user;
 }
 
-export function UserEmissions() {
+export function UserEmissionsData() {
   const user = useTracker(() => Meteor.userId());
   const emissions = useTracker(() => {
     Meteor.subscribe(Emissions.emissionsPublicationName);
@@ -243,4 +243,4 @@ export function UserEmissionData(index) {
   return user;
 }
 
-export default UserEmissions;
+export default UserEmissionsData;

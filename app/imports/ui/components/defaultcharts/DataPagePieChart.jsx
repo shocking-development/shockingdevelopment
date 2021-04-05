@@ -2,7 +2,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Header } from 'semantic-ui-react';
-import { UserEmissionData } from './UserEmissions';
+import { UserEmissionData } from './UserEmissionsData';
 
 /** A simple static component to render some boxes for the landing page. */
 
