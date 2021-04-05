@@ -106,7 +106,9 @@ export function UserEmissionData(index) {
     return index1 === a.indexOf(itm);
   })), 'date');
 
-  const dateRecorded = finalresult.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}`);
+  const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
+
+  const dateRecorded = finalresult.map(recentEmissions => formatter.format(recentEmissions.date));
 
   const dataMiles = finalresult.map(recentEmissions => recentEmissions.miles);
 
