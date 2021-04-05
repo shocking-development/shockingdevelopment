@@ -8,13 +8,10 @@ import { NavLink } from 'react-router-dom';
 class ProfileItemAdmin extends React.Component {
 
   removeUser() {
-    this.props.allow({
-      remove() {
-        // Can admin remove your own documents.
-        return true;
-      },
 
-    });
+    Meteor.user.allow({remove:function() { return true }},
+  );
+    Meteor.user.remove(this.props.profile._id);
 
     Meteor.users.remove(this.props);
   }
