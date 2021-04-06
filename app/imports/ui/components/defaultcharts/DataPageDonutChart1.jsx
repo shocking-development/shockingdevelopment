@@ -6,7 +6,7 @@ import { UserEmissionData } from './UserEmissionsData';
 
 function DataPageDonutChart1() {
 
-  const transportation = UserEmissionData('Emissions').map(recentEmissions => recentEmissions.transportation);
+  const transportation = UserEmissionData('CurrentDayTransportation').map(recentEmissions => recentEmissions.transportation);
   let droveCount = 0;
   let teleworkCount = 0;
   let publicTransportationCount = 0;

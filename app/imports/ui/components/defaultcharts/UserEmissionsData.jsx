@@ -184,16 +184,38 @@ export function UserEmissionData(index) {
 
   const moneyspent = finalresultMonths.map(recentEmissions => Number(fuelCost(calculateGalUsed(recentEmissions.miles, carmpg), stateGasPrice)));
 
+  const curr = new Date();
+  const week = [];
+
+  for (let i = 1; i <= 7; i++) {
+    const first = curr.getDate() - curr.getDay() + i;
+    const day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
+    week.push(day);
+  }
+
+  const firstDayofWeek = new Date(week[0]);
+  const lastDayofWeek = new Date(week[week.length - 1]);
+  const selectedWeek = emissions.filter(d => {
+    const time = new Date(d.date).getTime();
+    return time >= firstDayofWeek && time <= lastDayofWeek;
+  });
+  // console.log(selectedWeek);
   /* *
   * saves the ghg produced by day into an array
   * */
-  const ghgEmissionsbyDays = finalresultdays.map(item => {
+  const ghgEmissionsbyDays = selectedWeek.map(item => {
     const container = { day: '', ghgProduced: '' };
 
     container.day = item.date.getDay();
     container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg))));
 
     return container;
+  });
+
+  const currDate = new Date(new Date().toISOString().slice(0, 10));
+  const currentDay = emissions.filter(item => {
+    const date = new Date(item.date);
+    return date.toDateString() === currDate.toDateString();
   });
 
   if (index === 'Transportation') {
@@ -238,6 +260,10 @@ export function UserEmissionData(index) {
 
   if (index === 'Transportation') {
     return emissions.map(recentEmissions => recentEmissions.transportation);
+  }
+
+  if (index === 'CurrentDayTransportation') {
+    return currentDay;
   }
 
   return user;

@@ -92,12 +92,13 @@ class ProfileCard extends React.Component {
                         </p>
                         <p>
                           Password:
+                        </p>
                           <Button
                               as={NavLink}
                               exact to={`/change/${this.props.profiles._id}`}
                               animated='vertical'
                               size='medium'
-                              style={{ marginLeft: '10px', width: '23%' }}
+                              style={{ position: 'absolute', width: '23%', bottom: '25px', right: '22.5em' }}
                               color='blue'
                               id='edit-password'
                           >
@@ -106,7 +107,6 @@ class ProfileCard extends React.Component {
                               <Icon name='lock'/>
                             </Button.Content>
                           </Button>
-                        </p>
 
                       </Header>
                     </div>
