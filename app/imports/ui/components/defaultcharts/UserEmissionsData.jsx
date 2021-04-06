@@ -137,7 +137,7 @@ export function UserEmissionData(index) {
         date: finalresultMonths[i].date,
       });
       totalMiles.push({
-        miles: 0,
+        miles: finalresultMonths[i].miles,
         date: finalresultMonths[i].date,
       });
       gallonsOfGasSaved += telework;
@@ -428,6 +428,9 @@ export function UserEmissionData(index) {
   }
 
   if (index === 'totalEmissions') {
+    if (typeof totalEmissionsofAllTransport !== 'undefined') {
+      return totalEmissionsofAllTransport.toFixed(2);
+    }
     return totalEmissionsofAllTransport;
   }
 
@@ -435,15 +438,24 @@ export function UserEmissionData(index) {
     return ghgEmissionsbyDays;
   }
   if (index === 'totalGasSaved') {
-    return gallonsOfGasSaved;
+    if (typeof gallonsOfGasSaved !== 'undefined') {
+      return gallonsOfGasSaved.toFixed(2);
+    }
+    return gallonsOfGasSaved.toFixed(2);
   }
 
   if (index === 'totalEmissionsReduced') {
-    return emissionReduced;
+    if (typeof emissionReduced !== 'undefined') {
+      return emissionReduced.toFixed(2);
+    }
+    return emissionReduced.toFixed(2);
   }
 
   if (index === 'totalSavings') {
-    return totalSavings;
+    if (typeof totalSavings !== 'undefined') {
+      return totalSavings.toFixed(2);
+    }
+    return totalSavings.toFixed(2);
   }
 
   if (index === 'User') {
