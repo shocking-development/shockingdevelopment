@@ -401,9 +401,10 @@ export function UserEmissionData(index) {
     return container;
   });
 
+  const currentDate = new Date();
   const currentDay = emissions.filter(item => {
     const date = new Date(item.date);
-    return date.toDateString() === curr.toDateString();
+    return date.toDateString() === currentDate.toDateString();
   });
 
   if (index === 'Transportation') {
