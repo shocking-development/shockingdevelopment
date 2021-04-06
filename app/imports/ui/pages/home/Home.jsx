@@ -23,10 +23,17 @@ function Home() {
   };
     // Use tracker here
   /* Gets the current user and tells us if we are logging in */
-  const { totalEmissions } = useTracker(() => {
-    const totalEmissionsgotten = UserEmissionData('totalEmissions'); // gets the id of the user
+  const { totalEmissions, galSaved, totalReducedEmissions, totalSavings } = useTracker(() => {
+    const totalEmissionsretrieved = UserEmissionData('totalEmissions'); // gets the id of the user
+    const galSavedretrieved = UserEmissionData('totalGasSaved');
+    const totalEmissionReducedretrieved = UserEmissionData('totalEmissionsReduced');
+    const totalSavingsretrieved = UserEmissionData('totalSavings');
+
     return {
-      totalEmissions: totalEmissionsgotten,
+      totalEmissions: totalEmissionsretrieved,
+      galSaved: galSavedretrieved,
+      totalReducedEmissions: totalEmissionReducedretrieved,
+      totalSavings: totalSavingsretrieved,
     };
   });
 
@@ -42,7 +49,7 @@ function Home() {
                     <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>$20</Statistic.Value>
+                        <Statistic.Value>${totalSavings}</Statistic.Value>
                         <Statistic.Label>saved</Statistic.Label>
                       </Statistic>
                     </Segment>
@@ -54,7 +61,7 @@ function Home() {
                     <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>5 lbs</Statistic.Value>
+                        <Statistic.Value>{totalReducedEmissions} lbs</Statistic.Value>
                         <Statistic.Label>GHG reduced</Statistic.Label>
                       </Statistic>
                     </Segment>
@@ -66,7 +73,7 @@ function Home() {
                     <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>1 gal</Statistic.Value>
+                        <Statistic.Value>{galSaved} gal</Statistic.Value>
                         <Statistic.Label>gas saved</Statistic.Label>
                       </Statistic>
                     </Segment>
@@ -105,7 +112,7 @@ function Home() {
                   <Segment className={'grow'} circular style={square}>
                     <Statistic inverted>
                       {/* Needs to be filled with actual data. */}
-                      <Statistic.Value>$20</Statistic.Value>
+                      <Statistic.Value>$0</Statistic.Value>
                       <Statistic.Label>saved</Statistic.Label>
                     </Statistic>
                   </Segment>
@@ -117,7 +124,7 @@ function Home() {
                   <Segment className={'grow'} circular style={square}>
                     <Statistic inverted>
                       {/* Needs to be filled with actual data. */}
-                      <Statistic.Value>5 lbs</Statistic.Value>
+                      <Statistic.Value>0 lbs</Statistic.Value>
                       <Statistic.Label>GHG reduced</Statistic.Label>
                     </Statistic>
                   </Segment>
@@ -129,7 +136,7 @@ function Home() {
                   <Segment className={'grow'} circular style={square}>
                     <Statistic inverted>
                       {/* Needs to be filled with actual data. */}
-                      <Statistic.Value>1 gal</Statistic.Value>
+                      <Statistic.Value>0 gal</Statistic.Value>
                       <Statistic.Label>gas saved</Statistic.Label>
                     </Statistic>
                   </Segment>
