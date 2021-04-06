@@ -4,19 +4,19 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Icon } from 'semantic-ui-react';
 import { Trips } from '../../../api/emissions/TripsCollection';
+import { Cars } from '../../../api/cars/CarsCollection';
 import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
 import { TripsDefineMethod, TripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
 
-  /* Gets the current user */
-  const user = useTracker(() => Meteor.userId());
-
   /* Gets the users saved preset trips */
-  const trips = useTracker(() => {
+  const [trips, user, cars] = useTracker(() => {
     Meteor.subscribe(Trips.tripsPublicationName);
-    return Trips.collection.find({ owner: user }).fetch();
+    Cars.subscribeCars();
+    const currUser = Meteor.userId();
+    return [Trips.collection.find({ owner: currUser }).fetch(), currUser, Cars.find({ owner: currUser }).fetch()];
   });
 
   /* Gets the current date and puts it in the correct format for the date input */
@@ -82,8 +82,7 @@ function UpdateEmissions() {
       value: trip._id,
       content: (
           <div>
-            {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red'
-                                                  onClick={() => deleteTrip(trip)}/>
+            {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red' onClick={() => deleteTrip(trip)}/>
           </div>
       ),
     });
