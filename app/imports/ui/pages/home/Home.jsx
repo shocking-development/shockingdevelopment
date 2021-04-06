@@ -37,7 +37,7 @@ function Home() {
     };
   });
 
-  if (totalEmissions !== Infinity) {
+  if (totalEmissions !== Infinity && typeof totalEmissions !== 'undefined') {
     return (
         <div style={pageStyle}>
           <NavBarHome/>
@@ -49,7 +49,7 @@ function Home() {
                     <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>${totalSavings}</Statistic.Value>
+                        <Statistic.Value>${totalSavings.toFixed(2)}</Statistic.Value>
                         <Statistic.Label>saved</Statistic.Label>
                       </Statistic>
                     </Segment>
@@ -61,7 +61,7 @@ function Home() {
                     <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>{totalReducedEmissions} lbs</Statistic.Value>
+                        <Statistic.Value>{totalReducedEmissions.toFixed(2)} lbs</Statistic.Value>
                         <Statistic.Label>GHG reduced</Statistic.Label>
                       </Statistic>
                     </Segment>
@@ -73,7 +73,7 @@ function Home() {
                     <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>{galSaved} gal</Statistic.Value>
+                        <Statistic.Value>{galSaved.toFixed(2)} gal</Statistic.Value>
                         <Statistic.Label>gas saved</Statistic.Label>
                       </Statistic>
                     </Segment>
@@ -86,7 +86,7 @@ function Home() {
                     <Segment className={'grow'} circular style={square}>
                       <Statistic inverted>
                         {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>  {totalEmissions} lbs </Statistic.Value>
+                        <Statistic.Value>  {totalEmissions.toFixed(2)} lbs </Statistic.Value>
                         <Statistic.Label>of Emissions Produced</Statistic.Label>
                       </Statistic>
                     </Segment>
