@@ -94,6 +94,15 @@ function UpdateEmissions() {
     value: 'Custom',
   });
 
+  const carOptions = [];
+  cars.forEach(car => {
+    carOptions.push({
+      key: car._id,
+      text: car.carName,
+      value: car.mpgofCar,
+    });
+  });
+
   /* Initializing the trip state */
   const [tripState, setTripState] = useState({
     date: fullDate,
@@ -233,7 +242,7 @@ function UpdateEmissions() {
             {tripState.transportation === 'Drove' ?
               <div>
               <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Car</Card.Header>
-                <Dropdown name='Car Used' placeholder='Select car' fluid selection options={cars} />
+                <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions} />
               </div> : null
             }
             <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
