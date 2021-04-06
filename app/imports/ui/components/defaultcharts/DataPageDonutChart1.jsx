@@ -2,11 +2,11 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Header } from 'semantic-ui-react';
-import { UserEmissionData } from './UserEmissions';
+import { UserEmissionData } from './UserEmissionsData';
 
 function DataPageDonutChart1() {
 
-  const transportation = UserEmissionData('Emissions').map(recentEmissions => recentEmissions.transportation);
+  const transportation = UserEmissionData('CurrentDayTransportation').map(recentEmissions => recentEmissions.transportation);
   let droveCount = 0;
   let teleworkCount = 0;
   let publicTransportationCount = 0;

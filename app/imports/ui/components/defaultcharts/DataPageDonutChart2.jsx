@@ -2,7 +2,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Header } from 'semantic-ui-react';
-import { UserEmissionData } from './UserEmissions';
+import { UserEmissionData } from './UserEmissionsData';
 
 function DataPageDonutChart1() {
 
@@ -17,25 +17,25 @@ function DataPageDonutChart1() {
   let Sunday = 0;
 
   for (let i = 0, n = ghgEmissionsbyDays.length; i < n; i++) {
-    if (ghgEmissionsbyDays[i].date === 0) {
+    if (ghgEmissionsbyDays[i].day === 1) {
       Monday += ghgEmissionsbyDays[i].ghgProduced;
     } else
-      if (ghgEmissionsbyDays[i].date === 1) {
+      if (ghgEmissionsbyDays[i].day === 2) {
         Tuesday += ghgEmissionsbyDays[i].ghgProduced;
       } else
-        if (ghgEmissionsbyDays[i].date === 2) {
+        if (ghgEmissionsbyDays[i].day === 3) {
           Wednesday += ghgEmissionsbyDays[i].ghgProduced;
         } else
-          if (ghgEmissionsbyDays[i].date === 3) {
+          if (ghgEmissionsbyDays[i].day === 4) {
             Thursday += ghgEmissionsbyDays[i].ghgProduced;
           } else
-            if (ghgEmissionsbyDays[i].date === 4) {
+            if (ghgEmissionsbyDays[i].day === 5) {
               Friday += ghgEmissionsbyDays[i].ghgProduced;
             } else
-              if (ghgEmissionsbyDays[i].date === 5) {
+              if (ghgEmissionsbyDays[i].day === 6) {
                 Saturday += ghgEmissionsbyDays[i].ghgProduced;
               } else
-                if (ghgEmissionsbyDays[i].date === 6) {
+                if (ghgEmissionsbyDays[i].day === 7) {
                   Sunday += ghgEmissionsbyDays[i].ghgProduced;
                 }
   }
