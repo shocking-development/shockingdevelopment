@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Icon } from 'semantic-ui-react';
 import { Trips } from '../../../api/emissions/TripsCollection';
-import { Cars } from '../../../api/cars/CarsCollection';
+import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
 import { TripsDefineMethod, TripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
 
@@ -14,9 +14,9 @@ function UpdateEmissions() {
   /* Gets the users saved preset trips */
   const [trips, user, cars] = useTracker(() => {
     Meteor.subscribe(Trips.tripsPublicationName);
-    Cars.subscribeCars();
+    UserInfosCars.subscribeUserInfoCars();
     const currUser = Meteor.userId();
-    return [Trips.collection.find({ owner: currUser }).fetch(), currUser, Cars.find({ owner: currUser }).fetch()];
+    return [Trips.collection.find({ owner: currUser }).fetch(), currUser, UserInfosCars.find({}).fetch()];
   });
 
   /* Gets the current date and puts it in the correct format for the date input */
@@ -230,6 +230,12 @@ function UpdateEmissions() {
             <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
             <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions}
                       onChange={changeTransportation}/>
+            {tripState.transportation === 'Drove' ?
+              <div>
+              <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Car</Card.Header>
+                <Dropdown name='Car Used' placeholder='Select car' fluid selection options={cars} />
+              </div> : null
+            }
             <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
             <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions}
                       onChange={changeTrip}/>
