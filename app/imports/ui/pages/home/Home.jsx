@@ -21,8 +21,7 @@ function Home() {
     background: '#001947',
     width: '100vw',
   };
-    // Use tracker here
-  /* Gets the current user and tells us if we are logging in */
+
   const { totalEmissions, galSaved, totalReducedEmissions, totalSavings } = useTracker(() => {
     const totalEmissionsretrieved = UserEmissionData('totalEmissions'); // gets the id of the user
     const galSavedretrieved = UserEmissionData('totalGasSaved');
