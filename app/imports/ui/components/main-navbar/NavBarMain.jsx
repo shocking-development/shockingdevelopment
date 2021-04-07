@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
@@ -81,6 +81,18 @@ class NavBarMain extends React.Component {
                            id="calculator-metric">
                   <Icon name='calculator' size='large'/>
                   GHG calculator Metric
+                </Menu.Item>
+                <Menu.Item>
+                  <Dropdown text="calculator" pointing="top right" icon={'calculator'}>
+                    <Dropdown.Menu>
+                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
+                                     key='key8'
+                                     id="calculator-metric">
+                        GHG calculator Metric
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
                 </Menu.Item>
 
                 {/* <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
