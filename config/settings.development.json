@@ -8,9 +8,25 @@
       "email": "admin@foo.com",
       "password": "changeme",
       "role": "admin"
+    },
+    {
+      "email": "jerome@foo.com",
+      "password": "jerome",
+      "role": "admin"
     }
   ],
   "defaultData": [
+    {
+      "firstName": "Jerome",
+      "lastName": "Foo",
+      "user": "jerome@foo.com",
+      "email": "jerome@foo.com",
+      "zipcode": "96814",
+      "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
+      "unitSystem": "metric",
+      "State": "Hawaii",
+      "owner": "jerome@foo.com"
+    },
     {
       "firstName": "John",
       "lastName": "Foo",
