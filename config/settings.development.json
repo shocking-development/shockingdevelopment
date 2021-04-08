@@ -21,10 +21,13 @@
       "lastName": "Foo",
       "user": "jerome@foo.com",
       "email": "jerome@foo.com",
+      "password": "jerome",
       "zipcode": "96814",
+      "transportation": "electricity",
       "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
-      "unitSystem": "metric",
+      "unitSystem": "us units",
       "State": "Hawaii",
+      "role": "admin",
       "owner": "jerome@foo.com"
     },
     {
