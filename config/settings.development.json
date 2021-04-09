@@ -966,6 +966,62 @@
       "midGradePrice": 3.261,
       "premiumPrice": 3.443,
       "dieselPrice":  3.391
+    },
+    {
+      "State": "Illinois",
+      "regularPrice": 3.068,
+      "midGradePrice": 3.409,
+      "premiumPrice": 3.800,
+      "dieselPrice":  3.129
+    },
+    {
+      "State": "Indiana",
+      "regularPrice": 2.792,
+      "midGradePrice": 3.096,
+      "premiumPrice": 3.417,
+      "dieselPrice":  3.144
+    },
+    {
+      "State": "Kansas",
+      "regularPrice": 2.689,
+      "midGradePrice": 2.931,
+      "premiumPrice": 3.166,
+      "dieselPrice":  3.020
+    },
+    {
+      "State": "Kentucky",
+      "regularPrice": 2.719,
+      "midGradePrice": 3.039,
+      "premiumPrice": 3.347,
+      "dieselPrice":  2.925
+    },
+    {
+      "State": "Louisiana",
+      "regularPrice": 2.620,
+      "midGradePrice": 2.924,
+      "premiumPrice": 3.222,
+      "dieselPrice":  2.768
+    },
+    {
+      "State": "Massachusetts",
+      "regularPrice": 2.743,
+      "midGradePrice": 3.031,
+      "premiumPrice": 3.244,
+      "dieselPrice":  2.995
+    },
+    {
+      "State": "Maryland",
+      "regularPrice": 2.779,
+      "midGradePrice": 3.211,
+      "premiumPrice": 3.452,
+      "dieselPrice":  3.037
+    },
+    {
+      "State": "Maine",
+      "regularPrice": 2.802,
+      "midGradePrice": 3.083,
+      "premiumPrice": 3.328,
+      "dieselPrice":  3.034
     }
   ]
 }
