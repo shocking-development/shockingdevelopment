@@ -1022,6 +1022,62 @@
       "midGradePrice": 3.083,
       "premiumPrice": 3.328,
       "dieselPrice":  3.034
+    },
+    {
+      "State": "Michigan",
+      "regularPrice": 2.812,
+      "midGradePrice": 3.125,
+      "premiumPrice": 3.453,
+      "dieselPrice":  3.041
+    },
+    {
+      "State": "Minnesota",
+      "regularPrice": 2.736,
+      "midGradePrice": 2.953,
+      "premiumPrice": 3.262,
+      "dieselPrice":  3.057
+    },
+    {
+      "State": "Missouri",
+      "regularPrice": 2.637,
+      "midGradePrice": 2.883,
+      "premiumPrice": 3.152,
+      "dieselPrice":  2.929
+    },
+    {
+      "State": "Mississippi",
+      "regularPrice": 2.585,
+      "midGradePrice": 2.880,
+      "premiumPrice": 3.195,
+      "dieselPrice":  2.761
+    },
+    {
+      "State": "Montana",
+      "regularPrice": 2.729,
+      "midGradePrice": 2.990,
+      "premiumPrice": 3.240,
+      "dieselPrice":  3.096
+    },
+    {
+      "State": "North Carolina",
+      "regularPrice": 2.633,
+      "midGradePrice": 2.952,
+      "premiumPrice": 3.275,
+      "dieselPrice":  2.912
+    },
+    {
+      "State": "North Dakota",
+      "regularPrice": 2.752,
+      "midGradePrice": 2.960,
+      "premiumPrice": 3.170,
+      "dieselPrice":  3.079
+    },
+    {
+      "State": "Nebraska",
+      "regularPrice": 2.792,
+      "midGradePrice": 2.882,
+      "premiumPrice": 3.234,
+      "dieselPrice":  3.045
     }
   ]
 }
