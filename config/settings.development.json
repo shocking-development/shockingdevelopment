@@ -938,6 +938,34 @@
       "midGradePrice": 3.205,
       "premiumPrice": 3.491,
       "dieselPrice":  2.985
+    },
+    {
+      "State": "Georgia",
+      "regularPrice": 2.710,
+      "midGradePrice": 3.026,
+      "premiumPrice": 3.451,
+      "dieselPrice":  2.956
+    },
+    {
+      "State": "Hawaii",
+      "regularPrice": 3.713,
+      "midGradePrice": 3.909,
+      "premiumPrice": 4.160,
+      "dieselPrice":  4.204
+    },
+    {
+      "State": "Iowa",
+      "regularPrice": 2.787,
+      "midGradePrice": 2.922,
+      "premiumPrice": 3.328,
+      "dieselPrice":  3.038
+    },
+    {
+      "State": "Idaho",
+      "regularPrice": 3.062,
+      "midGradePrice": 3.261,
+      "premiumPrice": 3.443,
+      "dieselPrice":  3.391
     }
   ]
 }
