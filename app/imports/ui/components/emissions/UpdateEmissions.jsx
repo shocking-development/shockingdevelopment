@@ -260,7 +260,7 @@ function UpdateEmissions() {
                       onChange={changeTransportation}/>
             {tripState.transportation === 'Drove' ?
               <div>
-              <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Car</Card.Header>
+                <br/>
                 <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions} onChange={changeCar} />
               </div> : null
             }
