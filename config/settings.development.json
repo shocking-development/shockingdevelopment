@@ -1148,6 +1148,83 @@
       "midGradePrice": 3.100,
       "premiumPrice": 3.343,
       "dieselPrice":  3.015
+    },
+    {
+      "State": "South Carolina",
+      "regularPrice": 2.587,
+      "midGradePrice": 2.904,
+      "premiumPrice": 3.199,
+      "dieselPrice":  2.837
+    },
+    {
+      "State": "South Dakota",
+      "regularPrice": 2.842,
+      "midGradePrice": 2.941,
+      "premiumPrice": 3.296,
+      "dieselPrice":  3.101
+    },
+    {
+      "State": "Tennessee",
+      "regularPrice": 2.689,
+      "midGradePrice": 3.013,
+      "premiumPrice": 3.350,
+      "dieselPrice":  2.895
+    },
+    {
+      "State": "Texas",
+      "regularPrice": 2.585,
+      "midGradePrice": 2.903,
+      "premiumPrice": 3.195,
+      "dieselPrice":  2.830
+    },
+    {
+      "State": "Utah",
+      "regularPrice": 3.172,
+      "midGradePrice": 3.340,
+      "premiumPrice": 3.520,
+      "dieselPrice":  3.448
+    },
+    {
+      "State": "Virginia",
+      "regularPrice": 2.712,
+      "midGradePrice": 3.081,
+      "premiumPrice": 3.378,
+      "dieselPrice":  2.903
+    },
+    {
+      "State": "Vermont",
+      "regularPrice": 2.794,
+      "midGradePrice": 3.053,
+      "premiumPrice": 3.313,
+      "dieselPrice":  3.033
+    },
+    {
+      "State": "Washington",
+      "regularPrice": 3.335,
+      "midGradePrice": 3.552,
+      "premiumPrice": 3.79,
+      "dieselPrice":  3.315
+    },
+    {
+      "State": "Wisconsin",
+      "regularPrice": 2.737,
+      "midGradePrice": 3.054,
+      "premiumPrice": 3.439,
+      "dieselPrice":  2.936
+    },
+    {
+      "State": "West Virginia",
+      "regularPrice": 2.749,
+      "midGradePrice": 3.023,
+      "premiumPrice": 3.305,
+      "dieselPrice":  3.025
+    },
+    {
+      "State": "Wyoming",
+      "regularPrice": 2.911,
+      "midGradePrice": 3.133,
+      "premiumPrice": 3.376,
+      "dieselPrice":  3.203
     }
   ]
 }
