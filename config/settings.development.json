@@ -1078,6 +1078,76 @@
       "midGradePrice": 2.882,
       "premiumPrice": 3.234,
       "dieselPrice":  3.045
+    },
+    {
+      "State": "New Hampshire",
+      "regularPrice": 2.710,
+      "midGradePrice": 3.017,
+      "premiumPrice": 3.286,
+      "dieselPrice":  2.925
+    },
+    {
+      "State": "New Jersey",
+      "regularPrice": 2.900,
+      "midGradePrice": 3.259,
+      "premiumPrice": 3.433,
+      "dieselPrice":  3.140
+    },
+    {
+      "State": "New Mexico",
+      "regularPrice": 2.864,
+      "midGradePrice": 3.177,
+      "premiumPrice": 3.433,
+      "dieselPrice":  3.166
+    },
+    {
+      "State": "Nevada",
+      "regularPrice": 3.352,
+      "midGradePrice": 3.564,
+      "premiumPrice": 3.743,
+      "dieselPrice":  3.309
+    },
+    {
+      "State": "New York",
+      "regularPrice": 2.898,
+      "midGradePrice": 3.193,
+      "premiumPrice": 3.429,
+      "dieselPrice":  3.152
+    },
+    {
+      "State": "Ohio",
+      "regularPrice": 2.746,
+      "midGradePrice": 3.068,
+      "premiumPrice": 3.389,
+      "dieselPrice":  3.066
+    },
+    {
+      "State": "Oklahoma",
+      "regularPrice": 2.638,
+      "midGradePrice": 2.892,
+      "premiumPrice": 3.118,
+      "dieselPrice":  2.931
+    },
+    {
+      "State": "Oregon",
+      "regularPrice": 3.195,
+      "midGradePrice": 3.361,
+      "premiumPrice": 3.550,
+      "dieselPrice":  3.213
+    },
+    {
+      "State": "Pennsylvania",
+      "regularPrice": 2.975,
+      "midGradePrice": 3.292,
+      "premiumPrice": 3.576,
+      "dieselPrice":  3.373
+    },
+    {
+      "State": "Rhode Island",
+      "regularPrice": 2.772,
+      "midGradePrice": 3.100,
+      "premiumPrice": 3.343,
+      "dieselPrice":  3.015
     }
   ]
 }
