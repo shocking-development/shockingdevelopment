@@ -9,7 +9,7 @@ function EmissionItem({ emission }) {
 
     return (
         <Table.Row>
-            <Table.Cell>{`${emission.date.getMonth() + 1}/${emission.date.getDate()}/${emission.date.getFullYear()}`}</Table.Cell>
+            <Table.Cell>{`${emission.date.getMonth() + 1}/${emission.date.getUTCDate()}/${emission.date.getFullYear()}`}</Table.Cell>
             <Table.Cell>{emission.transportation}</Table.Cell>
             <Table.Cell>{emission.miles}</Table.Cell>
             <Table.Cell><Button inverted color='red' onClick={() => deleteEmission(emission)}>Delete</Button></Table.Cell>
