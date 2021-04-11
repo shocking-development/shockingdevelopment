@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Segment, Form, Button } from 'semantic-ui-react';
+import { Grid, Image, Segment, Form, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-scroll';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
@@ -16,7 +16,7 @@ class Footer extends React.Component {
       paddingRight: '10%',
     };
     const footertext = { paddingLeft: '12px', marginBottom: '6px', color: 'white' };
-    const mailingAdressstyling = { paddingTop: '135px', marginBottom: '6px', color: 'white' };
+    const mailingAdressstyling = { /*paddingTop: '135px',*/ marginBottom: '6px', color: 'white' };
     const footercolumn2text = { marginBottom: '6px', color: 'white' };
     const footercolumn3text = {
       color: 'white',
@@ -30,24 +30,32 @@ class Footer extends React.Component {
         <div id="footer-container" style={{ backgroundColor: '#052235' }}>
 
           <Segment style={footercolor2}>
-            <Grid columns={3} relaxed='very'>
-              <Grid.Column>
-                <p>
+            <Grid columns={4} relaxed='very'>
+              <Grid.Column style={{ marginTop: '40px' }}>
+                <p style={{ display: 'flex', justifyContent: 'center' }}>
                   <Image style={footerLogo} src="/images/HEI-WHOLE-LOGO.png"/>
                 </p>
+                <p style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Icon style={{ color: 'white', margin: '10px' }} className="facebook"></Icon>
+                  <Icon style={{ color: 'white', margin: '10px' }} className="instagram"></Icon>
+                  <Icon style={{ color: 'white', margin: '10px' }} className="twitter"></Icon>
+                  <Icon style={{ color: 'white', margin: '10px' }} className="youtube"></Icon>
+                </p>
+              </Grid.Column>
+              <Grid.Column style={{ marginTop: '40px' }}>
                 <p style={footertext}> Corporate Headquarters </p>
                 <p style={footertext}> 1001 Bishop Street, Suite
                   2900 </p>
                 <p style={footertext}> Honolulu, HI 96813 </p>
                 <p style={footertext}> Telephone: (808)543-5662 </p>
               </Grid.Column>
-              <Grid.Column>
+              <Grid.Column style={{ marginTop: '40px' }}>
                 <p style={mailingAdressstyling}>Mailing Address </p>
                 <p style={footercolumn2text}>P.O. Box 730</p>
                 <p style={footercolumn2text}>Honolulu, HI 96808-0730 </p>
                 <p style={footercolumn2text}>Email: info@hei.com </p>
               </Grid.Column>
-              <Grid.Column>
+              <Grid.Column style={{ marginTop: '40px' }}>
                 <p style={footercolumn3text}>SIGN UP FOR</p>
                 <p style={footercolumn3text}>EMAIL ALERTS</p>
                 <Form success>
