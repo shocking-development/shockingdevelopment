@@ -89,7 +89,7 @@ class LandingSection2 extends React.Component {
                   Start Tracking
                 </Button>
               </div>
-              <div style={{ paddingRight: '1em' }}>
+              <div style={{ paddingRight: '1em', margin: 'auto' }}>
                 <LandingPageLineChart/>
               </div>
             </Grid.Row>
@@ -143,10 +143,10 @@ class LandingSection2 extends React.Component {
                 View the environmental impact of the community.
               </p>
             </div>
-            <Grid.Column>
+            <Grid.Column style={{ margin: 'auto' }}>
               <LandingPageBarGraph/>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column style={{ margin: 'auto' }} >
               <div style={{ paddingRight: '2em' }}>
                 <LandingPagePieChart/>
               </div>
