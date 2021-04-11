@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Image, Segment, Form, Button } from 'semantic-ui-react';
+import { Link } from 'react-scroll';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class Footer extends React.Component {
@@ -54,6 +55,9 @@ class Footer extends React.Component {
                               style={{ width: '85%' }}/>
                   <Button color='teal'>Submit</Button>
                 </Form>
+                <Link to="landing-page" spy={true} smooth={true}>
+                  <Button color='blue'>Back to top</Button>
+                </Link>
               </Grid.Column>
             </Grid>
           </Segment>

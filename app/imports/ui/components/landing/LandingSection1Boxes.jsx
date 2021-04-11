@@ -47,7 +47,7 @@ class LandingSection1Boxes extends React.Component {
     };
 
     return (
-        <div id='landing-section-1-boxes'>
+        <div style={{ marginTop: '4vh' }} id='landing-section-1-boxes'>
           <Container id='landing-boxes-container' style={containerStyling}>
             <Grid stackable className='menu-boxes' columns='equal' id='landing-page'>
               <Grid.Column className="menu-boxes-column">
