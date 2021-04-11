@@ -47,54 +47,58 @@ class LandingSection1Boxes extends React.Component {
     };
 
     return (
-        <div id='landing-section-1-boxes'>
+        <div style={{ marginTop: '4vh' }} id='landing-section-1-boxes'>
           <Container id='landing-boxes-container' style={containerStyling}>
             <Grid stackable className='menu-boxes' columns='equal' id='landing-page'>
               <Grid.Column className="menu-boxes-column">
-                <Segment className="zoom" style={infoBoxColoring}>
-                  <Icon style={iconStyling}
-                        className="money bill alternate icon"></Icon>
-                  <p className='body' style={infoBoxesStyling}>Savings</p>
-                  <p className='body' style={pargraphInfoBoxesStyling}>
-                    Learn how much you can save by switching to an electric vehicle.
-                  </p>
-                </Segment>
+                <Link to="saved" spy={true} smooth={true}>
+                  <Segment className="zoom" style={infoBoxColoring}>
+                    <Icon style={iconStyling}
+                          className="money bill alternate icon"></Icon>
+                    <p className='body' style={infoBoxesStyling}>Savings</p>
+                    <p className='body' style={pargraphInfoBoxesStyling}>
+                      Learn how much you can save by switching to an electric vehicle.
+                    </p>
+                  </Segment>
+                </Link>
               </Grid.Column>
 
               <Grid.Column className="menu-boxes-column">
-                <Segment className="zoom" style={infoBoxColoring}>
-                  <Icon style={iconStyling} className="line graph"></Icon>
-                  <p className='body' style={infoBoxesStyling}>Data</p>
-                  <p className='body' style={pargraphInfoBoxesStyling}>
-                    View your daily GHG emissions and learn how to reduce your emissions.
-                  </p>
-                </Segment>
+                <Link to="trackEM" spy={true} smooth={true}>
+                  <Segment className="zoom" style={infoBoxColoring}>
+                    <Icon style={iconStyling}
+                          className="check circle icon"></Icon>
+                    <p className='body' style={infoBoxesStyling}>Benefits</p>
+                    <p className='body' style={pargraphInfoBoxesStyling}>
+                      Learn the benefits of switching to an electrical vehicle.
+                    </p>
+                  </Segment>
+                </Link>
               </Grid.Column>
 
               <Grid.Column className="menu-boxes-column">
-                <Segment className="zoom" style={infoBoxColoring}>
-                  <Icon style={iconStyling}
-                        className="check circle icon"></Icon>
-                  <p className='body' style={infoBoxesStyling}>Benefits</p>
-                  <p className='body' style={pargraphInfoBoxesStyling}>
-                    Learn the benefits of switching to an electrical vehicle.
-                  </p>
-                </Segment>
-              </Grid.Column>
-
-              <Grid.Column className="menu-boxes-column">
-                <Segment className="zoom" style={infoBoxColoring}>
-                  <Link to="ghgCalc" spy={true} smooth={true}>
+                <Link to="ghgCalc" spy={true} smooth={true}>
+                  <Segment className="zoom" style={infoBoxColoring}>
                     <i style={iconStyling}
                        className="calculator icon"></i>
                     <p className='body' style={infoBoxesStyling}>Emissions Calculator</p>
                     <p className='body' style={pargraphInfoBoxesStyling}>
                       Calculate how much GHG you could have reduced.
                     </p>
-                  </Link>
-                </Segment>
+                  </Segment>
+                </Link>
               </Grid.Column>
-
+              <Grid.Column className="menu-boxes-column">
+                <Link to="community" spy={true} smooth={true}>
+                  <Segment className="zoom" style={infoBoxColoring}>
+                    <Icon style={iconStyling} className="line graph"></Icon>
+                    <p className='body' style={infoBoxesStyling}>Data</p>
+                    <p className='body' style={pargraphInfoBoxesStyling}>
+                      View your daily GHG emissions and learn how to reduce your emissions.
+                    </p>
+                  </Segment>
+                </Link>
+              </Grid.Column>
             </Grid>
           </Container>
         </div>
