@@ -57,7 +57,7 @@ class LandingSection2 extends React.Component {
       fontWeight: 'lighter',
     };
     return (
-        <div style={{ background: '#001947' }}>
+        <div id="saved" style={{ background: '#001947' }}>
 
           <Statistic.Group widths='three' style={{ padding: '5em' }}>
             <Statistic inverted>
@@ -75,7 +75,7 @@ class LandingSection2 extends React.Component {
           </Statistic.Group>
 
           <Grid stackable columns='equal'>
-            <Grid.Row style={trackYourGHGemissionsStyling}>
+            <Grid.Row id="trackEM" style={trackYourGHGemissionsStyling}>
               <div style={{ color: 'white', margin: 'auto' }}>
                 <Header className='body' as='h1' style={{ color: 'white' }}> Track your GHG emissions </Header>
                 <p className='body'
@@ -89,7 +89,7 @@ class LandingSection2 extends React.Component {
                   Start Tracking
                 </Button>
               </div>
-              <div style={{ paddingRight: '1em' }}>
+              <div style={{ paddingRight: '1em', margin: 'auto' }}>
                 <LandingPageLineChart/>
               </div>
             </Grid.Row>
@@ -131,7 +131,7 @@ class LandingSection2 extends React.Component {
 
           </Grid>
 
-          <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%', height: '110vh' }}>
+          <Grid id="community" stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%', height: '110vh' }}>
             <div style={{ margin: 'auto', paddingLeft: '3%' }}>
               <Header
                   className='body'
@@ -143,10 +143,10 @@ class LandingSection2 extends React.Component {
                 View the environmental impact of the community.
               </p>
             </div>
-            <Grid.Column>
+            <Grid.Column style={{ margin: 'auto' }}>
               <LandingPageBarGraph/>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column style={{ margin: 'auto' }} >
               <div style={{ paddingRight: '2em' }}>
                 <LandingPagePieChart/>
               </div>

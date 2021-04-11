@@ -8,6 +8,7 @@ import { Menu, Dropdown, Image } from 'semantic-ui-react';
  * The NavBar appears at the top of the Landing page. Rendered by the Landing page.
  * @memberOf ui/components/landing
  */
+
 function NavBarLanding() { // implement function and have boolean for user/admin
 
   /* Some styling components */
