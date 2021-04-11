@@ -13,6 +13,11 @@
       "email": "jerome@foo.com",
       "password": "jerome",
       "role": "admin"
+    },
+    {
+      "email": "kyra@foo.com",
+      "password": "kyra",
+      "role": "admin"
     }
   ],
   "defaultData": [
@@ -31,6 +36,20 @@
       "owner": "jerome@foo.com"
     },
     {
+      "firstName": "Kyra",
+      "lastName": "Ikeda",
+      "user": "kyra@foo.com",
+      "email": "kyra@foo.com",
+      "password": "kyra",
+      "zipcode": "96814",
+      "transportation": "electricity",
+      "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "role": "admin",
+      "owner": "kyra@foo.com"
+    },
+    {
       "firstName": "John",
       "lastName": "Foo",
       "user": "john@foo.com",
@@ -42,19 +61,6 @@
       "unitSystem": "us units",
       "State": "Hawaii",
       "owner": "john@foo.com"
-    },
-    {
-      "firstName": "Amanda",
-      "lastName": "Foo",
-      "user": "amanda@foo.com",
-      "email": "amanda@foo.com",
-      "password": "changeme",
-      "zipcode": "96814",
-      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
-      "transportation": "electricity",
-      "unitSystem": "metric",
-      "State": "Hawaii",
-      "owner": "amanda@foo.com"
     },
     {
       "firstName": "Admin",
