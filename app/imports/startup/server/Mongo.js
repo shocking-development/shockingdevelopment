@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 import { Cars } from '../../api/cars/CarsCollection';
+import { GasPrices } from '../../api/gas-prices/GasPricesCollection';
 
 /* eslint-disable no-console */
 
@@ -17,6 +18,12 @@ function addCarData(data) {
   Cars.define(data);
 }
 
+/** Initialize the database with a default data document. */
+function addGasolineData(data) {
+  console.log(`  Adding: ${data.State} ${data.regularPrice} ${data.midGradePrice} ${data.premiumPrice} ${data.dieselPrice} `);
+  GasPrices.define(data);
+}
+
 /** Initialize the User Infos collection if empty. */
 if (UserInfos.count() === 0) {
   if (Meteor.settings.defaultData) {
@@ -31,6 +38,15 @@ if (Cars.count() === 0) {
   if (Meteor.settings.defaultCarsData) {
     console.log('Creating default cars data.');
     Meteor.settings.defaultCarsData.map(data => addCarData(data));
+  }
+
+}
+
+/** Initialize the GasPrices collection if empty. */
+if (GasPrices.count() === 0) {
+  if (Meteor.settings.defaultCarsData) {
+    console.log('Creating default gas data.');
+    Meteor.settings.stateGasolinePrices.map(data => addGasolineData(data));
   }
 
 }

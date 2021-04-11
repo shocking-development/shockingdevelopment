@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Table, Menu, Label, Icon } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -9,6 +9,7 @@ import DataPagePieChart from '../../components/defaultcharts/DataPagePieChart';
 import DataPageBarGraph from '../../components/defaultcharts/DataPageBarGraph';
 import DataPageDonutChart1 from '../../components/defaultcharts/DataPageDonutChart1';
 import DataPageDonutChart2 from '../../components/defaultcharts/DataPageDonutChart2';
+import AllEmissions from '../../components/emissions/AllEmissions';
 
 /** A simple static component to render the datapage page when users are logged in. */
 class Datapage extends React.Component {
@@ -77,7 +78,7 @@ class Datapage extends React.Component {
       height: '100%',
       width: '51%',
     };
-    const tablestyling = {
+    /* const tablestyling = {
       background: '#0a69a7',
       position: 'relative',
       left: '1.29em',
@@ -85,7 +86,7 @@ class Datapage extends React.Component {
       width: '94%',
       color: 'white',
       border: 'none',
-    };
+    }; */
 
     return (
         <div style={outer_div_pagestyle}>
@@ -111,7 +112,31 @@ class Datapage extends React.Component {
                     <DataPageDonutChart2/>
                   </div>
                   <div style={dataTableDivstyling}>
-                    <Table style={tablestyling} celled>
+                    <AllEmissions/>
+                  </div>
+                </Grid.Row>
+              </Grid>
+            </div>
+          </div>
+        </div>
+    );
+  }
+}
+
+/** Declare the types of all properties. */
+Datapage.propTypes = {
+  currentUser: PropTypes.string,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+const DatapageContainer = withTracker(() => ({
+  currentUser: Meteor.user() ? Meteor.user().username : '',
+}))(Datapage);
+
+/** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
+export default withRouter(DatapageContainer);
+
+/* <Table style={tablestyling} celled>
                       <Table.Header>
                         <Table.Row>
                           <Table.HeaderCell className={'headerdataPage'}>Week</Table.HeaderCell>
@@ -158,26 +183,4 @@ class Datapage extends React.Component {
                           </Table.HeaderCell>
                         </Table.Row>
                       </Table.Footer>
-                    </Table>
-                  </div>
-                </Grid.Row>
-              </Grid>
-            </div>
-          </div>
-        </div>
-    );
-  }
-}
-
-/** Declare the types of all properties. */
-Datapage.propTypes = {
-  currentUser: PropTypes.string,
-};
-
-/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-const DatapageContainer = withTracker(() => ({
-  currentUser: Meteor.user() ? Meteor.user().username : '',
-}))(Datapage);
-
-/** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
-export default withRouter(DatapageContainer);
+                    </Table> */

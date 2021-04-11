@@ -2,11 +2,11 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Header } from 'semantic-ui-react';
-import { UserEmissionData } from './UserEmissions';
+import { UserEmissionData } from './UserEmissionsData';
 
 function DataPageDonutChart1() {
 
-  const transportation = UserEmissionData('Emissions').map(recentEmissions => recentEmissions.transportation);
+  const transportation = UserEmissionData('CurrentDayTransportation').map(recentEmissions => recentEmissions.transportation);
   let droveCount = 0;
   let teleworkCount = 0;
   let publicTransportationCount = 0;
@@ -15,7 +15,7 @@ function DataPageDonutChart1() {
   let carpoolCount = 0;
   let electricVehicleCount = 0;
 
-  for (let i = 0; i < transportation.length; i++) {
+  for (let i = 0, n = transportation.length; i < n; i++) {
     if (transportation[i] === 'Drove') {
       droveCount += 1;
     } else
@@ -104,14 +104,11 @@ function DataPageDonutChart1() {
                   highcharts={Highcharts}
                   options={options}
               />
-              <h1 style={{
-                position: 'relative',
-                left: '90%',
-                bottom: '46vh',
-              }}><a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
+              <h1 style={{ position: 'absolute', top: '-18px', right: '22px' }}>
+                <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
               </h1>
             </div> :
-            <Header inverted as="h3" textAlign="center" style={{ marginTop: '9em', paddingLeft: '10px' }}>
+            <Header inverted as="h3" textAlign="center" style={{ marginTop: '3em', paddingLeft: '10px', marginBottom: '3em' }}>
               Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}

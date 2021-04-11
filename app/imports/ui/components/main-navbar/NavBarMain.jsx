@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
@@ -70,17 +70,22 @@ class NavBarMain extends React.Component {
                   Add Today&apos;s Emissions
                 </Menu.Item>
 
-                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCal"
-                           key='key4' id="calculator-imperial">
+                <Menu.Item className='spacing-menu-item'>
                   <Icon name='calculator' size='large'/>
-                  GHG calculator
-                </Menu.Item>
+                  <Dropdown className='spacing-menu-item' text="GHG Calculator" pointing="bottom">
+                    <Dropdown.Menu>
+                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
+                                     key='key8'
+                                     id="calculator-metric">
+                        Metric
+                      </Dropdown.Item>
+                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCal"
+                                     key='key4' id="calculator-imperial">
+                        US
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
 
-                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
-                           key='key8'
-                           id="calculator-metric">
-                  <Icon name='calculator' size='large'/>
-                  GHG calculator Metric
                 </Menu.Item>
 
                 {/* <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>

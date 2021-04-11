@@ -6,6 +6,7 @@ import { Cars } from '../../api/cars/CarsCollection';
 import { Emissions } from '../../api/emissions/EmissionsCollection';
 import { Trips } from '../../api/emissions/TripsCollection';
 import { UserInfosCars } from '../../api/userInfo/UserInfoCarCollection';
+import { GasPrices } from '../../api/gas-prices/GasPricesCollection';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -34,6 +35,9 @@ Cars.publish();
 
 /** Publish all the collections you need. */
 UserInfosCars.publish();
+
+/** Publish all the collections you need. */
+GasPrices.publish();
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.

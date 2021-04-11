@@ -22,7 +22,7 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, zipcode, transportation, unitSystem, _id } = data;
+    const { firstName, lastName, user, email, zipcode, transportation, unitSystem, State, _id } = data;
     let userImage;
     if (this.state.userImage === 'no-change') {
       userImage = this.props.doc.userImage;
@@ -40,6 +40,7 @@ class EditProfile extends React.Component {
       userImage,
       transportation,
       unitSystem,
+      State,
     };
 
     /* Update email address in Meteor Accounts */
@@ -158,6 +159,7 @@ class EditProfile extends React.Component {
                       <TextField className={'carDropdownSelectField'} id='update-user' name='user'/>
                       <TextField className={'carDropdownSelectField'} id='update-email' name='email'/>
                       <SelectField className={'carDropdownSelectField'} id='update-units' name='unitSystem'/>
+                      <SelectField className={'carDropdownSelectField'} id='update-state' name='State'/>
                       <TextField className={'carDropdownSelectField'} id='update-transportation' name='transportation'/>
                       <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode'
                                 decimal={false}/>

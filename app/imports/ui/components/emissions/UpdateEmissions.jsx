@@ -4,19 +4,19 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Dropdown, Card, Button, Input, Popup, Icon } from 'semantic-ui-react';
 import { Trips } from '../../../api/emissions/TripsCollection';
+import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
 import { TripsDefineMethod, TripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
 
-  /* Gets the current user */
-  const user = useTracker(() => Meteor.userId());
-
   /* Gets the users saved preset trips */
-  const trips = useTracker(() => {
+  const [trips, user, cars] = useTracker(() => {
     Meteor.subscribe(Trips.tripsPublicationName);
-    return Trips.collection.find({ owner: user }).fetch();
+    UserInfosCars.subscribeUserInfoCars();
+    const currUser = Meteor.userId();
+    return [Trips.collection.find({ owner: currUser }).fetch(), currUser, UserInfosCars.find({}).fetch()];
   });
 
   /* Gets the current date and puts it in the correct format for the date input */
@@ -82,8 +82,7 @@ function UpdateEmissions() {
       value: trip._id,
       content: (
           <div>
-            {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red'
-                                                  onClick={() => deleteTrip(trip)}/>
+            {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red' onClick={() => deleteTrip(trip)}/>
           </div>
       ),
     });
@@ -95,6 +94,15 @@ function UpdateEmissions() {
     value: 'Custom',
   });
 
+  const carOptions = [];
+  cars.forEach(car => {
+    carOptions.push({
+      key: car._id,
+      text: car.carName,
+      value: car.mpgofCar,
+    });
+  });
+
   /* Initializing the trip state */
   const [tripState, setTripState] = useState({
     date: fullDate,
@@ -102,6 +110,7 @@ function UpdateEmissions() {
     custom: false,
     trip: null,
     miles: null,
+    mpg: null,
   });
 
   /* Changes the date state */
@@ -112,17 +121,30 @@ function UpdateEmissions() {
       custom: tripState.custom,
       trip: tripState.trip,
       miles: tripState.miles,
+      mpg: tripState.mpg,
     });
   };
 
   /* Changes the transportation state */
   const changeTransportation = (e, data) => {
+      setTripState({
+        date: tripState.date,
+        transportation: data.value,
+        custom: tripState.custom,
+        trip: tripState.trip,
+        miles: tripState.miles,
+        mpg: null,
+      });
+  };
+
+  const changeCar = (e, data) => {
     setTripState({
       date: tripState.date,
-      transportation: data.value,
+      transportation: tripState.transportation,
       custom: tripState.custom,
       trip: tripState.trip,
       miles: tripState.miles,
+      mpg: Number(data.value),
     });
   };
 
@@ -135,6 +157,7 @@ function UpdateEmissions() {
         custom: true,
         trip: null,
         miles: null,
+        mpg: tripState.mpg,
       });
     } else {
       setTripState({
@@ -143,6 +166,7 @@ function UpdateEmissions() {
         custom: false,
         trip: data.key,
         miles: data.value,
+        mpg: tripState.mpg,
       });
     }
   };
@@ -155,6 +179,7 @@ function UpdateEmissions() {
       custom: true,
       trip: e.target.value,
       miles: tripState.miles,
+      mpg: tripState.mpg,
     });
   };
 
@@ -166,6 +191,7 @@ function UpdateEmissions() {
       custom: true,
       trip: tripState.trip,
       miles: Number(e.target.value),
+      mpg: tripState.mpg,
     });
   };
 
@@ -199,6 +225,7 @@ function UpdateEmissions() {
                   date: tripState.date,
                   transportation: tripState.transportation,
                   miles: miles,
+                  mpg: tripState.mpg,
                   createdAt: new Date(),
                 },
                 (error) => {
@@ -231,6 +258,12 @@ function UpdateEmissions() {
             <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
             <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions}
                       onChange={changeTransportation}/>
+            {tripState.transportation === 'Drove' ?
+              <div>
+                <br/>
+                <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions} onChange={changeCar} />
+              </div> : null
+            }
             <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
             <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions}
                       onChange={changeTrip}/>

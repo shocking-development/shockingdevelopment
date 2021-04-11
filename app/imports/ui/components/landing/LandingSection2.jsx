@@ -1,5 +1,5 @@
 import React from 'react';
-import { Statistic, Grid, Header, Button, Form, Segment, GridRow } from 'semantic-ui-react';
+import { Statistic, Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
