@@ -43,7 +43,7 @@ GasPrices.publish();
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {
   if (this.userId) {
-    return Meteor.roleAssignment.find({ 'user._id': this.userId });
+    return Meteor.roleAssignment.find({ 'owner._id': this.userId });
   }
   return this.ready();
 });
