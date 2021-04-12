@@ -142,16 +142,6 @@ class Signup extends React.Component {
                       />
                     </Form.Group>
                     <Form.Input className={'signupInput'}
-                                label="Zipcode"
-                                id="signup-form-zipcode"
-                                icon="world"
-                                iconPosition="left"
-                                name="zipcode"
-                                placeholder="Enter your zipcode"
-                                type="zipcode"
-                                onChange={this.handleChange}
-                    />
-                    <Form.Input className={'signupInput'}
                                 label="Email"
                                 id="signup-form-email"
                                 icon="mail"
@@ -187,8 +177,7 @@ class Signup extends React.Component {
                         fluid
                         color='linkedin'
                         style={{ borderRadius: '20px' }}
-                        disabled={!this.state.firstName || !this.state.lastName || !this.state.password || !this.state.confirm ||
-                        !this.state.zipcode}
+                        disabled={!this.state.firstName || !this.state.lastName || !this.state.password || !this.state.confirm}
                     />
                     <p style={{ paddingTop: '1em', paddingBottom: '1em' }}>
                       Already have an account?
