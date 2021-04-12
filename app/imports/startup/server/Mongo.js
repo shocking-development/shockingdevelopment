@@ -51,10 +51,10 @@ if (GasPrices.count() === 0) {
 
 }
 
-if ((Meteor.settings.loadAssetsFile) && (Cars.find().count() === )) {
+if ((Meteor.settings.loadAssetsFile) && (Cars.find().count() === 0)) {
   const assetsFileName = 'data.json';
   console.log(`Loading data from private/${assetsFileName}`);
   // eslint-disable-next-line no-unused-vars
   const jsonData = JSON.parse(Assets.getText(assetsFileName));
-  jsonData.CarsCollection.map(cars => addData(cars));
+  jsonData.defaultCarsData.map(cars => addData(cars));
 }
