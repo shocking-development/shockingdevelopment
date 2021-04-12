@@ -23,7 +23,7 @@ function RecentlyAdded() {
                     <Card style={{ padding: '1rem', background: '#0DA3CB', width: '25em', height: '10em', boxShadow: 'none' }}>
                       <Card.Content>
                         <Card.Header
-                            style={{ color: 'white' }}>{`${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`}</Card.Header>
+                            style={{ color: 'white' }}>{`${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getUTCDate()}/${recentEmissions.date.getFullYear()}`}</Card.Header>
                       </Card.Content>
                       <Card.Content style={{ color: 'white' }}>
                         <b>Transportation: {recentEmissions.transportation}</b>
