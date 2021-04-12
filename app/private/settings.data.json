@@ -129,8 +129,8 @@
       "owner": "admin@foo.com"
     },
     {
-    "firstName":, "Jen",
-    "lastName":, "Jens",
+    "firstName":"Jen",
+    "lastName":"Jens",
     "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
     "transportation": "electricity",
     "unitSystem": "us units",
@@ -139,7 +139,7 @@
     "owner": "admin@foo.com"
     },
     {
-    "firstName":, "Luis",
+    "firstName":"Luis",
     "lastName": "Arm",
     "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
     "transportation": "electricity",
@@ -148,8 +148,8 @@
     "role": "admin",
     "owner": "admin@foo.com"
     },{
-    "firstName":, "Spencerthe",
-    "lastName":, "Man",
+    "firstName":"Spencerthe",
+    "lastName":"Man",
     "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
     "transportation": "electricity",
     "unitSystem": "us units",
@@ -157,8 +157,8 @@
     "role": "admin",
     "owner": "admin@foo.com"
     },{
-    "firstName":, "Obama",
-    "lastName":, "DaBomb",
+    "firstName":"Obama",
+    "lastName":"DaBomb",
     "user": "admin@foo.com",
     "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
     "transportation": "electricity",
