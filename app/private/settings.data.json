@@ -197,6 +197,55 @@
       "password": "mrPresident808",
       "unitSystem": "metric",
       "owner": "ObamaDaBomb@gmail.com"
+    {
+      "lastName": "DaBomb",
+      "user": "admin@foo.com",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "transportation": "electricity",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "role": "admin",
+      "owner": "admin@foo.com"
+    },
+    {
+      "firstName": "Christian",
+      "lastName": "Jensen",
+      "user": "christian@foo.com",
+      "password": "christian",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "owner": "christian@foo.com"
+    },
+    {
+      "firstName": "Shin",
+      "lastName": "Saito",
+      "user": "shin@foo.com",
+      "password": "shin",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "owner": "shin@foo.com",
+    },
+    {
+      "firstName": "Robert",
+      "lastName": "Davis",
+      "user": "robertD@gmail.com",
+      "password": "robert0",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "unitSystem": "us units",
+      "State": "California",
+      "owner": "robertD@gmail.com"
+    },
+    {
+      "firstName": "Bill",
+      "lastName": "Gates",
+      "user": "billGates@gmail.com",
+      "password": "microsoftOwner",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "unitSystem": "us units",
+      "State": "California",
+      "owner": "billGates@gmail.com"
     }
   ],
   "stateGasolinePrices": [
