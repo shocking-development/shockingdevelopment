@@ -19,20 +19,42 @@
       "password": "kyra"
     },
     {
-      "email": "caliana@foo.com",
-      "password": "caliana"
+      "firstName": "Caliana",
+      "lastName": "Fortin",
+      "password": "caliana",
+      "userImage": "http://pm1.narvii.com/6081/f610f8487d912142ea6f6b097c9a876c181ed1f2_00.jpg",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "owner": "caliana@foo.com",
+
+
     },
     {
-      "email": "matt@foo.com",
-      "password": "matt"
+      "firstName": "Matthew",
+      "lastName": "Kirts",
+      "password": "matt",
+      "userImage": "https://i.redd.it/v0caqchbtn741.jpg",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "owner": "matt@foo.com",
     },
     {
-      "email": "trey@foo.com",
-      "password": "trey"
+      "firstName": "Trey",
+      "lastName": "Sumida",
+      "password": "trey",
+      "userImage": "https://static.wikia.nocookie.net/spongebob/images/d/d9/DoodleBob.png/revision/latest?cb=20200714002504",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "owner": "trey@foo.com",
     },
     {
-      "email": "ted@foo.com",
-      "password": "ted"
+      "firstName": "Ted",
+      "lastName": "Foo",
+      "password": "ted",
+      "userImage": "https://static.wikia.nocookie.net/659951ee-778b-41ea-872e-20c17d919e91",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "owner": "ted@foo.com",
     },
     {
       "email": "christian@foo.com",
