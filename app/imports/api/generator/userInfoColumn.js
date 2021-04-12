@@ -20,6 +20,12 @@ const userInfoColumn = [
     sortable: true,
     grow: 1,
   },
+  {
+    name: 'OWNER',
+    selector: 'owner',
+    sortable: true,
+    grow: 1,
+  }
 ];
 
 export default userInfoColumn;
