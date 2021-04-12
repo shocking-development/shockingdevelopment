@@ -63,7 +63,7 @@ class ListProfileAdmin extends React.Component {
               paddingBottom: '50px',
             }}/>
 
-            {/**Implementation of Pagination: functionality */}
+            {/** Implementation of Pagination: functionality */}
             <Pagination
                 defaultActivePage={1}
                 totalPages={Math.ceil(this.props.profiles.length / 25)}
@@ -76,9 +76,8 @@ class ListProfileAdmin extends React.Component {
                   <Table.HeaderCell>Username/email</Table.HeaderCell>
                   <Table.HeaderCell>First Name</Table.HeaderCell>
                   <Table.HeaderCell>Last Name</Table.HeaderCell>
-                  <Table.HeaderCell>Personal Transportation</Table.HeaderCell>
-                  <Table.HeaderCell>Zipcode</Table.HeaderCell>
-                  <Table.HeaderCell>Owner</Table.HeaderCell>
+                  <Table.HeaderCell>Password</Table.HeaderCell>
+                  <Table.HeaderCell>State</Table.HeaderCell>
                   <Table.HeaderCell>Remove</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>

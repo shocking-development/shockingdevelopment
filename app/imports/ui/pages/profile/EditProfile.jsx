@@ -22,7 +22,7 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, zipcode, transportation, unitSystem, State, _id } = data;
+    const { firstName, lastName, user, email, unitSystem, State, _id } = data;
     let userImage;
     if (this.state.userImage === 'no-change') {
       userImage = this.props.doc.userImage;
@@ -35,10 +35,7 @@ class EditProfile extends React.Component {
       firstName,
       lastName,
       user,
-      email,
-      zipcode,
       userImage,
-      transportation,
       unitSystem,
       State,
     };
@@ -156,13 +153,8 @@ class EditProfile extends React.Component {
                     <Segment className='viewProfile'>
                       <TextField className={'carDropdownSelectField'} id='update-first' name='firstName'/>
                       <TextField className={'carDropdownSelectField'} id='update-last' name='lastName'/>
-                      <TextField className={'carDropdownSelectField'} id='update-user' name='user'/>
-                      <TextField className={'carDropdownSelectField'} id='update-email' name='email'/>
                       <SelectField className={'carDropdownSelectField'} id='update-units' name='unitSystem'/>
                       <SelectField className={'carDropdownSelectField'} id='update-state' name='State'/>
-                      <TextField className={'carDropdownSelectField'} id='update-transportation' name='transportation'/>
-                      <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode'
-                                decimal={false}/>
                       <SubmitField style={{ background: '#3184d8', color: 'white' }} value='Update' id='update-form-submit'/>
                       <ErrorsField/>
                       <HiddenField name='owner'/>
