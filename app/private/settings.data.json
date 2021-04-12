@@ -10,7 +10,7 @@
       "role": "admin"
     },
     {
-      "email": "jerome@foo.com",
+      "email": "jerome@gmail.com",
       "password": "jerome",
       "role": "admin"
     },
@@ -73,19 +73,19 @@
       "password": "microsoftOwner"
     },
     {
-      "email": "Jen808@gmail.com",
+      "owner": "Jen808@gmail.com",
       "password": "mynameisJenny"
     },
     {
-      "email": "LuisArm@gmail.com",
+      "owner": "LuisArm@gmail.com",
       "password": "Lew1999"
     },
     {
-      "email": " SpencertheMan@gmail.com",
+      "owner": "SpencertheMan@gmail.com",
       "password": "spence101"
     },
     {
-      "email": "ObamaDaBomb@gmail.com",
+      "owner": "ObamaDaBomb@gmail.com",
       "password": "mrPresident808"
     },
     {
@@ -110,11 +110,8 @@
     {
       "firstName": "Jerome",
       "lastName": "Foo",
-      "user": "jerome@foo.com",
-      "email": "jerome@foo.com",
+      "user": "jerome@gmail.com",
       "password": "jerome",
-      "zipcode": "96814",
-      "transportation": "electricity",
       "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
       "unitSystem": "us units",
       "State": "Hawaii",
@@ -125,13 +122,10 @@
       "firstName": "Kyra",
       "lastName": "Ikeda",
       "user": "kyra@foo.com",
-      "email": "kyra@foo.com",
       "password": "kyra",
-      "zipcode": "96814",
-      "transportation": "electricity",
       "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
       "unitSystem": "us units",
-      "State": "Hawaii",
+      "State": "Alaska",
       "role": "admin",
       "owner": "kyra@foo.com"
     },
@@ -139,29 +133,63 @@
       "firstName": "John",
       "lastName": "Foo",
       "user": "john@foo.com",
-      "email": "john@foo.com",
       "password": "changeme",
-      "zipcode": "96822",
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
-      "transportation": "electricity",
       "unitSystem": "us units",
-      "State": "Hawaii",
+      "State": "Colorado",
       "owner": "john@foo.com"
     },
     {
       "firstName": "Admin",
       "lastName": "Foo",
       "user": "admin@foo.com",
-      "email": "admin@foo.com",
       "password": "changeme",
-      "zipcode": "96822",
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
-      "transportation": "electricity",
       "unitSystem": "us units",
       "State": "Hawaii",
       "role": "admin",
       "owner": "admin@foo.com"
+    },
+    {
+    "firstName":"Jen",
+    "lastName":"Jens",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
+    },
+    {
+    "firstName":"Luis",
+    "lastName": "Arm",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
+    },{
+    "firstName":"Spencerthe",
+    "lastName":"Man",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
+    },{
+    "firstName":"Obama",
+    "lastName":"DaBomb",
+    "user": "admin@foo.com",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
     }
+
   ],
   "stateGasolinePrices": [
     {
