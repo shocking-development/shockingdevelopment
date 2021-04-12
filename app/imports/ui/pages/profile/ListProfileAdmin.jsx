@@ -6,7 +6,7 @@ import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import ProfileItemAdmin from '../../components/profile/ProfileItemAdmin';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a table containing all of the Profiles documents. */
 class ListProfileAdmin extends React.Component {
 
   /** Initializes a constructor */
