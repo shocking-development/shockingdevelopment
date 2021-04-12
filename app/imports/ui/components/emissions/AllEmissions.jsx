@@ -8,8 +8,8 @@ import EmissionItem from './EmissionItem';
 function AllEmissions() {
 
     const [activePage, setActivePage] = useState(1);
-    const startIndex = (activePage * 10 - 10);
-    const endIndex = (activePage * 10);
+    const startIndex = (activePage * 5 - 5);
+    const endIndex = (activePage * 5);
 
     const emissions = useTracker(() => {
         Meteor.subscribe(Emissions.emissionsPublicationName);
