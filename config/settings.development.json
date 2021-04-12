@@ -507,6 +507,7 @@
     { "make": "Genesis", "model": "G70", "year": 2020, "mpg": 22 },
     { "make": "Genesis", "model": "G80", "year": 2016, "mpg": 23 },
     { "make": "Genesis", "model": "G90", "year": 2020, "mpg": 17 },
+
     { "make": "Honda", "model": "Civic", "year": 2020, "mpg": 32 },
     { "make": "Honda", "model": "CR-V", "year": 2020, "mpg": 28 },
     { "make": "Honda", "model": "Fit", "year": 2020, "mpg": 33 },
@@ -514,6 +515,10 @@
     { "make": "Honda", "model": "Accord", "year": 2020, "mpg": 30 },
     { "make": "Honda", "model": "Accord", "year": 2018, "mpg": 30 },
     { "make": "Honda", "model": "Ridgeline", "year": 2020, "mpg": 19 },
+    { "make": "Honda", "model": "Fit", "year": 2020, "mpg": 33 },
+    { "make": "Honda", "model": "Civic", "year": 2021, "mpg": 32 },
+    { "make": "Honda", "model": "Fit", "year": 2018, "mpg": 33 },
+    { "make": "Honda", "model": "Fit", "year": 2013, "mpg": 28 },
 
     { "make": "Hyundai", "model": "Elantra", "year": 2021, "mpg": 33 },
     { "make": "Hyundai", "model": "Genesis Coupe", "year": 2016, "mpg": 17 },
