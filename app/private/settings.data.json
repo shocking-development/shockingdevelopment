@@ -127,7 +127,43 @@
       "State": "Hawaii",
       "role": "admin",
       "owner": "admin@foo.com"
+    },
+    {
+      "firstName": "Jen",
+      "lastName": "Kim",
+      "user": "Jen808@gmail.com",
+      "password": "mynameisJenny",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "State": "Hawaii",
+      "unitSystem": "us units",
+      "owner": "Jen808@gmail.com"
+    },
+    {
+      "firstName": "Luis",
+      "lastName": "Armstrong",
+      "user": "LuisArm@gmail.com",
+      "password": "Lew1999",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "unitSystem": "metric",
+      "owner": "LuisArm@gmail.com"
+    },
+    {
+      "firstName": "Spencer",
+      "lastName": "Manny",
+      "user": " SpencertheMan@gmail.com",
+      "password": "spence101",
+      "unitSystem": "metric",
+      "owner": "SpencertheMan@gmail.com"
+    },
+    {
+      "firstName": "Obama",
+      "lastName": "Barack",
+      "user": "ObamaDaBomb@gmail.com",
+      "password": "mrPresident808",
+      "unitSystem": "metric",
+      "owner": "ObamaDaBomb@gmail.com"
     }
+
   ],
   "stateGasolinePrices": [
     {
