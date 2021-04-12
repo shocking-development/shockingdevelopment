@@ -58,19 +58,19 @@
       "password": "microsoftOwner"
     },
     {
-      "email": "Jen808@gmail.com",
+      "owner": "Jen808@gmail.com",
       "password": "mynameisJenny"
     },
     {
-      "email": "LuisArm@gmail.com",
+      "owner": "LuisArm@gmail.com",
       "password": "Lew1999"
     },
     {
-      "email": " SpencertheMan@gmail.com",
+      "owner": "SpencertheMan@gmail.com",
       "password": "spence101"
     },
     {
-      "email": "ObamaDaBomb@gmail.com",
+      "owner": "ObamaDaBomb@gmail.com",
       "password": "mrPresident808"
     }
 
@@ -130,6 +130,45 @@
       "State": "Hawaii",
       "role": "admin",
       "owner": "admin@foo.com"
+    },
+    {
+    "firstName":, "Jen",
+    "lastName":, "Jens",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
+    },
+    {
+    "firstName":, "Luis",
+    "lastName": "Arm",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
+    },{
+    "firstName":, "Spencerthe",
+    "lastName":, "Man",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
+    },{
+    "firstName":, "Obama",
+    "lastName":, "DaBomb",
+    "user": "admin@foo.com",
+    "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+    "transportation": "electricity",
+    "unitSystem": "us units",
+    "State": "Hawaii",
+    "role": "admin",
+    "owner": "admin@foo.com"
     }
   ],
   "stateGasolinePrices": [
