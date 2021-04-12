@@ -1,0 +1,501 @@
+{
+  "defaultAccounts": [
+    {
+      "email": "john@foo.com",
+      "password": "changeme"
+    },
+    {
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin"
+    },
+    {
+      "email": "jerome@foo.com",
+      "password": "jerome",
+      "role": "admin"
+    },
+    {
+      "email": "kyra@foo.com",
+      "password": "kyra",
+      "role": "admin"
+    },
+    {
+      "email": "caliana@foo.com",
+      "password": "caliana",
+      "role": "admin"
+    },
+    {
+      "email": "matt@foo.com",
+      "password": "matt",
+      "role": "admin"
+    },
+    {
+      "email": "trey@foo.com",
+      "password": "trey",
+      "role": "admin"
+    },
+    {
+      "email": "ted@foo.com",
+      "password": "ted",
+      "role": "admin"
+    },
+    {
+      "email": "christian@foo.com",
+      "password": "christian",
+      "role": "admin"
+    },
+    {
+      "email": "shin@foo.com",
+      "password": "shin",
+      "role": "admin"
+    },
+    {
+      "email": "robertD@gmail.com",
+      "password": "robert0"
+    },
+    {
+      "email": "billGates@gmail.com",
+      "password": "microsoftOwner"
+    },
+    {
+      "email": "Jen808@gmail.com",
+      "password": "mynameisJenny"
+    },
+    {
+      "email": "LuisArm@gmail.com",
+      "password": "Lew1999"
+    },
+    {
+      "email": " SpencertheMan@gmail.com",
+      "password": "spence101"
+    },
+    {
+      "email": "ObamaDaBomb@gmail.com",
+      "password": "mrPresident808"
+    }
+
+  ],
+  "defaultData": [
+    {
+      "firstName": "Jerome",
+      "lastName": "Foo",
+      "user": "jerome@foo.com",
+      "email": "jerome@foo.com",
+      "password": "jerome",
+      "zipcode": "96814",
+      "transportation": "electricity",
+      "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "role": "admin",
+      "owner": "jerome@foo.com"
+    },
+    {
+      "firstName": "Kyra",
+      "lastName": "Ikeda",
+      "user": "kyra@foo.com",
+      "email": "kyra@foo.com",
+      "password": "kyra",
+      "zipcode": "96814",
+      "transportation": "electricity",
+      "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "role": "admin",
+      "owner": "kyra@foo.com"
+    },
+    {
+      "firstName": "John",
+      "lastName": "Foo",
+      "user": "john@foo.com",
+      "email": "john@foo.com",
+      "password": "changeme",
+      "zipcode": "96822",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "transportation": "electricity",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "owner": "john@foo.com"
+    },
+    {
+      "firstName": "Admin",
+      "lastName": "Foo",
+      "user": "admin@foo.com",
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "zipcode": "96822",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "transportation": "electricity",
+      "unitSystem": "us units",
+      "State": "Hawaii",
+      "role": "admin",
+      "owner": "admin@foo.com"
+    }
+  ],
+  "stateGasolinePrices": [
+    {
+      "State": "Alaska",
+      "regularPrice": 3.125,
+      "midGradePrice": 3.291,
+      "premiumPrice": 3.446,
+      "dieselPrice":  3.010
+    },
+    {
+      "State": "Alabama",
+      "regularPrice": 2.646,
+      "midGradePrice": 2.966,
+      "premiumPrice": 3.287,
+      "dieselPrice":  2.881
+    },
+    {
+      "State": "Arkansas",
+      "regularPrice": 2.679,
+      "midGradePrice": 2.975,
+      "premiumPrice": 3.269,
+      "dieselPrice":  2.999
+    },
+    {
+      "State": "Arizona",
+      "regularPrice": 3.092,
+      "midGradePrice": 3.364,
+      "premiumPrice": 3.612,
+      "dieselPrice":  3.139
+    },
+    {
+      "State": "Arkansas",
+      "regularPrice": 2.679,
+      "midGradePrice": 2.975,
+      "premiumPrice": 3.269,
+      "dieselPrice":  2.999
+    },
+    {
+      "State": "California",
+      "regularPrice": 3.908,
+      "midGradePrice": 4.092,
+      "premiumPrice": 4.212,
+      "dieselPrice":  4.037
+    },
+    {
+      "State": "Colorado",
+      "regularPrice": 2.906,
+      "midGradePrice": 3.227,
+      "premiumPrice": 3.508,
+      "dieselPrice":  3.086
+    },
+    {
+      "State": "Connecticut",
+      "regularPrice": 2.890,
+      "midGradePrice": 3.184,
+      "premiumPrice": 3.394,
+      "dieselPrice":  3.154
+    },
+    {
+      "State": "District of Columbia",
+      "regularPrice": 3.023,
+      "midGradePrice": 3.507,
+      "premiumPrice": 3.672,
+      "dieselPrice":  3.251
+    },
+    {
+      "State": "Delaware",
+      "regularPrice": 2.685,
+      "midGradePrice": 3.087,
+      "premiumPrice": 3.318,
+      "dieselPrice":  3.020
+    },
+    {
+      "State": "Florida",
+      "regularPrice": 2.855,
+      "midGradePrice": 3.205,
+      "premiumPrice": 3.491,
+      "dieselPrice":  2.985
+    },
+    {
+      "State": "Georgia",
+      "regularPrice": 2.710,
+      "midGradePrice": 3.026,
+      "premiumPrice": 3.451,
+      "dieselPrice":  2.956
+    },
+    {
+      "State": "Hawaii",
+      "regularPrice": 3.713,
+      "midGradePrice": 3.909,
+      "premiumPrice": 4.160,
+      "dieselPrice":  4.204
+    },
+    {
+      "State": "Iowa",
+      "regularPrice": 2.787,
+      "midGradePrice": 2.922,
+      "premiumPrice": 3.328,
+      "dieselPrice":  3.038
+    },
+    {
+      "State": "Idaho",
+      "regularPrice": 3.062,
+      "midGradePrice": 3.261,
+      "premiumPrice": 3.443,
+      "dieselPrice":  3.391
+    },
+    {
+      "State": "Illinois",
+      "regularPrice": 3.068,
+      "midGradePrice": 3.409,
+      "premiumPrice": 3.800,
+      "dieselPrice":  3.129
+    },
+    {
+      "State": "Indiana",
+      "regularPrice": 2.792,
+      "midGradePrice": 3.096,
+      "premiumPrice": 3.417,
+      "dieselPrice":  3.144
+    },
+    {
+      "State": "Kansas",
+      "regularPrice": 2.689,
+      "midGradePrice": 2.931,
+      "premiumPrice": 3.166,
+      "dieselPrice":  3.020
+    },
+    {
+      "State": "Kentucky",
+      "regularPrice": 2.719,
+      "midGradePrice": 3.039,
+      "premiumPrice": 3.347,
+      "dieselPrice":  2.925
+    },
+    {
+      "State": "Louisiana",
+      "regularPrice": 2.620,
+      "midGradePrice": 2.924,
+      "premiumPrice": 3.222,
+      "dieselPrice":  2.768
+    },
+    {
+      "State": "Massachusetts",
+      "regularPrice": 2.743,
+      "midGradePrice": 3.031,
+      "premiumPrice": 3.244,
+      "dieselPrice":  2.995
+    },
+    {
+      "State": "Maryland",
+      "regularPrice": 2.779,
+      "midGradePrice": 3.211,
+      "premiumPrice": 3.452,
+      "dieselPrice":  3.037
+    },
+    {
+      "State": "Maine",
+      "regularPrice": 2.802,
+      "midGradePrice": 3.083,
+      "premiumPrice": 3.328,
+      "dieselPrice":  3.034
+    },
+    {
+      "State": "Michigan",
+      "regularPrice": 2.812,
+      "midGradePrice": 3.125,
+      "premiumPrice": 3.453,
+      "dieselPrice":  3.041
+    },
+    {
+      "State": "Minnesota",
+      "regularPrice": 2.736,
+      "midGradePrice": 2.953,
+      "premiumPrice": 3.262,
+      "dieselPrice":  3.057
+    },
+    {
+      "State": "Missouri",
+      "regularPrice": 2.637,
+      "midGradePrice": 2.883,
+      "premiumPrice": 3.152,
+      "dieselPrice":  2.929
+    },
+    {
+      "State": "Mississippi",
+      "regularPrice": 2.585,
+      "midGradePrice": 2.880,
+      "premiumPrice": 3.195,
+      "dieselPrice":  2.761
+    },
+    {
+      "State": "Montana",
+      "regularPrice": 2.729,
+      "midGradePrice": 2.990,
+      "premiumPrice": 3.240,
+      "dieselPrice":  3.096
+    },
+    {
+      "State": "North Carolina",
+      "regularPrice": 2.633,
+      "midGradePrice": 2.952,
+      "premiumPrice": 3.275,
+      "dieselPrice":  2.912
+    },
+    {
+      "State": "North Dakota",
+      "regularPrice": 2.752,
+      "midGradePrice": 2.960,
+      "premiumPrice": 3.170,
+      "dieselPrice":  3.079
+    },
+    {
+      "State": "Nebraska",
+      "regularPrice": 2.792,
+      "midGradePrice": 2.882,
+      "premiumPrice": 3.234,
+      "dieselPrice":  3.045
+    },
+    {
+      "State": "New Hampshire",
+      "regularPrice": 2.710,
+      "midGradePrice": 3.017,
+      "premiumPrice": 3.286,
+      "dieselPrice":  2.925
+    },
+    {
+      "State": "New Jersey",
+      "regularPrice": 2.900,
+      "midGradePrice": 3.259,
+      "premiumPrice": 3.433,
+      "dieselPrice":  3.140
+    },
+    {
+      "State": "New Mexico",
+      "regularPrice": 2.864,
+      "midGradePrice": 3.177,
+      "premiumPrice": 3.433,
+      "dieselPrice":  3.166
+    },
+    {
+      "State": "Nevada",
+      "regularPrice": 3.352,
+      "midGradePrice": 3.564,
+      "premiumPrice": 3.743,
+      "dieselPrice":  3.309
+    },
+    {
+      "State": "New York",
+      "regularPrice": 2.898,
+      "midGradePrice": 3.193,
+      "premiumPrice": 3.429,
+      "dieselPrice":  3.152
+    },
+    {
+      "State": "Ohio",
+      "regularPrice": 2.746,
+      "midGradePrice": 3.068,
+      "premiumPrice": 3.389,
+      "dieselPrice":  3.066
+    },
+    {
+      "State": "Oklahoma",
+      "regularPrice": 2.638,
+      "midGradePrice": 2.892,
+      "premiumPrice": 3.118,
+      "dieselPrice":  2.931
+    },
+    {
+      "State": "Oregon",
+      "regularPrice": 3.195,
+      "midGradePrice": 3.361,
+      "premiumPrice": 3.550,
+      "dieselPrice":  3.213
+    },
+    {
+      "State": "Pennsylvania",
+      "regularPrice": 2.975,
+      "midGradePrice": 3.292,
+      "premiumPrice": 3.576,
+      "dieselPrice":  3.373
+    },
+    {
+      "State": "Rhode Island",
+      "regularPrice": 2.772,
+      "midGradePrice": 3.100,
+      "premiumPrice": 3.343,
+      "dieselPrice":  3.015
+    },
+    {
+      "State": "South Carolina",
+      "regularPrice": 2.587,
+      "midGradePrice": 2.904,
+      "premiumPrice": 3.199,
+      "dieselPrice":  2.837
+    },
+    {
+      "State": "South Dakota",
+      "regularPrice": 2.842,
+      "midGradePrice": 2.941,
+      "premiumPrice": 3.296,
+      "dieselPrice":  3.101
+    },
+    {
+      "State": "Tennessee",
+      "regularPrice": 2.689,
+      "midGradePrice": 3.013,
+      "premiumPrice": 3.350,
+      "dieselPrice":  2.895
+    },
+    {
+      "State": "Texas",
+      "regularPrice": 2.585,
+      "midGradePrice": 2.903,
+      "premiumPrice": 3.195,
+      "dieselPrice":  2.830
+    },
+    {
+      "State": "Utah",
+      "regularPrice": 3.172,
+      "midGradePrice": 3.340,
+      "premiumPrice": 3.520,
+      "dieselPrice":  3.448
+    },
+    {
+      "State": "Virginia",
+      "regularPrice": 2.712,
+      "midGradePrice": 3.081,
+      "premiumPrice": 3.378,
+      "dieselPrice":  2.903
+    },
+    {
+      "State": "Vermont",
+      "regularPrice": 2.794,
+      "midGradePrice": 3.053,
+      "premiumPrice": 3.313,
+      "dieselPrice":  3.033
+    },
+    {
+      "State": "Washington",
+      "regularPrice": 3.335,
+      "midGradePrice": 3.552,
+      "premiumPrice": 3.79,
+      "dieselPrice":  3.315
+    },
+    {
+      "State": "Wisconsin",
+      "regularPrice": 2.737,
+      "midGradePrice": 3.054,
+      "premiumPrice": 3.439,
+      "dieselPrice":  2.936
+    },
+    {
+      "State": "West Virginia",
+      "regularPrice": 2.749,
+      "midGradePrice": 3.023,
+      "premiumPrice": 3.305,
+      "dieselPrice":  3.025
+    },
+    {
+      "State": "Wyoming",
+      "regularPrice": 2.911,
+      "midGradePrice": 3.133,
+      "premiumPrice": 3.376,
+      "dieselPrice":  3.203
+    }
+  ]
+}
