@@ -14,7 +14,7 @@ class ProfileItemAdmin extends React.Component {
   render() {
     return (
         <Table.Row>
-          <Table.Cell>{this.props.profile.email}</Table.Cell>
+          <Table.Cell>{this.props.profile.user}</Table.Cell>
           <Table.Cell>{this.props.profile.firstName}</Table.Cell>
           <Table.Cell>{this.props.profile.lastName}</Table.Cell>
           <Table.Cell>{this.props.profile.password}</Table.Cell>
