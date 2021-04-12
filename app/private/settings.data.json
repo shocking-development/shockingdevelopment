@@ -16,38 +16,31 @@
     },
     {
       "email": "kyra@foo.com",
-      "password": "kyra",
-      "role": "admin"
+      "password": "kyra"
     },
     {
       "email": "caliana@foo.com",
-      "password": "caliana",
-      "role": "admin"
+      "password": "caliana"
     },
     {
       "email": "matt@foo.com",
-      "password": "matt",
-      "role": "admin"
+      "password": "matt"
     },
     {
       "email": "trey@foo.com",
-      "password": "trey",
-      "role": "admin"
+      "password": "trey"
     },
     {
       "email": "ted@foo.com",
-      "password": "ted",
-      "role": "admin"
+      "password": "ted"
     },
     {
       "email": "christian@foo.com",
-      "password": "christian",
-      "role": "admin"
+      "password": "christian"
     },
     {
       "email": "shin@foo.com",
-      "password": "shin",
-      "role": "admin"
+      "password": "shin"
     },
     {
       "email": "robertD@gmail.com",
@@ -72,6 +65,22 @@
     {
       "email": "ObamaDaBomb@gmail.com",
       "password": "mrPresident808"
+    },
+    {
+      "email": "minamin@foo.com",
+      "password": "ocean"
+    },
+    {
+      "email": "Bob@gmail.com",
+      "password": "thebuilder"
+    },
+    {
+      "email": "Adam@gmail.com",
+      "password": "iloveeve"
+    },
+    {
+      "email": "Alex@gmail.com",
+      "password": "ShinyH8sme"
     }
 
   ],
