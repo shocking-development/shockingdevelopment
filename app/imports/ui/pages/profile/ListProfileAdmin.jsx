@@ -17,7 +17,7 @@ class ListProfileAdmin extends React.Component {
   }
 
   handleInputChange = (e, data) => {
-    this.setState({activePage: Number(data.activePage),
+    this.setState({ activePage: Number(data.activePage),
     });
   }
 
@@ -37,7 +37,7 @@ class ListProfileAdmin extends React.Component {
       backgroundSize: 'cover',
     };
 
-    const startIndex = (this.state.activePage * 25 -25);
+    const startIndex = (this.state.activePage * 25 - 25);
     const endIndex = (this.state.activePage * 25);
 
     return (
