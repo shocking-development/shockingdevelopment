@@ -9,6 +9,7 @@ import NavBarMain from '../../components/main-navbar/NavBarMain';
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListProfileAdmin extends React.Component {
 
+  /** Initializes a constructor */
   constructor(props) {
     super(props);
     this.state = {
@@ -16,8 +17,10 @@ class ListProfileAdmin extends React.Component {
     };
   }
 
+  /** Updates the controls everytime a button is pressed */
   handleInputChange = (e, data) => {
-    this.setState({activePage: Number(data.activePage),
+    this.setState({
+      activePage: Number(data.activePage),
     });
   }
 
@@ -37,7 +40,10 @@ class ListProfileAdmin extends React.Component {
       backgroundSize: 'cover',
     };
 
-    const startIndex = (this.state.activePage * 25 -25);
+    /** Constant variable to start at index 0 */
+    const startIndex = (this.state.activePage * 25 - 25);
+
+    /** Variable that holds the index of the last item */
     const endIndex = (this.state.activePage * 25);
 
     return (
@@ -57,11 +63,13 @@ class ListProfileAdmin extends React.Component {
               paddingBottom: '50px',
             }}/>
 
+            {/**Implementation of Pagination: functionality */}
             <Pagination
                 defaultActivePage={1}
                 totalPages={Math.ceil(this.props.profiles.length / 25)}
                 onPageChange={this.handleInputChange}
-                />
+            />
+
             <Table celled>
               <Table.Header>
                 <Table.Row>
@@ -75,7 +83,8 @@ class ListProfileAdmin extends React.Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.profiles.map((profile) => <ProfileItemAdmin key={profile._id} profile={profile}/>).slice(startIndex, endIndex)}
+                {this.props.profiles.map((profile) => <ProfileItemAdmin key={profile._id}
+                                                                        profile={profile}/>).slice(startIndex, endIndex)}
               </Table.Body>
             </Table>
           </Container>
