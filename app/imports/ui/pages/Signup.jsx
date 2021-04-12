@@ -22,7 +22,6 @@ class Signup extends React.Component {
       firstName: '',
       lastName: '',
       error: '',
-      zipcode: '',
       redirectToReferer: false,
     };
   }
@@ -34,7 +33,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password, firstName, lastName, zipcode } = this.state;
+    const { email, password, firstName, lastName } = this.state;
     const user = email;
 
     // Password validation
@@ -47,9 +46,7 @@ class Signup extends React.Component {
             user,
             email,
             password,
-            zipcode,
             userImage: 'images/default-image.jpg', // set default user profile image
-            transportation: 'default',
             owner: user,
           },
           (error) => {
@@ -64,9 +61,7 @@ class Signup extends React.Component {
                 password,
                 firstName,
                 lastName,
-                zipcode,
                 userImage: '',
-                transportation: '',
               }, (err) => {
                 if (err) {
                   this.setState({ error: err.reason });
@@ -192,8 +187,7 @@ class Signup extends React.Component {
                         fluid
                         color='linkedin'
                         style={{ borderRadius: '20px' }}
-                        disabled={!this.state.firstName || !this.state.lastName ||
-                        !this.state.email || !this.state.password || !this.state.confirm ||
+                        disabled={!this.state.firstName || !this.state.lastName || !this.state.password || !this.state.confirm ||
                         !this.state.zipcode}
                     />
                     <p style={{ paddingTop: '1em', paddingBottom: '1em' }}>

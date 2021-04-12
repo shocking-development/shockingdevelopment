@@ -11,10 +11,7 @@ class ProfileItem extends React.Component {
           <Table.Cell>{this.props.profile.firstName}</Table.Cell>
           <Table.Cell>{this.props.profile.lastName}</Table.Cell>
           <Table.Cell>{this.props.profile.userName}</Table.Cell>
-          <Table.Cell>{this.props.profile.email}</Table.Cell>
           <Table.Cell>{this.props.profile.password}</Table.Cell>
-          <Table.Cell>{this.props.profile.transportation}</Table.Cell>
-          <Table.Cell>{this.props.profile.zipcode}</Table.Cell>
           <Table.Cell>{this.props.profile.option}</Table.Cell>
           <Table.Cell>
             <Link to={`/edit/${this.props.profile._id}`}>Edit</Link>

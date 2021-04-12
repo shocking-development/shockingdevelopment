@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 
@@ -16,13 +15,9 @@ class UserInfoCollection extends BaseCollection {
     super('UserInfos', new SimpleSchema({
       firstName: String,
       lastName: String,
-      user: String,
       owner: String, // is this redundant?
-      email: String,
       password: String,
       userImage: String,
-      zipcode: Number,
-      transportation: String,
       unitSystem: {
         type: String,
         allowedValues: ['metric', 'us units'],
@@ -53,17 +48,13 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation, unitSystem, state }) {
+  define({ firstName, lastName, owner, password, userImage, unitSystem, state }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
-      user,
       owner,
-      email,
       password,
-      zipcode,
       userImage,
-      transportation,
       unitSystem,
       state,
     });
@@ -80,7 +71,7 @@ class UserInfoCollection extends BaseCollection {
    * @param password the password of the person (optional).
    * @param zipcode the zipcode of the person (optional).
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation, unitSystem, state }) {
+  update(docID, { firstName, lastName, password, userImage, unitSystem, state }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -88,25 +79,15 @@ class UserInfoCollection extends BaseCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    if (user) {
-      updateData.user = user;
-    }
-    if (email) {
-      updateData.email = email;
-    }
+
     if (password) {
       updateData.password = password;
     }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(zipcode)) {
-      updateData.zipcode = zipcode;
-    }
+
     if (userImage) {
       updateData.userImage = userImage;
     }
-    if (transportation) {
-      updateData.transportation = transportation;
-    }
+
     if (unitSystem) {
       updateData.unitSystem = unitSystem;
     }
