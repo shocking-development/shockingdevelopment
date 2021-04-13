@@ -125,7 +125,7 @@ export function UserEmissionData(index) {
   let totalSavings = 0;
   const carmpg = _.uniq(emissions.map(car => car.mpg), 'mpg');
   // const chosenMPG = _.uniq(carmpg, 'mpg');
-  console.log(carmpg);
+  // console.log(carmpg);
   const stateGasPrice = 3.14;
 
   for (let i = 0, iLen = finalresultMonths.length; i < iLen; i++) {
