@@ -149,7 +149,6 @@ export default withTracker(({ match }) => {
   const userAccount = Meteor.users.findOne({ _id: userID });
   const sub2 = UserInfosCars.subscribeUserInfoCars();
   const profiles = UserInfos.findOne({ owner: userAccount?.username });
-  console.log(profiles);
   return {
     profiles,
     currentUser: Meteor.user() ? Meteor.user().username : '',
