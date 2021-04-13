@@ -79,7 +79,8 @@
     }
   ],
   "generateData": {
-    "users": 20
+    "users": 20,
+    "emissions": 90
   },
 
   "defaultCarsData": [

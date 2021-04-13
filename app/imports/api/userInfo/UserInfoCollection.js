@@ -21,7 +21,7 @@ class UserInfoCollection extends BaseCollection {
       unitSystem: {
         type: String,
         allowedValues: ['metric', 'us units'],
-        defaultValue: 'us units',
+        optional: true,
       },
       State: {
         type: String,
@@ -32,7 +32,7 @@ class UserInfoCollection extends BaseCollection {
           'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
           'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
           'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming'],
-        defaultValue: 'Hawaii',
+        optional: true,
       },
     }));
   }
@@ -121,7 +121,7 @@ class UserInfoCollection extends BaseCollection {
       Meteor.publish(userInfoPublications.userInfo, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ user: username });
+          return instance._collection.find({ owner: username });
         }
         return this.ready();
       });
