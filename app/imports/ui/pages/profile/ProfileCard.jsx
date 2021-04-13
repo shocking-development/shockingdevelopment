@@ -79,10 +79,7 @@ class ProfileCard extends React.Component {
 
                       <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
                         <p>
-                          Username: {this.props.profiles.user}
-                        </p>
-                        <p>
-                          Zipcode: {this.props.profiles.zipcode}
+                          Username: {this.props.profiles.owner}
                         </p>
                         <p>
                           State: {this.props.profiles.State}

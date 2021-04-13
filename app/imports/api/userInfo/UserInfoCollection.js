@@ -4,7 +4,7 @@ import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 
-/** Encapsulates state and variable values for this collection. */
+/** Encapsulates State and variable values for this collection. */
 export const userInfoPublications = {
   userInfo: 'UserInfo',
   userInfoAdmin: 'UserInfoAdmin',
@@ -32,7 +32,7 @@ class UserInfoCollection extends BaseCollection {
           'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
           'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
           'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming'],
-        optional: true,
+        optional: false,
       },
     }));
   }
@@ -48,7 +48,7 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, owner, password, userImage, unitSystem, state }) {
+  define({ firstName, lastName, owner, password, userImage, unitSystem, State }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
@@ -56,7 +56,7 @@ class UserInfoCollection extends BaseCollection {
       password,
       userImage,
       unitSystem,
-      state,
+      State,
     });
     return docID;
   }
@@ -71,7 +71,7 @@ class UserInfoCollection extends BaseCollection {
    * @param password the password of the person (optional).
    * @param zipcode the zipcode of the person (optional).
    */
-  update(docID, { firstName, lastName, password, userImage, unitSystem, state }) {
+  update(docID, { firstName, lastName, password, userImage, unitSystem, State }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -91,8 +91,8 @@ class UserInfoCollection extends BaseCollection {
     if (unitSystem) {
       updateData.unitSystem = unitSystem;
     }
-    if (state) {
-      updateData.state = state;
+    if (State) {
+      updateData.State = State;
     }
     this._collection.update(docID, { $set: updateData });
   }
