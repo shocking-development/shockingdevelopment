@@ -50,8 +50,9 @@ if (GasPrices.count() === 0) {
   }
 
 }
-
+/*
 if ((Meteor.settings.generateData) && (Meteor.users.find().count() < 20)) {
   const userList = generateUsers(Meteor.settings.generateData.users);
   userList.map(profile => addData(profile));
 }
+ */

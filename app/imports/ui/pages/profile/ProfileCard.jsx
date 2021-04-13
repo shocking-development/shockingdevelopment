@@ -48,7 +48,7 @@ class ProfileCard extends React.Component {
                   <div className={'profilepicCard'}>
                     <Image src={this.props.profiles.userImage}
                         // eslint-disable-next-line
-                           onError={(i) => i.target.src = '/images/default_image.png'}
+                           onError={(i) => i.target.src = 'https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg'}
                            style={{ borderRadius: '0.28571429rem', width: '305px' }}
                     />
                   </div>
@@ -80,9 +80,6 @@ class ProfileCard extends React.Component {
                       <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
                         <p>
                           Username: {this.props.profiles.user}
-                        </p>
-                        <p>
-                          Zipcode: {this.props.profiles.zipcode}
                         </p>
                         <p>
                           State: {this.props.profiles.State}

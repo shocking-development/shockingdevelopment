@@ -26,6 +26,8 @@ export default function generateUsers(num) {
     const profileUser = {
       firstName: fakeFirst,
       lastName: fakeLast,
+      user: fakeOwner.toString(),
+      email: fakeOwner.toString(),
       owner: fakeOwner.toString(),
       password: fakePassword.toString(),
       userImage: profileImage.toString(),
@@ -35,5 +37,4 @@ export default function generateUsers(num) {
     userList.push(profileUser);
   }
   return userList;
-
 }
