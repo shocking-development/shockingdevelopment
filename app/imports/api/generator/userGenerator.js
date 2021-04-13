@@ -8,7 +8,14 @@ export default function generateUsers(num) {
 
     const fakeFirst = faker.name.firstName();
     const fakeLast = faker.name.lastName();
-    const fakeState = faker.address.state;
+    const fakeState = _.sample(['Alaska', 'Alabama', 'Arkansas', 'Arizona', 'California', 'Colorado', 'Connecticut',
+      'District of Columbia', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa', 'Idaho', 'Illinois',
+      'Indiana', 'Kansas', 'Kentucky', 'Louisiana', 'Massachusetts', 'Maryland', 'Maine', 'Michigan',
+      'Minnesota', 'Missouri', 'Mississippi', 'Montana', 'North Carolina', 'North Dakota', 'Nebraska',
+      'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
+      'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
+      'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming']);
+    const fakePassword = faker.internet.password;
     const fakeOwner = faker.internet.email;
     const profileImage = faker.image.imageUrl();
     const unitSelection = _.sample([
@@ -20,9 +27,10 @@ export default function generateUsers(num) {
       firstName: fakeFirst,
       lastName: fakeLast,
       owner: fakeOwner,
-      State: fakeState,
+      password: fakePassword,
       userImage: profileImage,
       unitSystem: unitSelection,
+      State: fakeState,
     };
     userList.push(profileUser);
   }
