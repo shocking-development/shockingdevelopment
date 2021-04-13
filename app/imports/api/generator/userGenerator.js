@@ -3,6 +3,7 @@ import { _ } from 'meteor/underscore';
 
 export default function generateUsers(num) {
   const userList = [];
+  const userCarList = [];
 
   for (let i = 0; i < num; i++) {
     // const faker = require('faker');
@@ -23,6 +24,19 @@ export default function generateUsers(num) {
         'us units',
     ]);
 
+    const numCars = _.random(1,5);
+    for (let j = 0; j < numCars; j++) {
+      const fakeCarName = _.sample(['work', 'school', 'shopping', 'children']);
+      const fakeMakeOfCar = faker.name.firstName();
+      const fakeModelOfCar = faker.name.firstName();
+
+      const profileCar = {
+        carName: fakeCarName,
+        owner: fakeOwner,
+      };
+      userCarList.push(profileCar);
+          }
+
     const profileUser = {
       firstName: fakeFirst,
       lastName: fakeLast,
@@ -32,9 +46,10 @@ export default function generateUsers(num) {
       unitSystem: unitSelection,
       State: fakeState,
     };
-
     userList.push(profileUser);
+
   }
   return userList;
+  return userCarList;
 
 }
