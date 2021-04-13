@@ -33,7 +33,7 @@ if (UserInfos.count() === 0) {
 
 }
 
-/** Initialize the Cars collection if empty.
+/** Initialize the Cars collection if empty. */
 if (Cars.count() === 0) {
   if (Meteor.settings.defaultCarsData) {
     console.log('Creating default cars data.');
@@ -41,7 +41,6 @@ if (Cars.count() === 0) {
   }
 
 }
- */
 
 /** Initialize the GasPrices collection if empty. */
 if (GasPrices.count() === 0) {
