@@ -2,13 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 import { Cars } from '../../api/cars/CarsCollection';
 import { GasPrices } from '../../api/gas-prices/GasPricesCollection';
-
+import generateUsers from '../../api/generator/userGenerator';
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
 function addData(data) {
-  console.log(`  Adding: ${data.firstName} ${data.lastName} ${data.user} ${data.email} ${data.password}  ${data.zipcode}
-   ${data.transportation} (${data.owner})`);
+  console.log(`  Adding: ${data.firstName} ${data.lastName} ${data.user} ${data.password} ${data.State}
+    (${data.owner})`);
   UserInfos.define(data);
 }
 
@@ -49,4 +49,9 @@ if (GasPrices.count() === 0) {
     Meteor.settings.stateGasolinePrices.map(data => addGasolineData(data));
   }
 
+}
+
+if ((Meteor.settings.generateData) && (Meteor.users.find().count() < 15)) {
+  const userList = generateUsers(Meteor.settings.generateData.users);
+  userList.map(profile => addData(profile));
 }
