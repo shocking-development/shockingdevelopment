@@ -123,7 +123,9 @@ export function UserEmissionData(index) {
   let gallonsOfGasSaved = 0;
   let emissionReduced = 0;
   let totalSavings = 0;
-  const carmpg = carInfo.map(car => car.mpgofCar);
+  const carmpg = _.uniq(emissions.map(car => car.mpg), 'mpg');
+  // const chosenMPG = _.uniq(carmpg, 'mpg');
+  console.log(carmpg);
   const stateGasPrice = 3.14;
 
   for (let i = 0, iLen = finalresultMonths.length; i < iLen; i++) {
@@ -348,7 +350,7 @@ export function UserEmissionData(index) {
   * maps the months to an array
   * */
   const dateRecorded = finalresultMonthsEmissions.map(recentEmissions => formatter.format(recentEmissions.date));
-  // console.log(dateRecorded);
+  /// console.log(dateRecorded);
 
   /* *
   * maps the months to an array

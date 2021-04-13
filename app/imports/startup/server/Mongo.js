@@ -8,6 +8,7 @@ import { Emissions } from '../../api/emissions/EmissionsCollection';
 
 /* eslint-disable no-console */
 
+const userIDarray = [];
 /** Initialize the database with a default data document. */
 function addProfiles(data) {
   console.log(`  Adding: ${data.firstName} ${data.lastName} ${data.user} ${data.password} ${data.State}
@@ -54,6 +55,7 @@ if (Cars.count() === 0) {
 function createUser(user, role) {
   // eslint-disable-next-line no-undef
   const userID = Accounts.createUser({ username: user, email: user, password: 'changeme' });
+  userIDarray.push(userID);
   if (role === 'admin') {
     // eslint-disable-next-line no-undef
     Roles.addUsersToRoles(userID, 'admin');
@@ -81,10 +83,9 @@ if (GasPrices.count() === 0) {
 
 if ((Meteor.settings.generateData) && (Meteor.users.find().count() < 20)) {
   const userList = generateUsers(Meteor.settings.generateData.users);
-
-  const emissionslist = generateEmissions(Meteor.settings.generateData.emissions, userList);
-  console.log('Generating random emissions list...');
-
   userList.map(profile => addProfile(profile));
+
+  const emissionslist = generateEmissions(Meteor.settings.generateData.emissions, userIDarray);
+  console.log('Generating random emissions list...');
   emissionslist.map(emissions => addEmissions(emissions));
 }

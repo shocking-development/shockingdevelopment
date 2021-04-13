@@ -2,10 +2,10 @@ import faker from 'faker';
 import { _ } from 'meteor/underscore';
 import { CarsData } from '../cars/Cars.json';
 
-/** Pluck out all of the course numbers from the master list */
+/** Pluck out all of the cars mpg from the master list */
 const carsList = _.pluck(CarsData, 'mpg');
 
-/** List of possible Miles to pick from for session date generation */
+/** List of possible Miles to pick from for driving */
 const possibleMiles = [
   1, 2, 3, 4, 5, 6, 7, 8, 9,
   10, 11, 12, 13, 14, 15, 16,
@@ -13,28 +13,33 @@ const possibleMiles = [
   24, 25, 26, 27, 28, 29, 30,
 ];
 
+const possibleTransportation = ['Drove', 'Telework', 'Public Transportation', 'Biking', 'Walk', 'Electric Vehicle'];
+
 export default function generateEmissions(num, userlist) {
   const emissionsList = [];
   const list = userlist || [];
 
-  for (let i = 0; i < num; i++) {
+  for (let i = 0, n = list.length; i < n; i++) {
+    const carmpgforuser = _.sample(carsList);
 
-    const listofusers = _.pluck(list, 'owner');
-    const fakeDate = faker.date.between('2020-01-01', '2020-04-05');
-    const fakeMiles = _.sample(possibleMiles);
-    const fakeTransportation = 0;
-    const owner = _.sample(listofusers);
+    for (let j = 0; j < num; j++) {
+      const owner = list[i];
+      const fakeDate = faker.date.between('2021-01-18', '2021-04-13');
+      const fakeMiles = _.sample(possibleMiles);
+      const fakeTransportation = _.sample(possibleTransportation);
 
-    const emissionsUser = {
-      owner: owner,
-      date: fakeDate,
-      transportation: fakeTransportation,
-      miles: fakeMiles,
-      mpg: _.sample(carsList),
-      createdAt: fakeDate,
-    };
+      const emissionsUser = {
+        owner: owner,
+        date: fakeDate,
+        transportation: fakeTransportation,
+        miles: fakeMiles,
+        mpg: carmpgforuser,
+        createdAt: fakeDate,
+      };
 
-    emissionsList.push(emissionsUser);
+      emissionsList.push(emissionsUser);
+    }
+
   }
   return emissionsList;
 
