@@ -33,7 +33,7 @@ if (UserInfos.count() === 0) {
 
 }
 
-/** Initialize the Cars collection if empty. */
+/** Initialize the Cars collection if empty.
 if (Cars.count() === 0) {
   if (Meteor.settings.defaultCarsData) {
     console.log('Creating default cars data.');
@@ -41,7 +41,7 @@ if (Cars.count() === 0) {
   }
 
 }
-
+*/
 /** Initialize the GasPrices collection if empty. */
 if (GasPrices.count() === 0) {
   if (Meteor.settings.defaultCarsData) {
@@ -49,5 +49,13 @@ if (GasPrices.count() === 0) {
     Meteor.settings.stateGasolinePrices.map(data => addGasolineData(data));
   }
 
+}
+
+if ((Meteor.settings.loadAssetsFile) && (Cars.find().count() === 0)) {
+  const assetsFileName = 'data.json';
+  console.log(`Loading data from private/${assetsFileName}`);
+  // eslint-disable-next-line no-unused-vars
+  const jsonData = JSON.parse(Assets.getText(assetsFileName));
+  jsonData.defaultCarsData.map(data => addCarData(data));
 }
 
