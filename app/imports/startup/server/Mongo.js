@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 import { Cars } from '../../api/cars/CarsCollection';
 import { GasPrices } from '../../api/gas-prices/GasPricesCollection';
-import generateUsers from '../../api/generator/userGenerator';
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
@@ -50,4 +49,3 @@ if (GasPrices.count() === 0) {
   }
 
 }
-
