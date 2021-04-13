@@ -86,7 +86,7 @@
   "defaultData": [
     {
       "firstName": "Jerome",
-      "lastName": "Foo",
+      "lastName": "Gallego",
       "user": "jerome@gmail.com",
       "password": "jerome",
       "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
@@ -103,7 +103,6 @@
       "userImage": "https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1",
       "unitSystem": "us units",
       "State": "Alaska",
-      "role": "admin",
       "owner": "kyra@foo.com"
     },
     {
@@ -130,6 +129,7 @@
     {
       "firstName": "Caliana",
       "lastName": "Fortin",
+      "user": "caliana@foo.com",
       "password": "caliana",
       "userImage": "http://pm1.narvii.com/6081/f610f8487d912142ea6f6b097c9a876c181ed1f2_00.jpg",
       "unitSystem": "us units",
@@ -139,6 +139,7 @@
     {
       "firstName": "Matthew",
       "lastName": "Kirts",
+      "user": "matt@foo.com",
       "password": "matt",
       "userImage": "https://i.redd.it/v0caqchbtn741.jpg",
       "unitSystem": "us units",
@@ -148,6 +149,7 @@
     {
       "firstName": "Trey",
       "lastName": "Sumida",
+      "user": "trey@foo.com",
       "password": "trey",
       "userImage": "https://static.wikia.nocookie.net/spongebob/images/d/d9/DoodleBob.png/revision/latest?cb=20200714002504",
       "unitSystem": "us units",
@@ -157,6 +159,7 @@
     {
       "firstName": "Ted",
       "lastName": "Foo",
+      "user": "ted@foo.com",
       "password": "ted",
       "userImage": "https://static.wikia.nocookie.net/659951ee-778b-41ea-872e-20c17d919e91",
       "unitSystem": "us units",
@@ -169,8 +172,8 @@
       "user": "Jen808@gmail.com",
       "password": "mynameisJenny",
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
-      "State": "Hawaii",
       "unitSystem": "us units",
+      "State": "Hawaii",
       "owner": "Jen808@gmail.com"
     },
     {
@@ -180,6 +183,7 @@
       "password": "Lew1999",
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "unitSystem": "metric",
+      "State": "Hawaii",
       "owner": "LuisArm@gmail.com"
     },
     {
@@ -187,7 +191,9 @@
       "lastName": "Manny",
       "user": " SpencertheMan@gmail.com",
       "password": "spence101",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "unitSystem": "metric",
+      "State": "Hawaii",
       "owner": "SpencertheMan@gmail.com"
     },
     {
@@ -195,18 +201,10 @@
       "lastName": "Barack",
       "user": "ObamaDaBomb@gmail.com",
       "password": "mrPresident808",
+      "userImage": "https://static.wikia.nocookie.net/spongebob/images/d/d9/DoodleBob.png/revision/latest?cb=20200714002504",
       "unitSystem": "metric",
-      "owner": "ObamaDaBomb@gmail.com"
-    },
-    {
-      "lastName": "DaBomb",
-      "user": "admin@foo.com",
-      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
-      "transportation": "electricity",
-      "unitSystem": "us units",
       "State": "Hawaii",
-      "role": "admin",
-      "owner": "admin@foo.com"
+      "owner": "ObamaDaBomb@gmail.com"
     },
     {
       "firstName": "Christian",
@@ -249,24 +247,44 @@
       "owner": "billGates@gmail.com"
     },
     {
-      "firstName": "Bill",
-      "lastName": "Gates",
-      "user": "billGates@gmail.com",
-      "password": "microsoftOwner",
+      "firstName": "Mina",
+      "lastName": "Miny",
+      "user": "minamin@gmail.com",
+      "password": "ocean",
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "unitSystem": "us units",
-      "State": "California",
-      "owner": "billGates@gmail.com"
+      "State": "Hawaii",
+      "owner": "minamin@gmail.com"
     },
     {
-      "firstName": "Bill",
-      "lastName": "Gates",
-      "user": "billGates@gmail.com",
-      "password": "microsoftOwner",
+      "firstName": "Bob",
+      "lastName": "theBuilder",
+      "user": "Bob@gmail.com",
+      "password": "thebuilder",
       "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
       "unitSystem": "us units",
       "State": "California",
-      "owner": "billGates@gmail.com"
+      "owner": "Bob@gmail.com"
+    },
+    {
+      "firstName": "Adam",
+      "lastName": "Levine",
+      "user": "Adam@gmail.com",
+      "password": "iloveeve",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "unitSystem": "us units",
+      "State": "California",
+      "owner": "Adam@gmail.com"
+    },
+    {
+      "firstName": "Alex",
+      "lastName": "Crip",
+      "user": "Alex@gmail.com",
+      "password": "ShinyH8sme",
+      "userImage": "https://pbs.twimg.com/profile_images/1366835403840389121/j3p8UTbo_400x400.jpg",
+      "unitSystem": "us units",
+      "State": "California",
+      "owner": "Alex@gmail.com"
     }
   ],
   "stateGasolinePrices": [
