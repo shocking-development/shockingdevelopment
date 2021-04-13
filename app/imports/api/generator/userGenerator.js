@@ -15,7 +15,7 @@ export default function generateUsers(num) {
       'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
       'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
       'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming']);
-    const fakePassword = faker.internet.password;
+    const fakePassword = faker.name.findName({ minimum: 5, maximum: 10 });
     const fakeOwner = faker.internet.email;
     const profileImage = faker.image.imageUrl();
     const unitSelection = _.sample([
@@ -26,9 +26,9 @@ export default function generateUsers(num) {
     const profileUser = {
       firstName: fakeFirst,
       lastName: fakeLast,
-      owner: fakeOwner,
-      password: fakePassword,
-      userImage: profileImage,
+      owner: fakeOwner.toString(),
+      password: fakePassword.toString(),
+      userImage: profileImage.toString(),
       unitSystem: unitSelection,
       State: fakeState,
     };
