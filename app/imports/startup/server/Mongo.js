@@ -57,5 +57,5 @@ if ((Meteor.settings.loadAssetsFile) && (Cars.find().count() === 0)) {
   console.log(`Loading data from private/${assetsFileName}`);
   // eslint-disable-next-line no-unused-vars
   const jsonData = JSON.parse(Assets.getText(assetsFileName));
-  jsonData.defaultCarsData.map(data => addData(data));
+  jsonData.defaultCarsData.map(data => addCarData(data));
 }
