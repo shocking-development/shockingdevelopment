@@ -5,7 +5,7 @@ export default function generateUsers(num) {
   const userList = [];
 
   for (let i = 0; i < num; i++) {
-
+    // const faker = require('faker');
     const fakeFirst = faker.name.firstName();
     const fakeLast = faker.name.lastName();
     const fakeState = _.sample(['Alaska', 'Alabama', 'Arkansas', 'Arizona', 'California', 'Colorado', 'Connecticut',
@@ -15,9 +15,9 @@ export default function generateUsers(num) {
       'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
       'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
       'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming']);
-    const fakePassword = faker.name.findName({ minimum: 5, maximum: 10 });
-    const fakeOwner = faker.internet.email;
-    const profileImage = faker.image.imageUrl();
+    const fakePassword = 'changeme';
+    const fakeOwner = (`${fakeFirst.charAt(0) + fakeLast + _.random(2, 9)}@foo.com`).toLowerCase().replace(/[^a-z0-9@.]/g, '');
+    const profileImage = 'https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1';
     const unitSelection = _.sample([
         'metric',
         'us units',
@@ -26,12 +26,13 @@ export default function generateUsers(num) {
     const profileUser = {
       firstName: fakeFirst,
       lastName: fakeLast,
-      owner: fakeOwner.toString(),
-      password: fakePassword.toString(),
-      userImage: profileImage.toString(),
+      owner: fakeOwner,
+      password: fakePassword,
+      userImage: profileImage,
       unitSystem: unitSelection,
       State: fakeState,
     };
+
     userList.push(profileUser);
   }
   return userList;
