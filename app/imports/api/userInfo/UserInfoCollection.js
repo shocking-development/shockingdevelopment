@@ -121,7 +121,7 @@ class UserInfoCollection extends BaseCollection {
       Meteor.publish(userInfoPublications.userInfo, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ user: username });
+          return instance._collection.find({ owner: username });
         }
         return this.ready();
       });

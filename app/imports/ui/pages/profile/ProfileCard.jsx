@@ -24,7 +24,7 @@ class ProfileCard extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-
+    console.log(this.props);
     const pageStyle = {
       paddingLeft: '10em',
       paddingTop: '6em',
@@ -143,11 +143,13 @@ ProfileCard.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
-  // Get access to Stuff documents.
+  // Get access to UserInfo documents.
+  const userID = Meteor.userId();
   const sub1 = UserInfos.subscribeUserInfo();
-  const userAccount = Meteor.users.findOne(match.params._id);
+  const userAccount = Meteor.users.findOne({ _id: userID });
   const sub2 = UserInfosCars.subscribeUserInfoCars();
-  const profiles = UserInfos.findOne(userAccount);
+  const profiles = UserInfos.findOne({ owner: userAccount?.username });
+  console.log(profiles);
   return {
     profiles,
     currentUser: Meteor.user() ? Meteor.user().username : '',

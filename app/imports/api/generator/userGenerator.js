@@ -30,7 +30,7 @@ export default function generateUsers(num) {
       password: fakePassword,
       userImage: profileImage,
       unitSystem: unitSelection,
-      State: fakeState,
+      state: fakeState,
     };
 
     userList.push(profileUser);
