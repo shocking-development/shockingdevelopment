@@ -17,7 +17,9 @@ export default function generateUsers(num) {
       'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming']);
     const fakePassword = 'changeme';
     const fakeOwner = (`${fakeFirst.charAt(0) + fakeLast + _.random(2, 9)}@foo.com`).toLowerCase().replace(/[^a-z0-9@.]/g, '');
-    const profileImage = 'https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1';
+    const profileImage = _.sample(['https://i0.wp.com/butwhythopodcast.com/wp-content/uploads/2021/04/Tropical-Rouge-PreCure-Episode-5-But-Why-Tho.jpg?fit=1500%2C844&ssl=1',
+      // eslint-disable-next-line max-len
+      'https://pbs.twimg.com/media/Eyg2DjEUUAUAl0N?format=jpg&name=large', 'https://pbs.twimg.com/media/EvHQgiEVIAYUBKg?format=jpg&name=large', 'https://pbs.twimg.com/media/EqdZY19VoAEEo7K?format=jpg&name=large']);
     const unitSelection = _.sample([
         'metric',
         'us units',
