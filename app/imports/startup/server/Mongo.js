@@ -1,19 +1,28 @@
 import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
+import { UserInfosCars } from '../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../api/cars/CarsCollection';
 import { GasPrices } from '../../api/gas-prices/GasPricesCollection';
+import { Emissions } from '../../api/emissions/EmissionsCollection';
 import generateUsers from '../../api/generator/userGenerator';
 import generateEmissions from '../../api/generator/emissionsGenerator';
-import { Emissions } from '../../api/emissions/EmissionsCollection';
+import userCarGenerator from '../../api/generator/userCarGenerator';
 
 /* eslint-disable no-console */
 
 const userIDarray = [];
 /** Initialize the database with a default data document. */
 function addProfiles(data) {
-  console.log(`  Adding: ${data.firstName} ${data.lastName} ${data.user} ${data.password} ${data.State}
+  console.log(`  Adding: ${data.firstName} ${data.lastName} ${data.password} ${data.State}
     (${data.owner})`);
   UserInfos.define(data);
+}
+
+/** Initialize the database with a default data document. */
+function addUserCars(data) {
+  console.log(`  Adding: ${data.carName} ${data.owner} ${data.makeofCar} ${data.modelofCar} ${data.yearofCar}${data.mpgofCar}
+    (${data.owner})`);
+  UserInfosCars.define(data);
 }
 
 /** Initialize the database with a default data document. */
@@ -88,4 +97,7 @@ if ((Meteor.settings.generateData) && (Meteor.users.find().count() < 20)) {
   const emissionslist = generateEmissions(Meteor.settings.generateData.emissions, userIDarray);
   console.log('Generating random emissions list...');
   emissionslist.map(emissions => addEmissions(emissions));
+
+  const userCarList = userCarGenerator(Meteor.settings.generateData.userInfoCar, userIDarray);
+  userCarList.map(userInfoCar => addUserCars(userInfoCar));
 }

@@ -80,7 +80,8 @@
   ],
   "generateData": {
     "users": 20,
-    "emissions": 90
+    "emissions": 90,
+    "userInfoCar": 10
   },
 
   "defaultCarsData": [
