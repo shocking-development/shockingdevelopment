@@ -1,66 +1,24 @@
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
-import { Emissions } from '../../../api/emissions/EmissionsCollection';
-import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import {
   calculateCO2,
   calculateGalUsed,
-  fuelCost,
-  calculatePounds,
+  calculatePounds, fuelCost,
 } from '../../../api/trips/ghgcalculation';
+import { Emissions } from '../../../api/emissions/EmissionsCollection';
 
-// A export function to give data to other pages.
-export function User() {
-  const user = useTracker(() => Meteor.userId());
-  return user;
-}
+/** A simple static component to render some statistics for the landing page. */
+export function cumulativeEmissionsData(index) {
 
-export function UserEmissionsData() {
-  const user = useTracker(() => Meteor.userId());
   const emissions = useTracker(() => {
-    Meteor.subscribe(Emissions.emissionsPublicationName);
-    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
-  });
-
-  return emissions;
-
-}
-
-export function UserDateRecorded() {
-  const user = useTracker(() => Meteor.userId());
-  const emissions = useTracker(() => {
-    Meteor.subscribe(Emissions.emissionsPublicationName);
-    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
-  });
-  const dateRecorded = emissions.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`);
-
-  return dateRecorded;
-
-}
-
-export function UserDataMiles() {
-  const user = useTracker(() => Meteor.userId());
-  const emissions = useTracker(() => {
-    Meteor.subscribe(Emissions.emissionsPublicationName);
-    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
-  });
-  const dataMiles = emissions.map(recentEmissions => recentEmissions.miles);
-
-  return dataMiles;
-
-}
-
-export function UserEmissionData(index) {
-  const user = useTracker(() => Meteor.userId());
-  const emissions = useTracker(() => {
-    Meteor.subscribe(Emissions.emissionsPublicationName);
-    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
+    Meteor.subscribe(Emissions.cumulativeEmissionsPublicationName);
+    return Emissions.collection.find({}).fetch();
   });
 
   /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
-  * The purpose of the code is to sum up all the miles for a specific month
-  * */
+* The purpose of the code is to sum up all the miles for a specific month
+* */
   const result = emissions.reduce(function (acc, val) {
     const o = acc.filter(function (obj) {
       // for debugging console.log(obj.date.getTime() === val.date.getTime());
@@ -73,34 +31,6 @@ export function UserEmissionData(index) {
     return acc;
   }, []);
 
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
-  * The purpose of this code is to sum up all the miles for each day of the week
-  * */
-  const resultdays = emissions.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getDay() === val.date.getDay();
-    }).pop() || { date: val.date, miles: 0 };
-
-    o.miles += val.miles;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  // eslint-disable-next-line no-unused-vars
-  const finalresultdays = resultdays.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  }).reverse();
-
-  // for debugging console.log(finalresultdays);
-
-  /* *
-  * Removes the duplicates of the resultMonths
-  * */
   const finalresultMonths = _.sortBy((result.filter(function (itm, index1, a) {
     return index1 === a.indexOf(itm);
   })), 'date');
@@ -109,10 +39,20 @@ export function UserEmissionData(index) {
   const totalMiles = [];
   const Co2Produced = [];
   const moneyspent = [];
+  const emissionsReducedArray = [];
+  const fuelGallonSavedArray = [];
   let gallonsOfGasSaved = 0;
   let emissionReduced = 0;
   let totalSavings = 0;
-  const carmpg = _.uniq(emissions.map(car => car.mpg), 'mpg');
+  const totalSavingsArray = [];
+  const carmpg = emissions.map(car => car.mpg);
+  const carmpgLength = carmpg.length;
+  let carmpgAVERAGE;
+  const average = (array) => array.reduce((a, b) => a + b) / array.length;
+  if (carmpgLength !== 0) {
+    carmpgAVERAGE = average(carmpg);
+  }
+
   // const chosenMPG = _.uniq(carmpg, 'mpg');
   // console.log(carmpg);
   const stateGasPrice = 3.14;
@@ -120,9 +60,9 @@ export function UserEmissionData(index) {
   for (let i = 0, iLen = finalresultMonths.length; i < iLen; i++) {
 
     if (finalresultMonths[i].transportation === 'Telework') {
-      const telework = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
-      const teleworkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
-      const teleworkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+      const telework = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
+      const teleworkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
+      const teleworkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
       Co2Produced.push({
         emissions: 0,
         date: finalresultMonths[i].date,
@@ -131,17 +71,33 @@ export function UserEmissionData(index) {
         miles: finalresultMonths[i].miles,
         date: finalresultMonths[i].date,
       });
+      moneyspent.push({
+        spent: 0,
+        date: finalresultMonths[i].date,
+      });
+      totalSavingsArray.push({
+        savings: totalSavings += teleworkCost,
+        date: finalresultMonths[i].date,
+      });
+      emissionsReducedArray.push({
+        emissionsReduced: emissionReduced += teleworkEmissions,
+        date: finalresultMonths[i].date,
+      });
+      fuelGallonSavedArray.push({
+        gallonsSaved: gallonsOfGasSaved = +telework,
+        date: finalresultMonths[i].date,
+      });
       gallonsOfGasSaved += telework;
       emissionReduced += teleworkEmissions;
       totalSavings += teleworkCost;
     } else
       if (finalresultMonths[i].transportation === 'Drove') {
-        const drove = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
-        const droveEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
-        const droveCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+        const drove = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
+        const droveEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
+        const droveCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
 
         Co2Produced.push({
-          emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))))),
+          emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))))),
           date: finalresultMonths[i].date,
         });
         if (Co2Produced.length !== 0) {
@@ -152,9 +108,20 @@ export function UserEmissionData(index) {
           miles: finalresultMonths[i].miles,
           date: finalresultMonths[i].date,
         });
-
+        totalSavingsArray.push({
+          savings: totalSavings -= droveCost,
+          date: finalresultMonths[i].date,
+        });
         moneyspent.push({
-          spent: Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice)),
+          spent: Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice)),
+          date: finalresultMonths[i].date,
+        });
+        emissionsReducedArray.push({
+          emissionsReduced: emissionReduced -= droveEmissions,
+          date: finalresultMonths[i].date,
+        });
+        fuelGallonSavedArray.push({
+          gallonsSaved: gallonsOfGasSaved -= drove,
           date: finalresultMonths[i].date,
         });
 
@@ -164,10 +131,11 @@ export function UserEmissionData(index) {
 
       } else
         if (finalresultMonths[i].transportation === 'Public Transportation') {
-          const publicTransportation = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
-          const publicTransportationEmissions = (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg)))) -
-              Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140)))));
-          const publicTransportationCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice)) - 2.60;
+          const publicTransportation = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
+          const publicTransportationEmissions = (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles,
+              carmpgAVERAGE)))) - Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140)))));
+          const publicTransportationCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE),
+              stateGasPrice)) - 2.60;
 
           Co2Produced.push({
             emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140))))),
@@ -181,19 +149,33 @@ export function UserEmissionData(index) {
             miles: finalresultMonths[i].miles,
             date: finalresultMonths[i].date,
           });
+
+          totalSavingsArray.push({
+            savings: totalSavings += publicTransportationCost,
+            date: finalresultMonths[i].date,
+          });
           moneyspent.push({
             spent: 2.60,
             date: finalresultMonths[i].date,
           });
+          emissionsReducedArray.push({
+            emissionsReduced: emissionReduced += publicTransportationEmissions,
+            date: finalresultMonths[i].date,
+          });
+          fuelGallonSavedArray.push({
+            gallonsSaved: gallonsOfGasSaved = +publicTransportation,
+            date: finalresultMonths[i].date,
+          });
+
           gallonsOfGasSaved += publicTransportation;
           emissionReduced += publicTransportationEmissions;
           totalSavings += publicTransportationCost;
 
         } else
           if (finalresultMonths[i].transportation === 'Biking') {
-            const Biking = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
-            const BikingEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
-            const BikingCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+            const Biking = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
+            const BikingEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
+            const BikingCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
 
             Co2Produced.push({
               emissions: 0,
@@ -207,8 +189,20 @@ export function UserEmissionData(index) {
               miles: finalresultMonths[i].miles,
               date: finalresultMonths[i].date,
             });
+            totalSavingsArray.push({
+              savings: totalSavings += BikingCost,
+              date: finalresultMonths[i].date,
+            });
             moneyspent.push({
               spent: 0,
+              date: finalresultMonths[i].date,
+            });
+            emissionsReducedArray.push({
+              emissionsReduced: emissionReduced += BikingEmissions,
+              date: finalresultMonths[i].date,
+            });
+            fuelGallonSavedArray.push({
+              gallonsSaved: gallonsOfGasSaved = +Biking,
               date: finalresultMonths[i].date,
             });
             gallonsOfGasSaved += Biking;
@@ -217,9 +211,9 @@ export function UserEmissionData(index) {
 
           } else
             if (finalresultMonths[i].transportation === 'Walk') {
-              const walk = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
-              const walkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
-              const walkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+              const walk = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
+              const walkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
+              const walkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
 
               Co2Produced.push({
                 emissions: 0,
@@ -233,22 +227,33 @@ export function UserEmissionData(index) {
                 miles: finalresultMonths[i].miles,
                 date: finalresultMonths[i].date,
               });
+              totalSavingsArray.push({
+                savings: totalSavings += walkCost,
+                date: finalresultMonths[i].date,
+              });
               moneyspent.push({
                 spent: 0,
+                date: finalresultMonths[i].date,
+              });
+              emissionsReducedArray.push({
+                emissionsReduced: emissionReduced += walkEmissions,
+                date: finalresultMonths[i].date,
+              });
+              fuelGallonSavedArray.push({
+                gallonsSaved: gallonsOfGasSaved = +walk,
                 date: finalresultMonths[i].date,
               });
               gallonsOfGasSaved += walk;
               emissionReduced += walkEmissions;
               totalSavings += walkCost;
 
-            } else
-              if (finalresultMonths[i].transportation === 'Electric Vehicle') {
-                const Ev = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
-                const EvEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
-                const EvCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+            } else if (finalresultMonths[i].transportation === 'Electric Vehicle') {
+                const Ev = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
+                const EvEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
+                const EvCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
 
                 Co2Produced.push({
-                  emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))))),
+                  emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))))),
                   date: finalresultMonths[i].date,
                 });
                 if (Co2Produced.length !== 0) {
@@ -259,10 +264,23 @@ export function UserEmissionData(index) {
                   miles: finalresultMonths[i].miles,
                   date: finalresultMonths[i].date,
                 });
-                moneyspent.push({
-                  spent: Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice)),
+                totalSavingsArray.push({
+                  savings: totalSavings += EvCost,
                   date: finalresultMonths[i].date,
                 });
+                moneyspent.push({
+                  spent: 0,
+                  date: finalresultMonths[i].date,
+                });
+                emissionsReducedArray.push({
+                  emissionsReduced: emissionReduced += EvEmissions,
+                  date: finalresultMonths[i].date,
+                });
+                fuelGallonSavedArray.push({
+                  gallonsSaved: gallonsOfGasSaved = +Ev,
+                  date: finalresultMonths[i].date,
+                });
+
                 gallonsOfGasSaved += Ev;
                 emissionReduced += EvEmissions;
                 totalSavings += EvCost;
@@ -270,9 +288,6 @@ export function UserEmissionData(index) {
               }
   }
 
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
-  * The purpose of this code is to sum up all the miles for each day of the week
-  * */
   const resultMonthsEmissions = Co2Produced.reduce(function (acc, val) {
     const o = acc.filter(function (obj) {
       // for debugging console.log(obj.date.getTime() === val.date.getTime());
@@ -322,13 +337,70 @@ export function UserEmissionData(index) {
     acc.push(o);
     return acc;
   }, []);
+  const finalresultMoneySpent = _.sortBy((resultMoneySpent.filter(function (itm, index1, a) {
+    return index1 === a.indexOf(itm);
+  })), 'date');
+
+  const resultSavings = totalSavingsArray.reduce(function (acc, val) {
+    const o = acc.filter(function (obj) {
+      // for debugging console.log(obj.date.getTime() === val.date.getTime());
+      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
+      return obj.date.getMonth() === val.date.getMonth();
+    }).pop() || { date: val.date, savings: 0 };
+
+    o.savings += val.savings;
+    acc.push(o);
+    return acc;
+  }, []);
 
   /* *
   * Removes the duplicates of the resultdays
   * */
-  const finalresultMoneySpent = _.sortBy((resultMoneySpent.filter(function (itm, index1, a) {
+  const finalresultSavings = _.sortBy((resultSavings.filter(function (itm, index1, a) {
     return index1 === a.indexOf(itm);
   })), 'date');
+
+  const resultEmissions = emissionsReducedArray.reduce(function (acc, val) {
+    const o = acc.filter(function (obj) {
+      // for debugging console.log(obj.date.getTime() === val.date.getTime());
+      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
+      return obj.date.getMonth() === val.date.getMonth();
+    }).pop() || { date: val.date, emissionsReduced: 0 };
+
+    o.emissionsReduced += val.emissionsReduced;
+    acc.push(o);
+    return acc;
+  }, []);
+
+  /* *
+  * Removes the duplicates of the resultdays
+  * */
+  const finalresultEmissions = _.sortBy((resultEmissions.filter(function (itm, index1, a) {
+    return index1 === a.indexOf(itm);
+  })), 'date');
+
+  const resultGallonsSaved = fuelGallonSavedArray.reduce(function (acc, val) {
+    const o = acc.filter(function (obj) {
+      // for debugging console.log(obj.date.getTime() === val.date.getTime());
+      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
+      return obj.date.getMonth() === val.date.getMonth();
+    }).pop() || { date: val.date, gallonsSaved: 0 };
+
+    o.gallonsSaved += val.gallonsSaved;
+    acc.push(o);
+    return acc;
+  }, []);
+
+  /* *
+  * Removes the duplicates of the resultdays
+  * */
+  const finalresultGallonsSaved = _.sortBy((resultGallonsSaved.filter(function (itm, index1, a) {
+    return index1 === a.indexOf(itm);
+  })), 'date');
+
+  const gallonsofgasbymonth = finalresultGallonsSaved.map(recentEmissions => Number((recentEmissions.gallonsSaved).toFixed(2)));
+  const emissionsbyMonth = finalresultEmissions.map(recentEmissions => Number((recentEmissions.emissionsReduced).toFixed(2)));
+  const savingsperMonthArray = finalresultSavings.map(recentEmissions => Number((recentEmissions.savings).toFixed(2)));
 
   /* *
   * Formats the days to months e.g. outputting January for month 1
@@ -364,42 +436,11 @@ export function UserEmissionData(index) {
   * */
   const persontransportation = emissions.map(recentEmissions => recentEmissions.transportation);
 
-  const curr = new Date();
-  const week = [];
-
-  for (let i = 1; i <= 7; i++) {
-    const first = curr.getDate() - curr.getDay() + i;
-    const day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
-    week.push(day);
-  }
-
-  const firstDayofWeek = new Date(week[0]);
-  const lastDayofWeek = new Date(week[week.length - 1]);
-  const selectedWeek = emissions.filter(d => {
-    const time = new Date(d.date).getTime();
-    return time >= firstDayofWeek && time <= lastDayofWeek;
-  });
-
-  /* *
-  * saves the ghg produced by day into an array
-  * */
-  const ghgEmissionsbyDays = selectedWeek.map(item => {
-    const container = { day: '', ghgProduced: '' };
-
-    container.day = item.date.getDay();
-    container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg))));
-
-    return container;
-  });
-
-  const currentDate = new Date();
-  const currentDay = emissions.filter(item => {
-    const date = new Date(item.date);
-    return date.toDateString() === currentDate.toDateString();
-  });
-
   if (index === 'Transportation') {
     return persontransportation;
+  }
+  if (index === 'savingsCumulative') {
+    return savingsperMonthArray;
   }
 
   if (index === 'CO2EmissionsProduced') {
@@ -418,6 +459,14 @@ export function UserEmissionData(index) {
     return dataMiles;
   }
 
+  if (index === 'EmissionsByMonth') {
+    return emissionsbyMonth;
+  }
+
+  if (index === 'gallonsofgasbymonth') {
+    return gallonsofgasbymonth;
+  }
+
   if (index === 'totalEmissions') {
     if (typeof totalEmissionsofAllTransport !== 'undefined') {
       return totalEmissionsofAllTransport.toFixed(2);
@@ -425,9 +474,6 @@ export function UserEmissionData(index) {
     return totalEmissionsofAllTransport;
   }
 
-  if (index === 'emisionsForweek') {
-    return ghgEmissionsbyDays;
-  }
   if (index === 'totalGasSaved') {
     if (typeof gallonsOfGasSaved !== 'undefined') {
       return gallonsOfGasSaved.toFixed(2);
@@ -449,10 +495,6 @@ export function UserEmissionData(index) {
     return totalSavings.toFixed(2);
   }
 
-  if (index === 'User') {
-    return user;
-  }
-
   if (index === 'Emissions') {
     return emissions;
   }
@@ -461,11 +503,7 @@ export function UserEmissionData(index) {
     return emissions.map(recentEmissions => recentEmissions.transportation);
   }
 
-  if (index === 'CurrentDayTransportation') {
-    return currentDay;
-  }
-
-  return user;
+  return 0;
 }
 
-export default UserEmissionsData;
+export default cumulativeEmissionsData;
