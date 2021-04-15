@@ -302,6 +302,7 @@
 .headerdataPage {
   background: #0a69a7 !important;
   color: white !important;
+  width: 300px!important;
 }
 
 .headerdataPage.ui.pagination.menu .active.item {
@@ -320,4 +321,5 @@
 .removeCarbutton.ui.blue.button{
   background: #021c4a !important;
 }
+
 

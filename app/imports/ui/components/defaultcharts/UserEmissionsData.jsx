@@ -115,8 +115,8 @@ export function UserEmissionData(index) {
 
   if (carmpg.some(function (i) { return i === null; })) {
     carmpg = 24.9;
-  } else {
-    carmpg = _.uniq(emissions.map(car => car.mpg), 'mpg');
+  } else if (emissions.length > 1) {
+    carmpg = emissions[0].mpg;
   }
   // const chosenMPG = _.uniq(carmpg, 'mpg');
   const stateGasPrice = 3.14;
@@ -408,7 +408,6 @@ export function UserEmissionData(index) {
   const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
   const currentDay = emissions.filter(d => {
     const time = new Date(d.date).toISOString().slice(0, 10);
-    console.log(time);
     return time === fullDate;
   });
 

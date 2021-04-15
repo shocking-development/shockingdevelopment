@@ -56,7 +56,7 @@ class ProfileCard extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column width={11}>
-                  <Segment className={'viewProfile'} style={{ height: '305px' }}>
+                  <Segment className={'viewProfile'} style={{ height: '305px', width: '305px' }}>
                     <div className={'infoCard'}>
                       <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
                         {this.props.profiles.firstName} {this.props.profiles.lastName}
