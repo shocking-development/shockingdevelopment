@@ -126,6 +126,15 @@ class NavBarMain extends React.Component {
                 </Menu.Item>
                 ) : ''}
 
+                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/cumulativedata" key='key12'>
+                      <IconGroup style={{ float: 'right' }} size={'large'}>
+                        <Icon name='line graph'/>
+                      </IconGroup>
+                      Cumulative Data
+                    </Menu.Item>
+                ) : ''}
+
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
                            key='key7'>
                   <Icon name='sign-out' size='large'/>
