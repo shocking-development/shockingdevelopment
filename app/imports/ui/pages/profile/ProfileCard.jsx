@@ -17,7 +17,7 @@ class ProfileCard extends React.Component {
     return (this.props.ready) ? this.renderPage() :
         <div
             className={'loaderStyle'}>
-          <Loader active inverted> Getting data</Loader>
+          <Loader active inverted> Loading Your Profile </Loader>
         </div>;
 
   }
@@ -69,6 +69,7 @@ class ProfileCard extends React.Component {
                             color='blue'
                             style={{ marginLeft: '20px', width: '9%' }}
                             circular
+                            className={'editButtonProfile'}
                         >
                           <Button.Content hidden>Edit</Button.Content>
                           <Button.Content visible>
@@ -95,9 +96,10 @@ class ProfileCard extends React.Component {
                               exact to={`/change/${this.props.profiles._id}`}
                               animated='vertical'
                               size='medium'
-                              style={{ position: 'absolute', width: '23%', bottom: '25px', right: '22.5em' }}
+                              style={{ position: 'absolute', width: '23%', bottom: '47px', right: '22em' }}
                               color='blue'
                               id='edit-password'
+                              className={'editButtonProfile'}
                           >
                             <Button.Content hidden>Edit Password</Button.Content>
                             <Button.Content visible>

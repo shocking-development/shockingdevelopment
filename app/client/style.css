@@ -20,7 +20,7 @@
 /* the padding for the menu boxes column */
 .menu-boxes-column {
   padding-right: 0 !important;
-  padding-left: 10px !important;
+  padding-left: 8.5px !important;
 }
 
 .spacing-menu-item {
@@ -256,6 +256,7 @@
 
 .viewProfile {
   background: rgba(0, 73, 122, 0.5) !important;
+  border: 2px solid #004486 !important;
 }
 
 .profileGrid.grid > .row > .column {
@@ -295,10 +296,28 @@
 
 .infoCard {
   padding-left: 7.5em;
+  padding-top: 20px;
 }
 
 .headerdataPage {
   background: #0a69a7 !important;
   color: white !important;
+}
+
+.headerdataPage.ui.pagination.menu .active.item {
+  color: white !important;
+}
+
+.headerdataPage.ui.menu .item {
+  color: white !important;
+}
+
+
+.editButtonProfile.ui.blue.button{
+  background: #03163a !important;
+}
+
+.removeCarbutton.ui.blue.button{
+  background: #021c4a !important;
 }
 

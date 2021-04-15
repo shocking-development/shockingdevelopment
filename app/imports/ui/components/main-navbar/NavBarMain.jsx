@@ -15,7 +15,7 @@ class NavBarMain extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() :
-        <Loader active inverted>Getting data</Loader>;
+        <Loader active inverted/>;
   }
 
   renderPage() {
@@ -32,8 +32,7 @@ class NavBarMain extends React.Component {
     };
 
     const userstyling = {
-      margin: 'auto',
-      width: '68%',
+      textAlign: 'center',
       fontSize: 'large',
       fontWeight: 'lighter',
     };
