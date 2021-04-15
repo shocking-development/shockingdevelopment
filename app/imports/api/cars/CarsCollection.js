@@ -14,6 +14,7 @@ export const carsPublications = {
 class CarsCollection extends BaseCollection {
   constructor() {
     super('Cars', new SimpleSchema({
+      electic: true,
       make: String,
       model: String,
       year: Number,
