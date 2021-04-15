@@ -56,7 +56,7 @@ Meteor.publish(Emissions.emissionPublicationName, function () {
 });
 
 Meteor.publish(Emissions.cumulativeEmissionsPublicationName, function () {
-  if (!this.userId) {
+  if (this.userId || !this.userId) {
     return Emissions.collection.find();
   }
   return this.ready();
