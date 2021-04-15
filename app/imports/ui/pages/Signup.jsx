@@ -21,6 +21,7 @@ class Signup extends React.Component {
       confirm: '',
       firstName: '',
       lastName: '',
+      state: '',
       error: '',
       redirectToReferer: false,
     };
@@ -33,7 +34,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password, firstName, lastName } = this.state;
+    const { email, password, firstName, lastName, State } = this.state;
     const user = email;
 
     // Password validation
@@ -46,6 +47,7 @@ class Signup extends React.Component {
             user,
             email,
             password,
+            State,
             userImage: 'images/default-image.jpg', // set default user profile image
             owner: user,
           },
@@ -61,6 +63,7 @@ class Signup extends React.Component {
                 password,
                 firstName,
                 lastName,
+                State,
                 userImage: '',
               }, (err) => {
                 if (err) {
@@ -141,6 +144,16 @@ class Signup extends React.Component {
                                   onChange={this.handleChange}
                       />
                     </Form.Group>
+                    <Form.Input className={'signupInput'}
+                                label="State"
+                                id="signup-form-state"
+                                icon="info circle"
+                                iconPosition="left"
+                                name="State"
+                                placeholder="State"
+                                type="State"
+                                onChange={this.handleChange}
+                    />
                     <Form.Input className={'signupInput'}
                                 label="Email"
                                 id="signup-form-email"
