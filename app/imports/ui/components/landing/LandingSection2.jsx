@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom';
 import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
 import LandingPagePieChart from '../defaultcharts/LandingPagePieChart';
+import LandingSectionStatistics from './LandingSectionStatistics';
 import { calculateCO2, calculateGal, calculateGHG } from '../../../api/trips/ghgcalculation';
 
 /** A simple static component to render some statistics for the landing page. */
 class LandingSection2 extends React.Component {
+
   /** Initialize component state with properties for input */
   constructor(props) {
     super(props);
@@ -59,20 +61,7 @@ class LandingSection2 extends React.Component {
     return (
         <div id="saved" style={{ background: '#001947' }}>
 
-          <Statistic.Group widths='three' style={{ padding: '5em' }}>
-            <Statistic inverted>
-              <Statistic.Value>1,550</Statistic.Value>
-              <Statistic.Label>Users</Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>$31,200</Statistic.Value>
-              <Statistic.Label>Saved</Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>22,000</Statistic.Value>
-              <Statistic.Label>Gallons Saved</Statistic.Label>
-            </Statistic>
-          </Statistic.Group>
+          <LandingSectionStatistics/>
 
           <Grid stackable columns='equal'>
             <Grid.Row id="trackEM" style={trackYourGHGemissionsStyling}>

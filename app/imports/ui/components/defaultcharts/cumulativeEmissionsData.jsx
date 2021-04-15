@@ -63,6 +63,10 @@ export function cumulativeEmissionsData(index) {
       const telework = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
       const teleworkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
       const teleworkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
+      let teleworkEmissionReduced = 0;
+      let moneySavedtelework = 0;
+      let gallonsTeleworkSaved = 0;
+
       Co2Produced.push({
         emissions: 0,
         date: finalresultMonths[i].date,
@@ -76,15 +80,16 @@ export function cumulativeEmissionsData(index) {
         date: finalresultMonths[i].date,
       });
       totalSavingsArray.push({
-        savings: totalSavings += teleworkCost,
+        savings: moneySavedtelework += teleworkCost,
         date: finalresultMonths[i].date,
       });
       emissionsReducedArray.push({
-        emissionsReduced: emissionReduced += teleworkEmissions,
+        emissionsReduced: teleworkEmissionReduced += teleworkEmissions,
         date: finalresultMonths[i].date,
       });
       fuelGallonSavedArray.push({
-        gallonsSaved: gallonsOfGasSaved = +telework,
+        // eslint-disable-next-line no-unused-vars
+        gallonsSaved: gallonsTeleworkSaved = +telework,
         date: finalresultMonths[i].date,
       });
       gallonsOfGasSaved += telework;
@@ -95,6 +100,9 @@ export function cumulativeEmissionsData(index) {
         const drove = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
         const droveEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
         const droveCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
+        let droveEmissionsReduced = 0;
+        let moneySavedDrove = 0;
+        let gallonsDroveSaved = 0;
 
         Co2Produced.push({
           emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))))),
@@ -109,7 +117,7 @@ export function cumulativeEmissionsData(index) {
           date: finalresultMonths[i].date,
         });
         totalSavingsArray.push({
-          savings: totalSavings -= droveCost,
+          savings: moneySavedDrove -= droveCost,
           date: finalresultMonths[i].date,
         });
         moneyspent.push({
@@ -117,11 +125,11 @@ export function cumulativeEmissionsData(index) {
           date: finalresultMonths[i].date,
         });
         emissionsReducedArray.push({
-          emissionsReduced: emissionReduced -= droveEmissions,
+          emissionsReduced: droveEmissionsReduced -= droveEmissions,
           date: finalresultMonths[i].date,
         });
         fuelGallonSavedArray.push({
-          gallonsSaved: gallonsOfGasSaved -= drove,
+          gallonsSaved: gallonsDroveSaved -= drove,
           date: finalresultMonths[i].date,
         });
 
@@ -136,6 +144,9 @@ export function cumulativeEmissionsData(index) {
               carmpgAVERAGE)))) - Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140)))));
           const publicTransportationCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE),
               stateGasPrice)) - 2.60;
+          let publicTransportationEmissionReduced = 0;
+          let PTsaved = 0;
+          let PTGallonsSaved = 0;
 
           Co2Produced.push({
             emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140))))),
@@ -151,7 +162,7 @@ export function cumulativeEmissionsData(index) {
           });
 
           totalSavingsArray.push({
-            savings: totalSavings += publicTransportationCost,
+            savings: PTsaved += publicTransportationCost,
             date: finalresultMonths[i].date,
           });
           moneyspent.push({
@@ -159,11 +170,12 @@ export function cumulativeEmissionsData(index) {
             date: finalresultMonths[i].date,
           });
           emissionsReducedArray.push({
-            emissionsReduced: emissionReduced += publicTransportationEmissions,
+            emissionsReduced: publicTransportationEmissionReduced += publicTransportationEmissions,
             date: finalresultMonths[i].date,
           });
           fuelGallonSavedArray.push({
-            gallonsSaved: gallonsOfGasSaved = +publicTransportation,
+            // eslint-disable-next-line no-unused-vars
+            gallonsSaved: PTGallonsSaved = +publicTransportation,
             date: finalresultMonths[i].date,
           });
 
@@ -176,6 +188,9 @@ export function cumulativeEmissionsData(index) {
             const Biking = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
             const BikingEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
             const BikingCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
+            let BikingEmissionsReduced = 0;
+            let BikingSaved = 0;
+            let BikingGallonsSaved = 0;
 
             Co2Produced.push({
               emissions: 0,
@@ -190,7 +205,7 @@ export function cumulativeEmissionsData(index) {
               date: finalresultMonths[i].date,
             });
             totalSavingsArray.push({
-              savings: totalSavings += BikingCost,
+              savings: BikingSaved += BikingCost,
               date: finalresultMonths[i].date,
             });
             moneyspent.push({
@@ -198,11 +213,12 @@ export function cumulativeEmissionsData(index) {
               date: finalresultMonths[i].date,
             });
             emissionsReducedArray.push({
-              emissionsReduced: emissionReduced += BikingEmissions,
+              emissionsReduced: BikingEmissionsReduced += BikingEmissions,
               date: finalresultMonths[i].date,
             });
             fuelGallonSavedArray.push({
-              gallonsSaved: gallonsOfGasSaved = +Biking,
+              // eslint-disable-next-line no-unused-vars
+              gallonsSaved: BikingGallonsSaved = +Biking,
               date: finalresultMonths[i].date,
             });
             gallonsOfGasSaved += Biking;
@@ -214,6 +230,9 @@ export function cumulativeEmissionsData(index) {
               const walk = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
               const walkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
               const walkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
+              let WalkingEmissionsReduced = 0;
+              let WalkingSaved = 0;
+              let walkingGallonsSaved = 0;
 
               Co2Produced.push({
                 emissions: 0,
@@ -228,7 +247,7 @@ export function cumulativeEmissionsData(index) {
                 date: finalresultMonths[i].date,
               });
               totalSavingsArray.push({
-                savings: totalSavings += walkCost,
+                savings: WalkingSaved += walkCost,
                 date: finalresultMonths[i].date,
               });
               moneyspent.push({
@@ -236,21 +255,26 @@ export function cumulativeEmissionsData(index) {
                 date: finalresultMonths[i].date,
               });
               emissionsReducedArray.push({
-                emissionsReduced: emissionReduced += walkEmissions,
+                emissionsReduced: WalkingEmissionsReduced += walkEmissions,
                 date: finalresultMonths[i].date,
               });
               fuelGallonSavedArray.push({
-                gallonsSaved: gallonsOfGasSaved = +walk,
+                // eslint-disable-next-line no-unused-vars
+                gallonsSaved: walkingGallonsSaved = +walk,
                 date: finalresultMonths[i].date,
               });
               gallonsOfGasSaved += walk;
               emissionReduced += walkEmissions;
               totalSavings += walkCost;
 
-            } else if (finalresultMonths[i].transportation === 'Electric Vehicle') {
+            } else
+              if (finalresultMonths[i].transportation === 'Electric Vehicle') {
                 const Ev = Number(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE));
                 const EvEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))));
                 const EvCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE), stateGasPrice));
+                let EVemissionsReduced = 0;
+                let EVSavings = 0;
+                let EVGallonsSaved = 0;
 
                 Co2Produced.push({
                   emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpgAVERAGE))))),
@@ -265,7 +289,7 @@ export function cumulativeEmissionsData(index) {
                   date: finalresultMonths[i].date,
                 });
                 totalSavingsArray.push({
-                  savings: totalSavings += EvCost,
+                  savings: EVSavings += EvCost,
                   date: finalresultMonths[i].date,
                 });
                 moneyspent.push({
@@ -273,11 +297,12 @@ export function cumulativeEmissionsData(index) {
                   date: finalresultMonths[i].date,
                 });
                 emissionsReducedArray.push({
-                  emissionsReduced: emissionReduced += EvEmissions,
+                  emissionsReduced: EVemissionsReduced += EvEmissions,
                   date: finalresultMonths[i].date,
                 });
                 fuelGallonSavedArray.push({
-                  gallonsSaved: gallonsOfGasSaved = +Ev,
+                  // eslint-disable-next-line no-unused-vars
+                  gallonsSaved: EVGallonsSaved = +Ev,
                   date: finalresultMonths[i].date,
                 });
 
