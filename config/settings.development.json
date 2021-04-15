@@ -1,5 +1,10 @@
 
 {
+  "monti": {
+    "appId": "aqrtamNLGvdGE7pYD",
+    "appSecret": "7c01e1f2-dcaa-4a90-84c5-9ffb1c39eb2b"
+  },
+
   "defaultAccounts": [
     {
       "email": "john@foo.com",
