@@ -7,6 +7,7 @@ import {
   calculatePounds, fuelCost,
 } from '../../../api/trips/ghgcalculation';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
+import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
 /** A simple static component to render some statistics for the landing page. */
 export function cumulativeEmissionsData(index) {
@@ -15,6 +16,13 @@ export function cumulativeEmissionsData(index) {
     Meteor.subscribe(Emissions.cumulativeEmissionsPublicationName);
     return Emissions.collection.find({}).fetch();
   });
+
+  const numberUsers = useTracker(() => {
+    UserInfos.subscribeUserInfoLanding();
+    return UserInfos.find({}).fetch();
+  });
+
+  const countOfUser = numberUsers.length;
 
   /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
 * The purpose of the code is to sum up all the miles for a specific month
@@ -526,6 +534,10 @@ export function cumulativeEmissionsData(index) {
 
   if (index === 'Transportation') {
     return emissions.map(recentEmissions => recentEmissions.transportation);
+  }
+
+  if (index === 'NumberOfUser') {
+    return countOfUser;
   }
 
   return 0;

@@ -7,13 +7,14 @@ function LandingSectionStatistics() {
 
   const savings = cumulativeEmissionsData('totalSavings');
   const gasSaved = cumulativeEmissionsData('totalGasSaved');
+  const countOfUsers = cumulativeEmissionsData('NumberOfUser');
 
     return (
         <div id="saved" style={{ background: '#001947' }}>
 
           <Statistic.Group widths='three' style={{ padding: '5em' }}>
             <Statistic inverted>
-              <Statistic.Value>1,550</Statistic.Value>
+              <Statistic.Value>{countOfUsers}</Statistic.Value>
               <Statistic.Label>Users</Statistic.Label>
             </Statistic>
             <Statistic inverted>

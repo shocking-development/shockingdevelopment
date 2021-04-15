@@ -8,6 +8,7 @@ import BaseCollection from '../base/BaseCollection';
 export const userInfoPublications = {
   userInfo: 'UserInfo',
   userInfoAdmin: 'UserInfoAdmin',
+  landingPageuser: 'UserInfoLanding',
 };
 
 class UserInfoCollection extends BaseCollection {
@@ -133,6 +134,14 @@ class UserInfoCollection extends BaseCollection {
         }
         return this.ready();
       });
+
+      /** This subscription publishes all documents regardless of user */
+      Meteor.publish(userInfoPublications.landingPageuser, function publish() {
+        if (!this.userId) {
+          return instance._collection.find();
+        }
+        return this.ready();
+      });
     }
   }
 
@@ -153,6 +162,17 @@ class UserInfoCollection extends BaseCollection {
   subscribeUserInfoAdmin() {
     if (Meteor.isClient) {
       return Meteor.subscribe(userInfoPublications.userInfoAdmin);
+    }
+    return null;
+  }
+
+  /**
+   * Subscription method for admin users.
+   * It subscribes to the entire collection.
+   */
+  subscribeUserInfoLanding() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(userInfoPublications.landingPageuser);
     }
     return null;
   }
