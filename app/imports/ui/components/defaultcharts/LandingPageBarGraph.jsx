@@ -16,7 +16,7 @@ function LandingPageBarGraph() {
       },
     },
     series: [{
-      name: 'VMT',
+      name: 'Total Miles Traveled',
       data: cumulativeEmissionsData('DataMiles'),
 
     }, {
