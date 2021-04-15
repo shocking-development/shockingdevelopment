@@ -83,6 +83,7 @@ class ListCars extends React.Component {
             <Table celled>
               <Table.Header>
                 <Table.Row>
+                  <Table.HeaderCell>Car Type</Table.HeaderCell>
                   <Table.HeaderCell>Make</Table.HeaderCell>
                   <Table.HeaderCell>Model</Table.HeaderCell>
                   <Table.HeaderCell>Year</Table.HeaderCell>

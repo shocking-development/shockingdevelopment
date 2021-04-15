@@ -16,8 +16,8 @@ class CarsCollection extends BaseCollection {
     super('Cars', new SimpleSchema({
       carType: {
         type: String,
-        allowedValues: ['gas', 'electric'],
-        defaultValue: 'gas',
+        allowedValues: ['Gas', 'Electric'],
+        defaultValue: 'Gas',
         optional: false,
       },
       make: String,
