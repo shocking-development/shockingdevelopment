@@ -89,3 +89,11 @@ if ((Meteor.settings.generateData) && (Meteor.users.find().count() < 20)) {
   console.log('Generating random emissions list...');
   emissionslist.map(emissions => addEmissions(emissions));
 }
+
+if ((Meteor.settings.loadAssetsFile) && (Cars.find().count() === 0)) {
+  const assetsFileName = 'data.json';
+  console.log(`Loading data from private/${assetsFileName}`);
+  // eslint-disable-next-line no-unused-vars
+  const jsonData = JSON.parse(Assets.getText(assetsFileName));
+  jsonData.defaultCarsData.map(data => addCarData(data));
+}
