@@ -398,10 +398,7 @@ export function UserEmissionData(index) {
 
   const currentDate = new Date();
 
-  const currentDay = emissions.filter(item => {
-    return item.date.toDateString() === currentDate.toDateString();
-  });
-  console.log(emissions);
+  const currentDay = emissions.filter(item => item.date.toDateString() === currentDate.toDateString());
 
   if (index === 'Transportation') {
     return persontransportation;
