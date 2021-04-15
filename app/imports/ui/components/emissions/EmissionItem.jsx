@@ -29,7 +29,7 @@ function EmissionItem({ emission }) {
     };
 
     return (
-        <Table.Row>
+        <Table.Row className={'headerdataPage'}>
             <Table.Cell>{`${emission.date.getMonth() + 1}/${emission.date.getUTCDate()}/${emission.date.getFullYear()}`}</Table.Cell>
             <Table.Cell>{emission.transportation}</Table.Cell>
             <Table.Cell>{emission.miles}</Table.Cell>

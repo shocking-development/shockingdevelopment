@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Loader, Grid, Button, Icon } from 'semantic-ui-react';
+import { Header, Grid, Button, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -13,7 +13,6 @@ class RecentlyAddedCars extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() :
         <div style={{ background: 'transparent' }}>
-          <Loader active inverted>Getting data</Loader>
         </div>;
   }
 
@@ -38,8 +37,9 @@ class RecentlyAddedCars extends React.Component {
                         exact to={'/cars'}
                         animated='vertical'
                         size='medium'
-                        color='teal'
+                        color='blue'
                         id='edit-password'
+                        className={'editButtonProfile'}
                     >
                       <Button.Content hidden>Add Car</Button.Content>
                       <Button.Content visible>
@@ -54,7 +54,7 @@ class RecentlyAddedCars extends React.Component {
                   inverted as="h2"
                   textAlign="center">
                 No cars have been added. <a
-                  style={{ color: '#009c95' }} href={'#/cars'}>
+                  style={{ color: 'rgb(7 182 254)' }} href={'#/cars'}>
                 You can add cars here.
               </a>
               </Header>}

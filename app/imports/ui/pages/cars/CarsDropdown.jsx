@@ -55,7 +55,7 @@ class CarsDropdown extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() :
         <div className={'loaderStyle'}>
-          <Loader inverted active>Getting Cars</Loader>
+          <Loader inverted active size='big'>Getting Cars</Loader>
         </div>;
 
   }
