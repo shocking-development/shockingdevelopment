@@ -18,7 +18,7 @@ function addProfiles(data) {
 
 /** Initialize the database with a default data document. */
 function addCarData(data) {
-  console.log(`  Adding: ${data.make} ${data.model} ${data.year} ${data.mpg} `);
+  console.log(`  Adding: ${data.carType} ${data.make} ${data.model} ${data.year} ${data.mpg} `);
   Cars.define(data);
 }
 

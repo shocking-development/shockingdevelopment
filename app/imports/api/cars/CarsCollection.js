@@ -16,9 +16,9 @@ class CarsCollection extends BaseCollection {
     super('Cars', new SimpleSchema({
       carType: {
         type: String,
-        allowedValues: ['Gas', 'Electric'],
         defaultValue: 'Gas',
-        optional: false,
+        allowedValues: ['Electric', 'Gas'],
+        optional: true,
       },
       make: String,
       model: String,
@@ -29,6 +29,7 @@ class CarsCollection extends BaseCollection {
 
   /**
    * Defines a new Cars item.
+   * @param cartype of car
    * @param make the make of the car.
    * @param model the model the car.
    * @param year the year of the car.
@@ -49,6 +50,7 @@ class CarsCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
+   * @param cartype of car
    * @param make the make of the car.
    * @param model the model the car.
    * @param year the year of the car.
