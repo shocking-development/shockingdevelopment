@@ -389,16 +389,28 @@ export function UserEmissionData(index) {
   * */
   const ghgEmissionsbyDays = selectedWeek.map(item => {
     const container = { day: '', ghgProduced: '' };
-
-    container.day = item.date.getDay();
+    container.day = item.date.getUTCDay();
     container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg))));
 
     return container;
   });
 
+  /* Gets the current date and puts it in the correct format for the date input */
   const currentDate = new Date();
-
-  const currentDay = emissions.filter(item => item.date.toDateString() === currentDate.toDateString());
+  let cMonth = currentDate.getMonth() + 1;
+  if (cMonth.toString().length === 1) {
+    cMonth = `0${cMonth}`;
+  }
+  let cDay = currentDate.getDate();
+  if (cDay.toString().length === 1) {
+    cDay = `0${cDay}`;
+  }
+  const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
+  const currentDay = emissions.filter(d => {
+    const time = new Date(d.date).toISOString().slice(0, 10);
+    console.log(time);
+    return time === fullDate;
+  });
 
   if (index === 'Transportation') {
     return persontransportation;
