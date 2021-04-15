@@ -49,14 +49,14 @@ class ProfileCard extends React.Component {
                     <Image src={this.props.profiles.userImage}
                         // eslint-disable-next-line
                            onError={(i) => i.target.src = '/images/default_image.png'}
-                           style={{ borderRadius: '0.28571429rem', width: '305px' }}
+                           style={{ borderRadius: '0.28571429rem', width: '305px', height: '305px' }}
                     />
                   </div>
 
                 </Grid.Column>
 
                 <Grid.Column width={11}>
-                  <Segment className={'viewProfile'} style={{ height: '305px', width: '305px' }}>
+                  <Segment className={'viewProfile'} style={{ height: '305px'}}>
                     <div className={'infoCard'}>
                       <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
                         {this.props.profiles.firstName} {this.props.profiles.lastName}
