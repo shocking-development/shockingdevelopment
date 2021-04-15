@@ -14,7 +14,12 @@ export const carsPublications = {
 class CarsCollection extends BaseCollection {
   constructor() {
     super('Cars', new SimpleSchema({
-      electic: true,
+      carType: {
+        type: String,
+        allowedValues: ['gas', 'electric'],
+        default: 'gas',
+        optional: false,
+      },
       make: String,
       model: String,
       year: Number,
@@ -32,6 +37,7 @@ class CarsCollection extends BaseCollection {
    */
   define({ make, model, year, mpg }) {
     const docID = this._collection.insert({
+      cartype,
       make,
       model,
       year,
