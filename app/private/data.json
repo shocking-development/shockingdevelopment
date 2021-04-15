@@ -1206,6 +1206,22 @@
     { "make": "Honda", "model": "Odyssey Touring", "year": 2015, "mpg": 19 },
     { "make": "Honda", "model": "Odyssey Touring Elite", "year": 2015, "mpg": 19 },
 
+    { "make": "Honda", "model": "Passport Sport FWD", "year": 2020, "mpg": 20 },
+    { "make": "Honda", "model": "Passport Sport AWD", "year": 2020, "mpg": 19 },
+    { "make": "Honda", "model": "Passport EX-L FWD", "year": 2020, "mpg": 20 },
+    { "make": "Honda", "model": "Passport EX-L AWD", "year": 2020, "mpg": 19 },
+    { "make": "Honda", "model": "Passport Touring FWD", "year": 2020, "mpg": 20 },
+    { "make": "Honda", "model": "Passport Touring AWD", "year": 2020, "mpg": 19 },
+    { "make": "Honda", "model": "Passport Elite FWD", "year": 2020, "mpg": 20 },
+    { "make": "Honda", "model": "Passport Elite AWD", "year": 2020, "mpg": 19 },
+    { "make": "Honda", "model": "Passport Sport FWD", "year": 2019, "mpg": 20 },
+    { "make": "Honda", "model": "Passport Sport AWD", "year": 2019, "mpg": 19 },
+    { "make": "Honda", "model": "Passport EX-L FWD", "year": 2019, "mpg": 20 },
+    { "make": "Honda", "model": "Passport EX-L AWD", "year": 2019, "mpg": 19 },
+    { "make": "Honda", "model": "Passport Touring FWD", "year": 2019, "mpg": 20 },
+    { "make": "Honda", "model": "Passport Touring AWD", "year": 2019, "mpg": 19 },
+    { "make": "Honda", "model": "Passport Elite AWD", "year": 2019, "mpg": 19 },
+
     { "make": "Honda", "model": "Ridgeline", "year": 2020, "mpg": 19 },
 
     { "make": "Hyundai", "model": "Elantra", "year": 2021, "mpg": 33 },
