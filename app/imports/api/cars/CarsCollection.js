@@ -17,7 +17,7 @@ class CarsCollection extends BaseCollection {
       carType: {
         type: String,
         allowedValues: ['gas', 'electric'],
-        default: 'gas',
+        defaultValue: 'gas',
         optional: false,
       },
       make: String,
@@ -35,7 +35,7 @@ class CarsCollection extends BaseCollection {
    * @param mpg the mpg of the car.
    * @return {String} the docID of the new document.
    */
-  define({ make, model, year, mpg }) {
+  define({ cartype, make, model, year, mpg }) {
     const docID = this._collection.insert({
       cartype,
       make,
@@ -54,8 +54,9 @@ class CarsCollection extends BaseCollection {
    * @param year the year of the car.
    * @param mpg the mpg of the car.
    */
-  update(docID, { make, model, year, mpg }) {
+  update(docID, { cartype, make, model, year, mpg }) {
     const updateData = {};
+
     if (cartype) {
       updateData.cartype = cartype;
     }
