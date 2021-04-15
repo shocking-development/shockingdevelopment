@@ -1604,10 +1604,10 @@
     {"carType": "", "make": "Suzuki", "model": "Swift", "year": 2001, "mpg": 36 },
     {"carType": "", "make": "Suzuki", "model": "Vitara", "year": 2004, "mpg": 19 },
 
-    {"carType": "", "make": "Tesla", "model": "Model 3 (E)", "year": 2021, "mpg": 148 },
-    {"carType": "", "make": "Tesla", "model": "Model S (E)", "year": 2021, "mpg": 121 },
-    {"carType": "", "make": "Tesla", "model": "Model X (E)", "year": 2021, "mpg": 109 },
-    {"carType": "", "make": "Tesla", "model": "Model Y (E)", "year": 2021, "mpg": 131 },
+    {"carType": "Electric", "make": "Tesla", "model": "Model 3 (E)", "year": 2021, "mpg": 148 },
+    {"carType": "Electric", "make": "Tesla", "model": "Model S (E)", "year": 2021, "mpg": 121 },
+    {"carType": "Electric", "make": "Tesla", "model": "Model X (E)", "year": 2021, "mpg": 109 },
+    {"carType": "Electric", "make": "Tesla", "model": "Model Y (E)", "year": 2021, "mpg": 131 },
 
     {"carType": "", "make": "Toyota", "model": "86 MT", "year": 2020, "mpg": 21 },
     {"carType": "", "make": "Toyota", "model": "86 AT", "year": 2020, "mpg": 24 },
