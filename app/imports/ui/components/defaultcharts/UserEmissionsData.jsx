@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
-import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import {
   calculateCO2,
   calculateGalUsed,
@@ -112,9 +111,14 @@ export function UserEmissionData(index) {
   let gallonsOfGasSaved = 0;
   let emissionReduced = 0;
   let totalSavings = 0;
-  const carmpg = _.uniq(emissions.map(car => car.mpg), 'mpg');
+  let carmpg = emissions.map(car => car.mpg);
+
+  if (carmpg.some(function (i) { return i === null; })) {
+    carmpg = 24.9;
+  } else {
+    carmpg = _.uniq(emissions.map(car => car.mpg), 'mpg');
+  }
   // const chosenMPG = _.uniq(carmpg, 'mpg');
-  // console.log(carmpg);
   const stateGasPrice = 3.14;
 
   for (let i = 0, iLen = finalresultMonths.length; i < iLen; i++) {
@@ -393,10 +397,11 @@ export function UserEmissionData(index) {
   });
 
   const currentDate = new Date();
+
   const currentDay = emissions.filter(item => {
-    const date = new Date(item.date);
-    return date.toDateString() === currentDate.toDateString();
+    return item.date.toDateString() === currentDate.toDateString();
   });
+  console.log(emissions);
 
   if (index === 'Transportation') {
     return persontransportation;
