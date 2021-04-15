@@ -56,6 +56,9 @@ class CarsCollection extends BaseCollection {
    */
   update(docID, { make, model, year, mpg }) {
     const updateData = {};
+    if (cartype) {
+      updateData.cartype = cartype;
+    }
     if (make) {
       updateData.make = make;
     }
