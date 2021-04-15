@@ -5,7 +5,7 @@ import NavBarHome from '../../components/main-navbar/NavBarMain';
 import Datapage from './Datapage';
 import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsData';
 
-/** A simple static component to render the home page when users are logged in. */
+/* A simple static component to render the home page when users are logged in. */
 function Home() {
 
   const square = { width: 230, height: 230 };
@@ -166,5 +166,5 @@ function Home() {
 
 }
 
-/** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
+/* Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
 export default Home;
