@@ -31,14 +31,12 @@ class Datapage extends React.Component {
     const dataPagePieChartstyling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: '-41px -1px 44px -3px #0E324C',
       paddingTop: '10px',
     };
 
     const dataPagebarGraphstyling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
     };
@@ -46,7 +44,6 @@ class Datapage extends React.Component {
     const dataPageDonutChart1styling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
       position: 'relative',
@@ -58,7 +55,6 @@ class Datapage extends React.Component {
     const dataPageDonutChart2styling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
       position: 'relative',
@@ -70,7 +66,6 @@ class Datapage extends React.Component {
     const dataTableDivstyling = {
       background: '#0a69a7',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
       position: 'relative',
