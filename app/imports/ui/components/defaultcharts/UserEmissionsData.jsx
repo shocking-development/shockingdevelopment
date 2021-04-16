@@ -7,7 +7,7 @@ import {
   calculateGalUsed,
   fuelCost,
   calculatePounds,
-} from '../../../api/trips/ghgcalculation';
+} from '../../../api/ghgEquations/ghgcalculation';
 
 // A export function to give data to other pages.
 export function User() {
