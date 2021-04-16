@@ -111,19 +111,28 @@ export function UserEmissionData(index) {
   let gallonsOfGasSaved = 0;
   let emissionReduced = 0;
   let totalSavings = 0;
-  let carmpg = emissions.map(car => car.mpg);
 
-  if (carmpg.some(function (i) { return i === null; })) {
-    carmpg = 24.9;
+  let carmpg1 = emissions.map(car => car.mpg);
+
+  if (carmpg1.some(function (i) { return i === null; })) {
+    carmpg1 = 24.9;
   } else if (emissions.length > 1) {
-    carmpg = emissions[0].mpg;
+    carmpg1 = emissions[0].mpg;
   }
+
   // const chosenMPG = _.uniq(carmpg, 'mpg');
   const stateGasPrice = 3.14;
 
   for (let i = 0, iLen = finalresultMonths.length; i < iLen; i++) {
 
     if (finalresultMonths[i].transportation === 'Telework') {
+      let carmpg = emissions.map(car => car.mpg);
+
+      if (carmpg.some(function (index1) { return index1 === null; })) {
+        carmpg = 24.9;
+      } else if (emissions.length > 1) {
+        carmpg = emissions[0].mpg;
+      }
       const telework = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
       const teleworkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
       const teleworkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
@@ -140,6 +149,13 @@ export function UserEmissionData(index) {
       totalSavings += teleworkCost;
     } else
       if (finalresultMonths[i].transportation === 'Drove') {
+        let carmpg = emissions.map(car => car.mpg);
+
+        if (carmpg.some(function (index2) { return index2 === null; })) {
+          carmpg = 24.9;
+        } else if (emissions.length > 1) {
+          carmpg = emissions[0].mpg;
+        }
         const drove = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
         const droveEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
         const droveCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
@@ -168,6 +184,14 @@ export function UserEmissionData(index) {
 
       } else
         if (finalresultMonths[i].transportation === 'Public Transportation') {
+          let carmpg = emissions.map(car => car.mpg);
+
+          if (carmpg.some(function (index3) { return index3 === null; })) {
+            carmpg = 24.9;
+          } else if (emissions.length > 1) {
+            carmpg = emissions[0].mpg;
+          }
+
           const publicTransportation = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
           const publicTransportationEmissions = (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg)))) -
               Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140)))));
@@ -195,6 +219,14 @@ export function UserEmissionData(index) {
 
         } else
           if (finalresultMonths[i].transportation === 'Biking') {
+            let carmpg = emissions.map(car => car.mpg);
+
+            if (carmpg.some(function (index4) { return index4 === null; })) {
+              carmpg = 24.9;
+            } else if (emissions.length > 1) {
+              carmpg = emissions[0].mpg;
+            }
+
             const Biking = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
             const BikingEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
             const BikingCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
@@ -221,6 +253,14 @@ export function UserEmissionData(index) {
 
           } else
             if (finalresultMonths[i].transportation === 'Walk') {
+              let carmpg = emissions.map(car => car.mpg);
+
+              if (carmpg.some(function (index5) { return index5 === null; })) {
+                carmpg = 24.9;
+              } else if (emissions.length > 1) {
+                carmpg = emissions[0].mpg;
+              }
+
               const walk = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
               const walkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
               const walkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
@@ -247,6 +287,14 @@ export function UserEmissionData(index) {
 
             } else
               if (finalresultMonths[i].transportation === 'Electric Vehicle') {
+                let carmpg = emissions.map(car => car.mpg);
+
+                if (carmpg.some(function (index6) { return index6 === null; })) {
+                  carmpg = 24.9;
+                } else if (emissions.length > 1) {
+                  carmpg = emissions[0].mpg;
+                }
+
                 const Ev = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
                 const EvEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
                 const EvCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
@@ -390,7 +438,7 @@ export function UserEmissionData(index) {
   const ghgEmissionsbyDays = selectedWeek.map(item => {
     const container = { day: '', ghgProduced: '' };
     container.day = item.date.getUTCDay();
-    container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg))));
+    container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg1))));
 
     return container;
   });
