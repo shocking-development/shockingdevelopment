@@ -8,6 +8,10 @@ import {
   fuelCost,
   calculatePounds,
 } from '../../../api/ghgEquations/ghgcalculation';
+import {
+  duplicateFilter, sumAllEmissionsByMonth,
+  sumAllMilesForMonthBasedOnTransportation, totalMilesbyMonth, totalMoneySpentByMonth,
+} from '../../../api/emissionsEquations/EmissionsCalculations';
 
 // A export function to give data to other pages.
 export function User() {
@@ -26,30 +30,6 @@ export function UserEmissionsData() {
 
 }
 
-export function UserDateRecorded() {
-  const user = useTracker(() => Meteor.userId());
-  const emissions = useTracker(() => {
-    Meteor.subscribe(Emissions.emissionsPublicationName);
-    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
-  });
-  const dateRecorded = emissions.map(recentEmissions => `${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`);
-
-  return dateRecorded;
-
-}
-
-export function UserDataMiles() {
-  const user = useTracker(() => Meteor.userId());
-  const emissions = useTracker(() => {
-    Meteor.subscribe(Emissions.emissionsPublicationName);
-    return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
-  });
-  const dataMiles = emissions.map(recentEmissions => recentEmissions.miles);
-
-  return dataMiles;
-
-}
-
 export function UserEmissionData(index) {
   const user = useTracker(() => Meteor.userId());
   const emissions = useTracker(() => {
@@ -57,52 +37,7 @@ export function UserEmissionData(index) {
     return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 } }).fetch();
   });
 
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
-  * The purpose of the code is to sum up all the miles for a specific month
-  * */
-  const result = emissions.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return (obj.date.getMonth() === val.date.getMonth() && obj.transportation === val.transportation);
-    }).pop() || { date: val.date, miles: 0, transportation: val.transportation };
-
-    o.miles += val.miles;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
-  * The purpose of this code is to sum up all the miles for each day of the week
-  * */
-  const resultdays = emissions.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getDay() === val.date.getDay();
-    }).pop() || { date: val.date, miles: 0 };
-
-    o.miles += val.miles;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  // eslint-disable-next-line no-unused-vars
-  const finalresultdays = resultdays.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  }).reverse();
-
-  // for debugging console.log(finalresultdays);
-
-  /* *
-  * Removes the duplicates of the resultMonths
-  * */
-  const finalresultMonths = _.sortBy((result.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
+  const finalresultMonths = _.sortBy((duplicateFilter(sumAllMilesForMonthBasedOnTransportation(emissions))), 'date');
 
   let totalEmissionsofAllTransport;
   const totalMiles = [];
@@ -116,7 +51,7 @@ export function UserEmissionData(index) {
 
   if (carmpg1.some(function (i) { return i === null; })) {
     carmpg1 = 24.9;
-  } else if (emissions.length > 1) {
+  } else if (emissions.length >= 1) {
     carmpg1 = emissions[0].mpg;
   }
 
@@ -322,98 +257,22 @@ export function UserEmissionData(index) {
               }
   }
 
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
-  * The purpose of this code is to sum up all the miles for each day of the week
-  * */
-  const resultMonthsEmissions = Co2Produced.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, emissions: 0 };
+  const finalresultMonthsEmissions = _.sortBy((duplicateFilter(sumAllEmissionsByMonth(Co2Produced))), 'date');
 
-    o.emissions += val.emissions;
-    acc.push(o);
-    return acc;
-  }, []);
+  const finalresultMilesTraveled = _.sortBy((duplicateFilter(totalMilesbyMonth(totalMiles))), 'date');
 
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultMonthsEmissions = _.sortBy((resultMonthsEmissions.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
+  const finalresultMoneySpent = _.sortBy((duplicateFilter(totalMoneySpentByMonth(moneyspent))), 'date');
 
-  const resultMilesTraveled = totalMiles.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, miles: 0 };
-
-    o.miles += val.miles;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultMilesTraveled = _.sortBy((resultMilesTraveled.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
-
-  const resultMoneySpent = moneyspent.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, spent: 0 };
-
-    o.spent += val.spent;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultMoneySpent = _.sortBy((resultMoneySpent.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
-
-  /* *
-  * Formats the days to months e.g. outputting January for month 1
-  * */
   const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
-  /* *
-  * maps the months to an array
-  * */
   const dateRecorded = finalresultMonthsEmissions.map(recentEmissions => formatter.format(recentEmissions.date));
-  /// console.log(dateRecorded);
 
-  /* *
-  * maps the months to an array
-  * */
   const CO2EmisionsbyMonths = finalresultMonthsEmissions.map(recentEmissions => recentEmissions.emissions);
-  // console.log(dateRecorded);
 
-  /* *
-  * maps the miles to an array
-  * */
   const dataMiles = finalresultMilesTraveled.map(recentEmissions => recentEmissions.miles);
-  // console.log(dataMiles);
 
-  /* *
-  * maps the miles to an array
-  * */
   const moneyLost = finalresultMoneySpent.map(recentEmissions => recentEmissions.spent);
-  // console.log(dataMiles);
 
-  /* *
-  * maps the transportation to an array
-  * */
   const persontransportation = emissions.map(recentEmissions => recentEmissions.transportation);
 
   const curr = new Date();
@@ -425,10 +284,10 @@ export function UserEmissionData(index) {
     week.push(day);
   }
 
-  const firstDayofWeek = new Date(week[0]);
-  const lastDayofWeek = new Date(week[week.length - 1]);
+  const firstDayofWeek = week[0];
+  const lastDayofWeek = week[week.length - 1];
   const selectedWeek = emissions.filter(d => {
-    const time = new Date(d.date).getTime();
+    const time = new Date(d.date).toISOString().slice(0, 10);
     return time >= firstDayofWeek && time <= lastDayofWeek;
   });
 
