@@ -309,7 +309,6 @@
 .headerdataPage {
   background: #0a69a7 !important;
   color: white !important;
-  width: 300px!important;
 }
 
 .headerdataPage.ui.pagination.menu .active.item {
@@ -318,6 +317,10 @@
 
 .headerdataPage.ui.menu .item {
   color: white !important;
+}
+
+.headerdataPage.ui.secondary.pointing.menu .active.item {
+  border-color: #00eaff !important;
 }
 
 
