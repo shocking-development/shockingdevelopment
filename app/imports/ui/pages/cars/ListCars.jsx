@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import CarItem from '../../components/cars/CarItem';
-import carFilter from '../../components/cars/carFilter';
+import CarFilter from '../../components/cars/CarFilter';
 import { Cars } from '../../../api/cars/CarsCollection';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -98,11 +98,6 @@ class ListCars extends React.Component {
                 totalPages={Math.ceil(this.props.Car.length / 25)}
                 onPageChange={this.handleInputChange}
             />
-            <Header inverted>Filter by make:</Header>
-            {/* eslint-disable-next-line react/prop-types */}
-            <div style={{ marginLeft: '20px' }}>
-            <carFilter sendMajor={this.getMake.bind(this)} makes={_.uniq(_.pluck(this.make, 'make'))} />
-            </div>
             <Table celled>
               <Table.Header>
                 <Table.Row>

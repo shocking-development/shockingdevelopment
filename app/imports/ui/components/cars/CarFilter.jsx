@@ -3,7 +3,7 @@ import { Dropdown } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export class carFilter extends React.Component {
+export class CarFilter extends React.Component {
   state = { isFilter: false, make: 'All Makes' };
 
   make;
@@ -46,8 +46,8 @@ export class carFilter extends React.Component {
     );
   }
 }
-carFilter.propTypes = {
+CarFilter.propTypes = {
   search: PropTypes.array,
 };
 
-export default withRouter(carFilter);
+export default withRouter(CarFilter);
