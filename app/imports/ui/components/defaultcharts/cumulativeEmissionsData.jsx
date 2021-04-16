@@ -2,10 +2,19 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import { calculateCO2, calculateGalUsed, calculatePounds, fuelCost } from '../../../api/ghgEquations/ghgcalculation';
-import { sumAllMilesForMonthBasedOnTransportation, duplicateFilter, numberofUsers } from '../../../api/emissionsEquations/EmissionsCalculations';
+import {
+  sumAllMilesForMonthBasedOnTransportation,
+  duplicateFilter,
+  sumAllEmissionsByMonth,
+  totalMilesbyMonth,
+  totalMoneySpentByMonth,
+  totalSavingsByMonth,
+  totalEmissionsReducedByMonth,
+  totalfuelGallonSavedByMonth,
+} from '../../../api/emissionsEquations/EmissionsCalculations';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
+import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
-/** A simple static component to render some statistics for the landing page. */
 export function cumulativeEmissionsData(index) {
 
   const emissions = useTracker(() => {
@@ -13,13 +22,14 @@ export function cumulativeEmissionsData(index) {
     return Emissions.collection.find({}).fetch();
   });
 
-  const countOfUser = numberofUsers;
+  const numberofUsers = useTracker(() => {
+    UserInfos.subscribeUserInfoLanding();
+    return UserInfos.find({}).fetch();
+  });
 
-  console.log(countOfUser);
+  const countOfUser = numberofUsers.length;
 
-  const result = sumAllMilesForMonthBasedOnTransportation(emissions);
-
-  const finalresultMonths = _.sortBy((duplicateFilter(result)), 'date');
+  const finalresultMonths = _.sortBy((duplicateFilter(sumAllMilesForMonthBasedOnTransportation(emissions))), 'date');
 
   let totalEmissionsofAllTransport;
   const totalMiles = [];
@@ -38,9 +48,6 @@ export function cumulativeEmissionsData(index) {
   if (carmpgLength !== 0) {
     carmpgAVERAGE = average(carmpg);
   }
-
-  // const chosenMPG = _.uniq(carmpg, 'mpg');
-  // console.log(carmpg);
   const stateGasPrice = 3.14;
 
   for (let i = 0, iLen = finalresultMonths.length; i < iLen; i++) {
@@ -299,152 +306,35 @@ export function cumulativeEmissionsData(index) {
               }
   }
 
-  const resultMonthsEmissions = Co2Produced.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, emissions: 0 };
+  const finalresultMonthsEmissions = _.sortBy((duplicateFilter(sumAllEmissionsByMonth(Co2Produced))), 'date');
 
-    o.emissions += val.emissions;
-    acc.push(o);
-    return acc;
-  }, []);
+  const finalresultMilesTraveled = _.sortBy((duplicateFilter(totalMilesbyMonth(totalMiles))), 'date');
 
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultMonthsEmissions = _.sortBy((resultMonthsEmissions.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
+  const finalresultMoneySpent = _.sortBy((duplicateFilter(totalMoneySpentByMonth(moneyspent))), 'date');
 
-  const resultMilesTraveled = totalMiles.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, miles: 0 };
+  const finalresultSavings = _.sortBy((duplicateFilter(totalSavingsByMonth(totalSavingsArray))), 'date');
 
-    o.miles += val.miles;
-    acc.push(o);
-    return acc;
-  }, []);
+  const finalresultEmissions = _.sortBy((duplicateFilter(totalEmissionsReducedByMonth(emissionsReducedArray))), 'date');
 
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultMilesTraveled = _.sortBy((resultMilesTraveled.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
-
-  const resultMoneySpent = moneyspent.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, spent: 0 };
-
-    o.spent += val.spent;
-    acc.push(o);
-    return acc;
-  }, []);
-  const finalresultMoneySpent = _.sortBy((resultMoneySpent.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
-
-  const resultSavings = totalSavingsArray.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, savings: 0 };
-
-    o.savings += val.savings;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultSavings = _.sortBy((resultSavings.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
-
-  const resultEmissions = emissionsReducedArray.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, emissionsReduced: 0 };
-
-    o.emissionsReduced += val.emissionsReduced;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultEmissions = _.sortBy((resultEmissions.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
-
-  const resultGallonsSaved = fuelGallonSavedArray.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return obj.date.getMonth() === val.date.getMonth();
-    }).pop() || { date: val.date, gallonsSaved: 0 };
-
-    o.gallonsSaved += val.gallonsSaved;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  /* *
-  * Removes the duplicates of the resultdays
-  * */
-  const finalresultGallonsSaved = _.sortBy((resultGallonsSaved.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
+  const finalresultGallonsSaved = _.sortBy((duplicateFilter(totalfuelGallonSavedByMonth(fuelGallonSavedArray))), 'date');
 
   const gallonsofgasbymonth = finalresultGallonsSaved.map(recentEmissions => Number((recentEmissions.gallonsSaved).toFixed(2)));
   const emissionsbyMonth = finalresultEmissions.map(recentEmissions => Number((recentEmissions.emissionsReduced).toFixed(2)));
   const savingsperMonthArray = finalresultSavings.map(recentEmissions => Number((recentEmissions.savings).toFixed(2)));
 
-  /* *
-  * Formats the days to months e.g. outputting January for month 1
-  * */
   const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
-
-  /* *
-  * maps the months to an array
-  * */
   const dateRecorded = finalresultMonthsEmissions.map(recentEmissions => formatter.format(recentEmissions.date));
-  /// console.log(dateRecorded);
 
-  /* *
-  * maps the months to an array
-  * */
+  // maps the months to an array
   const CO2EmisionsbyMonths = finalresultMonthsEmissions.map(recentEmissions => recentEmissions.emissions);
-  // console.log(dateRecorded);
 
-  /* *
-  * maps the miles to an array
-  * */
+  // maps the miles to an array
   const dataMiles = finalresultMilesTraveled.map(recentEmissions => recentEmissions.miles);
-  // console.log(dataMiles);
 
-  /* *
-  * maps the miles to an array
-  * */
+  // maps the miles to an array
   const moneyLost = finalresultMoneySpent.map(recentEmissions => recentEmissions.spent);
-  // console.log(dataMiles);
 
-  /* *
-  * maps the transportation to an array
-  * */
+  // maps the transportation to an array
   const persontransportation = emissions.map(recentEmissions => recentEmissions.transportation);
 
   if (index === 'Transportation') {

@@ -110,11 +110,6 @@ class UserInfoCollection extends BaseCollection {
     return true;
   }
 
-  count() {
-    return this._collection.find()
-        .count();
-  }
-
   /**
    * Default publication method for entities.
    * It publishes the entire collection for admin and just the stuff associated to an owner.
