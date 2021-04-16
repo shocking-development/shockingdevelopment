@@ -2,12 +2,17 @@ import React from 'react';
 import { Container, Table, Header, Loader, Image, Pagination } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import CarItem from '../../components/cars/CarItem';
+import carFilter from '../../components/cars/carFilter';
 import { Cars } from '../../../api/cars/CarsCollection';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListCars extends React.Component {
+  filterMaker;
+
+  make;
 
   /* Link for pagination
   https://stackoverflow.com/questions/57471901/how-to-implement-pagination-for-react-by-semantic-ui-react
@@ -16,11 +21,24 @@ class ListCars extends React.Component {
   /** Initialize component state with properties for login and redirection. */
   constructor(props) {
     super(props);
+    this.state = { make: 'All Makes' };
+    this.filterMaker = {};
+    this.make = 'All Makes';
     this.state = {
       // showIndex: 0,
       // showCount: 25,
       activePage: 1,
     };
+  }
+
+  getMake= (make) => {
+    const newState = {
+      make: make,
+    };
+    this.setState(newState);
+    this.make = make;
+    const fMake = make;
+    this.filterMaker = _.filter(this.make, function (object) { return object.make === fMake; });
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -80,6 +98,11 @@ class ListCars extends React.Component {
                 totalPages={Math.ceil(this.props.Car.length / 25)}
                 onPageChange={this.handleInputChange}
             />
+            <Header inverted>Filter by make:</Header>
+            {/* eslint-disable-next-line react/prop-types */}
+            <div style={{ marginLeft: '20px' }}>
+            <carFilter sendMajor={this.getMake.bind(this)} makes={_.uniq(_.pluck(this.make, 'make'))} />
+            </div>
             <Table celled>
               <Table.Header>
                 <Table.Row>
@@ -111,6 +134,7 @@ export default withTracker(() => {
   const subscription = Cars.subscribeCars();
   return {
     Car: Cars.find({}).fetch(),
+    make: Cars.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(ListCars);
