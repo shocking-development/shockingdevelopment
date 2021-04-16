@@ -5,7 +5,7 @@ import {
   calculateCO2,
   calculateGalUsed,
   calculatePounds, fuelCost,
-} from '../../../api/trips/ghgcalculation';
+} from '../../../api/ghgEquations/ghgcalculation';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
