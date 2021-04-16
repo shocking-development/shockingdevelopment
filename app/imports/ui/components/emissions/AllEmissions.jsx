@@ -32,10 +32,10 @@ function AllEmissions() {
               <Table style={{ border: 'none' }}>
                 <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell className={'headerdataPage'}>Date</Table.HeaderCell>
-                    <Table.HeaderCell className={'headerdataPage'}>Transportation</Table.HeaderCell>
-                    <Table.HeaderCell className={'headerdataPage'}>Miles</Table.HeaderCell>
-                    <Table.HeaderCell className={'headerdataPage'}>Delete</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Date</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Transportation</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Miles</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Delete</Table.HeaderCell>
                 </Table.Row>
                 </Table.Header>
 

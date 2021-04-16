@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Table, Pagination, Icon, Header } from 'semantic-ui-react';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
-import EmissionItem from '../../components/emissions/EmissionItem';
+import EmissionItemForHomePage from '../../components/emissions/EmissionItemForHomePage';
 import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsData';
 
 function EmissionForHome() {
@@ -37,7 +37,7 @@ function EmissionForHome() {
                 </Table.Header>
 
                 <Table.Body>
-                  {emissions.map(emission => <EmissionItem key={emission._id}
+                  {emissions.map(emission => <EmissionItemForHomePage key={emission._id}
                                                            emission={emission}/>).slice(startIndex, endIndex)}
                 </Table.Body>
 
