@@ -79,7 +79,7 @@ class CarsCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the stuff associated to an owner.
+   * It publishes the entire collection for admin and just the Car associated to an owner.
    */
   publish() {
     if (Meteor.isServer) {
@@ -104,7 +104,7 @@ class CarsCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for stuff owned by the current user.
+   * Subscription method for Car owned by the current user.
    */
   subscribeCars() {
     if (Meteor.isClient) {
