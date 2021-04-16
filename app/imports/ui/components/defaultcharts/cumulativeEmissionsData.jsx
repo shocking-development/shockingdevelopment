@@ -1,13 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
-import {
-  calculateCO2,
-  calculateGalUsed,
-  calculatePounds, fuelCost,
-} from '../../../api/ghgEquations/ghgcalculation';
+import { calculateCO2, calculateGalUsed, calculatePounds, fuelCost } from '../../../api/ghgEquations/ghgcalculation';
+import { sumAllMilesForMonthBasedOnTransportation, duplicateFilter, numberofUsers } from '../../../api/emissionsEquations/EmissionsCalculations';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
-import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 
 /** A simple static component to render some statistics for the landing page. */
 export function cumulativeEmissionsData(index) {
@@ -17,31 +13,13 @@ export function cumulativeEmissionsData(index) {
     return Emissions.collection.find({}).fetch();
   });
 
-  const numberUsers = useTracker(() => {
-    UserInfos.subscribeUserInfoLanding();
-    return UserInfos.find({}).fetch();
-  });
+  const countOfUser = numberofUsers;
 
-  const countOfUser = numberUsers.length;
+  console.log(countOfUser);
 
-  /* Code from https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
-* The purpose of the code is to sum up all the miles for a specific month
-* */
-  const result = emissions.reduce(function (acc, val) {
-    const o = acc.filter(function (obj) {
-      // for debugging console.log(obj.date.getTime() === val.date.getTime());
-      // https://stackoverflow.com/questions/7244513/javascript-date-comparisons-dont-equal
-      return (obj.date.getMonth() === val.date.getMonth() && obj.transportation === val.transportation);
-    }).pop() || { date: val.date, miles: 0, transportation: val.transportation };
+  const result = sumAllMilesForMonthBasedOnTransportation(emissions);
 
-    o.miles += val.miles;
-    acc.push(o);
-    return acc;
-  }, []);
-
-  const finalresultMonths = _.sortBy((result.filter(function (itm, index1, a) {
-    return index1 === a.indexOf(itm);
-  })), 'date');
+  const finalresultMonths = _.sortBy((duplicateFilter(result)), 'date');
 
   let totalEmissionsofAllTransport;
   const totalMiles = [];
