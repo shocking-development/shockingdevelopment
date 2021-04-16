@@ -99,6 +99,7 @@ function UpdateEmissions() {
       });
   };
 
+  /* Changes the mpg state */
   const changeCar = (e, data) => {
     setTripState({
       date: tripState.date,

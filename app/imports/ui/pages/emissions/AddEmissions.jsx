@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Grid } from 'semantic-ui-react';
+import { Header, Grid, Image } from 'semantic-ui-react';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 import UpdateEmissions from '../../components/emissions/UpdateEmissions';
 import RecentlyAdded from '../../components/emissions/RecentlyAdded';
@@ -23,11 +23,17 @@ function AddEmissions() {
 
               <Grid.Column width={8}>
                 <Header inverted size='huge' textAlign={'center'}>Add Emissions</Header>
+                <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+                paddingBottom: '25px',
+                }}/>
                 <UpdateEmissions/>
               </Grid.Column>
 
               <Grid.Column width={8} style={{ paddingRight: '13.5em' }}>
                 <Header inverted size='huge' textAlign={'center'}>Recently Added</Header>
+                <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+                  paddingBottom: '25px',
+                }}/>
                 <RecentlyAdded/>
               </Grid.Column>
 
@@ -36,6 +42,9 @@ function AddEmissions() {
             <Grid.Row>
               <Grid.Column width={16}>
                 <Header inverted size='huge' textAlign={'center'}>All Emissions</Header>
+                <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+                  paddingBottom: '25px',
+                }}/>
                 <AllEmissions/>
               </Grid.Column>
             </Grid.Row>

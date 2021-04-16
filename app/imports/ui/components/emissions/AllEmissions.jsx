@@ -43,6 +43,11 @@ function AllEmissions() {
                     {emissions.map(emission => <EmissionItem key={emission._id} emission={emission}/>).slice(startIndex, endIndex)}
                 </Table.Body>
             </Table>
+            <Pagination
+                defaultActivePage={1}
+                totalPages={Math.ceil(emissions.length / 25)}
+                onPageChange={handleInputChange}
+            />
         </div>
         </div>
     );
