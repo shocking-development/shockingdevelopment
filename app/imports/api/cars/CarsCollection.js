@@ -14,6 +14,12 @@ export const carsPublications = {
 class CarsCollection extends BaseCollection {
   constructor() {
     super('Cars', new SimpleSchema({
+      carType: {
+        type: String,
+        defaultValue: 'Gas',
+        allowedValues: ['Electric', 'Gas'],
+        optional: true,
+      },
       make: String,
       model: String,
       year: Number,
@@ -23,14 +29,16 @@ class CarsCollection extends BaseCollection {
 
   /**
    * Defines a new Cars item.
+   * @param cartype of car
    * @param make the make of the car.
    * @param model the model the car.
    * @param year the year of the car.
    * @param mpg the mpg of the car.
    * @return {String} the docID of the new document.
    */
-  define({ make, model, year, mpg }) {
+  define({ carType, make, model, year, mpg }) {
     const docID = this._collection.insert({
+      carType,
       make,
       model,
       year,
@@ -42,13 +50,18 @@ class CarsCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
+   * @param cartype of car
    * @param make the make of the car.
    * @param model the model the car.
    * @param year the year of the car.
    * @param mpg the mpg of the car.
    */
-  update(docID, { make, model, year, mpg }) {
+  update(docID, { carType, make, model, year, mpg }) {
     const updateData = {};
+
+    if (carType) {
+      updateData.cartype = carType;
+    }
     if (make) {
       updateData.make = make;
     }
