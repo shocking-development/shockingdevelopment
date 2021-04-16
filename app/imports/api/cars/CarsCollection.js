@@ -36,9 +36,9 @@ class CarsCollection extends BaseCollection {
    * @param mpg the mpg of the car.
    * @return {String} the docID of the new document.
    */
-  define({ cartype, make, model, year, mpg }) {
+  define({ carType, make, model, year, mpg }) {
     const docID = this._collection.insert({
-      cartype,
+      carType,
       make,
       model,
       year,
@@ -56,11 +56,11 @@ class CarsCollection extends BaseCollection {
    * @param year the year of the car.
    * @param mpg the mpg of the car.
    */
-  update(docID, { cartype, make, model, year, mpg }) {
+  update(docID, { carType, make, model, year, mpg }) {
     const updateData = {};
 
-    if (cartype) {
-      updateData.cartype = cartype;
+    if (carType) {
+      updateData.cartype = carType;
     }
     if (make) {
       updateData.make = make;
