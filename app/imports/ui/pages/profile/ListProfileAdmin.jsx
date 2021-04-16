@@ -2,16 +2,23 @@ import React from 'react';
 import { Container, Table, Header, Loader, Image, Pagination } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import ProfileItemAdmin from '../../components/profile/ProfileItemAdmin';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
+import Search from '../../components/Search';
 
 /** Renders a table containing all of the Profiles documents. */
 class ListProfileAdmin extends React.Component {
 
+  search;
+
+  filterProfiles;
+
   /** Initializes a constructor */
   constructor(props) {
     super(props);
+    this.search = '';
     this.state = {
       activePage: 1,
     };
@@ -21,6 +28,18 @@ class ListProfileAdmin extends React.Component {
   handleInputChange = (e, data) => {
     this.setState({
       activePage: Number(data.activePage),
+    });
+  }
+
+  getSearch = (search) => {
+    const newState = {
+      major: 'search',
+    };
+    this.setState(newState);
+    this.search = search;
+    const lowerSearch = search.toLowerCase();
+    this.filterProfiles = _.filter(this.props.profiles, function (object) {
+      return object.name.toLowerCase() === lowerSearch;
     });
   }
 
@@ -62,6 +81,7 @@ class ListProfileAdmin extends React.Component {
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
+            <Search sendSearch={this.getSearch.bind(this)}/>
 
             {/** Implementation of Pagination: functionality */}
             <Pagination
