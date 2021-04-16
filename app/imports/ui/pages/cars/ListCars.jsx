@@ -2,12 +2,18 @@ import React from 'react';
 import { Container, Table, Header, Loader, Image, Pagination } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import CarItem from '../../components/cars/CarItem';
+import Search from '../../components/Search';
 import { Cars } from '../../../api/cars/CarsCollection';
 
 /** Renders a table containing all of the Car documents. Use <CarItem> to render each row. */
 class ListCars extends React.Component {
+
+  filterCar;
+
+  search;
 
   /* Link for pagination
   https://stackoverflow.com/questions/57471901/how-to-implement-pagination-for-react-by-semantic-ui-react
@@ -20,7 +26,23 @@ class ListCars extends React.Component {
       // showIndex: 0,
       // showCount: 25,
       activePage: 1,
+      car: 'All Cars',
     };
+    this.filterCar = {};
+    this.maker = 'All Cars';
+    this.search = '';
+  }
+
+  getSearch = (search) => {
+    const newState = {
+      maker: 'search',
+    };
+    this.setState(newState);
+    this.search = search;
+    const lowerSearch = search.toLowerCase();
+    this.filterCar = _.filter(this.props.Car, function (object) {
+      return object.make.toLowerCase() === lowerSearch;
+    });
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -80,6 +102,9 @@ class ListCars extends React.Component {
                 totalPages={Math.ceil(this.props.Car.length / 25)}
                 onPageChange={this.handleInputChange}
             />
+
+            <Search sendSearch={this.getSearch.bind(this)}/>
+
             <Table celled>
               <Table.Header>
                 <Table.Row>
