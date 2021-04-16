@@ -155,6 +155,13 @@
   color: #adaeb1 !important;
 }
 
+/* For select form field */
+.signupSelectInput div {
+  background: #3d598ea3 !important;
+  /*border-radius: 20px !important;*/
+  color: #adaeb1 !important;
+}
+
 /* the font styling */
 .body {
   font-family: "Roboto", sans-serif !important;
