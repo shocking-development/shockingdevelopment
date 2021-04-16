@@ -7,6 +7,7 @@ import { Trips } from '../../../api/emissions/TripsCollection';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
 import { TripsDefineMethod, TripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
+import { transportationOptions } from './TransportationOptions';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
@@ -30,45 +31,6 @@ function UpdateEmissions() {
     cDay = `0${cDay}`;
   }
   const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
-
-  /* Transportation options for the dropdown input */
-  const transportationOptions = [
-    {
-      key: 'Drove',
-      text: 'Drove',
-      value: 'Drove',
-    },
-    {
-      key: 'Telework',
-      text: 'Telework',
-      value: 'Telework',
-    },
-    {
-      key: 'Public Transportation',
-      text: 'Public Transportation',
-      value: 'Public Transportation',
-    },
-    {
-      key: 'Biking',
-      text: 'Biking',
-      value: 'Biking',
-    },
-    {
-      key: 'Walk',
-      text: 'Walk',
-      value: 'Walk',
-    },
-    {
-      key: 'Carpool',
-      text: 'Carpool',
-      value: 'Carpool',
-    },
-    {
-      key: 'Electric Vehicle',
-      text: 'Electric Vehicle',
-      value: 'Electric Vehicle',
-    },
-  ];
 
   /* DeleteTrip function allows users to delete preset trips */
   const deleteTrip = ({ _id }) => TripsRemoveMethod.call(_id);
