@@ -17,7 +17,7 @@ class CarsCollection extends BaseCollection {
       carType: {
         type: String,
         defaultValue: 'Gas',
-        allowedValues: ['Electric', 'Gas'],
+        allowedValues: ['Electric', 'Gas', 'Hybrid'],
         optional: true,
       },
       make: String,
