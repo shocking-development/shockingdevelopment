@@ -76,7 +76,7 @@ class Datapage extends React.Component {
       position: 'relative',
       left: '1.29em',
       height: '100%',
-      width: '51%',
+      width: '50%',
     };
     /* const tablestyling = {
       background: '#0a69a7',

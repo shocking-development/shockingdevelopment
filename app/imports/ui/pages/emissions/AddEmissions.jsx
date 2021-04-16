@@ -18,15 +18,15 @@ function AddEmissions() {
           paddingTop: '8em',
           paddingBottom: '8em',
         }}>
-          <Grid stackable >
+          <Grid stackable>
             <Grid.Row>
 
-              <Grid.Column width={5}>
+              <Grid.Column width={5} style={{ paddingLeft: '10vw' }}>
                 <Header inverted size='huge' textAlign={'center'}>Add Emissions</Header>
                 <UpdateEmissions/>
               </Grid.Column>
 
-              <Grid.Column width={10} style={{ }}>
+              <Grid.Column width={10} style={{}}>
                 <Header inverted size='huge' textAlign={'center'}>Recently Added</Header>
                 <RecentlyAdded/>
               </Grid.Column>

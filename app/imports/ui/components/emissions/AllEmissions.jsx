@@ -23,7 +23,7 @@ function AllEmissions() {
 
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ width: '90%' }}>
+        <div style={{ width: '79%' }}>
             <Pagination
                 defaultActivePage={1}
                 totalPages={Math.ceil(emissions.length / 25)}
