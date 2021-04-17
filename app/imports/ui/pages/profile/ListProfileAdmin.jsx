@@ -39,7 +39,7 @@ class ListProfileAdmin extends React.Component {
     this.search = search;
     const lowerSearch = search.toLowerCase();
     this.filterProfiles = _.filter(this.props.profiles, function (object) {
-      return object.name.toLowerCase() === lowerSearch;
+      return object.firstName.toLowerCase() === lowerSearch;
     });
   }
 
