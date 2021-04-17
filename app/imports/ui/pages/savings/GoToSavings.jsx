@@ -1,11 +1,14 @@
 import React from 'react';
-import { Button, Card, Image, Header, Icon } from 'semantic-ui-react';
+import { Button, Card, Image, Header,  Dropdown, Icon, Table  } from 'semantic-ui-react';
+import { AutoForm, ErrorField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import SavingsPageBarGraph from '../../components/defaultcharts/SavingsPageBarGraph';
+import CarCardItem from '../../components/cars/CarCardItem';
+import RecentlyAddedCars from '../cars/RecentlyAddedCars';
 
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
@@ -39,6 +42,11 @@ class GoToSavings extends React.Component {
       height: '100em',
     };
 
+    // In page styling for the page.
+    const menuStyle = {
+      textColor: 'yellow',
+    };
+
     // returns the GoToSaveings page.
     return (
 
@@ -57,6 +65,18 @@ class GoToSavings extends React.Component {
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
+
+            <Dropdown as='menuStyle' className='spacing-menu-item' text="Pike Car" pointing="bottom">
+              <Dropdown.Menu>
+                <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
+                               key='key8'
+                               id="calculator-metric">
+                  Metric
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
+
             <Card.Group style={cardStyle}>
               <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
                 <Card.Content>
