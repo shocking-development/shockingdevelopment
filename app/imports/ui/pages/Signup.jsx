@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, NavLink, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import { _ } from 'meteor/underscore';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 import swal from 'sweetalert';
 import { userInfoDefineMethod } from '../../api/userInfo/UserInfoCollection.methods';
@@ -21,6 +22,7 @@ class Signup extends React.Component {
       confirm: '',
       firstName: '',
       lastName: '',
+      State: '',
       error: '',
       redirectToReferer: false,
     };
@@ -33,7 +35,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit = () => {
-    const { email, password, firstName, lastName } = this.state;
+    const { email, password, firstName, lastName, State } = this.state;
     const user = email;
 
     // Password validation
@@ -48,6 +50,7 @@ class Signup extends React.Component {
             password,
             userImage: 'images/default-image.jpg', // set default user profile image
             owner: user,
+            State,
           },
           (error) => {
             if (error) {
@@ -78,6 +81,18 @@ class Signup extends React.Component {
   /** Display the signup form. Redirect to add page after successful registration and login. */
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/home' } };
+    /* Get allowed values for State to use in form select field */
+    const stateValues = ['Alaska', 'Alabama', 'Arkansas', 'Arizona', 'California', 'Colorado', 'Connecticut',
+      'District of Columbia', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Iowa', 'Idaho', 'Illinois',
+      'Indiana', 'Kansas', 'Kentucky', 'Louisiana', 'Massachusetts', 'Maryland', 'Maine', 'Michigan',
+      'Minnesota', 'Missouri', 'Mississippi', 'Montana', 'North Carolina', 'North Dakota', 'Nebraska',
+      'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
+      'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
+      'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming'];
+    const options = _.map(stateValues, function (cat) {
+      return { key: cat, value: cat, text: cat };
+    });
+
     // if correct authentication, redirect to home page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -150,6 +165,15 @@ class Signup extends React.Component {
                                 type="email"
                                 placeholder="example@email.com"
                                 onChange={this.handleChange}
+                    />
+                    <Form.Select className={'signupSelectInput'}
+                                 label="State"
+                                 id="signup-form-state"
+                                 name="State"
+                                 type="State"
+                                 placeholder={'Choose a State'}
+                                 options={options}
+                                 onChange={this.handleChange}
                     />
                     <Form.Input className={'signupInput'}
                                 label="Password"

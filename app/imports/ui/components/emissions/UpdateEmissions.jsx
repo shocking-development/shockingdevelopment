@@ -82,7 +82,8 @@ function UpdateEmissions() {
       value: trip._id,
       content: (
           <div>
-            {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red' onClick={() => deleteTrip(trip)}/>
+            {`${trip.name} (${trip.miles})`}<Icon style={{ float: 'right' }} name='remove' color='red'
+                                                  onClick={() => deleteTrip(trip)}/>
           </div>
       ),
     });
@@ -127,14 +128,14 @@ function UpdateEmissions() {
 
   /* Changes the transportation state */
   const changeTransportation = (e, data) => {
-      setTripState({
-        date: tripState.date,
-        transportation: data.value,
-        custom: tripState.custom,
-        trip: tripState.trip,
-        miles: tripState.miles,
-        mpg: null,
-      });
+    setTripState({
+      date: tripState.date,
+      transportation: data.value,
+      custom: tripState.custom,
+      trip: tripState.trip,
+      miles: tripState.miles,
+      mpg: null,
+    });
   };
 
   const changeCar = (e, data) => {
@@ -251,7 +252,10 @@ function UpdateEmissions() {
   /* Return function rendering the component */
   return (
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <Card style={{ padding: '1rem', background: '#1d7f90', boxShadow: 'none' }}>
+        <Card style={{
+          padding: '1rem', background: 'rgba(0, 73, 122, 0.5)',
+          border: '2px solid #004486', boxShadow: 'none',
+        }}>
           <Card.Content>
             <Card.Header style={{ color: 'white' }}>Date</Card.Header>
             <input type="date" value={tripState.date} onChange={changeDate}/>
@@ -259,10 +263,11 @@ function UpdateEmissions() {
             <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions}
                       onChange={changeTransportation}/>
             {tripState.transportation === 'Drove' ?
-              <div>
-                <br/>
-                <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions} onChange={changeCar} />
-              </div> : null
+                <div>
+                  <br/>
+                  <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions}
+                            onChange={changeCar}/>
+                </div> : null
             }
             <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
             <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions}

@@ -20,7 +20,7 @@
 /* the padding for the menu boxes column */
 .menu-boxes-column {
   padding-right: 0 !important;
-  padding-left: 10px !important;
+  padding-left: 8.5px !important;
 }
 
 .spacing-menu-item {
@@ -155,6 +155,13 @@
   color: #adaeb1 !important;
 }
 
+/* For select form field */
+.signupSelectInput div {
+  background: #3d598ea3 !important;
+  /*border-radius: 20px !important;*/
+  color: #adaeb1 !important;
+}
+
 /* the font styling */
 .body {
   font-family: "Roboto", sans-serif !important;
@@ -256,6 +263,7 @@
 
 .viewProfile {
   background: rgba(0, 73, 122, 0.5) !important;
+  border: 2px solid #004486 !important;
 }
 
 .profileGrid.grid > .row > .column {
@@ -295,10 +303,40 @@
 
 .infoCard {
   padding-left: 7.5em;
+  padding-top: 20px;
 }
 
 .headerdataPage {
   background: #0a69a7 !important;
   color: white !important;
 }
+
+
+
+.headerdataPage.ui.pagination.menu .active.item {
+  color: white !important;
+}
+
+.headerdataPage.ui.menu .item {
+  color: white !important;
+}
+
+.headerdataPage.ui.secondary.pointing.menu .active.item {
+  border-color: #00eaff !important;
+}
+
+
+.editButtonProfile.ui.blue.button{
+  background: #03163a !important;
+}
+
+.removeCarbutton.ui.blue.button{
+  background: #021c4a !important;
+}
+
+.tableStylingEmissionsPage {
+  background: #013160 !important;
+  color: white !important;
+}
+
 

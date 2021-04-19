@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import { Table, Button } from 'semantic-ui-react';
 import { EmissionsRemoveMethod } from '../../../api/emissions/EmissionsCollection.methods';
 
-function EmissionItem({ emission }) {
+function EmissionItemForHomePage({ emission }) {
 
     const deleteEmission = ({ _id }) => {
         swal({
@@ -29,7 +29,7 @@ function EmissionItem({ emission }) {
     };
 
     return (
-        <Table.Row className={'tableStylingEmissionsPage'}>
+        <Table.Row className={'headerdataPage'}>
             <Table.Cell>{`${emission.date.getMonth() + 1}/${emission.date.getUTCDate()}/${emission.date.getFullYear()}`}</Table.Cell>
             <Table.Cell>{emission.transportation}</Table.Cell>
             <Table.Cell>{emission.miles}</Table.Cell>
@@ -38,8 +38,8 @@ function EmissionItem({ emission }) {
     );
 }
 
-EmissionItem.propTypes = {
+EmissionItemForHomePage.propTypes = {
     emission: PropTypes.object,
 };
 
-export default EmissionItem;
+export default EmissionItemForHomePage;

@@ -1,13 +1,15 @@
 import React from 'react';
-import { Statistic, Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
+import { Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
 import LandingPagePieChart from '../defaultcharts/LandingPagePieChart';
-import { calculateCO2, calculateGal, calculateGHG } from '../../../api/trips/ghgcalculation';
+import LandingSectionStatistics from './LandingSectionStatistics';
+import { calculateCO2, calculateGal, calculateGHG } from '../../../api/ghgEquations/ghgcalculation';
 
 /** A simple static component to render some statistics for the landing page. */
 class LandingSection2 extends React.Component {
+
   /** Initialize component state with properties for input */
   constructor(props) {
     super(props);
@@ -48,7 +50,11 @@ class LandingSection2 extends React.Component {
     const trackYourGHGemissionsStyling = {
       background: 'linear-gradient(' +
           '-225deg, rgba(8,0,96,1) 0%, rgba(4,62,107,1) 37%, rgba(0,124,118,1) 100%)',
-      height: '110vh',
+      height: '90vh',
+    };
+    const ghgCalStyling = {
+      background: '#080060',
+      height: '60vh',
     };
     const fontstyling = {
       fontFamily: 'sans-serif',
@@ -59,20 +65,7 @@ class LandingSection2 extends React.Component {
     return (
         <div id="saved" style={{ background: '#001947' }}>
 
-          <Statistic.Group widths='three' style={{ padding: '5em' }}>
-            <Statistic inverted>
-              <Statistic.Value>1,550</Statistic.Value>
-              <Statistic.Label>Users</Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>$31,200</Statistic.Value>
-              <Statistic.Label>Saved</Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>22,000</Statistic.Value>
-              <Statistic.Label>Gallons Saved</Statistic.Label>
-            </Statistic>
-          </Statistic.Group>
+          <LandingSectionStatistics/>
 
           <Grid stackable columns='equal'>
             <Grid.Row id="trackEM" style={trackYourGHGemissionsStyling}>
@@ -94,7 +87,7 @@ class LandingSection2 extends React.Component {
               </div>
             </Grid.Row>
 
-            <Grid.Row id="ghgCalc" style={trackYourGHGemissionsStyling}>
+            <Grid.Row id="ghgCalc" style={ghgCalStyling}>
               <div style={{ color: 'white', margin: 'auto' }}>
                 <div style={{ color: 'white' }}>
                   <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>

@@ -8,6 +8,7 @@ import BaseCollection from '../base/BaseCollection';
 export const userInfoPublications = {
   userInfo: 'UserInfo',
   userInfoAdmin: 'UserInfoAdmin',
+  landingPageuser: 'UserInfoLanding',
 };
 
 class UserInfoCollection extends BaseCollection {
@@ -38,7 +39,7 @@ class UserInfoCollection extends BaseCollection {
   }
 
   /**
-   * Defines a new Stuff item.
+   * Defines a new UserInfo item.
    * @param firstName the first name of the person.
    * @param lastName the last name of the person.
    * @param user the user name of the person.
@@ -133,11 +134,19 @@ class UserInfoCollection extends BaseCollection {
         }
         return this.ready();
       });
+
+      /** This subscription publishes all documents regardless of user */
+      Meteor.publish(userInfoPublications.landingPageuser, function publish() {
+        if (!this.userId) {
+          return instance._collection.find();
+        }
+        return this.ready();
+      });
     }
   }
 
   /**
-   * Subscription method for stuff owned by the current user.
+   * Subscription method for UserInfo owned by the current user.
    */
   subscribeUserInfo() {
     if (Meteor.isClient) {
@@ -153,6 +162,17 @@ class UserInfoCollection extends BaseCollection {
   subscribeUserInfoAdmin() {
     if (Meteor.isClient) {
       return Meteor.subscribe(userInfoPublications.userInfoAdmin);
+    }
+    return null;
+  }
+
+  /**
+   * Subscription method for admin users.
+   * It subscribes to the entire collection.
+   */
+  subscribeUserInfoLanding() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(userInfoPublications.landingPageuser);
     }
     return null;
   }

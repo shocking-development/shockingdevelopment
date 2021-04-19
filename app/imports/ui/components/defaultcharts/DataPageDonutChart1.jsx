@@ -109,7 +109,7 @@ function DataPageDonutChart1() {
               </h1>
             </div> :
             <Header inverted as="h3" textAlign="center" style={{ marginTop: '3em', paddingLeft: '10px', marginBottom: '3em' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
+              Hmm... These charts are empty. <a style={{ color: 'rgb(7 182 254)' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>

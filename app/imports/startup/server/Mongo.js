@@ -2,8 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../api/userInfo/UserInfoCollection';
 import { Cars } from '../../api/cars/CarsCollection';
 import { GasPrices } from '../../api/gas-prices/GasPricesCollection';
-import generateUsers from '../../api/generator/userGenerator';
-import generateEmissions from '../../api/generator/emissionsGenerator';
+import generateUsers from '../../api/faker-generator/userGenerator';
+import generateEmissions from '../../api/faker-generator/emissionsGenerator';
 import { Emissions } from '../../api/emissions/EmissionsCollection';
 
 /* eslint-disable no-console */
@@ -18,7 +18,7 @@ function addProfiles(data) {
 
 /** Initialize the database with a default data document. */
 function addCarData(data) {
-  console.log(`  Adding: ${data.make} ${data.model} ${data.year} ${data.mpg} `);
+  console.log(`  Adding: ${data.carType} ${data.make} ${data.model} ${data.year} ${data.mpg} `);
   Cars.define(data);
 }
 

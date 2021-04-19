@@ -19,17 +19,16 @@ function DataPageBarGraph() {
     },
     series: [{
       name: 'VMT (Miles)',
-      // need what it would have cost using the worst mode of transport and then the mode of transport being used -> gallons
-      // co2 store this info somewhere in a diff/same collection, get all the data from this collection and add them up,
-      // go to only your page calculate your data, user, mode, worstmode of transportation
-      // need to add up data according to date
       data: UserEmissionData('DataMiles'),
 
     }, {
+      color: '#22cbe4',
       name: 'Money spent ($)',
       data: UserEmissionData('MoneySpent'),
 
     }, {
+      color: '#e61933',
+      borderColor: 'transparent',
       name: 'CO2 emissions produced (lbs)',
       data: UserEmissionData('CO2EmissionsProduced'),
 
@@ -83,7 +82,7 @@ function DataPageBarGraph() {
                 <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
               </h1>
             </div> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
+              Hmm... These charts are empty. <a style={{ color: 'rgb(7 182 254)' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>
