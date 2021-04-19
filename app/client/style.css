@@ -261,6 +261,31 @@
   color: white !important;
 }
 
+.carDropdownSelectField input {
+  color: white !important;
+  border-radius: 17px !important;
+  background: #03163a !important;
+}
+
+.carDropdownSelectField .selection.dropdown {
+  color: white !important;
+  background: #03163a !important;
+}
+
+.SelectFieldforCarDropdown .selection.dropdown {
+  color: white !important;
+  background: #004486 !important;
+}
+.SelectFieldforCarDropdown label {
+  color: white !important;
+}
+
+.SelectFieldforCarDropdown input {
+  color: white !important;
+  border-radius: 17px !important;
+  background: #004486 !important;
+}
+
 .viewProfile {
   background: #013160 !important;
   border: 2px solid #004486 !important;
@@ -439,5 +464,60 @@
 
 .growForProfile:hover {
   transform: scale(1.09);
+}
+
+.EmissionsInput.ui.fluid.dropdown{
+  background: #03163a !important;
+  color: white !important;
+}
+
+.EmissionsInput.ui.selection.active.dropdown .menu{
+  background: #03163a !important;
+  color: white !important;
+}
+.EmissionsInput.ui.dropdown .menu .selected.item{
+  background: #03163a !important;
+  color: white !important;
+}
+
+.EmissionsInput.ui.selection.visible.dropdown > .text:not(.default){
+  background: #03163a !important;
+  color: white !important;
+}
+.EmissionsInput.ui.dropdown .menu > .item{
+  color: white !important;
+}
+
+.EmissionsInput button, input{
+  background: #03163a !important;
+  border: none;
+  color: white;
+
+}
+
+input[type="date"] {
+  position: relative;
+  padding: 10px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: transparent;
+  background: none;
+  z-index: 1;
+}
+
+input[type="date"]:before {
+  color: transparent;
+  background: none;
+  display: block;
+  font-family: 'FontAwesome';
+  content: '\f073';
+  /* This is the calendar icon in FontAwesome */
+  width: 15px;
+  height: 20px;
+  position: absolute;
+  top: 12px;
+  right: 6px;
+  color: #999;
 }
 

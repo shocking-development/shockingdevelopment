@@ -27,7 +27,7 @@ class ProfileCard extends React.Component {
     console.log(this.props);
     const pageStyle = {
       paddingLeft: '17em',
-      paddingTop: '5em',
+      paddingTop: '2em',
       minHeight: '140vh',
 
     };
@@ -72,7 +72,7 @@ class ProfileCard extends React.Component {
                                height: '370px',
                                width: '370px',
                                borderRadius: '100rem',
-                               left: '58px',
+                               left: '42px',
                                top: '78px',
                              }}>
                       <div className={'infoCard'}>

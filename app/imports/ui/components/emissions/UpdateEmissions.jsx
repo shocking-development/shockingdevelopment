@@ -257,29 +257,34 @@ function UpdateEmissions() {
           border: '2px solid #004486', boxShadow: 'none',
         }}>
           <Card.Content>
-            <Card.Header style={{ color: 'white' }}>Date</Card.Header>
-            <input type="date" value={tripState.date} onChange={changeDate}/>
-            <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
-            <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions}
+            <Card.Header style={{ color: 'white', fontFamily: 'Roboto' }}>Date</Card.Header>
+            <input type="date" value={tripState.date} className={'EmissionsInput'} onChange={changeDate}/>
+            <Card.Header style={{ color: 'white', paddingTop: '0.5em', fontFamily: 'Roboto' }}>Transportation</Card.Header>
+            <Dropdown placeholder='Select transportation' fluid selection className={'EmissionsInput'}
+                      options={transportationOptions}
                       onChange={changeTransportation}/>
             {tripState.transportation === 'Drove' ?
                 <div>
                   <br/>
-                  <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions}
+                  <Dropdown name='Car Used' placeholder='Select car' className={'EmissionsInput'} fluid selection
+                            options={carOptions}
                             onChange={changeCar}/>
                 </div> : null
             }
-            <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
-            <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions}
+            <Card.Header style={{ color: 'white', paddingTop: '0.5em', fontFamily: 'Roboto' }}>Trip</Card.Header>
+            <Dropdown name='Trip Search' placeholder='Select trip' className={'EmissionsInput'} fluid selection
+                      options={tripOptions}
                       onChange={changeTrip}/>
             {tripState.custom ?
                 <div>
                   <br/>
                   <Popup content='Insert a name for this trip'
-                         trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name'
+                         trigger={<Input style={{ width: '60%', float: 'left' }} className={'EmissionsInput'}
+                                         placeholder='Trip Name'
                                          onChange={changeTripName}/>}/>
                   <Popup content='Insert Roundtrip Miles' trigger={
-                    <Input style={{ width: '30%', float: 'right' }} type="number" min="0" max="99" placeholder='Miles'
+                    <Input style={{ width: '30%', float: 'right' }} className={'EmissionsInput'} type="number" min="0"
+                           max="99" placeholder='Miles'
                            onChange={changeTripMiles}/>
                   }/>
                   <br/>
