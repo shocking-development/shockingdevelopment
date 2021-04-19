@@ -26,9 +26,10 @@ class ProfileCard extends React.Component {
   renderPage() {
     console.log(this.props);
     const pageStyle = {
-      paddingLeft: '10em',
-      paddingTop: '6em',
-      minHeight: '120vh',
+      paddingLeft: '17em',
+      paddingTop: '5em',
+      minHeight: '140vh',
+
     };
 
     return (
@@ -45,58 +46,59 @@ class ProfileCard extends React.Component {
               <Grid.Row>
                 <Grid.Column width={5}>
 
-                  <div className={'profilepicCard'}>
+                  <div className={'jello-horizontal2'}>
                     <Image src={this.props.profiles.userImage}
                         // eslint-disable-next-line
-                           onError={(i) => i.target.src = '/images/default_image.png'}
-                           style={{ borderRadius: '0.28571429rem', width: '305px', height: '305px' }}
+                           style={{ borderRadius: '50%', width: '280px', height: '280px', top: '200px', left: '50px' }}
                     />
                   </div>
 
                 </Grid.Column>
 
                 <Grid.Column width={11}>
-                  <Segment className={'viewProfile'} style={{ height: '305px' }}>
-                    <div className={'infoCard'}>
-                      <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
-                        {this.props.profiles.firstName} {this.props.profiles.lastName}
-                        <Button
-                            as={NavLink}
-                            id='edit-profile'
-                            exact to={`/edit/${this.props.profiles._id}`}
-                            animated='vertical'
-                            size='tiny'
-                            color='blue'
-                            style={{ marginLeft: '20px', width: '9%' }}
-                            circular
-                            className={'editButtonProfile'}
-                        >
-                          <Button.Content hidden>Edit</Button.Content>
-                          <Button.Content visible>
-                            <Icon name='pencil'/>
-                          </Button.Content>
-                        </Button>
-                      </Header>
+                  <div className={'growForProfile'} style={{ borderRadius: '100rem', height: '450px', width: '450px' }}>
+                    <Segment className={'viewProfile jello-horizontal2'}
+                             style={{ height: '370px', width: '370px', borderRadius: '100rem', left: '58px', top: '78px' }}>
+                      <div className={'infoCard'}>
+                        <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
+                          {this.props.profiles.firstName} {this.props.profiles.lastName}
+                          <Button
+                              as={NavLink}
+                              id='edit-profile'
+                              exact to={`/edit/${this.props.profiles._id}`}
+                              animated='vertical'
+                              size='tiny'
+                              color='blue'
+                              style={{ marginLeft: '20px', width: '16%' }}
+                              circular
+                              className={'editButtonProfile'}
+                          >
+                            <Button.Content hidden>Edit</Button.Content>
+                            <Button.Content visible>
+                              <Icon name='pencil'/>
+                            </Button.Content>
+                          </Button>
+                        </Header>
 
-                      <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
-                        <p>
-                          Username: {this.props.profiles.owner}
-                        </p>
-                        <p>
-                          State: {this.props.profiles.State}
-                        </p>
-                        <p>
-                          Unit Preference: {this.props.profiles.unitSystem}
-                        </p>
-                        <p>
-                          Password:
-                        </p>
+                        <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                          <p>
+                            Username: {this.props.profiles.owner}
+                          </p>
+                          <p>
+                            State: {this.props.profiles.State}
+                          </p>
+                          <p>
+                            Unit Preference: {this.props.profiles.unitSystem}
+                          </p>
+                          <p>
+                            Password:
+                          </p>
                           <Button
                               as={NavLink}
                               exact to={`/change/${this.props.profiles._id}`}
                               animated='vertical'
                               size='medium'
-                              style={{ position: 'absolute', width: '23%', bottom: '47px', right: '22em' }}
+                              style={{ position: 'absolute', width: '28%', bottom: '4.8em', left: '12.5em' }}
                               color='blue'
                               id='edit-password'
                               className={'editButtonProfile'}
@@ -107,18 +109,28 @@ class ProfileCard extends React.Component {
                             </Button.Content>
                           </Button>
 
-                      </Header>
-                    </div>
-                  </Segment>
+                        </Header>
+                      </div>
+                    </Segment>
+                  </div>
                 </Grid.Column>
 
               </Grid.Row>
 
               <Grid.Row>
                 <Grid.Column width={16}>
-                  <Segment className={'viewProfile'}>
-                    <RecentlyAddedCars/>
-                  </Segment>
+                  <div className={'growForProfile'} style={{ borderRadius: '100rem', height: '450px', width: '450px' }}>
+                    <Segment className={'viewProfile jello-horizontal2'}
+                             style={{
+                               height: '600px',
+                               width: '600px',
+                               borderRadius: '100rem',
+                               left: '97px',
+                               bottom: '7px',
+                             }}>
+                      <RecentlyAddedCars/>
+                    </Segment>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
 
