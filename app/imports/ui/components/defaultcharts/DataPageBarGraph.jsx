@@ -22,13 +22,10 @@ function DataPageBarGraph() {
       data: UserEmissionData('DataMiles'),
 
     }, {
-      color: '#22cbe4',
       name: 'Money spent ($)',
       data: UserEmissionData('MoneySpent'),
 
     }, {
-      color: '#e61933',
-      borderColor: 'transparent',
       name: 'CO2 emissions produced (lbs)',
       data: UserEmissionData('CO2EmissionsProduced'),
 

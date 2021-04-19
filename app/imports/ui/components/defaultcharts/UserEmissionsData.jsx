@@ -395,16 +395,16 @@ export function UserEmissionData(index) {
 
   if (index === 'totalEmissionsReduced') {
     if (typeof emissionReduced !== 'undefined') {
-      return emissionReduced.toFixed(2);
+      return emissionReduced.toFixed(1);
     }
-    return emissionReduced.toFixed(2);
+    return emissionReduced.toFixed(1);
   }
 
   if (index === 'totalSavings') {
     if (typeof totalSavings !== 'undefined') {
-      return totalSavings.toFixed(2);
+      return totalSavings.toFixed(1);
     }
-    return totalSavings.toFixed(2);
+    return totalSavings.toFixed(1);
   }
 
   if (index === 'User') {
