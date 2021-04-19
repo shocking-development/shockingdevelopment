@@ -98,7 +98,7 @@ class ProfileCard extends React.Component {
                               exact to={`/change/${this.props.profiles._id}`}
                               animated='vertical'
                               size='medium'
-                              style={{ position: 'absolute', width: '28%', top: '18.8em', left: '12.5em' }}
+                              style={{ position: 'absolute', width: '28%', top: '18.8em', left: '11.5em' }}
                               color='blue'
                               id='edit-password'
                               className={'editButtonProfile'}

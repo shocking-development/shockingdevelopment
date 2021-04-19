@@ -170,7 +170,7 @@ class CarsDropdown extends React.Component {
 
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container>
+          <Container style={{ padding: '3em' }}>
             <Header as="h2" textAlign="center" inverted>Cars</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
