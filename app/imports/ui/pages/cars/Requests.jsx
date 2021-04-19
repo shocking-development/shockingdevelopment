@@ -19,7 +19,7 @@ class Requests extends React.Component {
     const { recommendationType, recommendation } = data;
     const owner = Meteor.user().username;
     const username = owner;
-    newRequest.collection.insert({ username, recommendationType, recommendation},
+    newRequest.collection.insert({ username, recommendationType, recommendation },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');

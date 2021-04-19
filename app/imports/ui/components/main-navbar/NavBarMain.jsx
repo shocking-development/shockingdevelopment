@@ -104,6 +104,11 @@ class NavBarMain extends React.Component {
                   Cars
                 </Menu.Item>
 
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/request"
+                           key='key13'>
+                  Make a Request
+                </Menu.Item>
+
                 {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
                     <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/admin"
                                key='admin'>Admin
