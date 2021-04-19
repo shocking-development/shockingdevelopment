@@ -49,11 +49,14 @@ export function UserEmissionData(index) {
 
   let carmpg1 = emissions.map(car => car.mpg);
 
-  if (carmpg1.some(function (i) { return i === null; })) {
+  if (carmpg1.some(function (i) {
+    return i === null;
+  })) {
     carmpg1 = 24.9;
-  } else if (emissions.length >= 1) {
-    carmpg1 = emissions[0].mpg;
-  }
+  } else
+    if (emissions.length >= 1) {
+      carmpg1 = emissions[0].mpg;
+    }
 
   // const chosenMPG = _.uniq(carmpg, 'mpg');
   const stateGasPrice = 3.14;
@@ -63,11 +66,14 @@ export function UserEmissionData(index) {
     if (finalresultMonths[i].transportation === 'Telework') {
       let carmpg = emissions.map(car => car.mpg);
 
-      if (carmpg.some(function (index1) { return index1 === null; })) {
+      if (carmpg.some(function (index1) {
+        return index1 === null;
+      })) {
         carmpg = 24.9;
-      } else if (emissions.length > 1) {
-        carmpg = emissions[0].mpg;
-      }
+      } else
+        if (emissions.length > 1) {
+          carmpg = emissions[0].mpg;
+        }
       const telework = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
       const teleworkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
       const teleworkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
@@ -86,11 +92,14 @@ export function UserEmissionData(index) {
       if (finalresultMonths[i].transportation === 'Drove') {
         let carmpg = emissions.map(car => car.mpg);
 
-        if (carmpg.some(function (index2) { return index2 === null; })) {
+        if (carmpg.some(function (index2) {
+          return index2 === null;
+        })) {
           carmpg = 24.9;
-        } else if (emissions.length > 1) {
-          carmpg = emissions[0].mpg;
-        }
+        } else
+          if (emissions.length > 1) {
+            carmpg = emissions[0].mpg;
+          }
         const drove = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
         const droveEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
         const droveCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
@@ -121,11 +130,14 @@ export function UserEmissionData(index) {
         if (finalresultMonths[i].transportation === 'Public Transportation') {
           let carmpg = emissions.map(car => car.mpg);
 
-          if (carmpg.some(function (index3) { return index3 === null; })) {
+          if (carmpg.some(function (index3) {
+            return index3 === null;
+          })) {
             carmpg = 24.9;
-          } else if (emissions.length > 1) {
-            carmpg = emissions[0].mpg;
-          }
+          } else
+            if (emissions.length > 1) {
+              carmpg = emissions[0].mpg;
+            }
 
           const publicTransportation = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
           const publicTransportationEmissions = (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg)))) -
@@ -156,11 +168,14 @@ export function UserEmissionData(index) {
           if (finalresultMonths[i].transportation === 'Biking') {
             let carmpg = emissions.map(car => car.mpg);
 
-            if (carmpg.some(function (index4) { return index4 === null; })) {
+            if (carmpg.some(function (index4) {
+              return index4 === null;
+            })) {
               carmpg = 24.9;
-            } else if (emissions.length > 1) {
-              carmpg = emissions[0].mpg;
-            }
+            } else
+              if (emissions.length > 1) {
+                carmpg = emissions[0].mpg;
+              }
 
             const Biking = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
             const BikingEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
@@ -190,11 +205,14 @@ export function UserEmissionData(index) {
             if (finalresultMonths[i].transportation === 'Walk') {
               let carmpg = emissions.map(car => car.mpg);
 
-              if (carmpg.some(function (index5) { return index5 === null; })) {
+              if (carmpg.some(function (index5) {
+                return index5 === null;
+              })) {
                 carmpg = 24.9;
-              } else if (emissions.length > 1) {
-                carmpg = emissions[0].mpg;
-              }
+              } else
+                if (emissions.length > 1) {
+                  carmpg = emissions[0].mpg;
+                }
 
               const walk = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
               const walkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
@@ -224,11 +242,14 @@ export function UserEmissionData(index) {
               if (finalresultMonths[i].transportation === 'Electric Vehicle') {
                 let carmpg = emissions.map(car => car.mpg);
 
-                if (carmpg.some(function (index6) { return index6 === null; })) {
+                if (carmpg.some(function (index6) {
+                  return index6 === null;
+                })) {
                   carmpg = 24.9;
-                } else if (emissions.length > 1) {
-                  carmpg = emissions[0].mpg;
-                }
+                } else
+                  if (emissions.length > 1) {
+                    carmpg = emissions[0].mpg;
+                  }
 
                 const Ev = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
                 const EvEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
@@ -275,33 +296,6 @@ export function UserEmissionData(index) {
 
   const persontransportation = emissions.map(recentEmissions => recentEmissions.transportation);
 
-  const curr = new Date();
-  const week = [];
-
-  for (let i = 1; i <= 7; i++) {
-    const first = curr.getDate() - curr.getDay() + i;
-    const day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
-    week.push(day);
-  }
-
-  const firstDayofWeek = week[0];
-  const lastDayofWeek = week[week.length - 1];
-  const selectedWeek = emissions.filter(d => {
-    const time = new Date(d.date).toISOString().slice(0, 10);
-    return time >= firstDayofWeek && time <= lastDayofWeek;
-  });
-
-  /* *
-  * saves the ghg produced by day into an array
-  * */
-  const ghgEmissionsbyDays = selectedWeek.map(item => {
-    const container = { day: '', ghgProduced: '' };
-    container.day = item.date.getUTCDay();
-    container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg1))));
-
-    return container;
-  });
-
   /* Gets the current date and puts it in the correct format for the date input */
   const currentDate = new Date();
   let cMonth = currentDate.getMonth() + 1;
@@ -313,6 +307,50 @@ export function UserEmissionData(index) {
     cDay = `0${cDay}`;
   }
   const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
+
+  const dt = new Date(); // current date of week
+  const currentWeekDay = dt.getDay();
+  const lessDays = currentWeekDay === 0 ? 6 : currentWeekDay - 1;
+  const wkStart = new Date(new Date(dt).setDate(dt.getDate() - lessDays));
+  let wkStartMonth = wkStart.getMonth() + 1;
+  if (wkStartMonth.toString().length === 1) {
+    wkStartMonth = `0${wkStartMonth}`;
+  }
+  let wkStartDay = wkStart.getDate();
+  if (wkStartDay.toString().length === 1) {
+    wkStartDay = `0${wkStartDay}`;
+  }
+
+  const wkStartDate = `${wkStart.getFullYear().toString()}-${wkStartMonth.toString()}-${wkStartDay.toString()}`;
+
+  const wkEnd = new Date(new Date(wkStart).setDate(wkStart.getDate() + 6));
+  let wkeEndMonth = wkEnd.getMonth() + 1;
+  if (wkeEndMonth.toString().length === 1) {
+    wkeEndMonth = `0${wkeEndMonth}`;
+  }
+  let wkEndDay = wkEnd.getDate();
+  if (wkEndDay.toString().length === 1) {
+    wkEndDay = `0${wkEndDay}`;
+  }
+
+  const wkEndDate = `${wkEnd.getFullYear().toString()}-${wkeEndMonth.toString()}-${wkEndDay.toString()}`;
+
+  const selectedWeek = emissions.filter(d => {
+    const time = new Date(d.date).toISOString().slice(0, 10);
+    return time >= wkStartDate && time <= wkEndDate;
+  });
+
+  /* *
+  * saves the ghg produced by day into an array
+  * */
+  const ghgEmissionsbyDays = selectedWeek.map(item => {
+    const container = { day: '', ghgProduced: '' };
+    container.day = item.date.getDay();
+    container.ghgProduced = Number(calculatePounds(calculateCO2(calculateGalUsed(item.miles, carmpg1))));
+
+    return container;
+  });
+
   const currentDay = emissions.filter(d => {
     const time = new Date(d.date).toISOString().slice(0, 10);
     return time === fullDate;
