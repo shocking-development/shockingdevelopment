@@ -5,6 +5,7 @@ import { SimpleSchema2Bridge } from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, SubmitField, TextField, ErrorsField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
+import { newRequest } from '../../../api/cars/UserRequest';
 
 const formSchema = new SimpleSchema({
   recommendationType: String,
@@ -18,7 +19,7 @@ class Requests extends React.Component {
     const { recommendationType, recommendation } = data;
     const owner = Meteor.user().username;
     const username = owner;
-    User.collection.insert({ username, recommendationType, recommendation},
+    newRequest.collection.insert({ username, recommendationType, recommendation},
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
