@@ -334,6 +334,10 @@
   background: #03163a !important;
 }
 
+.editButtonProfilePencil.ui.blue.button{
+  background: #014485 !important;
+}
+
 .removeCarbutton.ui.blue.button{
   background: #021c4a !important;
 }

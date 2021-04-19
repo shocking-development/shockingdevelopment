@@ -50,34 +50,34 @@ class ProfileCard extends React.Component {
                     <Image src={this.props.profiles.userImage}
                         // eslint-disable-next-line
                            style={{ borderRadius: '50%', width: '280px', height: '280px', top: '200px', left: '50px' }}
-                    />
-                  </div>
+                    /></div>
+                  <div className={'jello-horizontal2'}>
+                    <Button
+                        as={NavLink}
+                        id='edit-profile'
+                        exact to={`/edit/${this.props.profiles._id}`}
+                        color='blue'
+                        style={{ position: 'absolute', left: '4.5em', bottom: '8px' }}
+                        circular
+                        className={'editButtonProfilePencil'}
+                        icon={'pencil'}
+                    /></div>
 
                 </Grid.Column>
 
-                <Grid.Column width={11}>
-                  <div className={'growForProfile'} style={{ borderRadius: '100rem', height: '450px', width: '450px' }}>
+                <Grid.Column >
+                  <div className={'growForProfile'} style={{ borderRadius: '100rem' }}>
                     <Segment className={'viewProfile jello-horizontal2'}
-                             style={{ height: '370px', width: '370px', borderRadius: '100rem', left: '58px', top: '78px' }}>
+                             style={{
+                               height: '370px',
+                               width: '370px',
+                               borderRadius: '100rem',
+                               left: '58px',
+                               top: '78px',
+                             }}>
                       <div className={'infoCard'}>
                         <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
                           {this.props.profiles.firstName} {this.props.profiles.lastName}
-                          <Button
-                              as={NavLink}
-                              id='edit-profile'
-                              exact to={`/edit/${this.props.profiles._id}`}
-                              animated='vertical'
-                              size='tiny'
-                              color='blue'
-                              style={{ marginLeft: '20px', width: '16%' }}
-                              circular
-                              className={'editButtonProfile'}
-                          >
-                            <Button.Content hidden>Edit</Button.Content>
-                            <Button.Content visible>
-                              <Icon name='pencil'/>
-                            </Button.Content>
-                          </Button>
                         </Header>
 
                         <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
@@ -98,7 +98,7 @@ class ProfileCard extends React.Component {
                               exact to={`/change/${this.props.profiles._id}`}
                               animated='vertical'
                               size='medium'
-                              style={{ position: 'absolute', width: '28%', bottom: '4.8em', left: '12.5em' }}
+                              style={{ position: 'absolute', width: '28%', top: '18.8em', left: '12.5em' }}
                               color='blue'
                               id='edit-password'
                               className={'editButtonProfile'}
@@ -125,8 +125,8 @@ class ProfileCard extends React.Component {
                                height: '600px',
                                width: '600px',
                                borderRadius: '100rem',
-                               left: '97px',
-                               bottom: '7px',
+                               left: '82px',
+                               top: '5em',
                              }}>
                       <RecentlyAddedCars/>
                     </Segment>
