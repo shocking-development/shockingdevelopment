@@ -7,11 +7,14 @@ import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import SavingsPageBarGraph from '../../components/defaultcharts/SavingsPageBarGraph';
-import CarCardItem from '../../components/cars/CarCardItem';
-import RecentlyAddedCars from '../cars/RecentlyAddedCars';
+
 
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
+
+
+
+
 
   render() {
 
@@ -42,11 +45,6 @@ class GoToSavings extends React.Component {
       height: '100em',
     };
 
-    // In page styling for the page.
-    const menuStyle = {
-      textColor: 'yellow',
-    };
-
     // returns the GoToSaveings page.
     return (
 
@@ -66,16 +64,14 @@ class GoToSavings extends React.Component {
               paddingBottom: '50px',
             }}/>
 
-            <Dropdown as='menuStyle' className='spacing-menu-item' text="Pike Car" pointing="bottom">
+            <Dropdown className='spacing-menu-item' text="Pike curring transportation" pointing="bottom">
               <Dropdown.Menu>
-                <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
-                               key='key8'
-                               id="calculator-metric">
-                  Metric
-                </Dropdown.Item>
+                <Dropdown.Item>Your Car</Dropdown.Item>
+                <Dropdown.Item>Some One else's Car</Dropdown.Item>
+                <Dropdown.Item>Bus</Dropdown.Item>
+                <Dropdown.Item>Bike</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-
 
             <Card.Group style={cardStyle}>
               <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
