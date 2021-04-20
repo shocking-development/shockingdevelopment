@@ -10,7 +10,7 @@ function TotalEmissionsReducedForMore() {
 
   const options = {
     title: {
-      text: 'Your Cumulative Savings',
+      text: 'Your Emissions Reduced',
       style: {
         color: 'white',
         fontWeight: '300',

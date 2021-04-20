@@ -53,7 +53,7 @@ function ViewMoreSavingsForHome() {
                 We&apos;ve found the following savings from your trips.
               </p>
               <p>
-                You have saved ${totalSavings}.
+                You have saved ${totalSavings}0 .
               </p>
 
             </Modal.Description>
