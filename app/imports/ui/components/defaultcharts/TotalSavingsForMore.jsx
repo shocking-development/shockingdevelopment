@@ -6,11 +6,11 @@ import { UserEmissionData } from './UserEmissionsData';
 
 /** A simple static component to render some boxes for the landing page. */
 
-function TotalEmissionsProducedForMore() {
+function TotalSavingsForMore() {
 
   const options = {
     title: {
-      text: 'Your Cumulative Emissions Produced',
+      text: 'Your Cumulative Savings',
       style: {
         color: 'white',
         fontWeight: '300',
@@ -18,8 +18,11 @@ function TotalEmissionsProducedForMore() {
       },
     },
     series: [{
-      name: 'CO2 emissions produced (lbs)',
-      data: UserEmissionData('CO2EmissionsProduced'),
+      name: 'Savings ($)',
+      data: UserEmissionData('savingsCumulative'),
+    }, {
+      name: 'Money Lost ($)',
+      data: UserEmissionData('MoneySpent'),
     }],
     chart: {
       type: 'column',
@@ -75,4 +78,4 @@ function TotalEmissionsProducedForMore() {
 
 }
 
-export default TotalEmissionsProducedForMore;
+export default TotalSavingsForMore;

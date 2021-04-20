@@ -6,6 +6,7 @@ import Datapage from './Datapage';
 import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsData';
 import { countLengthOfNumber } from '../../../api/emissionsEquations/EmissionsCalculations';
 import ViewMoreEmissionsForHome from './ViewMoreEmissionsForHome';
+import ViewMoreSavingsForHome from './ViewMoreSavingsForHome';
 
 /* A simple static component to render the home page when users are logged in. */
 function Home() {
@@ -70,7 +71,7 @@ function Home() {
 
                     {numberOfDigitsInTotalSavings > 3 ?
                         <div>
-                          <ViewMoreEmissionsForHome/>
+                          <ViewMoreSavingsForHome/>
                         </div> : <Segment className={'grow'} circular style={square}> <Statistic inverted>
                           <Statistic.Value>${totalSavings}</Statistic.Value>
                           <Statistic.Label>saved</Statistic.Label>

@@ -10,7 +10,7 @@ import {
 } from '../../../api/ghgEquations/ghgcalculation';
 import {
   duplicateFilter, sumAllEmissionsByMonth,
-  sumAllMilesForMonthBasedOnTransportation, totalMilesbyMonth, totalMoneySpentByMonth,
+  sumAllMilesForMonthBasedOnTransportation, totalMilesbyMonth, totalMoneySpentByMonth, totalSavingsByMonth,
 } from '../../../api/emissionsEquations/EmissionsCalculations';
 
 // A export function to give data to other pages.
@@ -43,6 +43,7 @@ export function UserEmissionData(index) {
   const totalMiles = [];
   const Co2Produced = [];
   const moneyspent = [];
+  const totalSavingsArray = [];
   let gallonsOfGasSaved = 0;
   let emissionReduced = 0;
   let totalSavings = 0;
@@ -77,12 +78,22 @@ export function UserEmissionData(index) {
       const telework = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
       const teleworkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
       const teleworkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+      let moneySavedtelework = 0;
+
       Co2Produced.push({
         emissions: 0,
         date: finalresultMonths[i].date,
       });
       totalMiles.push({
         miles: finalresultMonths[i].miles,
+        date: finalresultMonths[i].date,
+      });
+      moneyspent.push({
+        spent: 0,
+        date: finalresultMonths[i].date,
+      });
+      totalSavingsArray.push({
+        savings: moneySavedtelework += teleworkCost,
         date: finalresultMonths[i].date,
       });
       gallonsOfGasSaved += telework;
@@ -103,6 +114,7 @@ export function UserEmissionData(index) {
         const drove = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
         const droveEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
         const droveCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+        let moneySavedDrove = 0;
 
         Co2Produced.push({
           emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))))),
@@ -116,7 +128,10 @@ export function UserEmissionData(index) {
           miles: finalresultMonths[i].miles,
           date: finalresultMonths[i].date,
         });
-
+        totalSavingsArray.push({
+          savings: moneySavedDrove -= droveCost,
+          date: finalresultMonths[i].date,
+        });
         moneyspent.push({
           spent: Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice)),
           date: finalresultMonths[i].date,
@@ -143,6 +158,7 @@ export function UserEmissionData(index) {
           const publicTransportationEmissions = (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg)))) -
               Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140)))));
           const publicTransportationCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice)) - 2.60;
+          let PTsaved = 0;
 
           Co2Produced.push({
             emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, 140))))),
@@ -158,6 +174,10 @@ export function UserEmissionData(index) {
           });
           moneyspent.push({
             spent: 2.60,
+            date: finalresultMonths[i].date,
+          });
+          totalSavingsArray.push({
+            savings: PTsaved += publicTransportationCost,
             date: finalresultMonths[i].date,
           });
           gallonsOfGasSaved += publicTransportation;
@@ -180,6 +200,7 @@ export function UserEmissionData(index) {
             const Biking = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
             const BikingEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
             const BikingCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+            let BikingSaved = 0;
 
             Co2Produced.push({
               emissions: 0,
@@ -195,6 +216,10 @@ export function UserEmissionData(index) {
             });
             moneyspent.push({
               spent: 0,
+              date: finalresultMonths[i].date,
+            });
+            totalSavingsArray.push({
+              savings: BikingSaved += BikingCost,
               date: finalresultMonths[i].date,
             });
             gallonsOfGasSaved += Biking;
@@ -217,6 +242,7 @@ export function UserEmissionData(index) {
               const walk = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
               const walkEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
               const walkCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+              let WalkingSaved = 0;
 
               Co2Produced.push({
                 emissions: 0,
@@ -232,6 +258,10 @@ export function UserEmissionData(index) {
               });
               moneyspent.push({
                 spent: 0,
+                date: finalresultMonths[i].date,
+              });
+              totalSavingsArray.push({
+                savings: WalkingSaved += walkCost,
                 date: finalresultMonths[i].date,
               });
               gallonsOfGasSaved += walk;
@@ -254,6 +284,7 @@ export function UserEmissionData(index) {
                 const Ev = Number(calculateGalUsed(finalresultMonths[i].miles, carmpg));
                 const EvEmissions = Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))));
                 const EvCost = Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice));
+                let EVSavings = 0;
 
                 Co2Produced.push({
                   emissions: (Number(calculatePounds(calculateCO2(calculateGalUsed(finalresultMonths[i].miles, carmpg))))),
@@ -271,6 +302,10 @@ export function UserEmissionData(index) {
                   spent: Number(fuelCost(calculateGalUsed(finalresultMonths[i].miles, carmpg), stateGasPrice)),
                   date: finalresultMonths[i].date,
                 });
+                totalSavingsArray.push({
+                  savings: EVSavings += EvCost,
+                  date: finalresultMonths[i].date,
+                });
                 gallonsOfGasSaved += Ev;
                 emissionReduced += EvEmissions;
                 totalSavings += EvCost;
@@ -283,6 +318,10 @@ export function UserEmissionData(index) {
   const finalresultMilesTraveled = _.sortBy((duplicateFilter(totalMilesbyMonth(totalMiles))), 'date');
 
   const finalresultMoneySpent = _.sortBy((duplicateFilter(totalMoneySpentByMonth(moneyspent))), 'date');
+
+  const finalresultSavings = _.sortBy((duplicateFilter(totalSavingsByMonth(totalSavingsArray))), 'date');
+
+  const savingsperMonthArray = finalresultSavings.map(recentEmissions => Number((recentEmissions.savings).toFixed(2)));
 
   const formatter = new Intl.DateTimeFormat('en', { month: 'short' });
 
@@ -362,6 +401,10 @@ export function UserEmissionData(index) {
 
   if (index === 'CO2EmissionsProduced') {
     return CO2EmisionsbyMonths;
+  }
+
+  if (index === 'savingsCumulative') {
+    return savingsperMonthArray;
   }
 
   if (index === 'MoneySpent') {
