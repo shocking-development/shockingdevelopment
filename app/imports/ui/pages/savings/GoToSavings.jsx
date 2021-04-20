@@ -7,17 +7,18 @@ import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import SavingsPageBarGraph from '../../components/defaultcharts/SavingsPageBarGraph';
+import { Grid, } from 'semantic-ui-react';
+import { userInfoRemoveItMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
+import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
+import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
 
 
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
 
-
-
-
-
   render() {
-
+    //console.log(UserInfosCars.publish());
+    //console.log(userInfoCarDefineMethod);
     // In page styling for the graphs.
     const dataPageBarGraphstyling = {
       background: 'transparent',
@@ -45,6 +46,13 @@ class GoToSavings extends React.Component {
       height: '100em',
     };
 
+    const subscription = UserInfosCars.subscribeUserInfoCars();
+    console.log(UserInfosCars.find().fetch());
+    let carList = UserInfosCars.find().fetch();
+    let i = 0;
+    //console.log(cars);
+    //let currentBase = [0, 0, 0];
+
     // returns the GoToSaveings page.
     return (
 
@@ -64,9 +72,16 @@ class GoToSavings extends React.Component {
               paddingBottom: '50px',
             }}/>
 
-            <Dropdown className='spacing-menu-item' text="Pike curring transportation" pointing="bottom">
+            <Dropdown className='spacing-menu-item' text="Pike curring transportation" pointing="top">
               <Dropdown.Menu>
-                <Dropdown.Item>Your Car</Dropdown.Item>
+                <Dropdown className='spacing-menu-item' text="Pike curring transportation" pointing="top">
+                  <Dropdown.Menu>
+                    <Dropdown.Item>Your Car</Dropdown.Item>
+                    <Dropdown.Item>Some One else's Car</Dropdown.Item>
+                    <Dropdown.Item>Bus</Dropdown.Item>
+                    <Dropdown.Item>Bike</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
                 <Dropdown.Item>Some One else's Car</Dropdown.Item>
                 <Dropdown.Item>Bus</Dropdown.Item>
                 <Dropdown.Item>Bike</Dropdown.Item>
@@ -200,6 +215,8 @@ class GoToSavings extends React.Component {
 // Declare the types of all properties.
 GoToSavings.propTypes = {
   currentUser: PropTypes.string,
+  cars: PropTypes.array,
+  car: PropTypes.object.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
