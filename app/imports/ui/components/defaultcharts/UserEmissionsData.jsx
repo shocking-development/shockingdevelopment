@@ -388,9 +388,9 @@ export function UserEmissionData(index) {
   }
   if (index === 'totalGasSaved') {
     if (typeof gallonsOfGasSaved !== 'undefined') {
-      return gallonsOfGasSaved.toFixed(2);
+      return gallonsOfGasSaved.toFixed(1);
     }
-    return gallonsOfGasSaved.toFixed(2);
+    return gallonsOfGasSaved.toFixed(1);
   }
 
   if (index === 'totalEmissionsReduced') {

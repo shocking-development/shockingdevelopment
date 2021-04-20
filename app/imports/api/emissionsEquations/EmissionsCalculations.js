@@ -207,7 +207,8 @@ export function duplicateFilter(ObjArray) {
 * FUNCTION: countLengthOfNumber
 * This function counts the length of a number e.g. the number of digits.
 */
-export function countLengthOfNumber(n) {
-  const mathLength = Math.ceil(Math.log(n + 1) / Math.LN10);
-  return mathLength;
+export function countLengthOfNumber(x) {
+
+  return Math.max(Math.floor(Math.log10(Math.abs(x))), 0) + 1;
+
 }
