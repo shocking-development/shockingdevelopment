@@ -221,7 +221,7 @@ class CarsDropdown extends React.Component {
               <HiddenField name="yearofCar" value={year_of_Car}/>
               <HiddenField name="mpgofCar" value={mpg_of_Car}/>
 
-              <SubmitField value='Submit' id='submit-car'/>
+              <SubmitField className={'carsDropDownBtn'} value='Submit' id='submit-car'/>
             </AutoForm>
 
           </Container>
