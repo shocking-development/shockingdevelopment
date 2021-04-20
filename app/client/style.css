@@ -484,14 +484,23 @@
   background: #03163a !important;
   color: white !important;
 }
+
+.EmissionsInput.ui.input.focus > input, .ui.input > input:focus{
+  background: #03163a !important;
+  color: white !important;
+}
+.EmissionsInput.ui.input > input {
+  background: #03163a !important;
+  color: white !important;
+}
 .EmissionsInput.ui.dropdown .menu > .item{
   color: white !important;
 }
 
 .EmissionsInput button, input{
   background: #03163a !important;
-  border: none;
-  color: white;
+  border: none!important;
+  color: white!important;
 
 }
 
