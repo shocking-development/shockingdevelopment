@@ -2,17 +2,16 @@ import React from 'react';
 import { Modal, Button, Header, Icon } from 'semantic-ui-react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsData';
-import TotalEmissionsProducedForMore from '../../components/defaultcharts/TotalEmissionsProducedForMore';
-import { calculateGHG } from '../../../api/ghgEquations/ghgcalculation';
+import TotalEmissionsReducedForMore from '../../components/defaultcharts/TotalEmissionsReducedForMore';
 
 /* A simple static component to render the home page when users are logged in. */
-function ViewMoreEmissionsForHome() {
+function ViewMoreEmissionsReducedForHome() {
 
   const [open, setOpen] = React.useState(false);
-  const { totalEmissions } = useTracker(() => {
-    const totalEmissionsretrieved = UserEmissionData('totalEmissions');
+  const { totalReducedEmissions } = useTracker(() => {
+    const totalEmissionReducedretrieved = UserEmissionData('totalEmissionsReduced');
     return {
-      totalEmissions: totalEmissionsretrieved,
+      totalReducedEmissions: totalEmissionReducedretrieved,
     };
   });
 
@@ -41,23 +40,21 @@ function ViewMoreEmissionsForHome() {
             trigger={<div className={'grow'}><Button
                 circular color='blue'
                 style={square}
-            > <Icon name={'area graph'}/>View Your Emissions Produced </Button></div>
+            > <Icon name={'area graph'}/>View Your Emissions Reduced </Button></div>
             }
         >
           <Modal.Header style={{ fontFamily: 'Roboto', background: 'rgb(0 48 80)', color: 'white' }}> Your Emissions
-            For {currentYear} </Modal.Header>
+            Reduced For {currentYear} </Modal.Header>
           <Modal.Content style={{ fontFamily: 'Roboto', background: 'rgba(0, 73, 122, 1)', color: 'white' }}>
-            <TotalEmissionsProducedForMore style={barGraphStyling}/>
+            <TotalEmissionsReducedForMore style={barGraphStyling}/>
             <Modal.Description style={{ fontFamily: 'Roboto', background: 'rgba(0, 73, 122, 1)', color: 'white' }}>
-              <Header style={{ fontFamily: 'Roboto', color: 'white' }}>CO2 Emissions Produced</Header>
+              <Header style={{ fontFamily: 'Roboto', color: 'white' }}>GHG Emissions Reduced</Header>
               <p>
-                We&apos;ve found the following emissions from your trips.
+                We&apos;ve found the following reduced emissions from your trips.
               </p>
               <p>
-                You have generated {totalEmissions} gallons of CO2 emissions.
+                You have reduced {totalReducedEmissions} pounds of GHG.
               </p>
-              <p>This is equivalent to the GHG emissions from {calculateGHG(totalEmissions)} passenger vehicles
-                driven for one year.</p>
             </Modal.Description>
           </Modal.Content>
           <Modal.Actions style={{ background: 'rgb(0 48 80)' }}>
@@ -77,4 +74,4 @@ function ViewMoreEmissionsForHome() {
 }
 
 /* Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
-export default ViewMoreEmissionsForHome;
+export default ViewMoreEmissionsReducedForHome;

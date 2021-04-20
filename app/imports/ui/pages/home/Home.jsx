@@ -7,6 +7,8 @@ import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsDa
 import { countLengthOfNumber } from '../../../api/emissionsEquations/EmissionsCalculations';
 import ViewMoreEmissionsForHome from './ViewMoreEmissionsForHome';
 import ViewMoreSavingsForHome from './ViewMoreSavingsForHome';
+import ViewMoreEmissionsReducedForHome from './ViewMoreEmissionsReducedForHome';
+import ViewMoreGasSaved from './ViewMoreGasSaved';
 
 /* A simple static component to render the home page when users are logged in. */
 function Home() {
@@ -86,7 +88,7 @@ function Home() {
                   <div align="center">
                     {numberOfDigitsInTotalReducedEmissions > 3 ?
                         <div>
-                          <ViewMoreEmissionsForHome/>
+                          <ViewMoreEmissionsReducedForHome/>
                         </div> : <Segment className={'grow'} circular style={square}> <Statistic inverted>
                           <Statistic.Value>{totalReducedEmissions} lbs</Statistic.Value>
                           <Statistic.Label>GHG reduced</Statistic.Label>
@@ -100,7 +102,7 @@ function Home() {
                   <div align="center">
                     {numberOfDigitsInGalSaved > 3 ?
                         <div>
-                          <ViewMoreEmissionsForHome/>
+                          <ViewMoreGasSaved/>
                         </div> : <Segment className={'grow'} circular style={square}> <Statistic inverted>
                           <Statistic.Value>{galSaved} gal</Statistic.Value>
                           <Statistic.Label>gas saved</Statistic.Label>
