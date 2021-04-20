@@ -22,21 +22,22 @@ class RecentlyAddedCars extends React.Component {
     return (
         <div>
           <Header inverted as="h1" textAlign="center"
-                  style={{ fontWeight: 'lighter', paddingTop: '65px', paddingBottom: '45px' }} className={'YourCarsHeader'}>
+                  style={{ fontWeight: 'lighter', paddingTop: '65px', paddingBottom: '45px' }}
+                  className={'YourCarsHeader'}>
             Your Cars
           </Header>
           {this.props.cars.length !== 0 ?
               <div>
-                <Grid className={'RecentlyAddedCarsGrid'} >
+                <Grid className={'RecentlyAddedCarsGrid'}>
                   {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>)}
-                  <Grid.Column className={'addCarBtn'} >
+                  <Grid.Column className={'addCarBtn'}>
                     <Button
                         as={NavLink}
                         exact to={'/cars'}
                         animated='vertical'
                         size='medium'
                         color='blue'
-                        style={{ top: '310px', left: '-124px'}}
+                        style={{ top: '310px', left: '-124px' }}
                         id='edit-password'
                         className={'editButtonProfile'}
                     >
