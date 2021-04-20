@@ -10,6 +10,7 @@ import { Meteor } from 'meteor/meteor';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
+import CarsAccordianQuestions from './CarsAccordianQuestions';
 
 const formSchema = new SimpleSchema({
   carName: String,
@@ -172,6 +173,7 @@ class CarsDropdown extends React.Component {
           <NavBarMain/>
           <Container style={{ padding: '3em' }}>
             <Header as="h1" textAlign="center" inverted style={{ fontWeight: 'lighter' }}>Cars</Header>
+            <CarsAccordianQuestions/>
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
