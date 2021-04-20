@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Grid, Image } from 'semantic-ui-react';
+import { Header, Grid } from 'semantic-ui-react';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 import UpdateEmissions from '../../components/emissions/UpdateEmissions';
 import RecentlyAdded from '../../components/emissions/RecentlyAdded';
@@ -22,18 +22,13 @@ function AddEmissions() {
             <Grid.Row>
 
               <Grid.Column width={5} style={{ paddingLeft: '10vw' }}>
-                <Header inverted size='huge' textAlign={'center'}>Add Emissions</Header>
-                <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-                paddingBottom: '25px',
-                }}/>
+                <Header inverted size='huge' style={{ fontFamily: 'Roboto' }} textAlign={'center'}>Add
+                  Emissions</Header>
                 <UpdateEmissions/>
               </Grid.Column>
 
               <Grid.Column width={10} style={{}}>
-                <Header inverted size='huge' textAlign={'center'}>Recently Added</Header>
-                <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-                  paddingBottom: '25px',
-                }}/>
+                <Header inverted size='huge' style={{ fontFamily: 'Roboto' }} textAlign={'center'}>Recently Added</Header>
                 <RecentlyAdded/>
               </Grid.Column>
 
@@ -41,10 +36,7 @@ function AddEmissions() {
 
             <Grid.Row>
               <Grid.Column width={16}>
-                <Header inverted size='huge' textAlign={'center'}>All Emissions</Header>
-                <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-                  paddingBottom: '25px',
-                }}/>
+                <Header inverted size='huge' style={{ fontFamily: 'Roboto' }} textAlign={'center'}>All Emissions</Header>
                 <AllEmissions/>
               </Grid.Column>
             </Grid.Row>

@@ -27,8 +27,8 @@ class ProfileCard extends React.Component {
     console.log(this.props);
     const pageStyle = {
       paddingLeft: '17em',
-      paddingTop: '2em',
-      minHeight: '140vh',
+      paddingTop: '1em',
+      minHeight: '150vh',
 
     };
 
@@ -120,7 +120,7 @@ class ProfileCard extends React.Component {
               <Grid.Row>
                 <Grid.Column width={16}>
                   <div className={'growForProfile'} style={{ borderRadius: '100rem', height: '450px', width: '450px' }}>
-                    <Segment className={'viewProfile jello-horizontal2'}
+                    <Segment className={'viewProfile jello-horizontal2 growForProfile'}
                              style={{
                                height: '600px',
                                width: '600px',

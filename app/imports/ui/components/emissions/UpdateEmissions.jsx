@@ -164,11 +164,13 @@ function UpdateEmissions() {
     e.preventDefault();
     if (tripState.transportation === null) {
       swal('Error', 'Please select transportation', 'error');
-    } else if (typeof tripState.miles !== 'number' && tripState.custom) {
-      swal('Error', 'Please enter a number in the miles input', 'error');
-    } else if (!tripState.custom && tripState.trip === null) {
-      swal('Error', 'Please select a trip', 'error');
-    } else {
+    } else
+      if (typeof tripState.miles !== 'number' && tripState.custom) {
+        swal('Error', 'Please enter a number in the miles input', 'error');
+      } else
+        if (!tripState.custom && tripState.trip === null) {
+          swal('Error', 'Please select a trip', 'error');
+        } else {
           try {
             let miles;
             if (tripState.custom) {
@@ -220,20 +222,27 @@ function UpdateEmissions() {
           border: '2px solid #004486', boxShadow: 'none',
         }}>
           <Card.Content>
-            <Card.Header style={{ color: 'white' }}>Date<p style={{ color: 'red', display: 'inline' }}>*</p></Card.Header>
+            <Card.Header style={{ color: 'white', fontFamily: 'Roboto' }}>Date <p
+                style={{ color: 'red', display: 'inline', paddingRight: '2px' }}> *</p>
+            </Card.Header>
             <input type="date" value={tripState.date} onChange={changeDate}/>
-            <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation<p style={{ color: 'red', display: 'inline' }}>*</p></Card.Header>
-            <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions}
+            <Card.Header style={{ color: 'white', paddingTop: '0.5em', fontFamily: 'Roboto' }}>Transportation<p
+                style={{ color: 'red', display: 'inline', paddingRight: '2px' }}> *</p></Card.Header>
+            <Dropdown placeholder='Select transportation' fluid selection className={'EmissionsInput'}
+                      options={transportationOptions}
                       onChange={changeTransportation}/>
             {tripState.transportation === 'Drove' ?
                 <div>
                   <br/>
-                  <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions}
+                  <Dropdown name='Car Used' placeholder='Select car' className={'EmissionsInput'} fluid selection
+                            options={carOptions}
                             onChange={changeCar}/>
                 </div> : null
             }
-            <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip<p style={{ color: 'red', display: 'inline' }}>*</p></Card.Header>
-            <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions}
+            <Card.Header style={{ color: 'white', paddingTop: '0.5em', fontFamily: 'Roboto' }}>Trip<p
+                style={{ color: 'red', display: 'inline', paddingRight: '2px' }}> *</p></Card.Header>
+            <Dropdown name='Trip Search' className={'EmissionsInput'} placeholder='Select trip' fluid selection
+                      options={tripOptions}
                       onChange={changeTrip}/>
             {tripState.custom ?
                 <div>
@@ -242,7 +251,8 @@ function UpdateEmissions() {
                          trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name'
                                          onChange={changeTripName}/>}/>
                   <Popup content='Insert Roundtrip Miles' trigger={
-                    <Input style={{ width: '30%', float: 'right' }} type="number" min="0" max="99" placeholder='Miles'
+                    <Input style={{ width: '30%', float: 'right' }} className={'EmissionsInput'} type="number" min="0"
+                           max="99" placeholder='Miles'
                            onChange={changeTripMiles}/>
                   }/>
                   <br/>
