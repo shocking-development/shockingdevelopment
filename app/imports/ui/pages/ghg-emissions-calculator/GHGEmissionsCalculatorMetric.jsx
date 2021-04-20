@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import { calculateCO2, calculateGal, calculateGHG, convertTons } from '../../../api/trips/ghgcalculation';
+import { calculateCO2, calculateGal, calculateGHG, convertTons } from '../../../api/ghgEquations/ghgcalculation';
 
 /** A simple static component to render the GHGEmissionsCalculatorMetricwhen users are logged in. */
 class GHGEmissionsCalculatorMetric extends React.Component {

@@ -309,8 +309,9 @@
 .headerdataPage {
   background: #0a69a7 !important;
   color: white !important;
-  width: 300px!important;
 }
+
+
 
 .headerdataPage.ui.pagination.menu .active.item {
   color: white !important;
@@ -320,6 +321,10 @@
   color: white !important;
 }
 
+.headerdataPage.ui.secondary.pointing.menu .active.item {
+  border-color: #00eaff !important;
+}
+
 
 .editButtonProfile.ui.blue.button{
   background: #03163a !important;
@@ -327,6 +332,11 @@
 
 .removeCarbutton.ui.blue.button{
   background: #021c4a !important;
+}
+
+.tableStylingEmissionsPage {
+  background: #013160 !important;
+  color: white !important;
 }
 
 

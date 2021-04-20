@@ -18,10 +18,10 @@ function AddEmissions() {
           paddingTop: '8em',
           paddingBottom: '8em',
         }}>
-          <Grid>
+          <Grid stackable>
             <Grid.Row>
 
-              <Grid.Column width={8}>
+              <Grid.Column width={5} style={{ paddingLeft: '10vw' }}>
                 <Header inverted size='huge' textAlign={'center'}>Add Emissions</Header>
                 <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
                 paddingBottom: '25px',
@@ -29,7 +29,7 @@ function AddEmissions() {
                 <UpdateEmissions/>
               </Grid.Column>
 
-              <Grid.Column width={8} style={{ paddingRight: '13.5em' }}>
+              <Grid.Column width={10} style={{}}>
                 <Header inverted size='huge' textAlign={'center'}>Recently Added</Header>
                 <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
                   paddingBottom: '25px',

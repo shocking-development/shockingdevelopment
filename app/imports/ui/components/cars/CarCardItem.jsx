@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { userInfoRemoveItMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single row in the List Cars table. See pages/ListCars.jsx. */
 class carCardItem extends React.Component {
 
   render() {
