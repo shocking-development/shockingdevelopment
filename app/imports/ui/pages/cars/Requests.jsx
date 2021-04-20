@@ -50,7 +50,7 @@ class Requests extends React.Component {
           <NavBarMain/>
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Make a Request</Header>
+            <Header as="h2" textAlign="center" inverted>Contact</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
@@ -61,6 +61,7 @@ class Requests extends React.Component {
                 <Button color='blue' style={buttonStyle} onClick={this.showResult} id='submit-request'>Submit Request</Button>
                 <ErrorsField/>
               </Segment>
+              <TextField name='recommendation' label='Type your recommendation here'/>
             </AutoForm>
           </Grid.Column>
         </Grid>
