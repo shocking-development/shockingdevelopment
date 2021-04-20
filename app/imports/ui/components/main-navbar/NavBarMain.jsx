@@ -106,6 +106,7 @@ class NavBarMain extends React.Component {
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/request"
                            key='key13'>
+                  <Icon name = 'pen square icon' size='large'/>
                   Make a Request
                 </Menu.Item>
 
