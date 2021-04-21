@@ -427,6 +427,7 @@ export function UserEmissionData(index) {
   }
   const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
 
+  // week based on date from https://stackoverflow.com/a/43751707
   const dt = new Date(); // current date of week
   const currentWeekDay = dt.getDay();
   const lessDays = currentWeekDay === 0 ? 6 : currentWeekDay - 1;
