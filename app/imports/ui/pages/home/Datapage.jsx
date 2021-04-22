@@ -58,7 +58,8 @@ class Datapage extends React.Component {
     };
 
     const dataTableDivstyling = {
-      background: '#0a69a7',
+      background: 'rgba(0, 73, 122, 1)',
+      /* background: '#0a69a7' */
       borderRadius: '6px',
       paddingTop: '10px',
       paddingRight: '10px',
