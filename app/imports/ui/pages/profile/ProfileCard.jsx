@@ -17,18 +17,19 @@ class ProfileCard extends React.Component {
     return (this.props.ready) ? this.renderPage() :
         <div
             className={'loaderStyle'}>
-          <Loader active inverted> Getting data</Loader>
+          <Loader active inverted> Loading Your Profile </Loader>
         </div>;
 
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-
+    console.log(this.props);
     const pageStyle = {
-      paddingLeft: '10em',
-      paddingTop: '6em',
-      minHeight: '120vh',
+      paddingLeft: '17em',
+      paddingTop: '1em',
+      minHeight: '150vh',
+
     };
 
     return (
@@ -45,62 +46,62 @@ class ProfileCard extends React.Component {
               <Grid.Row>
                 <Grid.Column width={5}>
 
-                  <div className={'profilepicCard'}>
+                  <div className={'jello-horizontal2'}>
                     <Image src={this.props.profiles.userImage}
                         // eslint-disable-next-line
-                           onError={(i) => i.target.src = '/images/default_image.png'}
-                           style={{ borderRadius: '0.28571429rem', width: '305px' }}
-                    />
-                  </div>
+                           style={{ borderRadius: '50%', width: '280px', height: '280px', top: '200px', left: '50px' }}
+                    /></div>
+                  <div className={'jello-horizontal2'}>
+                    <Button
+                        as={NavLink}
+                        id='edit-profile'
+                        exact to={`/edit/${this.props.profiles._id}`}
+                        color='blue'
+                        style={{ position: 'absolute', left: '4.5em', bottom: '8px' }}
+                        circular
+                        className={'editButtonProfilePencil'}
+                        icon={'pencil'}
+                    /></div>
 
                 </Grid.Column>
 
-                <Grid.Column width={11}>
-                  <Segment className={'viewProfile'} style={{ height: '305px' }}>
-                    <div className={'infoCard'}>
-                      <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
-                        {this.props.profiles.firstName} {this.props.profiles.lastName}
-                        <Button
-                            as={NavLink}
-                            id='edit-profile'
-                            exact to={`/edit/${this.props.profiles._id}`}
-                            animated='vertical'
-                            size='tiny'
-                            color='blue'
-                            style={{ marginLeft: '20px', width: '9%' }}
-                            circular
-                        >
-                          <Button.Content hidden>Edit</Button.Content>
-                          <Button.Content visible>
-                            <Icon name='pencil'/>
-                          </Button.Content>
-                        </Button>
-                      </Header>
+                <Grid.Column >
+                  <div className={'growForProfile'} style={{ borderRadius: '100rem' }}>
+                    <Segment className={'viewProfile jello-horizontal2'}
+                             style={{
+                               height: '370px',
+                               width: '370px',
+                               borderRadius: '100rem',
+                               left: '42px',
+                               top: '78px',
+                             }}>
+                      <div className={'infoCard'}>
+                        <Header as='h1' inverted style={{ fontWeight: 'lighter' }}>
+                          {this.props.profiles.firstName} {this.props.profiles.lastName}
+                        </Header>
 
-                      <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
-                        <p>
-                          Username: {this.props.profiles.user}
-                        </p>
-                        <p>
-                          Zipcode: {this.props.profiles.zipcode}
-                        </p>
-                        <p>
-                          State: {this.props.profiles.State}
-                        </p>
-                        <p>
-                          Unit Preference: {this.props.profiles.unitSystem}
-                        </p>
-                        <p>
-                          Password:
-                        </p>
+                        <Header as='h3' inverted style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
+                          <p>
+                            Username: {this.props.profiles.owner}
+                          </p>
+                          <p>
+                            State: {this.props.profiles.State}
+                          </p>
+                          <p>
+                            Unit Preference: {this.props.profiles.unitSystem}
+                          </p>
+                          <p>
+                            Password:
+                          </p>
                           <Button
                               as={NavLink}
                               exact to={`/change/${this.props.profiles._id}`}
                               animated='vertical'
                               size='medium'
-                              style={{ position: 'absolute', width: '23%', bottom: '25px', right: '22.5em' }}
+                              style={{ position: 'absolute', width: '28%', top: '18.8em', left: '11.5em' }}
                               color='blue'
                               id='edit-password'
+                              className={'editButtonProfile'}
                           >
                             <Button.Content hidden>Edit Password</Button.Content>
                             <Button.Content visible>
@@ -108,18 +109,28 @@ class ProfileCard extends React.Component {
                             </Button.Content>
                           </Button>
 
-                      </Header>
-                    </div>
-                  </Segment>
+                        </Header>
+                      </div>
+                    </Segment>
+                  </div>
                 </Grid.Column>
 
               </Grid.Row>
 
               <Grid.Row>
                 <Grid.Column width={16}>
-                  <Segment className={'viewProfile'}>
-                    <RecentlyAddedCars/>
-                  </Segment>
+                  <div className={'growForProfile'} style={{ borderRadius: '100rem', height: '450px', width: '450px' }}>
+                    <Segment className={'viewProfile jello-horizontal2 growForProfile'}
+                             style={{
+                               height: '600px',
+                               width: '600px',
+                               borderRadius: '100rem',
+                               left: '82px',
+                               top: '5em',
+                             }}>
+                      <RecentlyAddedCars/>
+                    </Segment>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
 
@@ -143,11 +154,15 @@ ProfileCard.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
-  // Get access to Stuff documents.
+  // Get access to UserInfo documents.
+  const userID = Meteor.userId();
   const sub1 = UserInfos.subscribeUserInfo();
-  const userAccount = Meteor.users.findOne(match.params._id);
+  const userAccount = Meteor.users.findOne({ _id: userID });
   const sub2 = UserInfosCars.subscribeUserInfoCars();
-  const profiles = UserInfos.findOne(userAccount);
+  const profiles = UserInfos.findOne({ owner: userAccount?.username });
+
+  console.log(userAccount, profiles);
+
   return {
     profiles,
     currentUser: Meteor.user() ? Meteor.user().username : '',

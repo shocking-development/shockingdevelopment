@@ -55,6 +55,13 @@ Meteor.publish(Emissions.emissionPublicationName, function () {
   return this.ready();
 });
 
+Meteor.publish(Emissions.cumulativeEmissionsPublicationName, function () {
+  if (this.userId || !this.userId) {
+    return Emissions.collection.find();
+  }
+  return this.ready();
+});
+
 Meteor.publish(Trips.emissionPublicationName, function () {
   if (this.userId) {
     return Trips.collection.find({ owner: this.userId });

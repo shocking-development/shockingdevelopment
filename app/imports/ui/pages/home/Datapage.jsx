@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, GridColumn } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -9,7 +9,7 @@ import DataPagePieChart from '../../components/defaultcharts/DataPagePieChart';
 import DataPageBarGraph from '../../components/defaultcharts/DataPageBarGraph';
 import DataPageDonutChart1 from '../../components/defaultcharts/DataPageDonutChart1';
 import DataPageDonutChart2 from '../../components/defaultcharts/DataPageDonutChart2';
-import AllEmissions from '../../components/emissions/AllEmissions';
+import EmissionForHome from './EmissionForHome';
 
 /** A simple static component to render the datapage page when users are logged in. */
 class Datapage extends React.Component {
@@ -31,14 +31,12 @@ class Datapage extends React.Component {
     const dataPagePieChartstyling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: '-41px -1px 44px -3px #0E324C',
       paddingTop: '10px',
     };
 
     const dataPagebarGraphstyling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
     };
@@ -46,37 +44,26 @@ class Datapage extends React.Component {
     const dataPageDonutChart1styling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '10px',
       height: '100%',
-      width: '24%',
     };
 
     const dataPageDonutChart2styling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '1em',
       height: '100%',
-      width: '24%',
     };
 
     const dataTableDivstyling = {
-      background: '#0a69a7',
+      background: 'rgba(0, 73, 122, 1)',
+      /* background: '#0a69a7' */
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '1.29em',
       height: '100%',
-      width: '51%',
     };
     /* const tablestyling = {
       background: '#0a69a7',
@@ -94,26 +81,34 @@ class Datapage extends React.Component {
           <div style={pageStyle}>
             <div style={{ width: '90%', margin: 'auto' }}>
               <Grid stackable columns='equal'>
-                <Grid.Column>
-                  <div style={dataPagePieChartstyling}>
-                    <DataPagePieChart/>
-                  </div>
-                </Grid.Column>
-                <Grid.Column>
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <div style={dataPagePieChartstyling}>
+                      <DataPagePieChart/>
+                    </div>
+                  </Grid.Column>
+                <Grid.Column width={8}>
                   <div style={dataPagebarGraphstyling}>
                     <DataPageBarGraph/>
                   </div>
                 </Grid.Column>
+                </Grid.Row>
                 <Grid.Row>
-                  <div style={dataPageDonutChart1styling}>
-                    <DataPageDonutChart1/>
-                  </div>
-                  <div style={dataPageDonutChart2styling}>
-                    <DataPageDonutChart2/>
-                  </div>
-                  <div style={dataTableDivstyling}>
-                    <AllEmissions/>
-                  </div>
+                  <Grid.Column width={4}>
+                    <div style={dataPageDonutChart1styling}>
+                      <DataPageDonutChart1/>
+                    </div>
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                    <div style={dataPageDonutChart2styling}>
+                      <DataPageDonutChart2/>
+                    </div>
+                  </Grid.Column>
+                  <Grid.Column width={8}>
+                    <div style={dataTableDivstyling}>
+                      <EmissionForHome/>
+                    </div>
+                  </Grid.Column>
                 </Grid.Row>
               </Grid>
             </div>
@@ -135,52 +130,3 @@ const DatapageContainer = withTracker(() => ({
 
 /** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
 export default withRouter(DatapageContainer);
-
-/* <Table style={tablestyling} celled>
-                      <Table.Header>
-                        <Table.Row>
-                          <Table.HeaderCell className={'headerdataPage'}>Week</Table.HeaderCell>
-                          <Table.HeaderCell className={'headerdataPage'}>Emissions</Table.HeaderCell>
-                          <Table.HeaderCell className={'headerdataPage'}>Transportation</Table.HeaderCell>
-                        </Table.Row>
-                      </Table.Header>
-
-                      <Table.Body>
-                        <Table.Row>
-                          <Table.Cell>
-                            <Label ribbon color='green'>This Week</Label>
-                          </Table.Cell>
-                          <Table.Cell>.01</Table.Cell>
-                          <Table.Cell>Public Transportation</Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                          <Table.Cell> Last Week </Table.Cell>
-                          <Table.Cell>.02 tons</Table.Cell>
-                          <Table.Cell>Car</Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                          <Table.Cell> 2 weeks Ago</Table.Cell>
-                          <Table.Cell>.002 tons</Table.Cell>
-                          <Table.Cell>Bike</Table.Cell>
-                        </Table.Row>
-                      </Table.Body>
-
-                      <Table.Footer>
-                        <Table.Row>
-                          <Table.HeaderCell className={'headerdataPage'} colSpan='3'>
-                            <Menu floated='right' pagination>
-                              <Menu.Item className={'headerdataPage'} as='a' icon>
-                                <Icon name='chevron left'/>
-                              </Menu.Item>
-                              <Menu.Item className={'headerdataPage'} as='a'>1</Menu.Item>
-                              <Menu.Item className={'headerdataPage'} as='a'>2</Menu.Item>
-                              <Menu.Item className={'headerdataPage'} as='a'>3</Menu.Item>
-                              <Menu.Item className={'headerdataPage'} as='a'>4</Menu.Item>
-                              <Menu.Item className={'headerdataPage'} as='a' icon>
-                                <Icon className={'headerdataPage'} name='chevron right'/>
-                              </Menu.Item>
-                            </Menu>
-                          </Table.HeaderCell>
-                        </Table.Row>
-                      </Table.Footer>
-                    </Table> */

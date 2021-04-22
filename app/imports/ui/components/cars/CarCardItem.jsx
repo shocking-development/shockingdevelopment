@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { userInfoRemoveItMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single row in the List Cars table. See pages/ListCars.jsx. */
 class carCardItem extends React.Component {
 
   render() {
@@ -17,7 +17,13 @@ class carCardItem extends React.Component {
           <Grid>
             <Grid.Row>
               <Grid.Column width={14} key={this.props.car._id}>
-                <Card style={{ background: '#1d7f90', boxShadow: 'none' }}>
+                <Card style={{
+                  background: '#00153a',
+                  boxShadow: 'none',
+                  left: '120px',
+                  width: '330px',
+                  height: '290px',
+                }}>
                   <Card.Content>
                     <Icon name={'car'} size={'huge'} inverted/>
                   </Card.Content>
@@ -46,7 +52,8 @@ class carCardItem extends React.Component {
                        style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
                       MPG: {this.props.car.mpgofCar} </b>
                   </Card.Content>
-                  <Button id='delete-trip' onClick={() => deleteCar(this.props.car)} color={'teal'}>
+                  <Button id='delete-trip' className={'removeCarbutton'}
+                          onClick={() => deleteCar(this.props.car)} color={'blue'}>
                     Remove Car
                   </Button>
 

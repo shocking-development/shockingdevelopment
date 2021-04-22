@@ -1,13 +1,28 @@
 import React from 'react';
-import { Container, Table, Header, Loader, Image } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Image, Pagination } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import ProfileItemAdmin from '../../components/profile/ProfileItemAdmin';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a table containing all of the Profiles documents. */
 class ListProfileAdmin extends React.Component {
+
+  /** Initializes a constructor */
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 1,
+    };
+  }
+
+  /** Updates the controls everytime a button is pressed */
+  handleInputChange = (e, data) => {
+    this.setState({
+      activePage: Number(data.activePage),
+    });
+  }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -24,6 +39,13 @@ class ListProfileAdmin extends React.Component {
       minHeight: '110vh',
       backgroundSize: 'cover',
     };
+
+    /** Constant variable to start at index 0 */
+    const startIndex = (this.state.activePage * 25 - 25);
+
+    /** Variable that holds the index of the last item */
+    const endIndex = (this.state.activePage * 25);
+
     return (
         <div style={pageStyle}>
           <NavBarMain/>
@@ -40,20 +62,28 @@ class ListProfileAdmin extends React.Component {
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
+
+            {/** Implementation of Pagination: functionality */}
+            <Pagination
+                defaultActivePage={1}
+                totalPages={Math.ceil(this.props.profiles.length / 25)}
+                onPageChange={this.handleInputChange}
+            />
+
             <Table celled>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Username/email</Table.HeaderCell>
                   <Table.HeaderCell>First Name</Table.HeaderCell>
                   <Table.HeaderCell>Last Name</Table.HeaderCell>
-                  <Table.HeaderCell>Personal Transportation</Table.HeaderCell>
-                  <Table.HeaderCell>Zipcode</Table.HeaderCell>
-                  <Table.HeaderCell>Owner</Table.HeaderCell>
+                  <Table.HeaderCell>Password</Table.HeaderCell>
+                  <Table.HeaderCell>State</Table.HeaderCell>
                   <Table.HeaderCell>Remove</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.props.profiles.map((profile) => <ProfileItemAdmin key={profile._id} profile={profile}/>)}
+                {this.props.profiles.map((profile) => <ProfileItemAdmin key={profile._id}
+                                                                        profile={profile}/>).slice(startIndex, endIndex)}
               </Table.Body>
             </Table>
           </Container>

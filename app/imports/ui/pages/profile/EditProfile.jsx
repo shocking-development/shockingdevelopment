@@ -22,7 +22,7 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, zipcode, transportation, unitSystem, State, _id } = data;
+    const { firstName, lastName, user, email, unitSystem, State, _id } = data;
     let userImage;
     if (this.state.userImage === 'no-change') {
       userImage = this.props.doc.userImage;
@@ -35,10 +35,7 @@ class EditProfile extends React.Component {
       firstName,
       lastName,
       user,
-      email,
-      zipcode,
       userImage,
-      transportation,
       unitSystem,
       State,
     };
@@ -121,10 +118,8 @@ class EditProfile extends React.Component {
         }}>
           <NavBarHome/>
           <Container style={pageStyle}>
-            <Header inverted as="h2" textAlign="center">Edit Profile</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
+            <Header inverted as="h2" style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }} textAlign="center"
+            >Edit Profile</Header>
             <Grid>
               <Grid.Row style={{ marginTop: '3em', background: '#001947' }}>
                 <Grid.Column width={5}>
@@ -156,13 +151,8 @@ class EditProfile extends React.Component {
                     <Segment className='viewProfile'>
                       <TextField className={'carDropdownSelectField'} id='update-first' name='firstName'/>
                       <TextField className={'carDropdownSelectField'} id='update-last' name='lastName'/>
-                      <TextField className={'carDropdownSelectField'} id='update-user' name='user'/>
-                      <TextField className={'carDropdownSelectField'} id='update-email' name='email'/>
                       <SelectField className={'carDropdownSelectField'} id='update-units' name='unitSystem'/>
                       <SelectField className={'carDropdownSelectField'} id='update-state' name='State'/>
-                      <TextField className={'carDropdownSelectField'} id='update-transportation' name='transportation'/>
-                      <NumField className={'carDropdownSelectField'} name='zipcode' id='update-zipcode'
-                                decimal={false}/>
                       <SubmitField style={{ background: '#3184d8', color: 'white' }} value='Update' id='update-form-submit'/>
                       <ErrorsField/>
                       <HiddenField name='owner'/>

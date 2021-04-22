@@ -6,7 +6,7 @@ import NavBarMain from '../../components/main-navbar/NavBarMain';
 import CarItem from '../../components/cars/CarItem';
 import { Cars } from '../../../api/cars/CarsCollection';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a table containing all of the Car documents. Use <CarItem> to render each row. */
 class ListCars extends React.Component {
 
   /* Link for pagination
@@ -83,6 +83,7 @@ class ListCars extends React.Component {
             <Table celled>
               <Table.Header>
                 <Table.Row>
+                  <Table.HeaderCell>Car Type</Table.HeaderCell>
                   <Table.HeaderCell>Make</Table.HeaderCell>
                   <Table.HeaderCell>Model</Table.HeaderCell>
                   <Table.HeaderCell>Year</Table.HeaderCell>
@@ -99,7 +100,7 @@ class ListCars extends React.Component {
   }
 }
 
-/** Require an array of Stuff documents in the props. */
+/** Require an array of Cars documents in the props. */
 ListCars.propTypes = {
   Car: PropTypes.array,
   ready: PropTypes.bool.isRequired,
@@ -107,7 +108,7 @@ ListCars.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Stuff documents.
+  // Get access to Cars documents.
   const subscription = Cars.subscribeCars();
   return {
     Car: Cars.find({}).fetch(),

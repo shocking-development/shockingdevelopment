@@ -17,25 +17,25 @@ function DataPageDonutChart1() {
   let Sunday = 0;
 
   for (let i = 0, n = ghgEmissionsbyDays.length; i < n; i++) {
-    if (ghgEmissionsbyDays[i].day === 1) {
+    if (ghgEmissionsbyDays[i].day === 0) {
       Monday += ghgEmissionsbyDays[i].ghgProduced;
     } else
-      if (ghgEmissionsbyDays[i].day === 2) {
+      if (ghgEmissionsbyDays[i].day === 1) {
         Tuesday += ghgEmissionsbyDays[i].ghgProduced;
       } else
-        if (ghgEmissionsbyDays[i].day === 3) {
+        if (ghgEmissionsbyDays[i].day === 2) {
           Wednesday += ghgEmissionsbyDays[i].ghgProduced;
         } else
-          if (ghgEmissionsbyDays[i].day === 4) {
+          if (ghgEmissionsbyDays[i].day === 3) {
             Thursday += ghgEmissionsbyDays[i].ghgProduced;
           } else
-            if (ghgEmissionsbyDays[i].day === 5) {
+            if (ghgEmissionsbyDays[i].day === 4) {
               Friday += ghgEmissionsbyDays[i].ghgProduced;
             } else
-              if (ghgEmissionsbyDays[i].day === 6) {
+              if (ghgEmissionsbyDays[i].day === 5) {
                 Saturday += ghgEmissionsbyDays[i].ghgProduced;
               } else
-                if (ghgEmissionsbyDays[i].day === 7) {
+                if (ghgEmissionsbyDays[i].day === 6) {
                   Sunday += ghgEmissionsbyDays[i].ghgProduced;
                 }
   }
@@ -103,7 +103,7 @@ function DataPageDonutChart1() {
               </h1>
             </div> :
             <Header inverted as="h3" textAlign="center" style={{ marginTop: '3em', paddingLeft: '10px', marginBottom: '3em' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
+              Hmm... These charts are empty. <a style={{ color: 'rgb(7 182 254)' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>

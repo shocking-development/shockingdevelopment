@@ -15,7 +15,7 @@ class NavBarMain extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() :
-        <Loader active inverted>Getting data</Loader>;
+        <Loader active inverted/>;
   }
 
   renderPage() {
@@ -32,8 +32,7 @@ class NavBarMain extends React.Component {
     };
 
     const userstyling = {
-      margin: 'auto',
-      width: '68%',
+      textAlign: 'center',
       fontSize: 'large',
       fontWeight: 'lighter',
     };
@@ -105,6 +104,12 @@ class NavBarMain extends React.Component {
                   Cars
                 </Menu.Item>
 
+                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/request"
+                           key='key13'>
+                  <Icon name = 'pen square icon' size='large'/>
+                  Make a Request
+                </Menu.Item>
+
                 {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
                     <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/admin"
                                key='admin'>Admin
@@ -125,6 +130,15 @@ class NavBarMain extends React.Component {
                   </IconGroup>
                   List Cars (Admin)
                 </Menu.Item>
+                ) : ''}
+
+                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/cumulativedata" key='key12'>
+                      <IconGroup style={{ float: 'right' }} size={'large'}>
+                        <Icon name='line graph'/>
+                      </IconGroup>
+                      Cumulative Data
+                    </Menu.Item>
                 ) : ''}
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
@@ -153,11 +167,12 @@ NavBarMain.propTypes = {
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 const NavBar2Container = withTracker(() => {
+  const userID = Meteor.userId();
   const subscription = UserInfos.subscribeUserInfo();
-  const userAccount = Meteor.users.findOne(Meteor.userId());
+  const userAccount = Meteor.users.findOne({ _id: userID });
   let profiles;
   if (userAccount) {
-    profiles = UserInfos.findOne({ user: userAccount.username });
+    profiles = UserInfos.findOne({ owner: userAccount?.username });
   }
   const currentUser = Meteor.user() ? Meteor.user().username : '';
   const currentId = Meteor.userId();

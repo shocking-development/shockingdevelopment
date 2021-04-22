@@ -22,6 +22,7 @@ class EmissionsCollection {
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
     this.emissionsPublicationName = `${this.name}.publication.emissions`;
+    this.cumulativeEmissionsPublicationName = `${this.name}.publication.cumulative`;
   }
 }
 

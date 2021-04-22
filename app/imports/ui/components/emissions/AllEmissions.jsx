@@ -8,8 +8,8 @@ import EmissionItem from './EmissionItem';
 function AllEmissions() {
 
     const [activePage, setActivePage] = useState(1);
-    const startIndex = (activePage * 10 - 10);
-    const endIndex = (activePage * 10);
+    const startIndex = (activePage * 25 - 25);
+    const endIndex = (activePage * 25);
 
     const emissions = useTracker(() => {
         Meteor.subscribe(Emissions.emissionsPublicationName);
@@ -22,20 +22,20 @@ function AllEmissions() {
     };
 
     return (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ width: '73%' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+        <div style={{ width: '79%' }}>
             <Pagination
                 defaultActivePage={1}
-                totalPages={Math.ceil(emissions.length / 10)}
+                totalPages={Math.ceil(emissions.length / 25)}
                 onPageChange={handleInputChange}
             />
-              <Table>
+              <Table style={{ border: 'none', textAlign: 'center' }}>
                 <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell>Date</Table.HeaderCell>
-                    <Table.HeaderCell>Transportation</Table.HeaderCell>
-                    <Table.HeaderCell>Miles</Table.HeaderCell>
-                    <Table.HeaderCell>Delete</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Date</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Transportation</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Miles</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Delete</Table.HeaderCell>
                 </Table.Row>
                 </Table.Header>
 
@@ -43,6 +43,11 @@ function AllEmissions() {
                     {emissions.map(emission => <EmissionItem key={emission._id} emission={emission}/>).slice(startIndex, endIndex)}
                 </Table.Body>
             </Table>
+            <Pagination
+                defaultActivePage={1}
+                totalPages={Math.ceil(emissions.length / 25)}
+                onPageChange={handleInputChange}
+            />
         </div>
         </div>
     );

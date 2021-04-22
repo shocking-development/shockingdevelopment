@@ -18,16 +18,17 @@ function AddEmissions() {
           paddingTop: '8em',
           paddingBottom: '8em',
         }}>
-          <Grid>
+          <Grid stackable>
             <Grid.Row>
 
-              <Grid.Column width={8}>
-                <Header inverted size='huge' textAlign={'center'}>Add Emissions</Header>
+              <Grid.Column width={5} style={{ paddingLeft: '10vw' }}>
+                <Header inverted size='huge' style={{ fontFamily: 'Roboto' }} textAlign={'center'}>Add
+                  Emissions</Header>
                 <UpdateEmissions/>
               </Grid.Column>
 
-              <Grid.Column width={8} style={{ paddingRight: '13.5em' }}>
-                <Header inverted size='huge' textAlign={'center'}>Recently Added</Header>
+              <Grid.Column width={10} style={{}}>
+                <Header inverted size='huge' style={{ fontFamily: 'Roboto' }} textAlign={'center'}>Recently Added</Header>
                 <RecentlyAdded/>
               </Grid.Column>
 
@@ -35,7 +36,7 @@ function AddEmissions() {
 
             <Grid.Row>
               <Grid.Column width={16}>
-                <Header inverted size='huge' textAlign={'center'}>All Emissions</Header>
+                <Header inverted size='huge' style={{ fontFamily: 'Roboto' }} textAlign={'center'}>All Emissions</Header>
                 <AllEmissions/>
               </Grid.Column>
             </Grid.Row>

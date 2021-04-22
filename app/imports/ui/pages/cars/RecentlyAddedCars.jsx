@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Loader, Grid, Button, Icon } from 'semantic-ui-react';
+import { Header, Grid, Button, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -13,19 +13,17 @@ class RecentlyAddedCars extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() :
         <div style={{ background: 'transparent' }}>
-          <Loader active inverted>Getting data</Loader>
         </div>;
   }
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
 
-    // For debugging console.log(this.props.cars.length); <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{ paddingBottom: '2em' }}/>
-
     return (
         <div>
           <Header inverted as="h1" textAlign="center"
-                  style={{ fontWeight: 'lighter', paddingTop: '15px', paddingBottom: '15px' }}>
+                  style={{ fontWeight: 'lighter', paddingTop: '65px', paddingBottom: '45px' }}
+                  className={'YourCarsHeader'}>
             Your Cars
           </Header>
           {this.props.cars.length !== 0 ?
@@ -38,8 +36,10 @@ class RecentlyAddedCars extends React.Component {
                         exact to={'/cars'}
                         animated='vertical'
                         size='medium'
-                        color='teal'
+                        color='blue'
+                        style={{ top: '310px', left: '-124px' }}
                         id='edit-password'
+                        className={'editButtonProfile'}
                     >
                       <Button.Content hidden>Add Car</Button.Content>
                       <Button.Content visible>
@@ -54,7 +54,7 @@ class RecentlyAddedCars extends React.Component {
                   inverted as="h2"
                   textAlign="center">
                 No cars have been added. <a
-                  style={{ color: '#009c95' }} href={'#/cars'}>
+                  style={{ color: 'rgb(7 182 254)' }} href={'#/cars'}>
                 You can add cars here.
               </a>
               </Header>}
@@ -73,7 +73,7 @@ RecentlyAddedCars.propTypes = {
 export default withTracker(() => {
   const subscription = UserInfosCars.subscribeUserInfoCars();
   return {
-    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 3 }).fetch(),
+    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 1 }).fetch(),
     ready: subscription.ready(),
   };
 })(RecentlyAddedCars);

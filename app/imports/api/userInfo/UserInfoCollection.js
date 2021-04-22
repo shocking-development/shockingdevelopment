@@ -1,14 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 
-/** Encapsulates state and variable values for this collection. */
+/** Encapsulates State and variable values for this collection. */
 export const userInfoPublications = {
   userInfo: 'UserInfo',
   userInfoAdmin: 'UserInfoAdmin',
+  landingPageuser: 'UserInfoLanding',
 };
 
 class UserInfoCollection extends BaseCollection {
@@ -16,17 +16,13 @@ class UserInfoCollection extends BaseCollection {
     super('UserInfos', new SimpleSchema({
       firstName: String,
       lastName: String,
-      user: String,
       owner: String, // is this redundant?
-      email: String,
       password: String,
       userImage: String,
-      zipcode: Number,
-      transportation: String,
       unitSystem: {
         type: String,
         allowedValues: ['metric', 'us units'],
-        defaultValue: 'us units',
+        optional: true,
       },
       State: {
         type: String,
@@ -37,13 +33,13 @@ class UserInfoCollection extends BaseCollection {
           'New Hampshire', 'New Jersey', 'New Mexico', 'Nevada', 'New York', 'Ohio', 'Oklahoma', 'Oregon',
           'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
           'Virginia', 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming'],
-        defaultValue: 'Hawaii',
+        optional: false,
       },
     }));
   }
 
   /**
-   * Defines a new Stuff item.
+   * Defines a new UserInfo item.
    * @param firstName the first name of the person.
    * @param lastName the last name of the person.
    * @param user the user name of the person.
@@ -53,19 +49,15 @@ class UserInfoCollection extends BaseCollection {
    * @param zipcode the zipcode of the person.
    * @return {String} the docID of the new document.
    */
-  define({ firstName, lastName, user, owner, email, password, zipcode, userImage, transportation, unitSystem, state }) {
+  define({ firstName, lastName, owner, password, userImage, unitSystem, State }) {
     const docID = this._collection.insert({
       firstName,
       lastName,
-      user,
       owner,
-      email,
       password,
-      zipcode,
       userImage,
-      transportation,
       unitSystem,
-      state,
+      State,
     });
     return docID;
   }
@@ -80,7 +72,7 @@ class UserInfoCollection extends BaseCollection {
    * @param password the password of the person (optional).
    * @param zipcode the zipcode of the person (optional).
    */
-  update(docID, { firstName, lastName, user, email, password, zipcode, userImage, transportation, unitSystem, state }) {
+  update(docID, { firstName, lastName, password, userImage, unitSystem, State }) {
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -88,30 +80,20 @@ class UserInfoCollection extends BaseCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    if (user) {
-      updateData.user = user;
-    }
-    if (email) {
-      updateData.email = email;
-    }
+
     if (password) {
       updateData.password = password;
     }
-    // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(zipcode)) {
-      updateData.zipcode = zipcode;
-    }
+
     if (userImage) {
       updateData.userImage = userImage;
     }
-    if (transportation) {
-      updateData.transportation = transportation;
-    }
+
     if (unitSystem) {
       updateData.unitSystem = unitSystem;
     }
-    if (state) {
-      updateData.state = state;
+    if (State) {
+      updateData.State = State;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -140,7 +122,7 @@ class UserInfoCollection extends BaseCollection {
       Meteor.publish(userInfoPublications.userInfo, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ user: username });
+          return instance._collection.find({ owner: username });
         }
         return this.ready();
       });
@@ -152,11 +134,19 @@ class UserInfoCollection extends BaseCollection {
         }
         return this.ready();
       });
+
+      /** This subscription publishes all documents regardless of user */
+      Meteor.publish(userInfoPublications.landingPageuser, function publish() {
+        if (!this.userId) {
+          return instance._collection.find();
+        }
+        return this.ready();
+      });
     }
   }
 
   /**
-   * Subscription method for stuff owned by the current user.
+   * Subscription method for UserInfo owned by the current user.
    */
   subscribeUserInfo() {
     if (Meteor.isClient) {
@@ -172,6 +162,17 @@ class UserInfoCollection extends BaseCollection {
   subscribeUserInfoAdmin() {
     if (Meteor.isClient) {
       return Meteor.subscribe(userInfoPublications.userInfoAdmin);
+    }
+    return null;
+  }
+
+  /**
+   * Subscription method for admin users.
+   * It subscribes to the entire collection.
+   */
+  subscribeUserInfoLanding() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(userInfoPublications.landingPageuser);
     }
     return null;
   }
