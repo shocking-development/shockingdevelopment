@@ -1,28 +1,46 @@
 import React from 'react';
-import { Loader, Header, Image, Segment, Container, Card } from 'semantic-ui-react';
+import { Loader, Header, Image, Segment, Container, Card, Form } from 'semantic-ui-react';
 import swal from 'sweetalert';
 // eslint-disable-next-line no-unused-vars
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** Renders the Page for editing a single document. */
 class ChangePassword extends React.Component {
 
+  /** Initialize state fields. */
+  constructor(props) {
+    super(props);
+    this.state = { currPass: '', newPass: '', confirm: '', error: '', redirectToReferer: false };
+  }
+
+  /** Update the form controls each time the user interacts with them. */
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
+  };
+
   /** On successful submit, insert the data. */
-  submit(data) {
-    const { password } = data;
-    Meteor.call('changePass', password, (err) => {
+  submit = () => {
+    const { currPass, newPass, confirm, error } = this.state;
+    if (newPass !== confirm) {
+      this.setState({ error: 'New passwords do not match. Please double check.' });
+      swal('Error', error, 'error');
+    } else {
+      Accounts.changePassword(currPass, newPass, (err) => {
           if (err) {
-            console.log('Error changing password: {err}');
+            this.setState({ error: err.reason });
+            swal('Error', err.message, 'error');
           } else {
             swal('Success', 'Password changed successfully', 'success');
           }
         });
+
+    }
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -32,7 +50,6 @@ class ChangePassword extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
-    const bridge = new SimpleSchema2Bridge(UserInfos.getSchema());
     const pageStyle = {
       marginLeft: '20em',
       paddingTop: '6em',
@@ -43,7 +60,7 @@ class ChangePassword extends React.Component {
     return (
 
         <div style={{
-          background: 'rgb(21 51 62)',
+          background: '#001947',
           backgroundSize: 'cover',
           height: '100%',
           marginTop: '-10px',
@@ -55,19 +72,45 @@ class ChangePassword extends React.Component {
               paddingBottom: '50px',
             }}/>
             <Card style={{ margin: 'auto' }}>
-              <AutoForm
-                  schema={bridge}
-                  onSubmit={data => {
-                    // eslint-disable-next-line no-undef,no-alert
-                    if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
-                  }} model={this.props.doc}>
-                <Segment>
-                  <TextField name='password' id='update-password-submit'/>
-                  <SubmitField value='Update'/>
-                  <ErrorsField/>
-                  <HiddenField name='owner'/>
-                </Segment>
-              </AutoForm>
+
+              <Form onSubmit={data => {
+                // eslint-disable-next-line no-undef,no-alert
+                if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
+              }}>
+                <Form.Input
+                    label="Current Password"
+                    icon="user"
+                    iconPosition="left"
+                    name="currPass"
+                    type="password"
+                    placeholder="Enter your current password"
+                    onChange={this.handleChange}
+                />
+                <Form.Input
+                    label="New Password"
+                    icon="user"
+                    iconPosition="left"
+                    name="newPass"
+                    type="password"
+                    placeholder="Enter a new password"
+                    onChange={this.handleChange}
+                />
+                <Form.Input
+                    label="Confirm New Password"
+                    icon="user"
+                    iconPosition="left"
+                    name="confirm"
+                    type="password"
+                    placeholder="Confirm new password"
+                    onChange={this.handleChange}
+                />
+
+                <Form.Button content={'Submit'}>
+
+                </Form.Button>
+
+              </Form>
+
             </Card>
           </Container>
         </div>
