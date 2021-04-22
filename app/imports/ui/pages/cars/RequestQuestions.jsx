@@ -6,43 +6,19 @@ function RequestQuestions() {
 
   const panels = [
     {
-      key: 'why-add-car',
-      title: 'Why do I need to add my car?',
+      key: 'why-request',
+      title: 'Why should I contact Admin for?',
       content: {
         content: (
             <div>
               <p style={{ color: '#7abeff' }}>
-                Adding your car will enable us to better calculate your savings, emissions, and miles driven. </p>
-            </div>
-        ),
-      },
-    },
-    {
-      key: 'add-car',
-      title: 'How do I add my car?',
-      content: {
-        content: (
-            <div style={{ paddingBottom: '10px' }}>
-              <p style={{ color: '#7abeff' }}>
-                Simply choose the year of your car from the drop down.
-                <br/>
-                Next, choose the make of your car. For instance, Honda or
-                Audi.
-                <br/>
-                Then add the model of your car, like continental GT for a 2020 Bentley.
-              </p>
-            </div>
-        ),
-      },
-    },
-    {
-      key: 'dont-see-car',
-      title: 'What if I do not see my car?',
-      content: {
-        content: (
-            <div style={{ paddingBottom: '10px' }}>
-              <p style={{ color: '#7abeff' }}>
-                If you do not see your car please contact admin through the request page.
+                Feel free to contact Admin for following reasons
+              <ul>
+                <li> You do not see your car model.</li>
+                <li> You would like to delete your account.</li>
+                <li> You are having difficulties with your account.</li>
+                <li> You have recommendations for improvements.</li>
+              </ul>
               </p>
             </div>
         ),
