@@ -1,12 +1,13 @@
 import React from 'react';
-import { Header, Grid, Segment, Image, Button, Form } from 'semantic-ui-react';
+import { Header, Grid, Segment, Image, Button } from 'semantic-ui-react';
 import SimpleSchema from 'simpl-schema';
 import { SimpleSchema2Bridge } from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, SubmitField, TextField, ErrorsField } from 'uniforms-semantic';
+import { AutoForm, TextField, ErrorsField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { newRequest } from '../../../api/cars/UserRequest';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
+import RequestQuestions from './RequestQuestions';
 
 const formSchema = new SimpleSchema({
   recommendationType: String,
@@ -54,6 +55,7 @@ class Requests extends React.Component {
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
+            <RequestQuestions/>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
                 <TextField name='recommendationType' label='Type of Recommendation'/>
