@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Icon } from 'semantic-ui-react';
+import { Accordion } from 'semantic-ui-react';
 
 /* A simple static component to render the home page when users are logged in. */
 function CarsAccordianQuestions() {
