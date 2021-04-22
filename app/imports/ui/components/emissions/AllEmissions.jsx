@@ -22,20 +22,20 @@ function AllEmissions() {
     };
 
     return (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ width: '73%' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+        <div style={{ width: '79%' }}>
             <Pagination
                 defaultActivePage={1}
                 totalPages={Math.ceil(emissions.length / 25)}
                 onPageChange={handleInputChange}
             />
-              <Table style={{ border: 'none' }}>
+              <Table style={{ border: 'none', textAlign: 'center' }}>
                 <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell className={'headerdataPage'}>Date</Table.HeaderCell>
-                    <Table.HeaderCell className={'headerdataPage'}>Transportation</Table.HeaderCell>
-                    <Table.HeaderCell className={'headerdataPage'}>Miles</Table.HeaderCell>
-                    <Table.HeaderCell className={'headerdataPage'}>Delete</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Date</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Transportation</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Miles</Table.HeaderCell>
+                    <Table.HeaderCell className={'tableStylingEmissionsPage'}>Delete</Table.HeaderCell>
                 </Table.Row>
                 </Table.Header>
 
@@ -43,6 +43,11 @@ function AllEmissions() {
                     {emissions.map(emission => <EmissionItem key={emission._id} emission={emission}/>).slice(startIndex, endIndex)}
                 </Table.Body>
             </Table>
+            <Pagination
+                defaultActivePage={1}
+                totalPages={Math.ceil(emissions.length / 25)}
+                onPageChange={handleInputChange}
+            />
         </div>
         </div>
     );

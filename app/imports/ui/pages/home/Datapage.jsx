@@ -31,14 +31,12 @@ class Datapage extends React.Component {
     const dataPagePieChartstyling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: '-41px -1px 44px -3px #0E324C',
       paddingTop: '10px',
     };
 
     const dataPagebarGraphstyling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
     };
@@ -46,46 +44,34 @@ class Datapage extends React.Component {
     const dataPageDonutChart1styling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
-      //paddingRight: '10px',
+      paddingRight: '10px',
       position: 'relative',
-      //left: '10px',
+      left: '10px',
       height: '100%',
-      //width: '24%',
+      width: '24%',
     };
 
     const dataPageDonutChart2styling = {
       background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
-      //paddingRight: '10px',
+      paddingRight: '10px',
       position: 'relative',
-      //left: '1em',
+      left: '1em',
       height: '100%',
-      //width: '24%',
+      width: '24%',
     };
 
     const dataTableDivstyling = {
       background: '#0a69a7',
       borderRadius: '6px',
-<<<<<<< Updated upstream
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
-=======
-      //paddingTop: '10px',
-      //paddingRight: '10px',
->>>>>>> Stashed changes
       position: 'relative',
-      //left: '1.29em',
+      left: '1.29em',
       height: '100%',
-<<<<<<< Updated upstream
-      width: '51%',
-=======
-      //width: '50%',
->>>>>>> Stashed changes
+      width: '50%',
     };
     /* const tablestyling = {
       background: '#0a69a7',
@@ -103,37 +89,27 @@ class Datapage extends React.Component {
           <div style={pageStyle}>
             <div style={{ width: '90%', margin: 'auto' }}>
               <Grid stackable columns='equal'>
-                <Grid.Row>
-                  <Grid.Column>
-                    <div style={dataPagePieChartstyling}>
-                      <DataPagePieChart/>
-                    </div>
-                  </Grid.Column>
-                  <Grid.Column>
-                    <div style={dataPagebarGraphstyling}>
-                      <DataPageBarGraph/>
-                    </div>
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-              <Grid columns={2}>
                 <Grid.Column>
-                  <Grid.Column>
-                    <div style={dataPageDonutChart1styling}>
-                      <DataPageDonutChart1/>
-                    </div>
-                  </Grid.Column>
-                  <Grid.Column>
-                    <div style={dataPageDonutChart2styling}>
-                      <DataPageDonutChart2/>
-                    </div>
-                  </Grid.Column>
+                  <div style={dataPagePieChartstyling}>
+                    <DataPagePieChart/>
+                  </div>
                 </Grid.Column>
                 <Grid.Column>
+                  <div style={dataPagebarGraphstyling}>
+                    <DataPageBarGraph/>
+                  </div>
+                </Grid.Column>
+                <Grid.Row>
+                  <div style={dataPageDonutChart1styling}>
+                    <DataPageDonutChart1/>
+                  </div>
+                  <div style={dataPageDonutChart2styling}>
+                    <DataPageDonutChart2/>
+                  </div>
                   <div style={dataTableDivstyling}>
                     <EmissionForHome/>
                   </div>
-                </Grid.Column>
+                </Grid.Row>
               </Grid>
             </div>
           </div>

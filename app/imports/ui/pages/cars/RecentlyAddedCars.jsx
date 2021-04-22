@@ -19,12 +19,11 @@ class RecentlyAddedCars extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
 
-    // For debugging console.log(this.props.cars.length); <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{ paddingBottom: '2em' }}/>
-
     return (
         <div>
           <Header inverted as="h1" textAlign="center"
-                  style={{ fontWeight: 'lighter', paddingTop: '15px', paddingBottom: '15px' }}>
+                  style={{ fontWeight: 'lighter', paddingTop: '65px', paddingBottom: '45px' }}
+                  className={'YourCarsHeader'}>
             Your Cars
           </Header>
           {this.props.cars.length !== 0 ?
@@ -38,6 +37,7 @@ class RecentlyAddedCars extends React.Component {
                         animated='vertical'
                         size='medium'
                         color='blue'
+                        style={{ top: '310px', left: '-124px' }}
                         id='edit-password'
                         className={'editButtonProfile'}
                     >
@@ -73,7 +73,7 @@ RecentlyAddedCars.propTypes = {
 export default withTracker(() => {
   const subscription = UserInfosCars.subscribeUserInfoCars();
   return {
-    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 3 }).fetch(),
+    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 1 }).fetch(),
     ready: subscription.ready(),
   };
 })(RecentlyAddedCars);

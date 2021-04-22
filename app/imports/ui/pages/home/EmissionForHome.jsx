@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Table, Pagination, Icon, Header } from 'semantic-ui-react';
 import { Emissions } from '../../../api/emissions/EmissionsCollection';
-import EmissionItem from '../../components/emissions/EmissionItem';
+import EmissionItemForHomePage from '../../components/emissions/EmissionItemForHomePage';
 import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsData';
 
 function EmissionForHome() {
@@ -37,27 +37,25 @@ function EmissionForHome() {
                 </Table.Header>
 
                 <Table.Body>
-                  {emissions.map(emission => <EmissionItem key={emission._id}
+                  {emissions.map(emission => <EmissionItemForHomePage key={emission._id}
                                                            emission={emission}/>).slice(startIndex, endIndex)}
                 </Table.Body>
 
-                <Table.Footer className={'headerdataPage'}>
-                  <Pagination
-                      defaultActivePage={1}
-                      totalPages={Math.ceil(emissions.length / 5)}
-                      onPageChange={handleInputChange}
-                      className={'headerdataPage'}
-                      firstItem={{ content: <Icon inverted name="angle double left"/> }}
-                      lastItem={{ content: <Icon inverted name="angle double right"/> }}
-                      prevItem={{ content: <Icon inverted name="angle left"/> }}
-                      nextItem={{ content: <Icon inverted name="angle right"/> }}
-                      style={{ boxShadow: 'none', border: 'none' }}
-                      pointing
-                      secondary
-
-                  />
-                </Table.Footer>
               </Table>
+              <Pagination
+                  defaultActivePage={1}
+                  totalPages={Math.ceil(emissions.length / 5)}
+                  onPageChange={handleInputChange}
+                  className={'headerdataPage'}
+                  firstItem={{ content: <Icon inverted name="angle double left"/> }}
+                  lastItem={{ content: <Icon inverted name="angle double right"/> }}
+                  prevItem={{ content: <Icon inverted name="angle left"/> }}
+                  nextItem={{ content: <Icon inverted name="angle right"/> }}
+                  style={{ boxShadow: 'none', border: 'none' }}
+                  pointing
+                  secondary
+
+              />
             </div> :
             <Header inverted as="h3" textAlign="center" style={{ marginTop: '10%' }}>
               Add Emissions to view your chart.

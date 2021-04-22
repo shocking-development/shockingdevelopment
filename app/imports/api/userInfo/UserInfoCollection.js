@@ -39,7 +39,7 @@ class UserInfoCollection extends BaseCollection {
   }
 
   /**
-   * Defines a new Stuff item.
+   * Defines a new UserInfo item.
    * @param firstName the first name of the person.
    * @param lastName the last name of the person.
    * @param user the user name of the person.
@@ -146,7 +146,7 @@ class UserInfoCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for stuff owned by the current user.
+   * Subscription method for UserInfo owned by the current user.
    */
   subscribeUserInfo() {
     if (Meteor.isClient) {

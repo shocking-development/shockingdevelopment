@@ -5,7 +5,7 @@ import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
 import LandingPagePieChart from '../defaultcharts/LandingPagePieChart';
 import LandingSectionStatistics from './LandingSectionStatistics';
-import { calculateCO2, calculateGal, calculateGHG } from '../../../api/trips/ghgcalculation';
+import { calculateCO2, calculateGal, calculateGHG } from '../../../api/ghgEquations/ghgcalculation';
 
 /** A simple static component to render some statistics for the landing page. */
 class LandingSection2 extends React.Component {

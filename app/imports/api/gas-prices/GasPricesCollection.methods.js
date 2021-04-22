@@ -14,10 +14,8 @@ export const gasPricesDefineMethod = new ValidatedMethod({
   mixins: [CallPromiseMixin],
   validate: null,
   run(definitionData) {
-    // console.log('stuffDefineMethod', definitionData);
     if (Meteor.isServer) {
       const docID = GasPrices.define(definitionData);
-      // console.log(`stuffDefineMethod returning ${docID}. Now have ${Stuffs.count()}`);
       return docID;
     }
     return '';
