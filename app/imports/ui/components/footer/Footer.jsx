@@ -36,10 +36,18 @@ class Footer extends React.Component {
                   <Image style={footerLogo} src="/images/HEI-WHOLE-LOGO.png"/>
                 </p>
                 <p style={{ display: 'flex', justifyContent: 'center' }}>
-                  <Icon style={{ color: 'white', margin: '10px' }} className="facebook"></Icon>
-                  <Icon style={{ color: 'white', margin: '10px' }} className="instagram"></Icon>
-                  <Icon style={{ color: 'white', margin: '10px' }} className="twitter"></Icon>
-                  <Icon style={{ color: 'white', margin: '10px' }} className="youtube"></Icon>
+                  <a href="https://www.facebook.com/HawaiianElectric/">
+                    <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="facebook"></Icon>
+                  </a>
+                  <a href="https://www.instagram.com/hawaiianelectric/?hl=en">
+                    <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="instagram"></Icon>
+                  </a>
+                  <a href="https://twitter.com/HwnElectric?s=20">
+                    <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="twitter"></Icon>
+                  </a>
+                  <a href="https://www.youtube.com/user/HawaiianElectric/featured">
+                    <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="youtube"></Icon>
+                  </a>
                 </p>
               </Grid.Column>
               <Grid.Column style={{ marginTop: '40px' }}>
