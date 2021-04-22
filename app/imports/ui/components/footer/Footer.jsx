@@ -30,7 +30,7 @@ class Footer extends React.Component {
     return (
         <div id="footer-container" style={{ backgroundColor: '#052235' }}>
           <Link to="landing-page" spy={true} smooth={true}>
-            <Button fluid compact color='blue'>Back to top</Button>
+            <Button fluid compact inverted secondary button>Back to top</Button>
           </Link>
           <Segment style={footercolor2}>
             <Grid columns={4} relaxed='very'>
@@ -41,19 +41,19 @@ class Footer extends React.Component {
                 <p style={{ display: 'flex', justifyContent: 'center' }}>
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <a href="https://www.facebook.com/HawaiianElectric/" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '5px' }} className="facebook"></Icon>
+                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="facebook"></Icon>
                   </a>
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <a href="https://www.instagram.com/hawaiianelectric/?hl=en" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '5px' }} className="instagram"></Icon>
+                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="instagram"></Icon>
                   </a>
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <a href="https://twitter.com/HwnElectric?s=20" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '5px' }} className="twitter"></Icon>
+                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="twitter"></Icon>
                   </a>
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <a href="https://www.youtube.com/user/HawaiianElectric/featured" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '5px' }} className="youtube"></Icon>
+                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="youtube"></Icon>
                   </a>
                 </p>
               </Grid.Column>
