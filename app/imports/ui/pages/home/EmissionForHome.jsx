@@ -25,7 +25,7 @@ function EmissionForHome() {
   return (
       <div style={{ width: '90%', margin: 'auto' }}>
         {UserEmissionData('Emissions').length !== 0 ?
-            <div>
+            <div style={{ textAlign: 'center' }}>
               <Table style={{ border: 'none' }} className={'headerdataPage'}>
                 <Table.Header>
                   <Table.Row>
