@@ -17,8 +17,8 @@ class Footer extends React.Component {
     };
     const footertext = { paddingLeft: '12px', marginBottom: '6px', color: 'white' };
     const footerHeader = { paddingLeft: '12px', marginBottom: '24px', color: 'Gray', fontWeight: 'bolder' };
-    const mailingAdressstyling = { /*paddingTop: '135px',*/ marginBottom: '6px', color: 'white' };
-    const footercolumn2text = { marginBottom: '6px', color: 'white' };
+    /* const mailingAdressstyling = { paddingTop: '135px', marginBottom: '6px', color: 'white' }; */
+    /* const footercolumn2text = { marginBottom: '6px', color: 'white' }; */
     const footercolumn3text = {
       color: 'gray',
       fontSize: '15px',
@@ -29,16 +29,13 @@ class Footer extends React.Component {
 
     return (
         <div id="footer-container" style={{ backgroundColor: '#052235' }}>
-          <Link to="landing-page" spy={true} smooth={true}>
-            <Button fluid compact inverted secondary button>Back to top</Button>
-          </Link>
           <Segment style={footercolor2}>
             <Grid columns={4} relaxed='very'>
               <Grid.Column style={{ marginTop: '40px' }}>
-                <p style={{ display: 'flex', justifyContent: 'center' }}>
+                <p style={{ display: 'flex', justifyContent: 'left' }}>
                   <Image style={footerLogo} src="/images/HEI-WHOLE-LOGO.png"/>
                 </p>
-                <p style={{ display: 'flex', justifyContent: 'center' }}>
+                <p style={{ display: 'flex', justifyContent: 'left' }}>
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <a href="https://www.facebook.com/HawaiianElectric/" target="_blank">
                     <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="facebook"></Icon>
@@ -80,7 +77,9 @@ class Footer extends React.Component {
               </Grid.Column>
             </Grid>
           </Segment>
-
+          <Link to="landing-page" spy={true} smooth={true}>
+            <Button fluid compact inverted secondary button>Back to top</Button>
+          </Link>
         </div>
     );
   }
