@@ -118,10 +118,8 @@ class EditProfile extends React.Component {
         }}>
           <NavBarHome/>
           <Container style={pageStyle}>
-            <Header inverted as="h2" textAlign="center">Edit Profile</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
+            <Header inverted as="h2" style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }} textAlign="center"
+            >Edit Profile</Header>
             <Grid>
               <Grid.Row style={{ marginTop: '3em', background: '#001947' }}>
                 <Grid.Column width={5}>

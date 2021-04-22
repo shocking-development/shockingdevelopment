@@ -6,11 +6,11 @@ import { UserEmissionData } from './UserEmissionsData';
 
 /** A simple static component to render some boxes for the landing page. */
 
-function DataPageBarGraph() {
+function TotalGasSavedForMore() {
 
   const options = {
     title: {
-      text: 'Your 2021 Environmental Benefits Cummulative Total',
+      text: 'Your Gas Saved',
       style: {
         color: 'white',
         fontWeight: '300',
@@ -18,17 +18,8 @@ function DataPageBarGraph() {
       },
     },
     series: [{
-      name: 'Miles Traveled',
-      data: UserEmissionData('DataMiles'),
-
-    }, {
-      name: 'Money spent ($)',
-      data: UserEmissionData('MoneySpent'),
-
-    }, {
-      name: 'CO2 emissions produced (lbs)',
-      data: UserEmissionData('CO2EmissionsProduced'),
-
+      name: 'Gas Saved (gallons)',
+      data: UserEmissionData('gallonsofgasbymonth'),
     }],
     chart: {
       type: 'column',
@@ -75,9 +66,6 @@ function DataPageBarGraph() {
                   highcharts={Highcharts}
                   options={options}
               />
-              <h1 style={{ position: 'absolute', top: '0px', right: '29px' }}>
-                <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
-              </h1>
             </div> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
               Hmm... These charts are empty. <a style={{ color: 'rgb(7 182 254)' }} href={'#/add'}>Try adding todays
               emissions </a>
@@ -87,4 +75,4 @@ function DataPageBarGraph() {
 
 }
 
-export default DataPageBarGraph;
+export default TotalGasSavedForMore;

@@ -4,6 +4,11 @@ import { useTracker } from 'meteor/react-meteor-data';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 import Datapage from './Datapage';
 import { UserEmissionData } from '../../components/defaultcharts/UserEmissionsData';
+import { countLengthOfNumber } from '../../../api/emissionsEquations/EmissionsCalculations';
+import ViewMoreEmissionsForHome from './ViewMoreEmissionsForHome';
+import ViewMoreSavingsForHome from './ViewMoreSavingsForHome';
+import ViewMoreEmissionsReducedForHome from './ViewMoreEmissionsReducedForHome';
+import ViewMoreGasSaved from './ViewMoreGasSaved';
 
 /* A simple static component to render the home page when users are logged in. */
 function Home() {
@@ -22,22 +27,41 @@ function Home() {
     width: '100vw',
   };
 
-  const { totalEmissions, galSaved, totalReducedEmissions, totalSavings } = useTracker(() => {
+  const {
+    totalEmissions, galSaved, totalReducedEmissions, totalSavings,
+    numberOfDigitsInTotalEmissions, numberOfDigitsInGalSaved,
+    numberOfDigitsInTotalReducedEmissions, numberOfDigitsInTotalSavings,
+  } = useTracker(() => {
     const totalEmissionsretrieved = UserEmissionData('totalEmissions'); // gets the id of the user
     const galSavedretrieved = UserEmissionData('totalGasSaved');
     const totalEmissionReducedretrieved = UserEmissionData('totalEmissionsReduced');
     const totalSavingsretrieved = UserEmissionData('totalSavings');
+    const numberOfDigitsInTotalEmissions1 = countLengthOfNumber(Number(totalEmissionsretrieved));
+    const numberOfDigitsInGalSaved1 = countLengthOfNumber(Number(galSavedretrieved));
+    const numberOfDigitsInTotalReducedEmissions1 = countLengthOfNumber(Number(totalEmissionReducedretrieved));
+    const numberOfDigitsInTotalSavings1 = countLengthOfNumber(Number(totalSavingsretrieved));
 
     return {
       totalEmissions: totalEmissionsretrieved,
       galSaved: galSavedretrieved,
       totalReducedEmissions: totalEmissionReducedretrieved,
       totalSavings: totalSavingsretrieved,
+      numberOfDigitsInTotalEmissions: numberOfDigitsInTotalEmissions1,
+      numberOfDigitsInGalSaved: numberOfDigitsInGalSaved1,
+      numberOfDigitsInTotalReducedEmissions: numberOfDigitsInTotalReducedEmissions1,
+      numberOfDigitsInTotalSavings: numberOfDigitsInTotalSavings1,
     };
   });
 
-  if ((totalEmissions !== Infinity && typeof totalEmissions !== 'undefined') || (galSaved !== Infinity && typeof galSaved !== 'undefined')
-      || (totalReducedEmissions !== Infinity && typeof totalReducedEmissions !== 'undefined') || (totalSavings !== Infinity && typeof totalSavings !== 'undefined')) {
+  /*
+  * checkforfirstIf checks if the values are gotten e.g. they dont equal infinity or are undefined we also
+  */
+  const checkforfirstIf = (((totalEmissions !== Infinity && typeof totalEmissions !== 'undefined')
+      || (galSaved !== Infinity && typeof galSaved !== 'undefined') || (totalReducedEmissions !== Infinity && typeof
+          totalReducedEmissions !== 'undefined')
+      || (totalSavings !== Infinity && typeof totalSavings !== 'undefined')));
+
+  if (checkforfirstIf) {
     return (
         <div style={pageStyle}>
           <NavBarHome/>
@@ -46,52 +70,62 @@ function Home() {
               <Grid.Row centered>
                 <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
-                    <Segment className={'grow'} circular style={square}>
-                      <Statistic inverted>
-                        {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>${totalSavings}</Statistic.Value>
-                        <Statistic.Label>saved</Statistic.Label>
-                      </Statistic>
-                    </Segment>
+
+                    {numberOfDigitsInTotalSavings > 3 ?
+                        <div>
+                          <ViewMoreSavingsForHome/>
+                        </div> : <Segment className={'grow'} circular style={square}> <Statistic inverted>
+                          <Statistic.Value>${totalSavings}</Statistic.Value>
+                          <Statistic.Label>saved</Statistic.Label>
+                        </Statistic>
+                        </Segment>
+                    }
+
                   </div>
                 </Grid.Column>
 
                 <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
-                    <Segment className={'grow'} circular style={square}>
-                      <Statistic inverted>
-                        {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>{totalReducedEmissions} lbs</Statistic.Value>
-                        <Statistic.Label>GHG reduced</Statistic.Label>
-                      </Statistic>
-                    </Segment>
+                    {numberOfDigitsInTotalReducedEmissions > 3 ?
+                        <div>
+                          <ViewMoreEmissionsReducedForHome/>
+                        </div> : <Segment className={'grow'} circular style={square}> <Statistic inverted>
+                          <Statistic.Value>{totalReducedEmissions} lbs</Statistic.Value>
+                          <Statistic.Label>GHG reduced</Statistic.Label>
+                        </Statistic>
+                        </Segment>
+                    }
                   </div>
                 </Grid.Column>
 
                 <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
-                    <Segment className={'grow'} circular style={square}>
-                      <Statistic inverted>
-                        {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>{galSaved} gal</Statistic.Value>
-                        <Statistic.Label>gas saved</Statistic.Label>
-                      </Statistic>
-                    </Segment>
+                    {numberOfDigitsInGalSaved > 3 ?
+                        <div>
+                          <ViewMoreGasSaved/>
+                        </div> : <Segment className={'grow'} circular style={square}> <Statistic inverted>
+                          <Statistic.Value>{galSaved} gal</Statistic.Value>
+                          <Statistic.Label>gas saved</Statistic.Label>
+                        </Statistic> </Segment>
+                    }
                   </div>
 
                 </Grid.Column>
 
                 <Grid.Column className={'jello-horizontal'}>
                   <div align="center">
-                    <Segment className={'grow'} circular style={square}>
-                      <Statistic inverted>
-                        {/* Needs to be filled with actual data. */}
-                        <Statistic.Value>  {totalEmissions} lbs </Statistic.Value>
-                        <Statistic.Label>of Emissions Produced</Statistic.Label>
-                      </Statistic>
-                    </Segment>
-                  </div>
 
+                    {numberOfDigitsInTotalEmissions > 3 ?
+                        <div>
+                          <ViewMoreEmissionsForHome/>
+                        </div> : <Segment className={'grow'} circular style={square}>
+                          <Statistic inverted>
+                            <Statistic.Value>{totalEmissions} lbs </Statistic.Value>
+                            <Statistic.Label>of Emissions Produced</Statistic.Label>
+                          </Statistic> </Segment>
+                    }
+
+                  </div>
                 </Grid.Column>
 
               </Grid.Row>
@@ -163,7 +197,6 @@ function Home() {
         </div>
       </div>
   );
-
 }
 
 /* Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
