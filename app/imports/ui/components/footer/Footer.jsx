@@ -16,6 +16,7 @@ class Footer extends React.Component {
       paddingRight: '10%',
     };
     const footertext = { paddingLeft: '12px', marginBottom: '6px', color: 'white' };
+    const footerHeader = { paddingLeft: '12px', marginBottom: '6px', color: 'white' };
     const mailingAdressstyling = { /*paddingTop: '135px',*/ marginBottom: '6px', color: 'white' };
     const footercolumn2text = { marginBottom: '6px', color: 'white' };
     const footercolumn3text = {
@@ -36,21 +37,26 @@ class Footer extends React.Component {
                   <Image style={footerLogo} src="/images/HEI-WHOLE-LOGO.png"/>
                 </p>
                 <p style={{ display: 'flex', justifyContent: 'center' }}>
-                  <a href="https://www.facebook.com/HawaiianElectric/">
+                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                   <a href="https://www.facebook.com/HawaiianElectric/" target="_blank">
                     <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="facebook"></Icon>
                   </a>
-                  <a href="https://www.instagram.com/hawaiianelectric/?hl=en">
+                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                  <a href="https://www.instagram.com/hawaiianelectric/?hl=en" target="_blank">
                     <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="instagram"></Icon>
                   </a>
-                  <a href="https://twitter.com/HwnElectric?s=20">
+                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                  <a href="https://twitter.com/HwnElectric?s=20" target="_blank">
                     <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="twitter"></Icon>
                   </a>
-                  <a href="https://www.youtube.com/user/HawaiianElectric/featured">
+                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                  <a href="https://www.youtube.com/user/HawaiianElectric/featured" target="_blank">
                     <Icon size={'big'} style={{ color: 'white', margin: '5px' }} className="youtube"></Icon>
                   </a>
                 </p>
               </Grid.Column>
               <Grid.Column style={{ marginTop: '40px' }}>
+                <p style={footertext}> Contact Information </p>
                 <p style={footertext}> Corporate Headquarters </p>
                 <p style={footertext}> 1001 Bishop Street, Suite
                   2900 </p>
@@ -79,8 +85,8 @@ class Footer extends React.Component {
           </Segment>
 
         </div>
-    );
+  );
   }
-}
+  }
 
-export default Footer;
+  export default Footer;
