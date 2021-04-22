@@ -35,6 +35,19 @@ function CarsAccordianQuestions() {
         ),
       },
     },
+    {
+      key: 'dont-see-car',
+      title: 'What if I do not see my car?',
+      content: {
+        content: (
+            <div style={{ paddingBottom: '10px' }}>
+              <p style={{ color: '#7abeff' }}>
+                If you do not see your car please contact admin through the request page.
+              </p>
+            </div>
+        ),
+      },
+    },
   ];
 
   return (
