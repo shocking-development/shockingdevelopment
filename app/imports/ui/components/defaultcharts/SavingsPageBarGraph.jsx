@@ -11,43 +11,47 @@ class SavingsPageBarGraph extends React.Component {
       title: {
         text: 'Your current car vs input',
         style: {
-          color: 'black',
+          color: 'white',
           fontWeight: '300',
           fontFamily: 'sans-serif',
         },
       },
       series: [{
-        color: 'blue',
+        color: '#8086e8',
         name: 'Price (Thousands of Dollars)',
+        borderColor: 'transparent',
         data: [25 + Math.random() * 20, 30 + Math.random() * 20],
 
       }, {
-        color: 'yellow',
+        color: '#b5cc18',
         name: 'Full Saved (Gallons)',
+        borderColor: 'transparent',
         data: [30 + Math.random() * 20, 10 + Math.random() * 20],
 
       }, {
-        color: 'red',
+        color: '#f15d80',
         name: 'CO2 reduced (Pounds)',
         textColor: 'red',
+        borderColor: 'transparent',
         data: [20 + Math.random() * 20, 10 + Math.random() * 20],
 
       }],
       chart: {
         type: 'column',
         styledMode: false,
+
       },
       xAxis: {
-        gridLineColor: 'black',
-        lineColor: 'black',
+        gridLineColor: 'white',
+        lineColor: 'white',
         labels: {
           style: {
-            color: 'black',
+            color: 'white',
           },
         },
         legend: {
           itemStyle: {
-            color: 'black',
+            color: 'white',
             fontWeight: 'bold',
           },
         },
@@ -62,13 +66,12 @@ class SavingsPageBarGraph extends React.Component {
         gridLineColor: 'yellow',
         title: {
           style: {
-            color: 'black',
+            color: 'white',
           },
         },
         labels: {
           style: {
-
-            color: 'black',
+            color: 'white',
           },
         },
       },

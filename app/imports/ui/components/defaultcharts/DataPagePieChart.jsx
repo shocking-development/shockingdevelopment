@@ -2,7 +2,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Header } from 'semantic-ui-react';
-import { UserEmissionData } from './UserEmissions';
+import { UserEmissionData } from './UserEmissionsData';
 
 /** A simple static component to render some boxes for the landing page. */
 
@@ -112,11 +112,16 @@ function DataPagePieChart() {
   return (
       <div>
         {UserEmissionData('Emissions').length !== 0 ?
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={options}
-            /> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
-              Hmm... These charts are empty. <a style={{ color: '#45efe7' }} href={'#/add'}>Try adding todays
+            <div>
+              <HighchartsReact
+                  highcharts={Highcharts}
+                  options={options}
+              />
+              <h1 style={{ position: 'absolute', top: '0px', right: '29px' }}>
+                <a style={{ color: '#45efe7' }} href={'#/add'}> + </a>
+              </h1>
+            </div> : <Header inverted as="h3" textAlign="center" style={{ paddingBottom: '10px' }}>
+              Hmm... These charts are empty. <a style={{ color: 'rgb(7 182 254)' }} href={'#/add'}>Try adding todays
               emissions </a>
             </Header>}
       </div>

@@ -6,9 +6,9 @@ import { Emissions } from '../../../api/emissions/EmissionsCollection';
 
 function RecentlyAdded() {
 
-  const user = useTracker(() => Meteor.userId());
   const emissions = useTracker(() => {
     Meteor.subscribe(Emissions.emissionsPublicationName);
+    const user = Meteor.userId();
     return Emissions.collection.find({ owner: user }, { sort: { createdAt: -1 }, limit: 3 }).fetch();
   });
 
@@ -20,10 +20,11 @@ function RecentlyAdded() {
                 <Grid.Row columns={emissions.length}>
                   {emissions.map(recentEmissions => <Grid.Column
                       key={toString(recentEmissions.createdAt) + recentEmissions.transportation + recentEmissions.miles}>
-                    <Card style={{ padding: '1rem', background: '#0DA3CB', width: '25em', height: '10em' }}>
+                    <Card style={{ padding: '1rem', background: 'rgba(0, 73, 122, 0.5)',
+                      border: '2px solid #004486', width: '25em', height: '10em', boxShadow: 'none', textAlign: 'center' }}>
                       <Card.Content>
                         <Card.Header
-                            style={{ color: 'white' }}>{`${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getDate()}/${recentEmissions.date.getFullYear()}`}</Card.Header>
+                            style={{ color: 'white' }}>{`${recentEmissions.date.getMonth() + 1}/${recentEmissions.date.getUTCDate()}/${recentEmissions.date.getFullYear()}`}</Card.Header>
                       </Card.Content>
                       <Card.Content style={{ color: 'white' }}>
                         <b>Transportation: {recentEmissions.transportation}</b>
@@ -34,7 +35,8 @@ function RecentlyAdded() {
                 </Grid.Row>
               </Grid>
             </div>
-            : <Header inverted size ='huge' textAlign='center'>You have not added any emissions</Header>}
+            : <Header inverted size='huge' textAlign='center' style={{ fontWeight: '100' }}>You have not added any
+              emissions</Header>}
       </div>
   );
 }

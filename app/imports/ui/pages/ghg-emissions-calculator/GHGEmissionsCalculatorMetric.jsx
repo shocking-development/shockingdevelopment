@@ -1,11 +1,11 @@
 import React from 'react';
-import { Form, Segment, Header, Container, Image, Button } from 'semantic-ui-react';
+import { Form, Segment, Header, Button } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
-import { calculateCO2, calculateGal, calculateGHG, convertTons } from '../../../api/trips/ghgcalculation';
+import { calculateCO2, calculateGal, calculateGHG, convertTons } from '../../../api/ghgEquations/ghgcalculation';
 
 /** A simple static component to render the GHGEmissionsCalculatorMetricwhen users are logged in. */
 class GHGEmissionsCalculatorMetric extends React.Component {
@@ -59,17 +59,9 @@ class GHGEmissionsCalculatorMetric extends React.Component {
     };
 
     const outer_div_pagestyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       backgroundSize: 'cover',
       height: '100%',
-    };
-
-    const containerStyle = {
-      paddingTop: '10em',
-      paddingLeft: '5em',
-      paddingRight: '5em',
-      paddingBottom: '10em',
-      backgroundColor: 'rgb(21 51 62)',
     };
 
     return (
@@ -77,18 +69,23 @@ class GHGEmissionsCalculatorMetric extends React.Component {
           <NavBarHome/>
           <div style={{
             textAlign: 'center',
-            background: 'rgb(21 51 62)',
+            background: '#001947',
             minHeight: '110vh',
-            Width: '100%',
-            paddingLeft: '15em',
-            paddingTop: '8em',
+            width: '70%',
+            paddingLeft: '20em',
+            paddingTop: '25em',
+            paddingRight: '8em',
             paddingBottom: '8em',
+            margin: 'auto',
           }}>
-            <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
-            <Container style={containerStyle}>
+
+            <Segment className={'viewProfile'}>
+              <Header inverted size={'huge'}>Greenhouse Gas Calculator (Metric)</Header>
+              <Segment>
+                <p>
+                  Use this calculator to predict the amount of greenhouse gasses your trip will generate.
+                </p>
+              </Segment>
               <Form size='small' onSubmit={this.handleFormSubmit}>
                 <Form.Input
                     id='calculator-metric'
@@ -108,7 +105,7 @@ class GHGEmissionsCalculatorMetric extends React.Component {
                   driven for one
                   year.</p>
               </Segment>)}
-            </Container>
+            </Segment>
           </div>
         </div>
     );

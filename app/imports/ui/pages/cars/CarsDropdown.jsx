@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Image, Loader } from 'semantic-ui-react';
+import { Container, Header, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -10,10 +10,14 @@ import { Meteor } from 'meteor/meteor';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
+import CarsAccordianQuestions from './CarsAccordianQuestions';
 
 const formSchema = new SimpleSchema({
   carName: String,
-  carId: String,
+  makeofCar: String,
+  modelofCar: String,
+  yearofCar: Number,
+  mpgofCar: Number,
 });
 
 /** Renders a drop down containing all of the car documents */
@@ -21,10 +25,10 @@ class CarsDropdown extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { carName, carId } = data;
+    const { carName, makeofCar, modelofCar, yearofCar, mpgofCar } = data;
     // console.log(data);
     const owner = Meteor.user().username;
-    userInfoCarDefineMethod.call({ carName, carId, owner },
+    userInfoCarDefineMethod.call({ carName, makeofCar, modelofCar, yearofCar, mpgofCar, owner },
         (error) => {
           if (error) {
             swal('Error', error.message, 'error');
@@ -52,7 +56,7 @@ class CarsDropdown extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() :
         <div className={'loaderStyle'}>
-          <Loader inverted active>Getting Cars</Loader>
+          <Loader inverted active size='big'>Getting Cars</Loader>
         </div>;
 
   }
@@ -61,7 +65,7 @@ class CarsDropdown extends React.Component {
   renderPage() {
 
     const pageStyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       height: '100vh',
       backgroundSize: 'cover',
       paddingTop: '5em',
@@ -84,8 +88,8 @@ class CarsDropdown extends React.Component {
     const allCars = carDocs.filter((doc) => carMakeForAllCars.indexOf(doc.make) === carModelForAllCars.indexOf(doc.model));
 
     const carMakeAllowedValues = ['Acura', 'Alfa Romeo', 'Audi', 'BMW', 'Bentley', 'Buick', 'Cadillac', 'Chevrolet',
-      'Chrysler', 'Dodge', 'Fiat', 'Ford', 'GMC', 'Genesis', 'Honda', 'Hyundai',
-      'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Mazda',
+      'Chrysler', 'Dodge', 'Fiat', 'Fisker', 'Ford', 'Ferrari', 'GMC', 'Genesis', 'Honda', 'Hyundai',
+      'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Land Rover', 'Lamborghini', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Mazda',
       'Mercedes-Benz', 'Mercury', 'Mini', 'Mitsubishi',
       'Nikola', 'Nissan', 'Polestar', 'Pontiac', 'Porsche', 'Ram', 'Rivian',
       'Rolls-Royce', 'Saab', 'Saturn', 'Scion', 'Smart', 'Subaru', 'Suzuki',
@@ -145,8 +149,19 @@ class CarsDropdown extends React.Component {
     * In order to get the car Id we must do the following:
     */
     const filteredModel = filteredSelectField.filter(({ year, make, model }) => year === Number(this.state.years) && make === this.state.make && model === this.state.model);
-    const iDofCar = filteredModel.map((doc) => `${doc._id}`).toString(); // gets the id of the car selected
+
+    const make_of_Car = filteredModel.map((doc) => `${doc.make}`).toString(); // gets the id of the car selected
     // for debugging console.log(iDofCar);
+
+    const model_of_Car = filteredModel.map((doc) => `${doc.model}`).toString(); // gets the id of the car selected
+    // for debugging console.log(iDofCar);
+
+    const year_of_Car = Number(filteredModel.map((doc) => `${doc.year}`)); // gets the id of the car selected
+    // for debugging console.log(iDofCar);
+
+    const mpg_of_Car = Number(filteredModel.map((doc) => `${doc.mpg}`)); // gets the id of the car selected
+    // for debugging console.log(iDofCar);
+
     const allowedModelValues = filteredSelectField.map((doc) => `${doc.model}`);
 
     let fRef = null;
@@ -156,35 +171,35 @@ class CarsDropdown extends React.Component {
 
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container>
-            <Header as="h2" textAlign="center" inverted>Cars</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
-
+          <Container style={{ padding: '3em' }}>
+            <Header as="h1" textAlign="center" inverted style={{ fontWeight: 'lighter' }}>Cars</Header>
+            <CarsAccordianQuestions/>
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
                   id='select-year'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='years'
                   showInlineError={true}
                   placeholder='Select Year'
+                  style={{ minHeight: '40px', minWidth: '100px', fontFamily: 'Roboto' }}
               />
               <SelectField
                   id='select-make'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='make'
                   showInlineError={true}
                   placeholder='Select Make'
+                  style={{ fontFamily: 'Roboto' }}
               />
               <SelectField
                   id='select-model'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='model'
                   allowedValues={allowedModelValues}
                   showInlineError={true}
                   placeholder='Select Model'
+                  style={{ fontFamily: 'Roboto' }}
               />
             </AutoForm>
 
@@ -193,8 +208,9 @@ class CarsDropdown extends React.Component {
             }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
 
               <TextField
+                  style={{ paddingTop: '1em', fontFamily: 'Roboto' }}
                   id='input-car'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='carName'
                   placeholder='Enter the name of your vehicle'
               />
@@ -202,13 +218,14 @@ class CarsDropdown extends React.Component {
                   name="carName"
                   errorMessage="Please type the name of your vehicle"
               />
-              <HiddenField name="carId" value={iDofCar}/>
-              <ErrorField
-                  name="carId"
-                  errorMessage="Please select your car first"
-              />
-              <SubmitField value='Submit' id='submit-car'/>
+              <HiddenField name="makeofCar" value={make_of_Car}/>
+              <HiddenField name="modelofCar" value={model_of_Car}/>
+              <HiddenField name="yearofCar" value={year_of_Car}/>
+              <HiddenField name="mpgofCar" value={mpg_of_Car}/>
+
+              <SubmitField className={'carsDropDownBtn'} value='Submit' id='submit-car'/>
             </AutoForm>
+
           </Container>
         </div>
     );

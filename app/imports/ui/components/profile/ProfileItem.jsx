@@ -3,7 +3,7 @@ import { Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single row in the List Profile table. See pages/ListProfileAdmin.jsx. */
 class ProfileItem extends React.Component {
   render() {
     return (
@@ -11,10 +11,7 @@ class ProfileItem extends React.Component {
           <Table.Cell>{this.props.profile.firstName}</Table.Cell>
           <Table.Cell>{this.props.profile.lastName}</Table.Cell>
           <Table.Cell>{this.props.profile.userName}</Table.Cell>
-          <Table.Cell>{this.props.profile.email}</Table.Cell>
           <Table.Cell>{this.props.profile.password}</Table.Cell>
-          <Table.Cell>{this.props.profile.transportation}</Table.Cell>
-          <Table.Cell>{this.props.profile.zipcode}</Table.Cell>
           <Table.Cell>{this.props.profile.option}</Table.Cell>
           <Table.Cell>
             <Link to={`/edit/${this.props.profile._id}`}>Edit</Link>

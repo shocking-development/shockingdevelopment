@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Table, Menu, Label, Icon } from 'semantic-ui-react';
+import { Grid, GridColumn } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -9,6 +9,7 @@ import DataPagePieChart from '../../components/defaultcharts/DataPagePieChart';
 import DataPageBarGraph from '../../components/defaultcharts/DataPageBarGraph';
 import DataPageDonutChart1 from '../../components/defaultcharts/DataPageDonutChart1';
 import DataPageDonutChart2 from '../../components/defaultcharts/DataPageDonutChart2';
+import EmissionForHome from './EmissionForHome';
 
 /** A simple static component to render the datapage page when users are logged in. */
 class Datapage extends React.Component {
@@ -22,70 +23,57 @@ class Datapage extends React.Component {
       backgroundSize: 'cover',
     };
     const outer_div_pagestyle = {
-      background: 'rgb(21 51 62)',
+      background: '#001947',
       backgroundSize: 'cover',
       height: '100%',
     };
 
     const dataPagePieChartstyling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: '-41px -1px 44px -3px #0E324C',
       paddingTop: '10px',
     };
 
     const dataPagebarGraphstyling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
     };
 
     const dataPageDonutChart1styling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '10px',
       height: '100%',
-      width: '24%',
     };
 
     const dataPageDonutChart2styling = {
-      background: 'rgb(13, 163, 203)',
+      background: 'rgba(0, 73, 122, 1)',
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '1em',
       height: '100%',
-      width: '24%',
     };
 
     const dataTableDivstyling = {
-      background: 'white',
+      background: 'rgba(0, 73, 122, 1)',
+      /* background: '#0a69a7' */
       borderRadius: '6px',
-      boxShadow: ' 28px 5px 44px -3px #0E324C',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '1.29em',
       height: '100%',
-      width: '51%',
     };
-    const tablestyling = {
-      background: 'white',
+    /* const tablestyling = {
+      background: '#0a69a7',
       position: 'relative',
       left: '1.29em',
       height: '100%',
       width: '94%',
-      color: 'black',
+      color: 'white',
       border: 'none',
-    };
+    }; */
 
     return (
         <div style={outer_div_pagestyle}>
@@ -93,73 +81,34 @@ class Datapage extends React.Component {
           <div style={pageStyle}>
             <div style={{ width: '90%', margin: 'auto' }}>
               <Grid stackable columns='equal'>
-                <Grid.Column>
-                  <div style={dataPagePieChartstyling}>
-                    <DataPagePieChart/>
-                  </div>
-                </Grid.Column>
-                <Grid.Column>
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <div style={dataPagePieChartstyling}>
+                      <DataPagePieChart/>
+                    </div>
+                  </Grid.Column>
+                <Grid.Column width={8}>
                   <div style={dataPagebarGraphstyling}>
                     <DataPageBarGraph/>
                   </div>
                 </Grid.Column>
+                </Grid.Row>
                 <Grid.Row>
-                  <div style={dataPageDonutChart1styling}>
-                    <DataPageDonutChart1/>
-                  </div>
-                  <div style={dataPageDonutChart2styling}>
-                    <DataPageDonutChart2/>
-                  </div>
-                  <div style={dataTableDivstyling}>
-                    <Table style={tablestyling} celled>
-                      <Table.Header className={'headerdataPage'}>
-                        <Table.Row>
-                          <Table.HeaderCell>Week</Table.HeaderCell>
-                          <Table.HeaderCell>Emissions</Table.HeaderCell>
-                          <Table.HeaderCell>Transportation</Table.HeaderCell>
-                        </Table.Row>
-                      </Table.Header>
-
-                      <Table.Body>
-                        <Table.Row>
-                          <Table.Cell>
-                            <Label ribbon>This Week</Label>
-                          </Table.Cell>
-                          <Table.Cell>.01</Table.Cell>
-                          <Table.Cell>Public Transportation</Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                          <Table.Cell> Last Week </Table.Cell>
-                          <Table.Cell>.02 tons</Table.Cell>
-                          <Table.Cell>Car</Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                          <Table.Cell> 2 weeks Ago</Table.Cell>
-                          <Table.Cell>.002 tons</Table.Cell>
-                          <Table.Cell>Bike</Table.Cell>
-                        </Table.Row>
-                      </Table.Body>
-
-                      <Table.Footer>
-                        <Table.Row>
-                          <Table.HeaderCell colSpan='3'>
-                            <Menu floated='right' pagination>
-                              <Menu.Item as='a' icon>
-                                <Icon name='chevron left'/>
-                              </Menu.Item>
-                              <Menu.Item as='a'>1</Menu.Item>
-                              <Menu.Item as='a'>2</Menu.Item>
-                              <Menu.Item as='a'>3</Menu.Item>
-                              <Menu.Item as='a'>4</Menu.Item>
-                              <Menu.Item as='a' icon>
-                                <Icon name='chevron right'/>
-                              </Menu.Item>
-                            </Menu>
-                          </Table.HeaderCell>
-                        </Table.Row>
-                      </Table.Footer>
-                    </Table>
-                  </div>
+                  <Grid.Column width={4}>
+                    <div style={dataPageDonutChart1styling}>
+                      <DataPageDonutChart1/>
+                    </div>
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                    <div style={dataPageDonutChart2styling}>
+                      <DataPageDonutChart2/>
+                    </div>
+                  </Grid.Column>
+                  <Grid.Column width={8}>
+                    <div style={dataTableDivstyling}>
+                      <EmissionForHome/>
+                    </div>
+                  </Grid.Column>
                 </Grid.Row>
               </Grid>
             </div>

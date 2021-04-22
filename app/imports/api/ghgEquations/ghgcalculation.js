@@ -1,16 +1,35 @@
-// file with all the calculations that take in the number of gallons
-
-// be able to use it any where
 /** This function calculates the CO2 created by user inputted gallons. */
 export function calculateCO2(gallons) {
   const mutltifactor = 10 ** -3;
-  return (gallons * (8.887 * mutltifactor)).toFixed(2);
+  return ((gallons * (8.887 * mutltifactor)) * 1.10231).toFixed(3);
 }
 
 /** This function calculates the GHG emissions equivalency. */
 export function calculateGHG(gallons) {
   const mutltifactor = 0.00043;
   return (4.63 * (gallons * mutltifactor)).toFixed(3);
+}
+
+/** This Function calculate the ghg produced from walking */
+export function calculateGHGWalking(miles) {
+  const mutltifactor = 2.205;
+  return ((0.26 * miles) * mutltifactor).toFixed(3);
+}
+
+/** This function calculates the gallons used based on mpg. */
+export function calculateGalUsed(miles, mpg) {
+  return (miles / mpg).toFixed(3);
+}
+
+/** This function calculates the fuel cost. */
+export function fuelCost(gallons, gasolinePrice) {
+  return (gallons * gasolinePrice).toFixed(3);
+}
+
+/** This function converts tons into gallons. */
+export function calculatePounds(tons) {
+  const convertFactor = 2000;
+  return (tons * convertFactor).toFixed(4);
 }
 
 /** This function converts liters into gallons. */

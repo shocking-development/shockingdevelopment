@@ -14,7 +14,7 @@ class LandingSection1Text extends React.Component {
     };
 
     const header2 = {
-      color: '#3CAEA3', fontSize: 'calc(0.4vw + 0.4vh + 2vmin)', paddingTop: '1em',
+      color: '#3CAEA3', fontSize: 'calc(0.3vw + 0.3vh + 2vmin)', paddingTop: '1em',
     };
 
     const logoStyle = { width: '15%', marginTop: '20px' };

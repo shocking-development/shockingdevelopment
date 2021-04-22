@@ -13,10 +13,13 @@ export const userInfoCarsPublications = {
 class UserInfoCarCollection extends BaseCollection {
   constructor() {
     super('UserInfosCars', new SimpleSchema({
-      // userId: String,
-      carId: String,
+      // userId: String, // whos logged in?
       carName: String,
       owner: String,
+      makeofCar: String,
+      modelofCar: String,
+      yearofCar: Number,
+      mpgofCar: Number,
     }));
   }
 
@@ -26,12 +29,15 @@ class UserInfoCarCollection extends BaseCollection {
    * @param docID the docId name of the doc.
    * @return {String} the docID of the new document.
    */
-  define({ carId, carName, owner }) {
+  define({ carName, owner, makeofCar, modelofCar, yearofCar, mpgofCar }) {
     const docID = this._collection.insert({
       // userId,
-      carId,
       carName,
       owner,
+      makeofCar,
+      modelofCar,
+      yearofCar,
+      mpgofCar,
     });
     return docID;
   }

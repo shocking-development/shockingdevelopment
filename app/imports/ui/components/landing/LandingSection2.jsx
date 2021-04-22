@@ -1,13 +1,15 @@
 import React from 'react';
-import { Statistic, Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
+import { Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import LandingPageLineChart from '../defaultcharts/LandingPageLineChart';
 import LandingPageBarGraph from '../defaultcharts/LandingPageBarGraph';
 import LandingPagePieChart from '../defaultcharts/LandingPagePieChart';
-import { calculateCO2, calculateGal, calculateGHG } from '../../../api/trips/ghgcalculation';
+import LandingSectionStatistics from './LandingSectionStatistics';
+import { calculateCO2, calculateGal, calculateGHG } from '../../../api/ghgEquations/ghgcalculation';
 
 /** A simple static component to render some statistics for the landing page. */
 class LandingSection2 extends React.Component {
+
   /** Initialize component state with properties for input */
   constructor(props) {
     super(props);
@@ -48,6 +50,11 @@ class LandingSection2 extends React.Component {
     const trackYourGHGemissionsStyling = {
       background: 'linear-gradient(' +
           '-225deg, rgba(8,0,96,1) 0%, rgba(4,62,107,1) 37%, rgba(0,124,118,1) 100%)',
+      height: '90vh',
+    };
+    const ghgCalStyling = {
+      background: '#080060',
+      height: '60vh',
     };
     const fontstyling = {
       fontFamily: 'sans-serif',
@@ -56,25 +63,12 @@ class LandingSection2 extends React.Component {
       fontWeight: 'lighter',
     };
     return (
-        <div style={{ background: '#001947' }}>
+        <div id="saved" style={{ background: '#001947' }}>
 
-          <Statistic.Group widths='three' style={{ padding: '5em' }}>
-            <Statistic inverted>
-              <Statistic.Value>1,550</Statistic.Value>
-              <Statistic.Label>Users</Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>$31,200</Statistic.Value>
-              <Statistic.Label>Saved</Statistic.Label>
-            </Statistic>
-            <Statistic inverted>
-              <Statistic.Value>22,000</Statistic.Value>
-              <Statistic.Label>Gallons Saved</Statistic.Label>
-            </Statistic>
-          </Statistic.Group>
+          <LandingSectionStatistics/>
 
           <Grid stackable columns='equal'>
-            <Grid.Row style={trackYourGHGemissionsStyling}>
+            <Grid.Row id="trackEM" style={trackYourGHGemissionsStyling}>
               <div style={{ color: 'white', margin: 'auto' }}>
                 <Header className='body' as='h1' style={{ color: 'white' }}> Track your GHG emissions </Header>
                 <p className='body'
@@ -88,19 +82,24 @@ class LandingSection2 extends React.Component {
                   Start Tracking
                 </Button>
               </div>
-              <div style={{ paddingRight: '1em' }}>
+              <div style={{ paddingRight: '1em', margin: 'auto' }}>
                 <LandingPageLineChart/>
               </div>
             </Grid.Row>
-            <Grid.Row style={trackYourGHGemissionsStyling}>
+
+            <Grid.Row id="ghgCalc" style={ghgCalStyling}>
               <div style={{ color: 'white', margin: 'auto' }}>
-                <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>
-                <p className='body'
-                   style={fontstyling}>
-                  Calculate before or after to see how much you can reduce your GHG.
-                </p>
+                <div style={{ color: 'white' }}>
+                  <Header className='body' inverted size={'huge'}>Calculate your GHG Beforehand!</Header>
+                  <p className='body'
+                     style={fontstyling}>
+                    Calculate before or after to see how much you can reduce your GHG.
+                  </p>
+                </div>
               </div>
-              <div style={{ paddingRight: '30em' }}>
+
+              <div
+                  style={{ color: 'white', marginLeft: '2px', marginTop: 'auto', marginBottom: 'auto', width: 'auto' }}>
                 <Form size='small' onSubmit={this.handleFormSubmit}>
                   <Form.Input
                       id='calculator-imperial'
@@ -110,20 +109,22 @@ class LandingSection2 extends React.Component {
                   />
                   <Button color='blue' onClick={this.showResult} id='submit-imperial'>Calculate</Button>
                 </Form>
+              </div>
+
+              <div style={{ margin: 'auto' }}>
                 {this.state.show &&
                 (<Segment>
-                  <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated
-                    from {this.state.input} gallon(s) of
-                    gas </p>
-                  <p> This is equivalent to the GHG emissions from {calculateGHG(this.state.input)} passenger vehicles
-                    driven for one
-                    year.</p>
-                </Segment>)}
+                      <p> {calculateCO2(this.state.input)} tons of CO2 emissions is generated from </p>
+                      <p> {this.state.input} gallon(s) of gas. This is equivalent to the GHG emissions</p>
+                      <p> from {calculateGHG(this.state.input)} passenger vehicles driven for one year.</p>
+                    </Segment>
+                )}
               </div>
             </Grid.Row>
+
           </Grid>
 
-          <Grid stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%' }}>
+          <Grid id="community" stackable columns='equal' style={{ paddingBottom: '3%', paddingTop: '3%', height: '110vh' }}>
             <div style={{ margin: 'auto', paddingLeft: '3%' }}>
               <Header
                   className='body'
@@ -135,10 +136,10 @@ class LandingSection2 extends React.Component {
                 View the environmental impact of the community.
               </p>
             </div>
-            <Grid.Column>
+            <Grid.Column style={{ margin: 'auto' }}>
               <LandingPageBarGraph/>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column style={{ margin: 'auto' }} >
               <div style={{ paddingRight: '2em' }}>
                 <LandingPagePieChart/>
               </div>
