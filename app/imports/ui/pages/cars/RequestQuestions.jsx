@@ -7,7 +7,7 @@ function RequestQuestions() {
   const panels = [
     {
       key: 'why-request',
-      title: 'Why should I contact Admin for?',
+      title: 'What should I contact Administration for?',
       content: {
         content: (
             <div>
