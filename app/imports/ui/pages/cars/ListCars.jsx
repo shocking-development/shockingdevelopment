@@ -58,6 +58,7 @@ class ListCars extends React.Component {
       return car.carType === data.value;
     });
     this.setState({
+      activePage: 1,
       filteredCars: filteredCars,
     });
   }
@@ -111,11 +112,20 @@ class ListCars extends React.Component {
               onChange={this.handCarTypeChange}
               />
 
+            {this.state.filteredCars === null ?
             <Pagination
                 defaultActivePage={1}
                 totalPages={Math.ceil(this.props.Car.length / 25)}
                 onPageChange={this.handleInputChange}
             />
+            :
+            <Pagination
+            defaultActivePage={1}
+            totalPages={Math.ceil(this.state.filteredCars.length / 25)}
+            onPageChange={this.handleInputChange}
+            />
+            }
+
             <Table celled>
               <Table.Header>
                 <Table.Row>
