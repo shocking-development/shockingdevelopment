@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Icon } from 'semantic-ui-react';
+import { Accordion } from 'semantic-ui-react';
 
 /* A simple static component to render the home page when users are logged in. */
 function CarsAccordianQuestions() {
@@ -30,6 +30,19 @@ function CarsAccordianQuestions() {
                 Audi.
                 <br/>
                 Then add the model of your car, like continental GT for a 2020 Bentley.
+              </p>
+            </div>
+        ),
+      },
+    },
+    {
+      key: 'dont-see-car',
+      title: 'What if I do not see my car?',
+      content: {
+        content: (
+            <div style={{ paddingBottom: '10px' }}>
+              <p style={{ color: '#7abeff' }}>
+                If you do not see your car please contact admin through the request page.
               </p>
             </div>
         ),

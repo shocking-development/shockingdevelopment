@@ -336,7 +336,8 @@
 }
 
 .headerdataPage {
-  background: #0a69a7 !important;
+  background: rgba(0, 73, 122, 1) !important;
+  /* background: #0a69a7 !important; */
   color: white !important;
 }
 

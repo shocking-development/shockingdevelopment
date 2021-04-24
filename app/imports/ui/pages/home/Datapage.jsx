@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, GridColumn } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter } from 'react-router-dom';
@@ -46,10 +46,7 @@ class Datapage extends React.Component {
       borderRadius: '6px',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '10px',
       height: '100%',
-      width: '24%',
     };
 
     const dataPageDonutChart2styling = {
@@ -57,21 +54,16 @@ class Datapage extends React.Component {
       borderRadius: '6px',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '1em',
       height: '100%',
-      width: '24%',
     };
 
     const dataTableDivstyling = {
-      background: '#0a69a7',
+      background: 'rgba(0, 73, 122, 1)',
+      /* background: '#0a69a7' */
       borderRadius: '6px',
       paddingTop: '10px',
       paddingRight: '10px',
-      position: 'relative',
-      left: '1.29em',
       height: '100%',
-      width: '50%',
     };
     /* const tablestyling = {
       background: '#0a69a7',
@@ -89,26 +81,34 @@ class Datapage extends React.Component {
           <div style={pageStyle}>
             <div style={{ width: '90%', margin: 'auto' }}>
               <Grid stackable columns='equal'>
-                <Grid.Column>
-                  <div style={dataPagePieChartstyling}>
-                    <DataPagePieChart/>
-                  </div>
-                </Grid.Column>
-                <Grid.Column>
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <div style={dataPagePieChartstyling}>
+                      <DataPagePieChart/>
+                    </div>
+                  </Grid.Column>
+                <Grid.Column width={8}>
                   <div style={dataPagebarGraphstyling}>
                     <DataPageBarGraph/>
                   </div>
                 </Grid.Column>
+                </Grid.Row>
                 <Grid.Row>
-                  <div style={dataPageDonutChart1styling}>
-                    <DataPageDonutChart1/>
-                  </div>
-                  <div style={dataPageDonutChart2styling}>
-                    <DataPageDonutChart2/>
-                  </div>
-                  <div style={dataTableDivstyling}>
-                    <EmissionForHome/>
-                  </div>
+                  <Grid.Column width={4}>
+                    <div style={dataPageDonutChart1styling}>
+                      <DataPageDonutChart1/>
+                    </div>
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                    <div style={dataPageDonutChart2styling}>
+                      <DataPageDonutChart2/>
+                    </div>
+                  </Grid.Column>
+                  <Grid.Column width={8}>
+                    <div style={dataTableDivstyling}>
+                      <EmissionForHome/>
+                    </div>
+                  </Grid.Column>
                 </Grid.Row>
               </Grid>
             </div>
