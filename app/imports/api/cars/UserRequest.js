@@ -1,6 +1,8 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
+import { carsPublications } from './CarsCollection';
 
 /** Encapsulates state and variable values for this collection. */
 class UserRequest {
@@ -19,6 +21,13 @@ class UserRequest {
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
+  }
+
+  subscribeRequest() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(carsPublications.car);
+    }
+    return null;
   }
 }
 

@@ -7,6 +7,7 @@ import { Emissions } from '../../api/emissions/EmissionsCollection';
 import { Trips } from '../../api/emissions/TripsCollection';
 import { UserInfosCars } from '../../api/userInfo/UserInfoCarCollection';
 import { GasPrices } from '../../api/gas-prices/GasPricesCollection';
+import { newRequest } from '../../api/cars/UserRequest';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.

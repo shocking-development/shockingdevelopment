@@ -5,6 +5,7 @@ import { SimpleSchema2Bridge } from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, TextField, ErrorsField, SubmitField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
+import { withTracker } from 'meteor/react-meteor-data';
 import { newRequest } from '../../../api/cars/UserRequest';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import RequestQuestions from './RequestQuestions';
@@ -65,4 +66,10 @@ class Requests extends React.Component {
   }
 }
 
-export default Requests;
+export default withTracker(() => {
+  // Get access to Cars documents.
+  const subscription = newRequest.subscribeRequest();
+  return {
+    ready: subscription.ready(),
+  };
+})(Requests);
