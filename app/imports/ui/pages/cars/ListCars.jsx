@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Header, Loader, Image, Pagination } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Image, Pagination, Dropdown } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
@@ -20,7 +20,26 @@ class ListCars extends React.Component {
       // showIndex: 0,
       // showCount: 25,
       activePage: 1,
+      carType: null,
     };
+
+    this.carTypeOptions = [
+      {
+        key: 'Gas',
+        text: 'Gas',
+        value: 'Gas',
+      },
+      {
+        key: 'Hybrid',
+        text: 'Hybrid',
+        value: 'Hybrid',
+      },
+      {
+        key: 'Electric',
+        text: 'Electric',
+        value: 'Electric',
+      },
+    ];
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -74,6 +93,13 @@ class ListCars extends React.Component {
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
+
+            <Dropdown
+              placeholder='Select Car Type'
+              fluid
+              selection
+              options={this.carTypeOptions}
+              />
 
             <Pagination
                 defaultActivePage={1}
