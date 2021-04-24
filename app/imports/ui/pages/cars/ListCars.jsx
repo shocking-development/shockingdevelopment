@@ -118,12 +118,16 @@ class ListCars extends React.Component {
             }}/>
 
             <Dropdown
+            style={{ width: '25%', display: 'inline-block' }}
               placeholder='Select Car Type'
               fluid
               selection
               options={this.carTypeOptions}
               onChange={this.handleFilteredCarsChange}
               />
+
+            <br/>
+            <br/>
 
             {/* Pagination changes based on whether or not the filtered car array is being used */}
             {this.state.filteredCars === null ?
