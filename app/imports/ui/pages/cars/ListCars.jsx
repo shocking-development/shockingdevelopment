@@ -20,7 +20,7 @@ class ListCars extends React.Component {
       // showIndex: 0,
       // showCount: 25,
       activePage: 1,
-      carType: null,
+      filteredCars: null,
     };
 
     this.carTypeOptions = [
@@ -54,8 +54,11 @@ class ListCars extends React.Component {
   }
 
   handCarTypeChange = (e, data) => {
+    const filteredCars = this.props.Car.filter(function (car) {
+      return car.carType === data.value;
+    });
     this.setState({
-      carType: data.value,
+      filteredCars: filteredCars,
     });
   }
 
@@ -124,7 +127,11 @@ class ListCars extends React.Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body> {/* we are going to .slice in conjunction with map to get the correct amount */}
-                {this.props.Car.map((car) => <CarItem key={car._id} car={car}/>).slice(startIndex, endIndex)}
+                {this.state.filteredCars === null ?
+                this.props.Car.map((car) => <CarItem key={car._id} car={car}/>).slice(startIndex, endIndex)
+                :
+                this.state.filteredCars.map((car) => <CarItem key={car._id} car={car}/>).slice(startIndex, endIndex)
+                }
               </Table.Body>
             </Table>
           </Container>
