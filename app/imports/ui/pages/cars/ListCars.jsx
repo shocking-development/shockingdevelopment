@@ -53,6 +53,12 @@ class ListCars extends React.Component {
     // for debugging console.log('count:', this.state.showCount);
   }
 
+  handCarTypeChange = (e, data) => {
+    this.setState({
+      carType: data.value,
+    });
+  }
+
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <div
@@ -99,6 +105,7 @@ class ListCars extends React.Component {
               fluid
               selection
               options={this.carTypeOptions}
+              onChange={this.handCarTypeChange}
               />
 
             <Pagination
