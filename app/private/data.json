@@ -1462,7 +1462,24 @@
     { "carType": "Gas", "make": "Lexus", "model": "LS AWD", "year": 2015, "mpg": 16 },
     { "carType": "Gas", "make": "Lexus", "model": "LS L RWD", "year": 2015, "mpg": 16 },
     { "carType": "Gas", "make": "Lexus", "model": "LS L AWD", "year": 2015, "mpg": 16 },
-    
+    { "carType": "Hybrid", "make": "Lexus", "model": "LS (H)", "year": 2012, "mpg": 19 },
+    { "carType": "Hybrid", "make": "Lexus", "model": "LS (H)", "year": 2011, "mpg": 19 },
+    { "carType": "Hybrid", "make": "Lexus", "model": "LS (H)", "year": 2010, "mpg": 20 },
+    { "carType": "Hybrid", "make": "Lexus", "model": "LS (H)", "year": 2009, "mpg": 20 },
+    { "carType": "Hybrid", "make": "Lexus", "model": "LS (H)", "year": 2008, "mpg": 20 },
+
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Two Row", "year": 2021, "mpg": 12 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Three Row", "year": 2021, "mpg": 12 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Two Row", "year": 2020, "mpg": 12 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Three Row", "year": 2020, "mpg": 12 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Two Row", "year": 2019, "mpg": 13 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Three Row", "year": 2019, "mpg": 13 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Two Row", "year": 2018, "mpg": 13 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570 Three Row", "year": 2018, "mpg": 13 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX 570", "year": 2017, "mpg": 13 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX", "year": 2016, "mpg": 13 },
+    { "carType": "Gas", "make": "Lexus", "model": "LX", "year": 2015, "mpg": 12 },
+
     { "carType": "Gas", "make": "Lexus", "model": "NX", "year": 2020, "mpg": 33 },
 
     { "carType": "Gas", "make": "Lincoln", "model": "Navigator", "year": 2021, "mpg": 16 },
