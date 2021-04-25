@@ -939,7 +939,6 @@
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt LT Sedan", "year": 2008, "mpg": 24 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt Sport Coupe", "year": 2008, "mpg": 22 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt Sport Sedan", "year": 2008, "mpg": 22 },
-
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt LS Coupe", "year": 2007, "mpg": 25 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt LS Sedan", "year": 2007, "mpg": 25 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt LT Coupe", "year": 2007, "mpg": 25 },
@@ -949,10 +948,15 @@
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt LTZ Sedan", "year": 2007, "mpg": 24 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Cobalt SS Supercharged Coupe", "year": 2007, "mpg": 22 },
 
+    { "carType": "Gas", "make": "Chevrolet", "model": "Colorado Ext Cab 128 Inch 2WD", "year": 2020, "mpg": 20 },
+    { "carType": "Gas", "make": "Chevrolet", "model": "Colorado Ext Cab Work 128 Inch 2WD", "year": 2020, "mpg": 20 },
+    { "carType": "Gas", "make": "Chevrolet", "model": "Colorado Crew Cab Work 128 Inch 2WD", "year": 2020, "mpg": 20 },
+    { "carType": "Gas", "make": "Chevrolet", "model": "Colorado Ext Cab LT 128 Inch 2WD", "year": 2020, "mpg": 20 },
+    { "carType": "Gas", "make": "Chevrolet", "model": "Colorado Ext Cab Work 128 Inch 4WD", "year": 2020, "mpg": 20 },
+
     { "carType": "Gas", "make": "Chevrolet", "model": "Corvette C7", "year": 2021, "mpg": 16 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Corvette C8", "year": 2021, "mpg": 16 },
     { "carType": "Gas", "make": "Cadillac", "model": "CT5", "year": 2020, "mpg": 23 },
-    { "carType": "Gas", "make": "Chevrolet", "model": "Camaro", "year": 2021, "mpg": 22 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Impala", "year": 2020, "mpg": 19 },
     { "carType": "Gas", "make": "Chevrolet", "model": "SS", "year": 2017, "mpg": 14 },
     { "carType": "Gas", "make": "Chevrolet", "model": "Sonic", "year": 2020, "mpg": 26 },
