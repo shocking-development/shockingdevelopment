@@ -12,8 +12,32 @@ import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
 
-  render() {
+  HandlChange = function(event, element){
+    console.log(event);
+    console.log(element.children);
+    console.log(element.children[2]);
+  };
 
+  HandlSubmit = function(event, element){
+    console.log(event);
+    console.log(element.children);
+    console.log(element.children[2]);
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {baseMpg: 10};
+
+    this.handleChange = this.handleChange.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({baseMpg: event.target.value});
+  }
+
+  render() {
+    let baseMpg = 10;
     // In page styling for the graphs.
     const dataPageBarGraphstyling = {
       background: 'transparent',
@@ -22,7 +46,7 @@ class GoToSavings extends React.Component {
       paddingRight: '5px',
       color: 'black',
     };
-
+let i = 1;
     // In page styling for within the display cards
     const inCardStyle = {
       textSize: 50,
@@ -41,11 +65,10 @@ class GoToSavings extends React.Component {
       height: '100em',
     };
 
+
     UserInfosCars.subscribeUserInfoCars();
     let carList = UserInfosCars.find().fetch();
     console.log(carList[0]?.carName);
-
-    let i = 0;
 
     // returns the GoToSaveings page.
     return (
@@ -66,14 +89,15 @@ class GoToSavings extends React.Component {
               paddingBottom: '50px',
             }}/>
 
-            <Dropdown className='spacing-menu-item' text="Pike current transportation" pointing="top">
+            <Dropdown className='spacing-menu-item' placeholder="Choose current transportation" pointing="top">
               <Dropdown.Menu>
-                <Dropdown className='spacing-menu-item' text="Pike curring transportation" pointing="top">
+                <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
                   <Dropdown.Menu>
-                      {carList.map((car) => <Dropdown.Item>{car.carName} {i} {car.mpgofCar}</Dropdown.Item>)}
+                      {carList.map((car) => <Dropdown.Item baseMpg={this.state.value} onClick={this.HandlChange}
+                                                           key={car._id}>{car.carName} {car.mpgofCar} {baseMpg}</Dropdown.Item>)}
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown.Item currentBaseMpg="20" >Some One else's Car</Dropdown.Item>
+                <Dropdown.Item onClick={this.HandlChange}>Some One else's Car</Dropdown.Item>
                 <Dropdown.Item>Bus</Dropdown.Item>
                 <Dropdown.Item>Bike</Dropdown.Item>
               </Dropdown.Menu>
