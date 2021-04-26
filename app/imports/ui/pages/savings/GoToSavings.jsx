@@ -1,11 +1,13 @@
 import React from 'react';
-import { Button, Card, Image, Header, Icon } from 'semantic-ui-react';
+import { Button, Card, Image, Header,  Dropdown, Icon, Table  } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import SavingsPageBarGraph from '../../components/defaultcharts/SavingsPageBarGraph';
+import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
+
 
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
@@ -39,6 +41,12 @@ class GoToSavings extends React.Component {
       height: '100em',
     };
 
+    UserInfosCars.subscribeUserInfoCars();
+    let carList = UserInfosCars.find().fetch();
+    console.log(carList[0]?.carName);
+
+    let i = 0;
+
     // returns the GoToSaveings page.
     return (
 
@@ -57,6 +65,20 @@ class GoToSavings extends React.Component {
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
+
+            <Dropdown className='spacing-menu-item' text="Pike current transportation" pointing="top">
+              <Dropdown.Menu>
+                <Dropdown className='spacing-menu-item' text="Pike curring transportation" pointing="top">
+                  <Dropdown.Menu>
+                      {carList.map((car) => <Dropdown.Item>{car.carName} {i} {car.mpgofCar}</Dropdown.Item>)}
+                  </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown.Item currentBaseMpg="20" >Some One else's Car</Dropdown.Item>
+                <Dropdown.Item>Bus</Dropdown.Item>
+                <Dropdown.Item>Bike</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
             <Card.Group style={cardStyle}>
               <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
                 <Card.Content>
@@ -72,7 +94,7 @@ class GoToSavings extends React.Component {
                 </Card.Content>
                 <Card.Content extra color='teal'>
                   <div className='ui three buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Usage {i}</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
@@ -184,7 +206,10 @@ class GoToSavings extends React.Component {
 // Declare the types of all properties.
 GoToSavings.propTypes = {
   currentUser: PropTypes.string,
+  Car: PropTypes.array,
 };
+
+
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 const GoToSavingsContainer = withTracker(() => ({

@@ -106,7 +106,8 @@ class NavBarMain extends React.Component {
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/request"
                            key='key13'>
-                  Make a Request
+                  <Icon name = 'pen square icon' size='large'/>
+                  Contact
                 </Menu.Item>
 
                 {Roles.userIsInRole(Meteor.userId(), 'admin') ? (

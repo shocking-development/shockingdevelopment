@@ -7,6 +7,7 @@ import { Trips } from '../../../api/emissions/TripsCollection';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { EmissionsDefineMethod } from '../../../api/emissions/EmissionsCollection.methods';
 import { TripsDefineMethod, TripsRemoveMethod } from '../../../api/emissions/TripsCollection.methods';
+import { transportationOptions } from './TransportationOptions';
 
 /* This component is rendered by the Add Data page and allows users to add trips */
 function UpdateEmissions() {
@@ -30,45 +31,6 @@ function UpdateEmissions() {
     cDay = `0${cDay}`;
   }
   const fullDate = `${currentDate.getFullYear().toString()}-${cMonth.toString()}-${cDay.toString()}`;
-
-  /* Transportation options for the dropdown input */
-  const transportationOptions = [
-    {
-      key: 'Drove',
-      text: 'Drove',
-      value: 'Drove',
-    },
-    {
-      key: 'Telework',
-      text: 'Telework',
-      value: 'Telework',
-    },
-    {
-      key: 'Public Transportation',
-      text: 'Public Transportation',
-      value: 'Public Transportation',
-    },
-    {
-      key: 'Biking',
-      text: 'Biking',
-      value: 'Biking',
-    },
-    {
-      key: 'Walk',
-      text: 'Walk',
-      value: 'Walk',
-    },
-    {
-      key: 'Carpool',
-      text: 'Carpool',
-      value: 'Carpool',
-    },
-    {
-      key: 'Electric Vehicle',
-      text: 'Electric Vehicle',
-      value: 'Electric Vehicle',
-    },
-  ];
 
   /* DeleteTrip function allows users to delete preset trips */
   const deleteTrip = ({ _id }) => TripsRemoveMethod.call(_id);
@@ -138,6 +100,7 @@ function UpdateEmissions() {
     });
   };
 
+  /* Changes the mpg state */
   const changeCar = (e, data) => {
     setTripState({
       date: tripState.date,
@@ -202,20 +165,22 @@ function UpdateEmissions() {
     if (tripState.transportation === null) {
       swal('Error', 'Please select transportation', 'error');
     } else
-      if (tripState.trip === null) {
-        swal('Error', 'Please select a trip', 'error');
+      if (typeof tripState.miles !== 'number' && tripState.custom) {
+        swal('Error', 'Please enter a number in the miles input', 'error');
       } else
-        if (typeof tripState.miles !== 'number' && tripState.custom) {
-          swal('Error', 'Please enter a number in the miles input', 'error');
+        if (!tripState.custom && tripState.trip === null) {
+          swal('Error', 'Please select a trip', 'error');
         } else {
           try {
             let miles;
             if (tripState.custom) {
-              TripsDefineMethod.call({
-                owner: user,
-                name: tripState.trip,
-                miles: tripState.miles,
-              });
+              if (tripState.trip !== null) {
+                TripsDefineMethod.call({
+                  owner: user,
+                  name: tripState.trip,
+                  miles: tripState.miles,
+                });
+              }
               miles = tripState.miles;
             } else {
               miles = Trips.collection.findOne({ _id: tripState.miles }).miles;
@@ -251,35 +216,43 @@ function UpdateEmissions() {
 
   /* Return function rendering the component */
   return (
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
         <Card style={{
           padding: '1rem', background: 'rgba(0, 73, 122, 0.5)',
           border: '2px solid #004486', boxShadow: 'none',
         }}>
           <Card.Content>
-            <Card.Header style={{ color: 'white' }}>Date</Card.Header>
+            <Card.Header style={{ color: 'white', fontFamily: 'Roboto' }}>Date <p
+                style={{ color: 'red', display: 'inline', paddingRight: '2px' }}> *</p>
+            </Card.Header>
             <input type="date" value={tripState.date} onChange={changeDate}/>
-            <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Transportation</Card.Header>
-            <Dropdown placeholder='Select transportation' fluid selection options={transportationOptions}
+            <Card.Header style={{ color: 'white', paddingTop: '0.5em', fontFamily: 'Roboto' }}>Transportation<p
+                style={{ color: 'red', display: 'inline', paddingRight: '2px' }}> *</p></Card.Header>
+            <Dropdown placeholder='Select transportation' fluid selection className={'EmissionsInput'}
+                      options={transportationOptions}
                       onChange={changeTransportation}/>
             {tripState.transportation === 'Drove' ?
                 <div>
                   <br/>
-                  <Dropdown name='Car Used' placeholder='Select car' fluid selection options={carOptions}
+                  <Dropdown name='Car Used' placeholder='Select car' className={'EmissionsInput'} fluid selection
+                            options={carOptions}
                             onChange={changeCar}/>
                 </div> : null
             }
-            <Card.Header style={{ color: 'white', paddingTop: '0.5em' }}>Trip</Card.Header>
-            <Dropdown name='Trip Search' placeholder='Select trip' fluid selection options={tripOptions}
+            <Card.Header style={{ color: 'white', paddingTop: '0.5em', fontFamily: 'Roboto' }}>Trip<p
+                style={{ color: 'red', display: 'inline', paddingRight: '2px' }}> *</p></Card.Header>
+            <Dropdown name='Trip Search' className={'EmissionsInput'} placeholder='Select trip' fluid selection
+                      options={tripOptions}
                       onChange={changeTrip}/>
             {tripState.custom ?
                 <div>
                   <br/>
-                  <Popup content='Insert a name for this trip'
+                  <Popup content='Insert a name if you would like to save this trip'
                          trigger={<Input style={{ width: '60%', float: 'left' }} placeholder='Trip Name'
                                          onChange={changeTripName}/>}/>
                   <Popup content='Insert Roundtrip Miles' trigger={
-                    <Input style={{ width: '30%', float: 'right' }} type="number" min="0" max="99" placeholder='Miles'
+                    <Input style={{ width: '30%', float: 'right' }} className={'EmissionsInput'} type="number" min="0"
+                           max="99" placeholder='Miles'
                            onChange={changeTripMiles}/>
                   }/>
                   <br/>

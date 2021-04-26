@@ -17,7 +17,13 @@ class carCardItem extends React.Component {
           <Grid>
             <Grid.Row>
               <Grid.Column width={14} key={this.props.car._id}>
-                <Card style={{ background: '#00153a', boxShadow: 'none' }}>
+                <Card style={{
+                  background: '#00153a',
+                  boxShadow: 'none',
+                  left: '120px',
+                  width: '330px',
+                  height: '290px',
+                }}>
                   <Card.Content>
                     <Icon name={'car'} size={'huge'} inverted/>
                   </Card.Content>

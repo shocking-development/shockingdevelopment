@@ -1,38 +1,52 @@
 import React from 'react';
-import { Loader, Header, Image, Segment, Container, Card } from 'semantic-ui-react';
+import { Loader, Header, Image, Segment, Container, Grid, Form } from 'semantic-ui-react';
 import swal from 'sweetalert';
 // eslint-disable-next-line no-unused-vars
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
 
 /** Renders the Page for editing a single document. */
 class ChangePassword extends React.Component {
 
-  /** On successful submit, insert the data. */
-  submit(data) {
-    const { password } = data;
-    Meteor.call('changePass', password, (err) => {
-          if (err) {
-            console.log('Error changing password: {err}');
-          } else {
-            swal('Success', 'Password changed successfully', 'success');
-          }
-        });
+  /* Initialize state fields. */
+  constructor(props) {
+    super(props);
+    this.state = { currPass: '', newPass: '', confirm: '', redirectToReferer: false };
   }
 
-  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
+  /* Update the form controls each time the user interacts with them. */
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
+  };
+
+  /* On successful submit, insert the data. */
+  submit = () => {
+    const { currPass, newPass, confirm } = this.state;
+    if (newPass !== confirm) {
+      swal('Error', 'New passwords do not match. Please double check.', 'error');
+    } else {
+      Accounts.changePassword(currPass, newPass, (err) => {
+        if (err) {
+          swal('Error', 'Current password is incorrect. Please try again.', 'error');
+        } else {
+          swal('Success', 'Password changed successfully', 'success');
+        }
+      });
+
+    }
+  }
+
+  /* If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
-  /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
+  /* Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
-    const bridge = new SimpleSchema2Bridge(UserInfos.getSchema());
     const pageStyle = {
       marginLeft: '20em',
       paddingTop: '6em',
@@ -43,33 +57,60 @@ class ChangePassword extends React.Component {
     return (
 
         <div style={{
-          background: 'rgb(21 51 62)',
+          background: '#001947',
           backgroundSize: 'cover',
           height: '100%',
           marginTop: '-10px',
         }}>
-          <NavBarHome/>
-          <Container style={pageStyle}>
-            <Header inverted as="h2" textAlign="center">Change Password</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
-            <Card style={{ margin: 'auto' }}>
-              <AutoForm
-                  schema={bridge}
-                  onSubmit={data => {
+          <Grid columns={2}>
+            <Grid.Column width={5}>
+              <NavBarHome/>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Container style={pageStyle}>
+                <Header inverted as="h2" textAlign="center">CHANGE PASSWORD</Header>
+                <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+                  paddingBottom: '50px',
+                }}/>
+                <Segment className='viewProfile' stacked inverted>
+                  <Form inverted onSubmit={data => {
                     // eslint-disable-next-line no-undef,no-alert
                     if (window.confirm('Are you sure you wish to save your changes?')) this.submit(data);
-                  }} model={this.props.doc}>
-                <Segment>
-                  <TextField name='password' id='update-password-submit'/>
-                  <SubmitField value='Update'/>
-                  <ErrorsField/>
-                  <HiddenField name='owner'/>
+                  }}>
+                    <Form.Input
+                        label="Current Password"
+                        icon="eye slash"
+                        iconPosition="left"
+                        name="currPass"
+                        type="password"
+                        placeholder="Enter your current password"
+                        onChange={this.handleChange}
+                    />
+                    <Form.Input
+                        label="New Password"
+                        icon="eye slash"
+                        iconPosition="left"
+                        name="newPass"
+                        type="password"
+                        placeholder="Enter a new password"
+                        onChange={this.handleChange}
+                    />
+                    <Form.Input
+                        label="Confirm New Password"
+                        icon="lock"
+                        iconPosition="left"
+                        name="confirm"
+                        type="password"
+                        placeholder="Confirm new password"
+                        onChange={this.handleChange}
+                    />
+                    <Form.Button color={'blue'} content={'Submit'}>
+                    </Form.Button>
+                  </Form>
                 </Segment>
-              </AutoForm>
-            </Card>
-          </Container>
+              </Container>
+            </Grid.Column>
+          </Grid>
         </div>
     );
   }

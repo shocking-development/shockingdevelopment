@@ -34,6 +34,7 @@ function CumulativeGraphs() {
   };
 
   /* GET CUMULATIVE DATA */
+  const totalUsers = cumulativeEmissionsData('numberofUsers');
   const savings = cumulativeEmissionsData('totalSavings');
   const gasSaved = cumulativeEmissionsData('totalGasSaved');
 
@@ -50,7 +51,7 @@ function CumulativeGraphs() {
               <Grid centered relaxed columns={'3'}>
                 <Grid.Column textAlign={'center'} width={4}>
                   <Statistic inverted>
-                    <Statistic.Value>1,550</Statistic.Value>
+                    <Statistic.Value>{totalUsers}</Statistic.Value>
                     <Statistic.Label>Users</Statistic.Label>
                   </Statistic>
                 </Grid.Column>

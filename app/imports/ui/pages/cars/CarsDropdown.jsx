@@ -10,6 +10,7 @@ import { Meteor } from 'meteor/meteor';
 import { Cars } from '../../../api/cars/CarsCollection';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { userInfoCarDefineMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
+import CarsAccordianQuestions from './CarsAccordianQuestions';
 
 const formSchema = new SimpleSchema({
   carName: String,
@@ -170,36 +171,38 @@ class CarsDropdown extends React.Component {
 
         <div style={pageStyle}>
           <NavBarMain/>
-          <Container>
-            <Header as="h2" textAlign="center" inverted>Cars</Header>
+          <Container style={{ padding: '3em' }}>
+            <Header as="h1" textAlign="center" inverted style={{ fontWeight: 'lighter' }}>Cars</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
-
+            <CarsAccordianQuestions/>
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}
               <SelectField
                   id='select-year'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='years'
                   showInlineError={true}
                   placeholder='Select Year'
-                  style={{ minHeight: '40px', minWidth: '100px' }}
+                  style={{ minHeight: '40px', minWidth: '100px', fontFamily: 'Roboto' }}
               />
               <SelectField
                   id='select-make'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='make'
                   showInlineError={true}
                   placeholder='Select Make'
+                  style={{ fontFamily: 'Roboto' }}
               />
               <SelectField
                   id='select-model'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='model'
                   allowedValues={allowedModelValues}
                   showInlineError={true}
                   placeholder='Select Model'
+                  style={{ fontFamily: 'Roboto' }}
               />
             </AutoForm>
 
@@ -208,8 +211,9 @@ class CarsDropdown extends React.Component {
             }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
 
               <TextField
+                  style={{ paddingTop: '1em', fontFamily: 'Roboto' }}
                   id='input-car'
-                  className={'carDropdownSelectField'}
+                  className={'SelectFieldforCarDropdown'}
                   name='carName'
                   placeholder='Enter the name of your vehicle'
               />
@@ -222,8 +226,9 @@ class CarsDropdown extends React.Component {
               <HiddenField name="yearofCar" value={year_of_Car}/>
               <HiddenField name="mpgofCar" value={mpg_of_Car}/>
 
-              <SubmitField value='Submit' id='submit-car'/>
+              <SubmitField className={'carsDropDownBtn'} value='Submit' id='submit-car'/>
             </AutoForm>
+
           </Container>
         </div>
     );

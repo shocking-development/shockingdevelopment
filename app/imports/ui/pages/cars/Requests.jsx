@@ -1,12 +1,13 @@
 import React from 'react';
-import { Header, Grid, Segment, Image, Button, Form } from 'semantic-ui-react';
+import { Header, Grid, Image } from 'semantic-ui-react';
 import SimpleSchema from 'simpl-schema';
 import { SimpleSchema2Bridge } from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, SubmitField, TextField, ErrorsField } from 'uniforms-semantic';
+import { AutoForm, TextField, ErrorsField, SubmitField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import swal from 'sweetalert';
 import { newRequest } from '../../../api/cars/UserRequest';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
+import RequestQuestions from './RequestQuestions';
 
 const formSchema = new SimpleSchema({
   recommendationType: String,
@@ -20,10 +21,6 @@ const pageStyle = {
   backgroundSize: 'cover',
   paddingTop: '5em',
   paddingLeft: '10%',
-  justifyContent: 'center',
-};
-
-const buttonStyle = {
   justifyContent: 'center',
 };
 
@@ -48,23 +45,21 @@ class Requests extends React.Component {
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-        <Grid container centered>
-          <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Contact</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
-            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-              <Segment>
-                <TextField name='recommendationType' label='Type of Recommendation'/>
-                <TextField name='recommendation' label='Type your recommendation here'/>
-                <Button color='blue' style={buttonStyle} onClick={this.showResult} id='submit-request'>Submit Request</Button>
+          <Grid container centered>
+            <Grid.Column>
+              <Header as="h2" textAlign="center" inverted>Message Admin</Header>
+              <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+                paddingBottom: '50px',
+              }}/>
+              <RequestQuestions/>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+                <TextField name='recommendationType' className={'SelectFieldforCarDropdown'} label='Subject of Contact'/>
+                <TextField name='recommendation' className={'SelectFieldforCarDropdown'} label='Type your message here'/>
+                <SubmitField className={'carsDropDownBtn'} value='Submit' id='submit-car'/>
                 <ErrorsField/>
-              </Segment>
-              <TextField name='recommendation' label='Type your recommendation here'/>
-            </AutoForm>
-          </Grid.Column>
-        </Grid>
+              </AutoForm>
+            </Grid.Column>
+          </Grid>
         </div>
     );
   }
