@@ -112,7 +112,7 @@ class ListCars extends React.Component {
             paddingTop: '8em',
             paddingBottom: '8em',
           }}>
-            <Header as="h2" textAlign="center" inverted>List All Cars </Header>
+            <Header as="h2" textAlign="center" inverted>List All Cars</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
