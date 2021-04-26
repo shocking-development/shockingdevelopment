@@ -4,7 +4,6 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "classnames": "^2.2.6",
-    "cli": "^1.0.1",
     "core-js": "^3.8.3",
     "faker": "^5.5.2",
     "graphql": "^14.5.8",
