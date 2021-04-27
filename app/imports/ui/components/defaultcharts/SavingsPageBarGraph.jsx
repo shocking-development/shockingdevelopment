@@ -15,22 +15,22 @@ export function GraphOptions(data1, data2) {
     },
     series: [{
       color: '#8086e8',
-      name: 'Price (Thousands of Dollars)',
+      name: 'Price of Gas (Dollars)',
       borderColor: 'transparent',
-      data: [data1 * 1.3, data2 * 1.3],
+      data: [data1 * 4.17, data2 * 4.17],
 
     }, {
       color: '#b5cc18',
-      name: 'Full Saved (Gallons)',
+      name: 'Full Use (Gallons)',
       borderColor: 'transparent',
-      data: [data1 * 0.2, data2 * 0.2],
+      data: [data1, data2],
 
     }, {
       color: '#f15d80',
       name: 'CO2 reduced (Pounds)',
       textColor: 'red',
       borderColor: 'transparent',
-      data: [data1 * 0.9, data2 * 0.9],
+      data: [data1 * 5.22, data2 * 5.22],
 
     }],
     chart: {
