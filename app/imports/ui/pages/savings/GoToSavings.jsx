@@ -6,7 +6,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import SavingsPageBarGraph from '../../components/defaultcharts/SavingsPageBarGraph';
-import { SavingsPageBarGraphs } from '../../components/defaultcharts/SavingsPageBarGraph';
+import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 
 
@@ -114,7 +114,7 @@ let i = 1;
                 </Card.Content>
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph data1={29} data2={38.3}/>
+                    {GraphOptions(10, 38.3)}
                   </div>
                 </Card.Content>
                 <Card.Content extra color='teal'>
@@ -137,7 +137,7 @@ let i = 1;
 
                 <Card.Content className={'CarcardFont'}>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph data1={29.2} data2={29.2}/>
+                    {GraphOptions(10, 29.2)}
                   </div>
                 </Card.Content>
 
@@ -161,7 +161,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph data1={29} data2={27.3}/>
+                    {GraphOptions(10, 27.3)}
                   </div>
                 </Card.Content>
 
@@ -186,7 +186,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph data1={29} data2={38.3}/>
+                    {GraphOptions(10, 38.3)}
                   </div>
                 </Card.Content>
 
@@ -209,11 +209,8 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph data1={29} data2={1000}>
-                      data1={29}
-                      data2={1000}
-                    </SavingsPageBarGraph>
-                    <script>SavingsPageBarGraphs(20, 20)</script>
+                    {GraphOptions(10, 0)}
+
                   </div>
                 </Card.Content>
 
