@@ -37,20 +37,8 @@ class Footer extends React.Component {
                 </p>
                 <p style={{ display: 'flex', justifyContent: 'left' }}>
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                  <a href="https://www.facebook.com/HawaiianElectric/" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="facebook"></Icon>
-                  </a>
-                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                  <a href="https://www.instagram.com/hawaiianelectric/?hl=en" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="instagram"></Icon>
-                  </a>
-                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                  <a href="https://twitter.com/HwnElectric?s=20" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="twitter"></Icon>
-                  </a>
-                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                  <a href="https://www.youtube.com/user/HawaiianElectric/featured" target="_blank">
-                    <Icon size={'large'} style={{ color: 'white', margin: '10px' }} className="youtube"></Icon>
+                  <a href="https://www.hei.com/home/default.aspx" target="_blank">
+                    <Icon centered size={'large'} style={{ color: 'white', margin: '10px' }} name="home"></Icon>
                   </a>
                 </p>
               </Grid.Column>
