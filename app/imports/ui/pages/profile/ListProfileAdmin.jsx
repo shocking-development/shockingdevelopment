@@ -76,7 +76,6 @@ class ListProfileAdmin extends React.Component {
                   <Table.HeaderCell>Username/email</Table.HeaderCell>
                   <Table.HeaderCell>First Name</Table.HeaderCell>
                   <Table.HeaderCell>Last Name</Table.HeaderCell>
-                  <Table.HeaderCell>Password</Table.HeaderCell>
                   <Table.HeaderCell>State</Table.HeaderCell>
                   <Table.HeaderCell>Remove</Table.HeaderCell>
                 </Table.Row>
