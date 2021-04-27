@@ -5,7 +5,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
-import SavingsPageBarGraph from '../../components/defaultcharts/SavingsPageBarGraph';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 
@@ -38,7 +37,7 @@ class GoToSavings extends React.Component {
   }
 
   render() {
-    let baseMpg = 10;
+
     // In page styling for the graphs.
     const dataPageBarGraphstyling = {
       background: 'transparent',
@@ -94,8 +93,8 @@ let i = 1;
               <Dropdown.Menu>
                 <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
                   <Dropdown.Menu>
-                      {carList.map((car) => <Dropdown.Item baseMpg={this.state.value} onClick={this.HandlChange}
-                                                           key={car._id}>{car.carName} {car.mpgofCar} {baseMpg}</Dropdown.Item>)}
+                      {carList.map((car) => <Dropdown.Item onClick={this.HandlChange}
+                                                           key={car._id}>{car.carName}</Dropdown.Item>)}
                   </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown.Item onClick={this.HandlChange}>Some One else's Car</Dropdown.Item>
@@ -114,12 +113,12 @@ let i = 1;
                 </Card.Content>
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(10, 38.3)}
+                    {GraphOptions(30, 38.3)}
                   </div>
                 </Card.Content>
                 <Card.Content extra color='teal'>
                   <div className='ui three buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Usage {i}</Button>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
@@ -137,7 +136,7 @@ let i = 1;
 
                 <Card.Content className={'CarcardFont'}>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(10, 29.2)}
+                    {GraphOptions(30, 29.2)}
                   </div>
                 </Card.Content>
 
@@ -161,7 +160,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(10, 27.3)}
+                    {GraphOptions(30, 27.3)}
                   </div>
                 </Card.Content>
 
@@ -186,7 +185,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(10, 38.3)}
+                    {GraphOptions(30, 38.3)}
                   </div>
                 </Card.Content>
 
@@ -209,7 +208,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(10, 0)}
+                    {GraphOptions(30, 0)}
 
                   </div>
                 </Card.Content>
