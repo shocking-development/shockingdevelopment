@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { Dropdown, Modal, Button, Header, Icon, Grid, Segment, Label } from 'semantic-ui-react';
+import React from 'react';
+import { Modal, Button, Icon, Menu } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
-// import Signout from './Signout';
-import Signin from './Signin';
-// import Landing from './landing/Landing';
-// import { NavLink } from 'react-router-dom';
+import Landing from './landing/Landing';
+import { NavLink } from 'react-router-dom';
 
-function exampleReducer(state, action) {
+function Reducer(state, action) {
+
   switch (action.type) {
     case 'OPEN_MODAL':
       return {
@@ -15,13 +14,11 @@ function exampleReducer(state, action) {
       };
     case 'CLOSE_MODAL':
       return {
-        log: [],
         open: false,
       };
     case 'LOG_OUT':
       return {
         logout: Meteor.logout(),
-        render: <Signin/>,
         open: false,
       };
     default:
@@ -30,21 +27,26 @@ function exampleReducer(state, action) {
 }
 
 function SignOutConfirmation() {
-  const [state, dispatch] = React.useReducer(exampleReducer, {
+
+  const [state, dispatch] = React.useReducer(Reducer, {
     open: false,
     dimmer: undefined,
+    return: <div id="signout-page">
+      <Landing/>
+    </div>,
   });
   const { open, dimmer } = state;
 
   return (
       <div>
-        <Dropdown.Item icon="sign out" text="Sign Out"
-                       onClick={() => dispatch({
-                         type: 'OPEN_MODAL',
-                         dimmer: 'blurring',
-                       })}>
+        <Menu.Item text="Sign Out"
+                   onClick={() => dispatch({
+                     type: 'OPEN_MODAL',
+                     dimmer: 'blurring',
+                   })}>
+          <Icon name='sign-out' size='large'/>
           Sign Out
-        </Dropdown.Item>
+        </Menu.Item>
 
         <Modal basic size={'mini'} dimmer={dimmer}
                onOpen={(e) => dispatch({ event: e.type, type: 'OPEN_MODAL' })
@@ -54,7 +56,9 @@ function SignOutConfirmation() {
                open={open}
             // trigger={}
         >
-          <Modal.Header>Sign Out</Modal.Header>
+          <Modal.Header>
+            <Icon name='sign-out'/>
+            Sign Out</Modal.Header>
           <Modal.Content>
             <p>Are you sure you want to sign out?</p>
           </Modal.Content>
@@ -78,7 +82,7 @@ function SignOutConfirmation() {
                 })
                 }
                 positive
-            >
+                as={NavLink} activeClassName="active" exact to="/signout">
               Yes
             </Button>
           </Modal.Actions>

@@ -141,13 +141,8 @@ class NavBarMain extends React.Component {
                       Cumulative Data
                     </Menu.Item>
                 ) : ''}
-
-                <Menu.Item className='spacing-menu-item' activeClassName="active"
-                           key='key7'>
-                  <Icon name='sign-out' size='large'/>
-                  <SignOutConfirmation/>
-                  Sign Out
-                </Menu.Item>
+                  <SignOutConfirmation className='spacing-menu-item' activeClassName="active"
+                                       key='key7'/>
 
               </Menu>,
               ]
