@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, Button, Icon, Menu } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
-import Landing from './landing/Landing';
 import { NavLink } from 'react-router-dom';
+import Landing from './landing/Landing';
 
 function Reducer(state, action) {
 
