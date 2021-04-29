@@ -25,17 +25,19 @@ export default class Signout extends React.Component {
         Meteor.logout();
       }
     });
-    if (Meteor.user() === null) {
+      if (Meteor.user() === null) {
       return (
-          <div id="signout-page">
-            <Landing/>
+      <div id="signout-page">
+      <Landing/>
+      </div>
+      );
+    }
+    if (Meteor.user() !== null) {
+      return (
+          <div id="home">
+            <home/>
           </div>
       );
     }
-    return (
-        <div id="home">
-          <home/>
-        </div>
-    );
   }
 }
