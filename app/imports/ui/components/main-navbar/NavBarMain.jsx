@@ -74,12 +74,14 @@ class NavBarMain extends React.Component {
                   <Icon name='calculator' size='large'/>
                   <Dropdown className='spacing-menu-item' text="GHG Calculator" pointing="bottom">
                     <Dropdown.Menu>
-                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
+                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact
+                                     to="/ghgCalMetric"
                                      key='key8'
                                      id="calculator-metric">
                         Metric
                       </Dropdown.Item>
-                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCal"
+                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact
+                                     to="/ghgCal"
                                      key='key4' id="calculator-imperial">
                         US
                       </Dropdown.Item>
@@ -107,8 +109,8 @@ class NavBarMain extends React.Component {
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/request"
                            key='key13'>
-                  <Icon name = 'pen square icon' size='large'/>
-                  Make a Request
+                  <Icon name='pen square icon' size='large'/>
+                  Contact
                 </Menu.Item>
 
                 {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
@@ -124,23 +126,21 @@ class NavBarMain extends React.Component {
                 ) : ''}
 
                 {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
-                  <IconGroup style={{ float: 'right' }} size={'large'}>
-                    <Icon name='list alternate outline'/>
-                    <Icon corner style={{ color: 'rgb(169,169,169)' }} name='car'/>
-                  </IconGroup>
-                  List Cars (Admin)
-                </Menu.Item>
-                ) : ''}
-
-                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                    <Menu.Item as={NavLink} activeClassName="active" exact to="/cumulativedata" key='key12'>
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
                       <IconGroup style={{ float: 'right' }} size={'large'}>
-                        <Icon name='line graph'/>
+                        <Icon name='list alternate outline'/>
+                        <Icon corner style={{ color: 'rgb(169,169,169)' }} name='car'/>
                       </IconGroup>
-                      Cumulative Data
+                      List Cars (Admin)
                     </Menu.Item>
                 ) : ''}
+
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/cumulativedata" key='key12'>
+                  <IconGroup style={{ float: 'right' }} size={'large'}>
+                    <Icon name='line graph'/>
+                  </IconGroup>
+                  Cumulative Data
+                </Menu.Item>
                   <SignOutConfirmation className='spacing-menu-item' activeClassName="active"
                                        key='key7'/>
 

@@ -137,7 +137,7 @@ class UserInfoCollection extends BaseCollection {
 
       /** This subscription publishes all documents regardless of user */
       Meteor.publish(userInfoPublications.landingPageuser, function publish() {
-        if (!this.userId) {
+        if (this.userId || Roles.userIsInRole(this.userId, 'admin') || !this.userId) {
           return instance._collection.find();
         }
         return this.ready();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Loader } from 'semantic-ui-react';
+import { Container, Header, Image, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorField, SelectField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -173,6 +173,9 @@ class CarsDropdown extends React.Component {
           <NavBarMain/>
           <Container style={{ padding: '3em' }}>
             <Header as="h1" textAlign="center" inverted style={{ fontWeight: 'lighter' }}>Cars</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <CarsAccordianQuestions/>
             <AutoForm schema={schema} onChange={handleChange}>
               {/* multiple select fields which renders the car options */}

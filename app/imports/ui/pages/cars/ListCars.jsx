@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Header, Loader, Image, Pagination } from 'semantic-ui-react';
+import { Container, Table, Header, Loader, Image, Pagination, Dropdown } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
@@ -20,7 +20,31 @@ class ListCars extends React.Component {
       // showIndex: 0,
       // showCount: 25,
       activePage: 1,
+      filteredCars: null,
     };
+
+    this.carTypeOptions = [
+      {
+        key: 'All Types',
+        text: 'All Types',
+        value: null,
+      },
+      {
+        key: 'Gas',
+        text: 'Gas',
+        value: 'Gas',
+      },
+      {
+        key: 'Hybrid',
+        text: 'Hybrid',
+        value: 'Hybrid',
+      },
+      {
+        key: 'Electric',
+        text: 'Electric',
+        value: 'Electric',
+      },
+    ];
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -32,6 +56,24 @@ class ListCars extends React.Component {
     });
     // for debugging console.log('index:', this.state.showIndex);
     // for debugging console.log('count:', this.state.showCount);
+  }
+
+  // Updates the filtered car array
+  handleFilteredCarsChange = (e, data) => {
+    if (data.value == null) {
+      this.setState({
+        activePage: 1,
+        filteredCars: null,
+      });
+    } else {
+      const filteredCars = this.props.Car.filter(function (car) {
+        return car.carType === data.value;
+      });
+      this.setState({
+        activePage: 1,
+        filteredCars: filteredCars,
+      });
+    }
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -70,16 +112,38 @@ class ListCars extends React.Component {
             paddingTop: '8em',
             paddingBottom: '8em',
           }}>
-            <Header as="h2" textAlign="center" inverted>List All Cars </Header>
+            <Header as="h2" textAlign="center" inverted>List All Cars</Header>
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
 
+            <Dropdown
+            style={{ width: '25%', display: 'inline-block' }}
+              placeholder='Select Car Type'
+              fluid
+              selection
+              options={this.carTypeOptions}
+              onChange={this.handleFilteredCarsChange}
+              />
+
+            <br/>
+            <br/>
+
+            {/* Pagination changes based on whether or not the filtered car array is being used */}
+            {this.state.filteredCars === null ?
             <Pagination
                 defaultActivePage={1}
                 totalPages={Math.ceil(this.props.Car.length / 25)}
                 onPageChange={this.handleInputChange}
             />
+            :
+            <Pagination
+            defaultActivePage={1}
+            totalPages={Math.ceil(this.state.filteredCars.length / 25)}
+            onPageChange={this.handleInputChange}
+            />
+            }
+
             <Table celled>
               <Table.Header>
                 <Table.Row>
@@ -90,8 +154,14 @@ class ListCars extends React.Component {
                   <Table.HeaderCell>MPG</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
-              <Table.Body> {/* we are going to .slice in conjunction with map to get the correct amount */}
-                {this.props.Car.map((car) => <CarItem key={car._id} car={car}/>).slice(startIndex, endIndex)}
+              <Table.Body>
+                {/* we are going to .slice in conjunction with map to get the correct amount */}
+                {/* Different arrays are displayed based on whether or not a filter is selected */}
+                {this.state.filteredCars === null ?
+                this.props.Car.map((car) => <CarItem key={car._id} car={car}/>).slice(startIndex, endIndex)
+                :
+                this.state.filteredCars.map((car) => <CarItem key={car._id} car={car}/>).slice(startIndex, endIndex)
+                }
               </Table.Body>
             </Table>
           </Container>
