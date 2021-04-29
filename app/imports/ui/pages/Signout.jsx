@@ -32,12 +32,10 @@ export default class Signout extends React.Component {
       </div>
       );
     }
-    if (Meteor.user() !== null) {
       return (
           <div id="home">
             <home/>
           </div>
       );
-    }
   }
 }
