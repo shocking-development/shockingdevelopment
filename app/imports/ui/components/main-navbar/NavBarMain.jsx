@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
+import { Menu, Image, Icon, Loader, IconGroup, Dropdown } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import SignOutConfirmation from '../../pages/SignOutConfirmation';
@@ -72,22 +72,21 @@ class NavBarMain extends React.Component {
 
                 <Menu.Item className='spacing-menu-item'>
                   <Icon name='calculator' size='large'/>
-                  <Dropdown className='spacing-menu-item' text="GHG Calculator" pointing="bottom">
+                  <Dropdown floating text="GHG Calculator" pointing='left'>
                     <Dropdown.Menu>
-                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact
+                      <Dropdown.Item as={NavLink} activeClassName="active" exact
                                      to="/ghgCalMetric"
                                      key='key8'
                                      id="calculator-metric">
                         Metric
                       </Dropdown.Item>
-                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact
+                      <Dropdown.Item as={NavLink} activeClassName="active" exact
                                      to="/ghgCal"
                                      key='key4' id="calculator-imperial">
                         US
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-
                 </Menu.Item>
 
                 {/* <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
@@ -141,8 +140,8 @@ class NavBarMain extends React.Component {
                   </IconGroup>
                   Cumulative Data
                 </Menu.Item>
-                  <SignOutConfirmation className='spacing-menu-item' activeClassName="active"
-                                       key='key7'/>
+                <SignOutConfirmation className='spacing-menu-item' activeClassName="active"
+                                     key='key7'/>
 
               </Menu>,
               ]
