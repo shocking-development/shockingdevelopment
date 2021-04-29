@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Segment, Form, Button, Icon, Popup } from 'semantic-ui-react';
+import { Grid, Image, Segment, Form, Button, Popup } from 'semantic-ui-react';
 import { Link } from 'react-scroll';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
