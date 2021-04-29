@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
+import SavingsQuestions from './SavingsQuestions';
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
 
@@ -86,7 +87,7 @@ const i = 1;
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
-
+            <SavingsQuestions/>
             <Dropdown className='spacing-menu-item' placeholder="Choose current transportation" pointing="top">
               <Dropdown.Menu>
                 <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
