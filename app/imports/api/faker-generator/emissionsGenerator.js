@@ -24,7 +24,7 @@ export default function generateEmissions(num, userlist) {
 
     for (let j = 0; j < num; j++) {
       const owner = list[i];
-      const fakeDate = faker.date.between('2021-01-18', '2021-04-13');
+      const fakeDate = faker.date.between('2021-01-18', '2021-05-04');
       const fakeMiles = _.sample(possibleMiles);
       const fakeTransportation = _.sample(possibleTransportation);
 
