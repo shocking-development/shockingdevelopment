@@ -72,7 +72,7 @@ class NavBarMain extends React.Component {
 
                 <Menu.Item className='spacing-menu-item'>
                   <Icon name='calculator' size='large'/>
-                  <Dropdown floating text="GHG Calculator" pointing='left'>
+                  <Dropdown floating text="GHG Calculator" pointing='top left' direction='left'>
                     <Dropdown.Menu>
                       <Dropdown.Item as={NavLink} activeClassName="active" exact
                                      to="/ghgCalMetric"
