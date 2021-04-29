@@ -5,12 +5,36 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
-import SavingsPageBarGraph from '../../components/defaultcharts/SavingsPageBarGraph';
+import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 
 
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
+
+  HandlChange = function(event, element){
+    console.log(event);
+    console.log(element.children);
+    console.log(element.children[2]);
+  };
+
+  HandlSubmit = function(event, element){
+    console.log(event);
+    console.log(element.children);
+    console.log(element.children[2]);
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {baseMpg: 10};
+
+    this.handleChange = this.handleChange.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({baseMpg: event.target.value});
+  }
 
   render() {
 
@@ -22,7 +46,7 @@ class GoToSavings extends React.Component {
       paddingRight: '5px',
       color: 'black',
     };
-
+let i = 1;
     // In page styling for within the display cards
     const inCardStyle = {
       textSize: 50,
@@ -41,11 +65,10 @@ class GoToSavings extends React.Component {
       height: '100em',
     };
 
+
     UserInfosCars.subscribeUserInfoCars();
     let carList = UserInfosCars.find().fetch();
     console.log(carList[0]?.carName);
-
-    let i = 0;
 
     // returns the GoToSaveings page.
     return (
@@ -66,14 +89,15 @@ class GoToSavings extends React.Component {
               paddingBottom: '50px',
             }}/>
 
-            <Dropdown className='spacing-menu-item' text="Pike current transportation" pointing="top">
+            <Dropdown className='spacing-menu-item' placeholder="Choose current transportation" pointing="top">
               <Dropdown.Menu>
-                <Dropdown className='spacing-menu-item' text="Pike curring transportation" pointing="top">
+                <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
                   <Dropdown.Menu>
-                      {carList.map((car) => <Dropdown.Item>{car.carName} {i} {car.mpgofCar}</Dropdown.Item>)}
+                      {carList.map((car) => <Dropdown.Item onClick={this.HandlChange}
+                                                           key={car._id}>{car.carName}</Dropdown.Item>)}
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown.Item currentBaseMpg="20" >Some One else's Car</Dropdown.Item>
+                <Dropdown.Item onClick={this.HandlChange}>Some One else's Car</Dropdown.Item>
                 <Dropdown.Item>Bus</Dropdown.Item>
                 <Dropdown.Item>Bike</Dropdown.Item>
               </Dropdown.Menu>
@@ -89,12 +113,12 @@ class GoToSavings extends React.Component {
                 </Card.Content>
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph/>
+                    {GraphOptions(30, 38.3)}
                   </div>
                 </Card.Content>
                 <Card.Content extra color='teal'>
                   <div className='ui three buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Usage {i}</Button>
+                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
@@ -112,7 +136,7 @@ class GoToSavings extends React.Component {
 
                 <Card.Content className={'CarcardFont'}>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph/>
+                    {GraphOptions(30, 29.2)}
                   </div>
                 </Card.Content>
 
@@ -136,7 +160,7 @@ class GoToSavings extends React.Component {
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph/>
+                    {GraphOptions(30, 27.3)}
                   </div>
                 </Card.Content>
 
@@ -161,7 +185,7 @@ class GoToSavings extends React.Component {
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph/>
+                    {GraphOptions(30, 38.3)}
                   </div>
                 </Card.Content>
 
@@ -184,7 +208,8 @@ class GoToSavings extends React.Component {
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    <SavingsPageBarGraph/>
+                    {GraphOptions(30, 0)}
+
                   </div>
                 </Card.Content>
 
