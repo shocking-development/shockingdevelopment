@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
+import { Cars } from '../../../api/cars/CarsCollection';
 
 
 // A simple static component to render this page.
@@ -71,6 +72,8 @@ let i = 1;
     console.log(carList[0]?.carName);
 
     let baseMpg = 30;
+    let tripM = 5;
+
 
     // returns the GoToSaveings page.
     return (
@@ -115,12 +118,12 @@ let i = 1;
                 </Card.Content>
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg, 38.3)}
+                    {GraphOptions(baseMpg * tripM, 38.3 * tripM)}
                   </div>
                 </Card.Content>
                 <Card.Content extra color='teal'>
                   <div className='ui three buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
+                    <Button color='teal'>Input Usage</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
@@ -138,7 +141,7 @@ let i = 1;
 
                 <Card.Content className={'CarcardFont'}>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg, 0.2)}
+                    {GraphOptions(baseMpg * tripM, 0.2 * tripM)}
                   </div>
                 </Card.Content>
 
@@ -162,7 +165,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg, 27.3)}
+                    {GraphOptions(baseMpg * tripM, 27.3 * tripM)}
                   </div>
                 </Card.Content>
 
@@ -186,7 +189,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg, 38.3)}
+                    {GraphOptions(baseMpg * tripM, 38.3 * tripM)}
                   </div>
                 </Card.Content>
 
@@ -209,7 +212,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg, 0)}
+                    {GraphOptions(baseMpg * tripM, 0 * tripM)}
 
                   </div>
                 </Card.Content>
@@ -233,6 +236,7 @@ let i = 1;
 GoToSavings.propTypes = {
   currentUser: PropTypes.string,
   Car: PropTypes.array,
+  ready: PropTypes.bool.isRequired,
 };
 
 
@@ -241,6 +245,12 @@ GoToSavings.propTypes = {
 const GoToSavingsContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
 }))(GoToSavings);
+
+
+
+
+
+
 
 // Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter
 export default withRouter(GoToSavingsContainer);
