@@ -5,7 +5,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Header } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
-import SignOutConfirmation from '../pages/SignOutConfirmation';
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
@@ -34,7 +33,7 @@ class NavBar extends React.Component {
           ) : (
             <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
-                <SignOutConfirmation/>
+                <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} /*exact to="/signout"*//>
               </Dropdown.Menu>
             </Dropdown>
           )}

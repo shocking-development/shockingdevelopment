@@ -24,6 +24,7 @@ import ChangePassword from '../pages/profile/ChangePassword';
 import ListCars from '../pages/cars/ListCars';
 import CumulativeGraphs from '../pages/admin/CumulativeGraphs';
 import Requests from '../pages/cars/Requests';
+import SignOutConfirmation from '../pages/SignOutConfirmation';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -37,6 +38,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route path="/signout" component={Signout}/>
               <Route path="/landing" component={Landing}/>
+              <Route path="/signoutConfirmation" component={SignOutConfirmation}/>
               <ProtectedRoute path="/gotosavings" component={GoToSavings}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/add" component={AddEmissions}/>
