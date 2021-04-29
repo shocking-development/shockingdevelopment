@@ -1,7 +1,6 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { Emissions } from '../../../api/emissions/EmissionsCollection';
 
 export function GraphOptions(data1, data2) {
   const options = {
@@ -84,10 +83,9 @@ export function GraphOptions(data1, data2) {
   );
 
 }
+
 // A simple static component to render some boxes for the the graph page.
-function  SavingsPageBarGraph(data1, data2) {
-
-
+function SavingsPageBarGraph(data1, data2) {
   // variable to hold the parameters for the graph.
   const options = {
     title: {
@@ -159,15 +157,15 @@ function  SavingsPageBarGraph(data1, data2) {
     },
   };
 
-    // return the graph.
-    return (
-        <div>
-          <HighchartsReact
-              highcharts={Highcharts}
-              options={options}
-          />
-        </div>
-    );
+  // return the graph.
+  return (
+      <div>
+        <HighchartsReact
+            highcharts={Highcharts}
+            options={options}
+        />
+      </div>
+  );
 }
 
 export default SavingsPageBarGraph;

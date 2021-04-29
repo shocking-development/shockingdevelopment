@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Image, Header,  Dropdown, Icon, Table  } from 'semantic-ui-react';
+import { Button, Card, Image, Header, Dropdown, Icon } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -8,17 +8,15 @@ import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 
-
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
-
-  HandlChange = function(event, element){
+  HandlChange = function (event, element) {
     console.log(event);
     console.log(element.children);
     console.log(element.children[2]);
   };
 
-  HandlSubmit = function(event, element){
+  HandlSubmit = function (event, element) {
     console.log(event);
     console.log(element.children);
     console.log(element.children[2]);
@@ -26,18 +24,16 @@ class GoToSavings extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {baseMpg: 10};
-
+    this.state = { baseMpg: 10 };
     this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
+    /* this.handleSubmit = this.handleSubmit.bind(this); */
   }
 
   handleChange(event) {
-    this.setState({baseMpg: event.target.value});
+    this.setState({ baseMpg: event.target.value });
   }
 
   render() {
-
     // In page styling for the graphs.
     const dataPageBarGraphstyling = {
       background: 'transparent',
@@ -46,7 +42,6 @@ class GoToSavings extends React.Component {
       paddingRight: '5px',
       color: 'black',
     };
-let i = 1;
     // In page styling for within the display cards
     const inCardStyle = {
       textSize: 50,
@@ -65,14 +60,11 @@ let i = 1;
       height: '100em',
     };
 
-
     UserInfosCars.subscribeUserInfoCars();
-    let carList = UserInfosCars.find().fetch();
-    console.log(carList[0]?.carName);
-
-    // returns the GoToSaveings page.
+    const carList = UserInfosCars.find().fetch();
+    /* console.log(carList[0]?.carName); */
+    /* returns the GoToSaveings page. */
     return (
-
         <div style={pageStyle}>
           <NavBarMain/>
           <div style={{
@@ -93,11 +85,11 @@ let i = 1;
               <Dropdown.Menu>
                 <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
                   <Dropdown.Menu>
-                      {carList.map((car) => <Dropdown.Item onClick={this.HandlChange}
-                                                           key={car._id}>{car.carName}</Dropdown.Item>)}
+                    {carList.map((car) => <Dropdown.Item onClick={this.HandlChange}
+                                                         key={car._id}>{car.carName}</Dropdown.Item>)}
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown.Item onClick={this.HandlChange}>Some One else's Car</Dropdown.Item>
+                <Dropdown.Item onClick={this.HandlChange}>Some One else&apos;s Car</Dropdown.Item>
                 <Dropdown.Item>Bus</Dropdown.Item>
                 <Dropdown.Item>Bike</Dropdown.Item>
               </Dropdown.Menu>
@@ -179,7 +171,8 @@ let i = 1;
                   <div align="right"><Icon inverted name='bus'/>
                     <Icon inverted name='train'/></div>
                   <Card.Header className={'CarcardFont'}>Public Transport</Card.Header>
-                  <Card.Meta className={'CarcardFont'}>How much would you save by using this public transport system.</Card.Meta>
+                  <Card.Meta className={'CarcardFont'}>How much would you save by using this public transport
+                    system.</Card.Meta>
                   <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
                 </Card.Content>
 
@@ -234,12 +227,9 @@ GoToSavings.propTypes = {
   Car: PropTypes.array,
 };
 
-
-
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 const GoToSavingsContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
 }))(GoToSavings);
-
 // Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter
 export default withRouter(GoToSavingsContainer);

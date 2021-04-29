@@ -84,7 +84,5 @@ function DataPageBarGraph() {
             </Header>}
       </div>
   );
-
 }
-
 export default DataPageBarGraph;
