@@ -70,6 +70,8 @@ let i = 1;
     let carList = UserInfosCars.find().fetch();
     console.log(carList[0]?.carName);
 
+    let baseMpg = 30;
+
     // returns the GoToSaveings page.
     return (
 
@@ -113,7 +115,7 @@ let i = 1;
                 </Card.Content>
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(30, 38.3)}
+                    {GraphOptions(baseMpg, 38.3)}
                   </div>
                 </Card.Content>
                 <Card.Content extra color='teal'>
@@ -136,7 +138,7 @@ let i = 1;
 
                 <Card.Content className={'CarcardFont'}>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(30, 29.2)}
+                    {GraphOptions(baseMpg, 0.2)}
                   </div>
                 </Card.Content>
 
@@ -160,15 +162,14 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(30, 27.3)}
+                    {GraphOptions(baseMpg, 27.3)}
                   </div>
                 </Card.Content>
 
                 <Card.Content extra>
-                  <div className='ui four buttons'>
+                  <div className='ui three buttons'>
                     <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
                     <Button color='teal' as={NavLink} exact to="/add">Input Car</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound">Input Members</Button>
                     <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
                   </div>
                 </Card.Content>
@@ -185,7 +186,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(30, 38.3)}
+                    {GraphOptions(baseMpg, 38.3)}
                   </div>
                 </Card.Content>
 
@@ -208,7 +209,7 @@ let i = 1;
 
                 <Card.Content>
                   <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(30, 0)}
+                    {GraphOptions(baseMpg, 0)}
 
                   </div>
                 </Card.Content>
