@@ -6,6 +6,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
+import SignOutConfirmation from '../../pages/SignOutConfirmation';
 
 /**
  * The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ...
@@ -141,9 +142,10 @@ class NavBarMain extends React.Component {
                     </Menu.Item>
                 ) : ''}
 
-                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
+                <Menu.Item className='spacing-menu-item' activeClassName="active"
                            key='key7'>
                   <Icon name='sign-out' size='large'/>
+                  <SignOutConfirmation/>
                   Sign Out
                 </Menu.Item>
 

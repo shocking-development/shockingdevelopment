@@ -69,10 +69,9 @@
 // export default Signout;
 
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import swal from 'sweetalert';
 import Landing from './landing/Landing';
-import SignOutConfirmation from './SignOutConfirmation';
+// import { Meteor } from 'meteor/meteor';
+// import SignOutConfirmation from './SignOutConfirmation';
 
 /** After the user clicks the "Signout" link in the NavBar, log them out and display this page. */
 export default class Signout extends React.Component {
@@ -97,7 +96,9 @@ export default class Signout extends React.Component {
     //   }
     // });
       return (
-        <SignOutConfirmation/>
+          <div id="signout-page">
+            <Landing/>
+          </div>
       );
     }
 }
