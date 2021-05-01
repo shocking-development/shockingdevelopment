@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Image, Header,  Dropdown, Icon, Table  } from 'semantic-ui-react';
+import { Card, Image, Header,  Dropdown  } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -8,6 +8,7 @@ import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';
+import { SaveingsGraphCard } from './SavingsGraphCard';
 
 
 // A simple static component to render this page.
@@ -108,122 +109,21 @@ let i = 1;
               </Dropdown.Menu>
             </Dropdown>
 
+
+            
+
             <Card.Group style={cardStyle}>
-              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
-                <Card.Content>
-                  <div align="right"><Icon inverted name='car'/></div>
-                  <Card.Header className={'CarcardFont'}>Car</Card.Header>
-                  <Card.Meta className={'CarcardFont'}>How much would you save by using this car.</Card.Meta>
-                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
-                </Card.Content>
-                <Card.Content>
-                  <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg * tripM, 38.3 * tripM)}
-                  </div>
-                </Card.Content>
-                <Card.Content extra color='teal'>
-                  <div className='ui three buttons'>
-                    <Button color='teal'>Input Usage</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
 
-                  </div>
-                </Card.Content>
-              </Card>
-
-              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
-                <Card.Content>
-                  <div align="right"><Icon inverted name='battery three'/></div>
-                  <Card.Header className={'CarcardFont'}>Electric Car</Card.Header>
-                  <Card.Meta className={'CarcardFont'}>How much would you save by using this electric car.</Card.Meta>
-                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
-                </Card.Content>
-
-                <Card.Content className={'CarcardFont'}>
-                  <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg * tripM, 0.2 * tripM)}
-                  </div>
-                </Card.Content>
-
-                <Card.Content extra color='teal'>
-                  <div className='ui three buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-
-                  </div>
-                </Card.Content>
-              </Card>
-
-              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
-                <Card.Content>
-                  <div align="right"><Icon inverted align="right" name='truck'/></div>
-                  <Card.Header className={'CarcardFont'}>Car Pool</Card.Header>
-                  <Card.Meta className={'CarcardFont'}>How much would you save by using this carpool.</Card.Meta>
-                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
-                </Card.Content>
-
-                <Card.Content>
-                  <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg * tripM, 27.3 * tripM)}
-                  </div>
-                </Card.Content>
-
-                <Card.Content extra>
-                  <div className='ui three buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Car</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-                  </div>
-                </Card.Content>
-              </Card>
-
-              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
-                <Card.Content>
-                  <div align="right"><Icon inverted name='bus'/>
-                    <Icon inverted name='train'/></div>
-                  <Card.Header className={'CarcardFont'}>Public Transport</Card.Header>
-                  <Card.Meta className={'CarcardFont'}>How much would you save by using this public transport system.</Card.Meta>
-                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
-                </Card.Content>
-
-                <Card.Content>
-                  <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg * tripM, 38.3 * tripM)}
-                  </div>
-                </Card.Content>
-
-                <Card.Content extra>
-                  <div className='ui three buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add">Input Usage</Button>
-                    <Button color='teal' as={NavLink} exact to="/add">Input type</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-                  </div>
-                </Card.Content>
-              </Card>
-
-              <Card style={{ background: 'rgba(0, 73, 122, 0.5)', boxShadow: 'none' }}>
-                <Card.Content>
-                  <div align="right"><Icon inverted name='bicycle'/></div>
-                  <Card.Header className={'CarcardFont'}>Biking</Card.Header>
-                  <Card.Meta className={'CarcardFont'}>How much would you save by Biking</Card.Meta>
-                  <Card.Description className={'CarcardFont'}>{this.props.currentUser.transportation}</Card.Description>
-                </Card.Content>
-
-                <Card.Content>
-                  <div style={dataPageBarGraphstyling}>
-                    {GraphOptions(baseMpg * tripM, 0 * tripM)}
-
-                  </div>
-                </Card.Content>
-
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button color='teal' as={NavLink} exact to="/add" style={inCardStyle}>Input Usage</Button>
-                    <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-                  </div>
-                </Card.Content>
-              </Card>
+              { SaveingsGraphCard( "Car", "How much would you save by using this car.",
+                  "info",'car', baseMpg * tripM, 38.3 * tripM) }
+              { SaveingsGraphCard( "Electric Car", "How much would you save by using this electric car.",
+                  "info",'battery three', baseMpg * tripM, 0.3 * tripM) }
+              { SaveingsGraphCard( "Car Pool", "How much would you save by using this carpool.",
+                  "info",'truck', baseMpg * tripM, 38.3 * tripM) }
+              { SaveingsGraphCard( "Public Transport", "How much would you save by using this public transport system.",
+                "info", 'bus', baseMpg * tripM, 38.3 * tripM) }
+              { SaveingsGraphCard( "Biking", "How much would you save by Biking.",
+                  "info", 'bicycle', baseMpg * tripM, 0) }
 
             </Card.Group>
           </div>
@@ -236,7 +136,6 @@ let i = 1;
 GoToSavings.propTypes = {
   currentUser: PropTypes.string,
   Car: PropTypes.array,
-  ready: PropTypes.bool.isRequired,
 };
 
 
