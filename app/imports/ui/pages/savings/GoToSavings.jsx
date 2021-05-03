@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Image, Header,  Dropdown  } from 'semantic-ui-react';
+import { Card, Image, Header, Dropdown } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
@@ -49,7 +49,7 @@ class GoToSavings extends React.Component {
       color: 'black',
     };
 // eslint-disable-next-line no-unused-vars
-const i = 1;
+    const i = 1;
     // In page styling for within the display cards
     const inCardStyle = {
       textSize: 50,
@@ -75,7 +75,6 @@ const i = 1;
     let baseMpg = 30;
     let tripM = 5;
 
-
     // returns the GoToSaveings page.
     return (
 
@@ -99,8 +98,8 @@ const i = 1;
               <Dropdown.Menu>
                 <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
                   <Dropdown.Menu>
-                      {carList.map((car) => <Dropdown.Item onClick={this.HandlChange}
-                                                           key={car._id}>{car.carName}</Dropdown.Item>)}
+                    {carList.map((car) => <Dropdown.Item onClick={this.HandlChange}
+                                                         key={car._id}>{car.carName}</Dropdown.Item>)}
                   </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown.Item onClick={this.HandlChange}>Some One else&aposs Car</Dropdown.Item>
@@ -110,20 +109,18 @@ const i = 1;
             </Dropdown>
 
 
-            
-
             <Card.Group style={cardStyle}>
 
-              { SaveingsGraphCard( "Car", "How much would you save by using this car.",
-                  "info",'car', baseMpg * tripM, 38.3 * tripM) }
-              { SaveingsGraphCard( "Electric Car", "How much would you save by using this electric car.",
-                  "info",'battery three', baseMpg * tripM, 0.3 * tripM) }
-              { SaveingsGraphCard( "Car Pool", "How much would you save by using this carpool.",
-                  "info",'truck', baseMpg * tripM, 38.3 * tripM) }
-              { SaveingsGraphCard( "Public Transport", "How much would you save by using this public transport system.",
-                "info", 'bus', baseMpg * tripM, 38.3 * tripM) }
-              { SaveingsGraphCard( "Biking", "How much would you save by Biking.",
-                  "info", 'bicycle', baseMpg * tripM, 0) }
+              {SaveingsGraphCard("Car", "How much would you save by using this car.",
+                  "info", 'car', baseMpg * tripM, 38.3 * tripM)}
+              {SaveingsGraphCard("Electric Car", "How much would you save by using this electric car.",
+                  "info", 'battery three', baseMpg * tripM, 0.3 * tripM)}
+              {SaveingsGraphCard("Car Pool", "How much would you save by using this carpool.",
+                  "info", 'truck', baseMpg * tripM, 38.3 * tripM)}
+              {SaveingsGraphCard("Public Transport", "How much would you save by using this public transport system.",
+                  "info", 'bus', baseMpg * tripM, 38.3 * tripM)}
+              {SaveingsGraphCard("Biking", "How much would you save by Biking.",
+                  "info", 'bicycle', baseMpg * tripM, 0)}
 
             </Card.Group>
           </div>
@@ -142,12 +139,6 @@ GoToSavings.propTypes = {
 const GoToSavingsContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
 }))(GoToSavings);
-
-
-
-
-
-
 
 // Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter
 export default withRouter(GoToSavingsContainer);
