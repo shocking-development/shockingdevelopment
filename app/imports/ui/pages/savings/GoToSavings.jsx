@@ -9,6 +9,7 @@ import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';
 import { SaveingsGraphCard } from './SavingsGraphCard';
+import SavingsQuestions from './SavingsQuestions';
 
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
