@@ -1,10 +1,7 @@
 import React from 'react';
-import { Button, Card, Image, Header,  Dropdown, Icon, Table  } from 'semantic-ui-react';
-import { Meteor } from 'meteor/meteor';
+import { Button, Card, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { NavLink, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import NavBarMain from '../../components/main-navbar/NavBarMain';
+import { NavLink } from 'react-router-dom';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';

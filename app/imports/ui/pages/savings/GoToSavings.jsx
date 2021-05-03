@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import NavBarMain from '../../components/main-navbar/NavBarMain';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
-import { Cars } from '../../../api/cars/CarsCollection';
 import { SaveingsGraphCard } from './SavingsGraphCard';
 import SavingsQuestions from './SavingsQuestions';
 
@@ -72,8 +71,8 @@ class GoToSavings extends React.Component {
     const carList = UserInfosCars.find().fetch();
     console.log(carList[0]?.carName);
 
-    let baseMpg = 30;
-    let tripM = 5;
+    const baseMpg = 30;
+    const tripM = 5;
 
     // returns the GoToSaveings page.
     return (
@@ -108,19 +107,18 @@ class GoToSavings extends React.Component {
               </Dropdown.Menu>
             </Dropdown>
 
-
             <Card.Group style={cardStyle}>
 
-              {SaveingsGraphCard("Car", "How much would you save by using this car.",
-                  "info", 'car', baseMpg * tripM, 38.3 * tripM)}
-              {SaveingsGraphCard("Electric Car", "How much would you save by using this electric car.",
-                  "info", 'battery three', baseMpg * tripM, 0.3 * tripM)}
-              {SaveingsGraphCard("Car Pool", "How much would you save by using this carpool.",
-                  "info", 'truck', baseMpg * tripM, 38.3 * tripM)}
-              {SaveingsGraphCard("Public Transport", "How much would you save by using this public transport system.",
-                  "info", 'bus', baseMpg * tripM, 38.3 * tripM)}
-              {SaveingsGraphCard("Biking", "How much would you save by Biking.",
-                  "info", 'bicycle', baseMpg * tripM, 0)}
+              {SaveingsGraphCard('Car', 'How much would you save by using this car.',
+                  'info', 'car', baseMpg * tripM, 38.3 * tripM)}
+              {SaveingsGraphCard('Electric Car', 'How much would you save by using this electric car.',
+                  'info', 'battery three', baseMpg * tripM, 0.3 * tripM)}
+              {SaveingsGraphCard('Car Pool', 'How much would you save by using this carpool.',
+                  'info', 'truck', baseMpg * tripM, 38.3 * tripM)}
+              {SaveingsGraphCard('Public Transport', 'How much would you save by using this public transport system.',
+                  'info', 'bus', baseMpg * tripM, 38.3 * tripM)}
+              {SaveingsGraphCard('Biking', 'How much would you save by Biking.',
+                  'info', 'bicycle', baseMpg * tripM, 0)}
 
             </Card.Group>
           </div>
