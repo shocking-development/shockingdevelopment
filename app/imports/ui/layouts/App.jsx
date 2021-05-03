@@ -49,9 +49,9 @@ class App extends React.Component {
               <ProtectedRoute path="/ghgCal" component={GHGEmissionsCalculator}/>
               <ProtectedRoute path="/ghgCalMetric" component={GHGEmissionsCalculatorContainerMetric}/>
               <ProtectedRoute path="/request" component={Requests}/>
+              <ProtectedRoute path="/cumulativedata" component={CumulativeGraphs}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <AdminProtectedRoute path="/listcars" component={ListCars}/>
-              <AdminProtectedRoute path="/cumulativedata" component={CumulativeGraphs}/>
 
               <Route component={NotFound}/>
             </Switch>

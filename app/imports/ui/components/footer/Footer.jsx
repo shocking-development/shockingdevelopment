@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Segment, Form, Button, Icon } from 'semantic-ui-react';
+import { Grid, Image, Segment, Form, Button, Popup } from 'semantic-ui-react';
 import { Link } from 'react-scroll';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
@@ -32,15 +32,14 @@ class Footer extends React.Component {
           <Segment style={footercolor2}>
             <Grid columns={4} relaxed='very'>
               <Grid.Column style={{ marginTop: '40px' }}>
-                <p style={{ display: 'flex', justifyContent: 'left' }}>
-                  <Image style={footerLogo} src="/images/HEI-WHOLE-LOGO.png"/>
-                </p>
-                <p style={{ display: 'flex', justifyContent: 'left' }}>
-                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <a href="https://www.hei.com/home/default.aspx" target="_blank">
-                    <Icon centered size={'large'} style={{ color: 'white', margin: '10px' }} name="home"></Icon>
+                    <p style={{ display: 'flex', justifyContent: 'left' }}>
+                      <Popup style={{ opacity: '0.4' }} inverted size='mini' position='top center' hoverable content='www.hei.com' trigger={
+                      <Image style={footerLogo} src="/images/HEI-WHOLE-LOGO.png"/>
+                      } />
+                    </p>
                   </a>
-                </p>
               </Grid.Column>
               <Grid.Column style={{ marginTop: '30px' }}>
                 <p style={footerHeader}> Corporate Headquarters </p>

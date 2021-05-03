@@ -155,11 +155,20 @@
   color: #adaeb1 !important;
 }
 
-/* For select form field */
+/* For select form field on sign up page */
 .signupSelectInput div {
   background: #3d598ea3 !important;
-  /*border-radius: 20px !important;*/
   color: #adaeb1 !important;
+}
+
+.signupSelectInput .item {
+  color: #adaeb1 !important;
+  background: #3d598e !important;
+}
+
+.signupSelectInput .divider.text {
+  color: #adaeb1 !important;
+  background: transparent !important;
 }
 
 /* the font styling */

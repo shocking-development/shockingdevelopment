@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Image, Icon, Loader, IconGroup } from 'semantic-ui-react';
+import { Menu, Image, Icon, Loader, IconGroup, Dropdown } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
+import SignOutConfirmation from '../../pages/SignOutConfirmation';
 
 /**
  * The NavBarMain appears at the top of every loged-in page. Rendered in pages such as Home, EditProfile, ...
@@ -71,20 +72,21 @@ class NavBarMain extends React.Component {
 
                 <Menu.Item className='spacing-menu-item'>
                   <Icon name='calculator' size='large'/>
-                  <Dropdown className='spacing-menu-item' text="GHG Calculator" pointing="bottom">
+                  <Dropdown floating text="GHG Calculator" pointing='top left' direction='left'>
                     <Dropdown.Menu>
-                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCalMetric"
+                      <Dropdown.Item as={NavLink} activeClassName="active" exact
+                                     to="/ghgCalMetric"
                                      key='key8'
                                      id="calculator-metric">
                         Metric
                       </Dropdown.Item>
-                      <Dropdown.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/ghgCal"
+                      <Dropdown.Item as={NavLink} activeClassName="active" exact
+                                     to="/ghgCal"
                                      key='key4' id="calculator-imperial">
                         US
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-
                 </Menu.Item>
 
                 {/* <Menu.Item as={NavLink} activeClassName="active" exact to="/notfound" key='key5'>
@@ -106,7 +108,7 @@ class NavBarMain extends React.Component {
 
                 <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/request"
                            key='key13'>
-                  <Icon name = 'pen square icon' size='large'/>
+                  <Icon name='pen square icon' size='large'/>
                   Contact
                 </Menu.Item>
 
@@ -123,29 +125,23 @@ class NavBarMain extends React.Component {
                 ) : ''}
 
                 {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
-                  <IconGroup style={{ float: 'right' }} size={'large'}>
-                    <Icon name='list alternate outline'/>
-                    <Icon corner style={{ color: 'rgb(169,169,169)' }} name='car'/>
-                  </IconGroup>
-                  List Cars (Admin)
-                </Menu.Item>
-                ) : ''}
-
-                {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-                    <Menu.Item as={NavLink} activeClassName="active" exact to="/cumulativedata" key='key12'>
+                    <Menu.Item as={NavLink} activeClassName="active" exact to="/listcars" key='key11'>
                       <IconGroup style={{ float: 'right' }} size={'large'}>
-                        <Icon name='line graph'/>
+                        <Icon name='list alternate outline'/>
+                        <Icon corner style={{ color: 'rgb(169,169,169)' }} name='car'/>
                       </IconGroup>
-                      Cumulative Data
+                      List Cars (Admin)
                     </Menu.Item>
                 ) : ''}
 
-                <Menu.Item className='spacing-menu-item' as={NavLink} activeClassName="active" exact to="/signout"
-                           key='key7'>
-                  <Icon name='sign-out' size='large'/>
-                  Sign Out
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/cumulativedata" key='key12'>
+                  <IconGroup style={{ float: 'right' }} size={'large'}>
+                    <Icon name='line graph'/>
+                  </IconGroup>
+                  Cumulative Data
                 </Menu.Item>
+                <SignOutConfirmation className='spacing-menu-item' activeClassName="active"
+                                     key='key7'/>
 
               </Menu>,
               ]

@@ -10,17 +10,16 @@ import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';
 import { SaveingsGraphCard } from './SavingsGraphCard';
 
-
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
 
-  HandlChange = function(event, element){
+  HandlChange = function (event, element) {
     console.log(event);
     console.log(element.children);
     console.log(element.children[2]);
   };
 
-  HandlSubmit = function(event, element){
+  HandlSubmit = function (event, element) {
     console.log(event);
     console.log(element.children);
     console.log(element.children[2]);
@@ -28,14 +27,14 @@ class GoToSavings extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {baseMpg: 10};
+    this.state = { baseMpg: 10 };
 
     this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({baseMpg: event.target.value});
+    this.setState({ baseMpg: event.target.value });
   }
 
   render() {
@@ -48,7 +47,8 @@ class GoToSavings extends React.Component {
       paddingRight: '5px',
       color: 'black',
     };
-let i = 1;
+// eslint-disable-next-line no-unused-vars
+const i = 1;
     // In page styling for within the display cards
     const inCardStyle = {
       textSize: 50,
@@ -67,9 +67,8 @@ let i = 1;
       height: '100em',
     };
 
-
     UserInfosCars.subscribeUserInfoCars();
-    let carList = UserInfosCars.find().fetch();
+    const carList = UserInfosCars.find().fetch();
     console.log(carList[0]?.carName);
 
     let baseMpg = 30;
@@ -94,7 +93,7 @@ let i = 1;
             <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
               paddingBottom: '50px',
             }}/>
-
+            <SavingsQuestions/>
             <Dropdown className='spacing-menu-item' placeholder="Choose current transportation" pointing="top">
               <Dropdown.Menu>
                 <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
@@ -103,7 +102,7 @@ let i = 1;
                                                            key={car._id}>{car.carName}</Dropdown.Item>)}
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown.Item onClick={this.HandlChange}>Some One else's Car</Dropdown.Item>
+                <Dropdown.Item onClick={this.HandlChange}>Some One else&aposs Car</Dropdown.Item>
                 <Dropdown.Item>Bus</Dropdown.Item>
                 <Dropdown.Item>Bike</Dropdown.Item>
               </Dropdown.Menu>
@@ -137,8 +136,6 @@ GoToSavings.propTypes = {
   currentUser: PropTypes.string,
   Car: PropTypes.array,
 };
-
-
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 const GoToSavingsContainer = withTracker(() => ({

@@ -6,7 +6,6 @@ import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField,
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Meteor } from 'meteor/meteor';
 import { UserInfos } from '../../../api/userInfo/UserInfoCollection';
 import { userInfoUpdateMethod } from '../../../api/userInfo/UserInfoCollection.methods';
 import NavBarHome from '../../components/main-navbar/NavBarMain';
@@ -22,7 +21,7 @@ class EditProfile extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { firstName, lastName, user, email, unitSystem, State, _id } = data;
+    const { firstName, lastName, user, unitSystem, State, _id } = data;
     let userImage;
     if (this.state.userImage === 'no-change') {
       userImage = this.props.doc.userImage;
@@ -39,24 +38,6 @@ class EditProfile extends React.Component {
       unitSystem,
       State,
     };
-
-    /* Update email address in Meteor Accounts */
-    if (email !== Meteor.user().emails[0].address) {
-      Meteor.call('updateEmail', email, (err) => {
-        if (err) {
-          console.log('Error updating email address');
-        }
-      });
-    }
-
-    /* DOESNT WORK RIGHT NOW: Update username in Meteor Accounts
-    if (user !== Meteor.user().username) {
-      Meteor.call('updateUsername', user, (err) => {
-        if (err) {
-          console.log('Error updating username');
-        }
-      });
-    } */
 
     /* Update info in UserInfos Collection */
     userInfoUpdateMethod.call(updateData, (error) => (error ?
@@ -105,10 +86,6 @@ class EditProfile extends React.Component {
       dataImage = this.props.doc.userImage;
     }
 
-    /* REMOVE LATER */
-    console.log(Meteor.user());
-    console.log(this.props.doc);
-
     return (
         <div style={{
           background: '#001947',
@@ -120,6 +97,9 @@ class EditProfile extends React.Component {
           <Container style={pageStyle}>
             <Header inverted as="h2" style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }} textAlign="center"
             >Edit Profile</Header>
+            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+              paddingBottom: '50px',
+            }}/>
             <Grid>
               <Grid.Row style={{ marginTop: '3em', background: '#001947' }}>
                 <Grid.Column width={5}>
@@ -182,9 +162,6 @@ export default withTracker(({ match }) => {
   const documentId = match.params._id;
   const doc = UserInfos.findOne(documentId);
   const ready = subscription.ready();
-
-  /* REMOVE LATER */
-  console.log(documentId, doc);
 
   return {
     doc,

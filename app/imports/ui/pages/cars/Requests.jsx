@@ -45,21 +45,21 @@ class Requests extends React.Component {
     return (
         <div style={pageStyle}>
           <NavBarMain/>
-        <Grid container centered>
-          <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Message Admin</Header>
-            <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
-              paddingBottom: '50px',
-            }}/>
-            <RequestQuestions/>
-            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+          <Grid container centered>
+            <Grid.Column>
+              <Header as="h2" textAlign="center" inverted>Message Admin</Header>
+              <Image src='images/HEI-WAVE-LOGO.png' centered size='small' style={{
+                paddingBottom: '50px',
+              }}/>
+              <RequestQuestions/>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
                 <TextField name='recommendationType' className={'SelectFieldforCarDropdown'} label='Subject of Contact'/>
                 <TextField name='recommendation' className={'SelectFieldforCarDropdown'} label='Type your message here'/>
                 <SubmitField className={'carsDropDownBtn'} value='Submit' id='submit-car'/>
                 <ErrorsField/>
-            </AutoForm>
-          </Grid.Column>
-        </Grid>
+              </AutoForm>
+            </Grid.Column>
+          </Grid>
         </div>
     );
   }

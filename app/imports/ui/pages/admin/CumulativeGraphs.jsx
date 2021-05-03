@@ -34,7 +34,7 @@ function CumulativeGraphs() {
   };
 
   /* GET CUMULATIVE DATA */
-  const totalUsers = cumulativeEmissionsData('numberofUsers');
+  const totalUsers = cumulativeEmissionsData('NumberOfUser');
   const savings = cumulativeEmissionsData('totalSavings');
   const gasSaved = cumulativeEmissionsData('totalGasSaved');
 
