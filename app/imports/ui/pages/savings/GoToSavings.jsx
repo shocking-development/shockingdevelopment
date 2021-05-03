@@ -70,6 +70,7 @@ const i = 1;
     UserInfosCars.subscribeUserInfoCars();
     const carList = UserInfosCars.find().fetch();
     console.log(carList[0]?.carName);
+    console.log(carList[0]?.carName);
 
     let baseMpg = 30;
     let tripM = 5;
