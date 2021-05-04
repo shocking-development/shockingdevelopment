@@ -185,7 +185,6 @@
     { "carType": "Gas", "make": "Audi", "model": "TTS Coupe S-Tronic 2.0T Premium Plus", "year": 2010, "mpg": 21 },
     { "carType": "Gas", "make": "Audi", "model": "TTS Coupe S-Tronic 2.0T Prestige", "year": 2010, "mpg": 21 },
 
-    { "carType": "Gas", "make": "BMW", "model": "840i Convertible", "year": 2021, "mpg": 20 },
     { "carType": "Gas", "make": "BMW", "model": "M850i xDrive Gran Coupe", "year": 2021, "mpg": 17 },
     { "carType": "Gas", "make": "BMW", "model": "M850i xDrive Coupe", "year": 2021, "mpg": 18 },
     { "carType": "Gas", "make": "BMW", "model": "M850i xDrive Convertible", "year": 2021, "mpg": 17 },
@@ -632,7 +631,6 @@
     { "carType": "Gas", "make": "BMW", "model": "X6 sDrive40i", "year": 2021, "mpg": 21 },
     { "carType": "Gas", "make": "BMW", "model": "X6 xDrive40i", "year": 2021, "mpg": 20 },
     { "carType": "Gas", "make": "BMW", "model": "X6 M50i", "year": 2021, "mpg": 16 },
-    { "carType": "Gas", "make": "BMW", "model": "X6", "year": 2020, "mpg": 13 },
     { "carType": "Gas", "make": "BMW", "model": "X6", "year": 2020, "mpg": 13 },
     { "carType": "Gas", "make": "BMW", "model": "X6 Competition", "year": 2020, "mpg": 13 },
     { "carType": "Gas", "make": "BMW", "model": "X6", "year": 2019, "mpg": 14 },
