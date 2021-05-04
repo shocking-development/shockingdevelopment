@@ -1,12 +1,10 @@
 import React from 'react';
 import { Button, Card, Icon } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { NavLink } from 'react-router-dom';
 import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph';
-import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';
 
-export function SaveingsGraphCard(name, description, info, icon, data1, data2, currentCar) {
+export function SaveingsGraphCard(name, description, info, icon, data1, data2) {
 
   // In page styling for the graphs.
   const dataPageBarGraphstyling = {
@@ -18,6 +16,7 @@ export function SaveingsGraphCard(name, description, info, icon, data1, data2, c
   };
 
   // In page styling for within the display cards
+  // eslint-disable-next-line no-unused-vars
   const inCardStyle = {
     textSize: 50,
   };
