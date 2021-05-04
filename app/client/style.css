@@ -544,3 +544,10 @@ input[type="date"]:before {
 .accordionForTheDropdown.ui.accordion .title:not(.ui) {
   color : #ffffff !important;
 }
+
+.paginationForUSERCARS.ui.secondary.pointing.menu .item{
+  color: #77bafb!important;
+}
+.paginationForUSERCARS.ui.secondary.pointing.menu .active.item {
+  border-color: #00a7ff !important;
+}

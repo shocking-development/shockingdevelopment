@@ -169,7 +169,6 @@ function Home() {
                 <div align="center">
                   <Segment className={'grow'} circular style={square}>
                     <Statistic inverted>
-                      {/* Needs to be filled with actual data. */}
                       <Statistic.Value>0 gal</Statistic.Value>
                       <Statistic.Label>gas saved</Statistic.Label>
                     </Statistic>
@@ -182,7 +181,6 @@ function Home() {
                 <div align="center">
                   <Segment className={'grow'} circular style={square}>
                     <Statistic inverted>
-                      {/* Needs to be filled with actual data. */}
                       <Statistic.Value> 0 lbs </Statistic.Value>
                       <Statistic.Label>of Emissions Produced</Statistic.Label>
                     </Statistic>

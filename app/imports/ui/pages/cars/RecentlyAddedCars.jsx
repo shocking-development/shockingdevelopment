@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Grid, Button, Icon } from 'semantic-ui-react';
+import { Header, Grid, Button, Icon, Pagination } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -16,8 +16,29 @@ class RecentlyAddedCars extends React.Component {
         </div>;
   }
 
+  /** Initializes a constructor */
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 1,
+    };
+  }
+
+  /** Updates the controls everytime a button is pressed */
+  handleInputChange = (e, data) => {
+    this.setState({
+      activePage: Number(data.activePage),
+    });
+  }
+
   /** Render the page once subscriptions have been received. */
   renderPage() {
+
+    /** Constant variable to start at index 0 */
+    const startIndex = (this.state.activePage * 1 - 1);
+
+    /** Variable that holds the index of the last item */
+    const endIndex = (this.state.activePage * 1);
 
     return (
         <div>
@@ -29,8 +50,18 @@ class RecentlyAddedCars extends React.Component {
           {this.props.cars.length !== 0 ?
               <div>
                 <Grid className={'RecentlyAddedCarsGrid'}>
-                  {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>)}
+                  {this.props.cars.map((car) => <CarCardItem key={car._id} car={car}/>).slice(startIndex, endIndex)}
                   <Grid.Column className={'addCarBtn'}>
+                    {/** Implementation of Pagination: functionality */}
+                    <Pagination
+                        defaultActivePage={1}
+                        totalPages={Math.ceil(this.props.cars.length / 1)}
+                        onPageChange={this.handleInputChange}
+                        style={{ position: 'absolute', left: '-223px', bottom: '23.5em' }}
+                        pointing
+                        secondary
+                        className={'paginationForUSERCARS'}
+                    />
                     <Button
                         as={NavLink}
                         exact to={'/cars'}
@@ -73,7 +104,7 @@ RecentlyAddedCars.propTypes = {
 export default withTracker(() => {
   const subscription = UserInfosCars.subscribeUserInfoCars();
   return {
-    cars: UserInfosCars.find({}, { sort: { count: -1 }, limit: 1 }).fetch(),
+    cars: UserInfosCars.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(RecentlyAddedCars);

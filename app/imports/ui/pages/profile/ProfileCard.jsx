@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Grid, Loader, Image, Button, Icon, Header, Segment } from 'semantic-ui-react';
+import { Container, Grid, Loader, Image, Button, Icon, Header, Segment, Popup } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -52,20 +52,23 @@ class ProfileCard extends React.Component {
                            style={{ borderRadius: '50%', width: '280px', height: '280px', top: '200px', left: '50px' }}
                     /></div>
                   <div className={'jello-horizontal2'}>
-                    <Button
-                        as={NavLink}
-                        id='edit-profile'
-                        exact to={`/edit/${this.props.profiles._id}`}
-                        color='blue'
-                        style={{ position: 'absolute', left: '4.5em', bottom: '8px' }}
-                        circular
-                        className={'editButtonProfilePencil'}
-                        icon={'pencil'}
-                    /></div>
+
+                    <Popup content='Edit Profile'
+                           trigger={<Button
+                               as={NavLink}
+                               id='edit-profile'
+                               exact to={`/edit/${this.props.profiles._id}`}
+                               color='blue'
+                               style={{ position: 'absolute', left: '4.5em', bottom: '8px' }}
+                               circular
+                               className={'editButtonProfilePencil'}
+                               icon={'pencil'}
+                           />}/>
+                  </div>
 
                 </Grid.Column>
 
-                <Grid.Column >
+                <Grid.Column>
                   <div className={'growForProfile'} style={{ borderRadius: '100rem' }}>
                     <Segment className={'viewProfile jello-horizontal2'}
                              style={{
