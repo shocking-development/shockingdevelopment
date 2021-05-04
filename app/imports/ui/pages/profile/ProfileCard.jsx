@@ -24,7 +24,7 @@ class ProfileCard extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    console.log(this.props);
+    // console.log(this.props);
     const pageStyle = {
       paddingLeft: '17em',
       paddingTop: '1em',
