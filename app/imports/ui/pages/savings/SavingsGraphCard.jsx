@@ -6,7 +6,7 @@ import { GraphOptions } from '../../components/defaultcharts/SavingsPageBarGraph
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import { Cars } from '../../../api/cars/CarsCollection';
 
-export function SaveingsGraphCard(name, description, info, icon, data1, data2) {
+export function SaveingsGraphCard(name, description, info, icon, data1, data2, currentCar) {
 
   // In page styling for the graphs.
   const dataPageBarGraphstyling = {
@@ -37,12 +37,7 @@ export function SaveingsGraphCard(name, description, info, icon, data1, data2) {
               </div>
             </Card.Content>
             <Card.Content extra color='teal'>
-              <div className='ui three buttons'>
-                <Button color='teal'>Input Usage</Button>
-                <Button color='teal' as={NavLink} exact to="/notfound">Input Car</Button>
-                <Button color='teal' as={NavLink} exact to="/notfound" style={inCardStyle}>See results</Button>
-
-              </div>
+              <Button color='teal'>See results</Button>
             </Card.Content>
           </Card>
 
