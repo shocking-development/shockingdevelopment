@@ -11,32 +11,18 @@ import { Cars } from '../../../api/cars/CarsCollection';
 import { SaveingsGraphCard } from './SavingsGraphCard';
 import SavingsQuestions from './SavingsQuestions';
 
+let currentCar = '';
+let currentMpg = 30;
+let tripM = 5;
+
 // A simple static component to render this page.
 class GoToSavings extends React.Component {
 
   HandlChange = function (event, element) {
-    console.log(event);
-    console.log(element.children);
-    console.log(element.children[2]);
+    currentMpg = element.children[2];
+    currentCar = element.children[0];
+    console.log(currentMpg);
   };
-
-  HandlSubmit = function (event, element) {
-    console.log(event);
-    console.log(element.children);
-    console.log(element.children[2]);
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = { baseMpg: 10 };
-
-    this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ baseMpg: event.target.value });
-  }
 
   render() {
 
@@ -49,7 +35,7 @@ class GoToSavings extends React.Component {
       color: 'black',
     };
 // eslint-disable-next-line no-unused-vars
-const i = 1;
+
     // In page styling for within the display cards
     const inCardStyle = {
       textSize: 50,
@@ -72,10 +58,6 @@ const i = 1;
     const carList = UserInfosCars.find().fetch();
     console.log(carList[0]?.carName);
 
-    let baseMpg = 30;
-    let tripM = 5;
-
-
     // returns the GoToSaveings page.
     return (
 
@@ -95,12 +77,13 @@ const i = 1;
               paddingBottom: '50px',
             }}/>
             <SavingsQuestions/>
+
             <Dropdown className='spacing-menu-item' placeholder="Choose current transportation" pointing="top">
               <Dropdown.Menu>
                 <Dropdown className='spacing-menu-item' text="Your Car" pointing="top">
                   <Dropdown.Menu>
                       {carList.map((car) => <Dropdown.Item onClick={this.HandlChange}
-                                                           key={car._id}>{car.carName}</Dropdown.Item>)}
+                                                           key={car._id}>{car.carName} (MPG: {car.mpgofCar})</Dropdown.Item>)}
                   </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown.Item onClick={this.HandlChange}>Some One else&aposs Car</Dropdown.Item>
@@ -115,15 +98,15 @@ const i = 1;
             <Card.Group style={cardStyle}>
 
               { SaveingsGraphCard( "Car", "How much would you save by using this car.",
-                  "info",'car', baseMpg * tripM, 38.3 * tripM) }
+                  "info",'car', currentMpg * tripM, 38.3 * tripM, currentCar) }
               { SaveingsGraphCard( "Electric Car", "How much would you save by using this electric car.",
-                  "info",'battery three', baseMpg * tripM, 0.3 * tripM) }
+                  "info",'battery three', currentMpg * tripM, 0.3 * tripM, currentCar) }
               { SaveingsGraphCard( "Car Pool", "How much would you save by using this carpool.",
-                  "info",'truck', baseMpg * tripM, 38.3 * tripM) }
+                  "info",'truck', currentMpg * tripM, 38.3 * tripM, currentCar) }
               { SaveingsGraphCard( "Public Transport", "How much would you save by using this public transport system.",
-                "info", 'bus', baseMpg * tripM, 38.3 * tripM) }
+                "info", 'bus', currentMpg * tripM, 38.3 * tripM, currentCar) }
               { SaveingsGraphCard( "Biking", "How much would you save by Biking.",
-                  "info", 'bicycle', baseMpg * tripM, 0) }
+                  "info", 'bicycle', currentMpg * tripM, 0, currentCar) }
 
             </Card.Group>
           </div>
