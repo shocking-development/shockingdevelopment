@@ -1,8 +1,7 @@
 import React from 'react';
-import { Container, Table, Header, Loader, Image, Pagination } from 'semantic-ui-react';
+import { Table, Loader, Pagination } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import NavBarMain from '../../components/main-navbar/NavBarMain';
 import ViewAllCarItem from './ViewAllCarItem';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 
