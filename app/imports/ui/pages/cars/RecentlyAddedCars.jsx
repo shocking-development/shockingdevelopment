@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { UserInfosCars } from '../../../api/userInfo/UserInfoCarCollection';
 import CarCardItem from '../../components/cars/CarCardItem';
+import ViewAllCarsModal from '../../components/profile/ViewAllCarsModal';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class RecentlyAddedCars extends React.Component {
@@ -43,7 +44,7 @@ class RecentlyAddedCars extends React.Component {
     return (
         <div>
           <Header inverted as="h1" textAlign="center"
-                  style={{ fontWeight: 'lighter', paddingTop: '65px', paddingBottom: '45px' }}
+                  style={{ fontWeight: 'lighter', paddingTop: '65px', paddingBottom: '60px' }}
                   className={'YourCarsHeader'}>
             Your Cars
           </Header>
@@ -57,26 +58,34 @@ class RecentlyAddedCars extends React.Component {
                         defaultActivePage={1}
                         totalPages={Math.ceil(this.props.cars.length / 1)}
                         onPageChange={this.handleInputChange}
-                        style={{ position: 'absolute', left: '-223px', bottom: '23.5em' }}
+                        style={{ position: 'absolute', left: '-223px', bottom: '22.8em' }}
                         pointing
                         secondary
+                        boundaryRange={0}
+                        firstItem={null}
+                        lastItem={null}
                         className={'paginationForUSERCARS'}
                     />
-                    <Button
-                        as={NavLink}
-                        exact to={'/cars'}
-                        animated='vertical'
-                        size='medium'
-                        color='blue'
-                        style={{ top: '310px', left: '-124px' }}
-                        id='edit-password'
-                        className={'editButtonProfile'}
-                    >
-                      <Button.Content hidden>Add Car</Button.Content>
-                      <Button.Content visible>
-                        <Icon name='add'/>
-                      </Button.Content>
-                    </Button>
+                    <Button.Group style={{ position: 'absolute', top: '293px', left: '-224px' }}>
+                      <Button
+                          as={NavLink}
+                          exact to={'/cars'}
+                          animated='vertical'
+                          size='medium'
+                          color='blue'
+                          id='edit-password'
+                          className={'editButtonProfile'}
+                          style={{ width: '104px' }}
+                      >
+                        <Button.Content hidden>Add Car</Button.Content>
+                        <Button.Content visible>
+                          <Icon name='add'/>
+                        </Button.Content>
+                      </Button>
+                      <Button.Or style={{ background: '#65a5e3' }}/>
+                      <ViewAllCarsModal/>
+                    </Button.Group>
+
                   </Grid.Column>
                 </Grid>
               </div> :

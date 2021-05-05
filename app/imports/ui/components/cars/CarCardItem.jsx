@@ -1,16 +1,12 @@
 import React from 'react';
-import { Button, Card, Grid, Icon } from 'semantic-ui-react';
+import { Card, Grid, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { userInfoRemoveItMethod } from '../../../api/userInfo/UserInfoCarCollection.methods';
 
 /** Renders a single row in the List Cars table. See pages/ListCars.jsx. */
 class carCardItem extends React.Component {
 
   render() {
-
-    /* deleteCar function allows users to delete preset cars */
-    const deleteCar = ({ _id }) => userInfoRemoveItMethod.call(_id);
 
     return (
         <Card.Content style={{ paddingBottom: '5%' }}>
@@ -52,11 +48,6 @@ class carCardItem extends React.Component {
                        style={{ fontFamily: 'sans-serif', fontWeight: 'lighter' }}>
                       MPG: {this.props.car.mpgofCar} </b>
                   </Card.Content>
-                  <Button id='delete-trip' className={'removeCarbutton'}
-                          onClick={() => deleteCar(this.props.car)} color={'blue'}>
-                    Remove Car
-                  </Button>
-
                 </Card>
 
               </Grid.Column>

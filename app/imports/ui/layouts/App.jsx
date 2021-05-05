@@ -24,6 +24,7 @@ import ChangePassword from '../pages/profile/ChangePassword';
 import ListCars from '../pages/cars/ListCars';
 import CumulativeGraphs from '../pages/admin/CumulativeGraphs';
 import Requests from '../pages/cars/Requests';
+import ViewAllCars from '../components/profile/ViewAllCars';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -50,6 +51,7 @@ class App extends React.Component {
               <ProtectedRoute path="/ghgCalMetric" component={GHGEmissionsCalculatorContainerMetric}/>
               <ProtectedRoute path="/request" component={Requests}/>
               <ProtectedRoute path="/cumulativedata" component={CumulativeGraphs}/>
+              <ProtectedRoute path="/viewAllCars" component={ViewAllCars}/>
               <AdminProtectedRoute path="/admin" component={ListProfileAdmin}/>
               <AdminProtectedRoute path="/listcars" component={ListCars}/>
 
